@@ -18,6 +18,7 @@ import { useSession } from "./session";
 import { SourceDialog, State } from "./components";
 import Login from "./pages/Login";
 import { RouteBoundary } from "./RouteBoundary";
+import { AskDraftProvider } from "./AskDraft";
 const Assistant = lazy(() => import("./pages/Assistant"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Library = lazy(() => import("./pages/Library"));
@@ -211,37 +212,39 @@ export default function App() {
             {error}
           </p>
         )}
-        <RouteBoundary key={location.pathname}>
-          <Suspense fallback={<State loading />}>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route
-                path="/assistant"
-                element={gate("query.execute", <Assistant />)}
-              />
-              <Route path="/documents" element={<Library />} />
-              <Route path="/documents/:id" element={<DocumentDetail />} />
-              <Route
-                path="/upload"
-                element={gate("document.upload", <Upload />, "/documents")}
-              />
-              <Route
-                path="/history"
-                element={gate("query.execute", <History />)}
-              />
-              <Route
-                path="/conflicts"
-                element={gate("query.execute", <Conflicts />)}
-              />
-              <Route
-                path="/permissions"
-                element={gate("user.manage", <Permissions />)}
-              />
-              <Route path="/audit" element={gate("audit.read", <Audit />)} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </Suspense>
-        </RouteBoundary>
+        <AskDraftProvider key={user.id}>
+          <RouteBoundary key={location.pathname}>
+            <Suspense fallback={<State loading />}>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route
+                  path="/assistant"
+                  element={gate("query.execute", <Assistant />)}
+                />
+                <Route path="/documents" element={<Library />} />
+                <Route path="/documents/:id" element={<DocumentDetail />} />
+                <Route
+                  path="/upload"
+                  element={gate("document.upload", <Upload />, "/documents")}
+                />
+                <Route
+                  path="/history"
+                  element={gate("query.execute", <History />)}
+                />
+                <Route
+                  path="/conflicts"
+                  element={gate("query.execute", <Conflicts />)}
+                />
+                <Route
+                  path="/permissions"
+                  element={gate("user.manage", <Permissions />)}
+                />
+                <Route path="/audit" element={gate("audit.read", <Audit />)} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </Suspense>
+          </RouteBoundary>
+        </AskDraftProvider>
       </main>
       <footer className="app-footer">
         <span>Policy knowledge, with context.</span>

@@ -1,10 +1,14 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render as renderUI, screen, waitFor } from "@testing-library/react";
+import type { ReactNode } from "react";
+import { AskDraftProvider } from "../AskDraft";
 import userEvent from "@testing-library/user-event";
 import { vi, test, expect } from "vitest";
 import Assistant from "./Assistant";
 import { HighlightedSource } from "../SourcePassage";
 import { ApiError, api } from "../api";
 import type { Answer, Source } from "../types";
+const render = (element: ReactNode) =>
+  renderUI(<AskDraftProvider>{element}</AskDraftProvider>);
 vi.mock("../api", async () => {
   const actual = await vi.importActual<typeof import("../api")>("../api");
   return { ...actual, api: vi.fn() };
@@ -188,5 +192,87 @@ test("a follow-up draft typed during loading survives the response", async () =>
   await screen.findByText(result.answer);
   expect(screen.getByLabelText("Ask about a company policy")).toHaveValue(
     "What is my notice period?",
+  );
+});
+
+test("a completed query releases the composer while its source is still checking", async () => {
+  let release: (value: Source) => void = () => {};
+  vi.mocked(api)
+    .mockResolvedValueOnce(result)
+    .mockImplementationOnce(
+      () =>
+        new Promise<Source>((resolve) => {
+          release = resolve;
+        }),
+    );
+  render(<Assistant />);
+  await userEvent.click(
+    screen.getByText("How many annual leave days do I have?"),
+  );
+  await screen.findByText(result.answer);
+  expect(
+    screen.queryByText("Checking policy access, dates and authority…"),
+  ).not.toBeInTheDocument();
+  expect(screen.getByText("Checking source access…")).toBeInTheDocument();
+  expect(screen.getByRole("region", { name: "Policy answer" })).toHaveAttribute(
+    "aria-busy",
+    "false",
+  );
+  await userEvent.type(
+    screen.getByLabelText("Ask about a company policy"),
+    "What is my notice period?",
+  );
+  expect(screen.getByRole("button", { name: /^Ask Cortex$/ })).toBeEnabled();
+  release(source);
+  await screen.findByText(quote);
+});
+
+test("an invalidated query cannot finish a newer query's processing state", async () => {
+  let first: (value: Answer) => void = () => {};
+  let second: (value: Answer) => void = () => {};
+  vi.mocked(api)
+    .mockImplementationOnce(
+      () =>
+        new Promise<Answer>((resolve) => {
+          first = resolve;
+        }),
+    )
+    .mockImplementationOnce(
+      () =>
+        new Promise<Answer>((resolve) => {
+          second = resolve;
+        }),
+    );
+  render(<Assistant />);
+  await userEvent.click(
+    screen.getByText("How many annual leave days do I have?"),
+  );
+  await userEvent.selectOptions(
+    screen.getByLabelText("Policy scope"),
+    "india_contractor",
+  );
+  await userEvent.type(
+    screen.getByLabelText("Ask about a company policy"),
+    "What is my notice period?",
+  );
+  await userEvent.click(screen.getByRole("button", { name: /^Ask Cortex$/ }));
+  first(result);
+  await waitFor(() =>
+    expect(
+      screen.getByRole("region", { name: "Policy answer" }),
+    ).toHaveAttribute("aria-busy", "true"),
+  );
+  expect(screen.queryByText(result.answer)).not.toBeInTheDocument();
+  second({
+    ...result,
+    scope: { ...result.scope, population: "india_contractor" },
+    answer: "No applicable evidence.",
+    citations: [],
+    status: "abstained",
+  });
+  await screen.findByText("No applicable evidence.");
+  expect(screen.getByRole("region", { name: "Policy answer" })).toHaveAttribute(
+    "aria-busy",
+    "false",
   );
 });

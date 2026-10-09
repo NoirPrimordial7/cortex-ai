@@ -131,6 +131,20 @@ for (const width of [320, 390, 768, 1024, 1280, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await setup(page);
     await noOverflow(page);
+    if (width < 600) {
+      for (const label of ["As of", "Policy scope"]) {
+        expect(
+          await page
+            .getByLabel(label, { exact: true })
+            .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
+        ).toBeGreaterThanOrEqual(16);
+      }
+    }
+    if (width === 320) {
+      expect(
+        (await page.getByLabel("Policy scope").boundingBox())!.width,
+      ).toBeGreaterThanOrEqual(190);
+    }
     await ask(page);
     await noOverflow(page);
     const citation = page.getByRole("button", {

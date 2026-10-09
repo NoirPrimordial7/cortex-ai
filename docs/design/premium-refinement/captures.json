@@ -1,0 +1,354 @@
+[
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 320,
+    "theme": "light",
+    "before": "before/maya-ask-empty-320.png",
+    "after": "after/maya-ask-empty-320.png"
+  },
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 390,
+    "theme": "light",
+    "before": "before/maya-ask-empty-390.png",
+    "after": "after/maya-ask-empty-390.png"
+  },
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 768,
+    "theme": "light",
+    "before": "before/maya-ask-empty-768.png",
+    "after": "after/maya-ask-empty-768.png"
+  },
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 1024,
+    "theme": "light",
+    "before": "before/maya-ask-empty-1024.png",
+    "after": "after/maya-ask-empty-1024.png"
+  },
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 1280,
+    "theme": "light",
+    "before": "before/maya-ask-empty-1280.png",
+    "after": "after/maya-ask-empty-1280.png"
+  },
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 1440,
+    "theme": "light",
+    "before": "before/maya-ask-empty-1440.png",
+    "after": "after/maya-ask-empty-1440.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 320,
+    "theme": "light",
+    "before": "before/maya-ask-answer-320.png",
+    "after": "after/maya-ask-answer-320.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 390,
+    "theme": "light",
+    "before": "before/maya-ask-answer-390.png",
+    "after": "after/maya-ask-answer-390.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 768,
+    "theme": "light",
+    "before": "before/maya-ask-answer-768.png",
+    "after": "after/maya-ask-answer-768.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 1024,
+    "theme": "light",
+    "before": "before/maya-ask-answer-1024.png",
+    "after": "after/maya-ask-answer-1024.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 1280,
+    "theme": "light",
+    "before": "before/maya-ask-answer-1280.png",
+    "after": "after/maya-ask-answer-1280.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 1440,
+    "theme": "light",
+    "before": "before/maya-ask-answer-1440.png",
+    "after": "after/maya-ask-answer-1440.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 320,
+    "theme": "light",
+    "before": "before/maya-ask-conflict-320.png",
+    "after": "after/maya-ask-conflict-320.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 390,
+    "theme": "light",
+    "before": "before/maya-ask-conflict-390.png",
+    "after": "after/maya-ask-conflict-390.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 768,
+    "theme": "light",
+    "before": "before/maya-ask-conflict-768.png",
+    "after": "after/maya-ask-conflict-768.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 1024,
+    "theme": "light",
+    "before": "before/maya-ask-conflict-1024.png",
+    "after": "after/maya-ask-conflict-1024.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 1280,
+    "theme": "light",
+    "before": "before/maya-ask-conflict-1280.png",
+    "after": "after/maya-ask-conflict-1280.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 1440,
+    "theme": "light",
+    "before": "before/maya-ask-conflict-1440.png",
+    "after": "after/maya-ask-conflict-1440.png"
+  },
+  {
+    "state": "evidence",
+    "label": "Mobile evidence view",
+    "width": 320,
+    "theme": "light",
+    "before": "before/maya-evidence-320.png",
+    "after": "after/maya-evidence-320.png"
+  },
+  {
+    "state": "evidence",
+    "label": "Mobile evidence view",
+    "width": 390,
+    "theme": "light",
+    "before": "before/maya-evidence-390.png",
+    "after": "after/maya-evidence-390.png"
+  },
+  {
+    "state": "evidence",
+    "label": "Mobile evidence view",
+    "width": 768,
+    "theme": "light",
+    "before": "before/maya-evidence-768.png",
+    "after": "after/maya-evidence-768.png"
+  },
+  {
+    "state": "evidence",
+    "label": "Mobile evidence view",
+    "width": 1024,
+    "theme": "light",
+    "before": "before/maya-evidence-1024.png",
+    "after": "after/maya-evidence-1024.png"
+  },
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 320,
+    "theme": "dark",
+    "before": "before/maya-ask-empty-320-dark.png",
+    "after": "after/maya-ask-empty-320-dark.png"
+  },
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 390,
+    "theme": "dark",
+    "before": "before/maya-ask-empty-390-dark.png",
+    "after": "after/maya-ask-empty-390-dark.png"
+  },
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 768,
+    "theme": "dark",
+    "before": "before/maya-ask-empty-768-dark.png",
+    "after": "after/maya-ask-empty-768-dark.png"
+  },
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 1024,
+    "theme": "dark",
+    "before": "before/maya-ask-empty-1024-dark.png",
+    "after": "after/maya-ask-empty-1024-dark.png"
+  },
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 1280,
+    "theme": "dark",
+    "before": "before/maya-ask-empty-1280-dark.png",
+    "after": "after/maya-ask-empty-1280-dark.png"
+  },
+  {
+    "state": "ask-empty",
+    "label": "Start a question",
+    "width": 1440,
+    "theme": "dark",
+    "before": "before/maya-ask-empty-1440-dark.png",
+    "after": "after/maya-ask-empty-1440-dark.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 320,
+    "theme": "dark",
+    "before": "before/maya-ask-answer-320-dark.png",
+    "after": "after/maya-ask-answer-320-dark.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 390,
+    "theme": "dark",
+    "before": "before/maya-ask-answer-390-dark.png",
+    "after": "after/maya-ask-answer-390-dark.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 768,
+    "theme": "dark",
+    "before": "before/maya-ask-answer-768-dark.png",
+    "after": "after/maya-ask-answer-768-dark.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 1024,
+    "theme": "dark",
+    "before": "before/maya-ask-answer-1024-dark.png",
+    "after": "after/maya-ask-answer-1024-dark.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 1280,
+    "theme": "dark",
+    "before": "before/maya-ask-answer-1280-dark.png",
+    "after": "after/maya-ask-answer-1280-dark.png"
+  },
+  {
+    "state": "ask-answer",
+    "label": "Supported answer",
+    "width": 1440,
+    "theme": "dark",
+    "before": "before/maya-ask-answer-1440-dark.png",
+    "after": "after/maya-ask-answer-1440-dark.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 320,
+    "theme": "dark",
+    "before": "before/maya-ask-conflict-320-dark.png",
+    "after": "after/maya-ask-conflict-320-dark.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 390,
+    "theme": "dark",
+    "before": "before/maya-ask-conflict-390-dark.png",
+    "after": "after/maya-ask-conflict-390-dark.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 768,
+    "theme": "dark",
+    "before": "before/maya-ask-conflict-768-dark.png",
+    "after": "after/maya-ask-conflict-768-dark.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 1024,
+    "theme": "dark",
+    "before": "before/maya-ask-conflict-1024-dark.png",
+    "after": "after/maya-ask-conflict-1024-dark.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 1280,
+    "theme": "dark",
+    "before": "before/maya-ask-conflict-1280-dark.png",
+    "after": "after/maya-ask-conflict-1280-dark.png"
+  },
+  {
+    "state": "ask-conflict",
+    "label": "Conflicting policies",
+    "width": 1440,
+    "theme": "dark",
+    "before": "before/maya-ask-conflict-1440-dark.png",
+    "after": "after/maya-ask-conflict-1440-dark.png"
+  },
+  {
+    "state": "evidence",
+    "label": "Mobile evidence view",
+    "width": 320,
+    "theme": "dark",
+    "before": "before/maya-evidence-320-dark.png",
+    "after": "after/maya-evidence-320-dark.png"
+  },
+  {
+    "state": "evidence",
+    "label": "Mobile evidence view",
+    "width": 390,
+    "theme": "dark",
+    "before": "before/maya-evidence-390-dark.png",
+    "after": "after/maya-evidence-390-dark.png"
+  },
+  {
+    "state": "evidence",
+    "label": "Mobile evidence view",
+    "width": 768,
+    "theme": "dark",
+    "before": "before/maya-evidence-768-dark.png",
+    "after": "after/maya-evidence-768-dark.png"
+  },
+  {
+    "state": "evidence",
+    "label": "Mobile evidence view",
+    "width": 1024,
+    "theme": "dark",
+    "before": "before/maya-evidence-1024-dark.png",
+    "after": "after/maya-evidence-1024-dark.png"
+  }
+]

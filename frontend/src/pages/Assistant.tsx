@@ -18,7 +18,7 @@ import {
   IconContext,
 } from "@phosphor-icons/react";
 import { api } from "../api";
-import { localPolicyDate } from "../components";
+import { useAskDraft } from "../AskDraft";
 import type { Answer, Citation, Source } from "../types";
 import { SourceInspector } from "../SourceInspector";
 
@@ -26,14 +26,16 @@ import { SourceInspector } from "../SourceInspector";
 function EvidenceView({
   children,
   onClose,
+  returnTo,
 }: {
   children: ReactNode;
   onClose: () => void;
+  returnTo: HTMLElement | null;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const back = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    const previous = document.activeElement as HTMLElement | null;
+    const previous = returnTo || (document.activeElement as HTMLElement | null);
     const overflow = document.body.style.overflow;
     const element = dialog.current!;
     element.showModal();
@@ -85,10 +87,9 @@ function EvidenceView({
 }
 
 export default function Assistant() {
-  const [query, setQuery] = useState(""),
-    [askedQuery, setAskedQuery] = useState(""),
-    [date, setDate] = useState(localPolicyDate()),
-    [population, setPopulation] = useState("india_full_time");
+  const { query, setQuery, date, setDate, population, setPopulation } =
+    useAskDraft();
+  const [askedQuery, setAskedQuery] = useState("");
   const [answer, setAnswer] = useState<Answer | null>(null),
     [source, setSource] = useState<Source | null>(null),
     [selected, setSelected] = useState<Citation | null>(null);
@@ -105,12 +106,16 @@ export default function Assistant() {
   const input = useRef<HTMLTextAreaElement>(null),
     reading = useRef<HTMLDivElement>(null),
     inspectorToggle = useRef<HTMLButtonElement>(null),
+    inspectorClose = useRef<HTMLButtonElement>(null),
+    evidenceReturn = useRef<HTMLElement | null>(null),
+    focusInspector = useRef(false),
     epoch = useRef(0),
     sourceEpoch = useRef(0);
   function clear() {
     if (reading.current) reading.current.scrollTop = 0;
     epoch.current++;
     sourceEpoch.current++;
+    setBusy(false);
     setSourceBusy(false);
     setAnswer(null);
     setSource(null);
@@ -119,6 +124,12 @@ export default function Assistant() {
     setEvidenceView(false);
     setInspector(false);
   }
+  useEffect(() => {
+    if (inspector && !narrow && focusInspector.current) {
+      inspectorClose.current?.focus({ preventScroll: true });
+      focusInspector.current = false;
+    }
+  }, [inspector, narrow, selected?.id]);
   useEffect(() => {
     if (typeof matchMedia !== "function") return;
     const media = matchMedia("(max-width: 1099px)");
@@ -158,7 +169,11 @@ export default function Assistant() {
     setSelected(c);
     if (open) {
       if (narrow) setEvidenceView(true);
-      else setInspector(true);
+      else {
+        focusInspector.current = !inspectorClose.current;
+        inspectorClose.current?.focus({ preventScroll: true });
+        setInspector(true);
+      }
     }
     try {
       const detail = await api<Source>(
@@ -183,6 +198,7 @@ export default function Assistant() {
     clear();
     const stamp = epoch.current;
     setBusy(true);
+    setAskedQuery(prompt);
     setQuery("");
     try {
       const result = await api<Answer>("/queries", {
@@ -196,10 +212,12 @@ export default function Assistant() {
       });
       if (epoch.current !== stamp) return;
       setAnswer(result);
-      setAskedQuery(prompt);
+      // The query has completed. Source authorization has its own loading state
+      // and failure handling; it must not block the next question's composer.
+      setBusy(false);
       if (result.citations[0]) {
         if (!narrow) setInspector(true);
-        await inspect(result.citations[0], result);
+        void inspect(result.citations[0], result);
       }
     } catch (e) {
       if (epoch.current === stamp) {
@@ -207,7 +225,7 @@ export default function Assistant() {
         setQuery((draft) => draft || prompt);
       }
     } finally {
-      setBusy(false);
+      if (epoch.current === stamp) setBusy(false);
     }
   }
   const conflict = answer?.reason_code === "UNRESOLVED_CONFLICT";
@@ -218,6 +236,7 @@ export default function Assistant() {
       source={source}
       busy={sourceBusy}
       conflict={conflict}
+      formatDate={policyDate}
       context={
         answer
           ? { date: answer.as_of, population: answer.scope.population }
@@ -227,7 +246,11 @@ export default function Assistant() {
   );
   return (
     <IconContext.Provider value={{ "aria-hidden": true }}>
-      <div className="fieldbook">
+      <div
+        className={
+          "fieldbook" + (!answer && !busy && !error ? " is-empty" : "")
+        }
+      >
         <div className="fb-intro">
           <div>
             <BookOpenTextIcon size={20} />
@@ -272,8 +295,8 @@ export default function Assistant() {
                     clear();
                   }}
                 >
-                  <option value="india_full_time">India · full-time</option>
-                  <option value="india_contractor">India · contractor</option>
+                  <option value="india_full_time">India full-time</option>
+                  <option value="india_contractor">India contractor</option>
                 </select>
               </label>
               {!narrow && selected && (
@@ -300,7 +323,6 @@ export default function Assistant() {
             >
               {!answer && !busy && !error && (
                 <div className="fb-empty">
-                  <p className="fb-label">Ask Cortex</p>
                   <h1>
                     A clear answer.
                     <br />A source you can trust.
@@ -310,25 +332,11 @@ export default function Assistant() {
                     <br className="fb-desktop-break" /> Every supported answer
                     brings its evidence.
                   </p>
-                  <div className="fb-suggestions">
-                    {[
-                      "How many annual leave days do I have?",
-                      "How many remote days per week?",
-                      "What is my notice period?",
-                    ].map((text) => (
-                      <button
-                        key={text}
-                        onClick={() => void send(undefined, text)}
-                      >
-                        {text}
-                        <ArrowRightIcon size={18} />
-                      </button>
-                    ))}
-                  </div>
                 </div>
               )}
               {busy && (
                 <div role="status" className="fb-processing">
+                  <h1 className="question-bubble">{askedQuery}</h1>
                   <div className="skeleton long" />
                   <div className="skeleton" />
                   <p>Checking policy access, dates and authority…</p>
@@ -344,6 +352,7 @@ export default function Assistant() {
                 <article
                   className={
                     "fb-answer " +
+                    (answer.status !== "answered" ? "has-warning " : "") +
                     (conflict ? "has-conflict " : "") +
                     (answer.answer.length > 360 ? "is-long" : "")
                   }
@@ -372,7 +381,7 @@ export default function Assistant() {
                     {answer.scope.population === "india_full_time"
                       ? "India full-time employees"
                       : "India contractors"}{" "}
-                    · as of {answer.as_of}
+                    · as of {policyDate(answer.as_of)}
                   </p>
                   {conflict && (
                     <p className="fb-conflict-note">
@@ -387,24 +396,34 @@ export default function Assistant() {
                           ? "Policies to review"
                           : "Supporting evidence"}
                       </p>
-                      {answer.citations.map((c, i) => (
-                        <button
-                          key={c.id}
-                          className={
-                            "fb-citation " +
-                            (selected?.id === c.id ? "is-selected" : "")
-                          }
-                          aria-label={`View evidence: ${c.title}`}
-                          onClick={() => void inspect(c, answer, true)}
-                        >
-                          <span className="fb-citation-number">{i + 1}</span>
-                          <strong>{c.title}</strong>
-                          <span className="fb-citation-action">
-                            View evidence
-                          </span>
-                          <ArrowRightIcon size={18} />
-                        </button>
-                      ))}
+                      <div className="fb-citation-list">
+                        {answer.citations.map((c, i) => (
+                          <button
+                            key={c.id}
+                            className={
+                              "fb-citation " +
+                              (selected?.id === c.id ? "is-selected" : "")
+                            }
+                            aria-label={`View evidence: ${c.title}`}
+                            onClick={(e) => {
+                              evidenceReturn.current = e.currentTarget;
+                              void inspect(c, answer, true);
+                            }}
+                          >
+                            <span className="fb-citation-number">{i + 1}</span>
+                            <span className="fb-citation-copy">
+                              <strong>{c.title}</strong>
+                              <span>
+                                {c.locator} · from {policyDate(c.valid_from)}
+                              </span>
+                            </span>
+                            <span className="fb-citation-action">
+                              View evidence
+                            </span>
+                            <ArrowRightIcon size={18} />
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </article>
@@ -442,6 +461,26 @@ export default function Assistant() {
                 <kbd>Ctrl / ⌘ K</kbd>
               </p>
             </form>
+            {!answer && !busy && !error && (
+              <div className="fb-examples">
+                <p>Try a policy question</p>
+                <div className="fb-suggestions">
+                  {[
+                    "How many annual leave days do I have?",
+                    "How many remote days per week?",
+                    "What is my notice period?",
+                  ].map((text) => (
+                    <button
+                      key={text}
+                      onClick={() => void send(undefined, text)}
+                    >
+                      {text}
+                      <ArrowRightIcon size={18} />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </section>
           {!narrow && inspector && (
             <aside
@@ -450,11 +489,15 @@ export default function Assistant() {
               aria-label="Source evidence"
             >
               <button
+                ref={inspectorClose}
                 className="fb-inspector-close"
                 aria-label="Hide evidence"
                 onClick={() => {
                   setInspector(false);
-                  inspectorToggle.current?.focus({ preventScroll: true });
+                  const target = evidenceReturn.current?.isConnected
+                    ? evidenceReturn.current
+                    : inspectorToggle.current;
+                  target?.focus({ preventScroll: true });
                 }}
               >
                 <XIcon size={19} />
@@ -464,11 +507,24 @@ export default function Assistant() {
           )}
         </div>
         {narrow && evidenceView && (
-          <EvidenceView onClose={() => setEvidenceView(false)}>
+          <EvidenceView
+            returnTo={evidenceReturn.current}
+            onClose={() => setEvidenceView(false)}
+          >
             {inspectorContent}
           </EvidenceView>
         )}
       </div>
     </IconContext.Provider>
   );
+}
+
+const dateFormat = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC",
+});
+function policyDate(value: string) {
+  return dateFormat.format(new Date(value.slice(0, 10) + "T00:00:00Z"));
 }
