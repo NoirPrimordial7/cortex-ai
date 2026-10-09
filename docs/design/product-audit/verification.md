@@ -1,6 +1,6 @@
 # Issue #4 implementation and verification log
 
-Review branch: `codex/full-product-ux`. Main and production remain unchanged.
+Review branch: `codex/full-product-ux`. Main and the published interface remain unchanged. The separately approved preview-origin configuration restart is recorded below; earlier checkpoints describe their historical state.
 
 ## Reconciliation
 
@@ -60,3 +60,9 @@ Direct screenshot review caught a legacy library column label leaking into the m
 ## GitHub review handoff
 
 Existing [PR #6](https://github.com/NoirPrimordial7/cortex-ai/pull/6) already tracked this branch. Updated its title/body with final behavior, validation, gallery and pending origin configuration; preserved its open/non-draft state and attached it to this task. Main remains2919a6d. Review commits are pushed; no merge or production deployment.
+
+## Approved preview-origin configuration —10 October2026
+
+Owner explicitly approved adding the verified current branch/build to Render CORTEX_ORIGINS while preserving both production origins. Save and deploy reused existing main2919a6d; deployment dep-db4mlje0tbcc73efh6v0 reached Live in40.8seconds. Both origins pass actual backend login/session/query/citation200 with exact span/hash validation; wrong CSRF/unapproved Origin403 remain. Production rerun:52 HTTP assertions and one Chromium login pass. [Exact applied configuration and sanitized results](preview-origin-change.md).
+
+A temporary Vercel authentication-bypass link was rejected by automatic approval review. No bypass was attempted afterward; protected-preview browser/proxy verification requires the owner's authenticated browser. This does not limit the actual backend Origin verification but prevents an end-to-end preview claim. No review code merge/release occurred.

@@ -1,6 +1,6 @@
 # Cortex full-product review — Issue #4
 
-Reviewed 10 October 2026 on `codex/full-product-ux`. **The local implementation passes the checks below and is ready for owner visual review. Main, the published interface and shared backend configuration have not been changed.** The owner's failing Vercel preview still needs an exact-origin configuration approval; see [the concrete proposed change](preview-origin-change.md).
+Reviewed 10 October 2026 on `codex/full-product-ux`. **The local implementation passes the checks below and is ready for owner visual review. Main and the published interface remain unchanged.** The owner explicitly approved the shared backend preview-origin update, which is now live and functionally verified; see [the applied change and limits](preview-origin-change.md).
 
 [Interactive before/after gallery](gallery.html) · [running gallery](http://127.0.0.1:8003/gallery.html) · [running application](http://127.0.0.1:5173/assistant) · [implementation checkpoints](verification.md)
 
@@ -22,7 +22,7 @@ An isolated build of main was compared to the public production alias: all ten s
 | 1. Ask empty/answer | Pass | Inspector starts closed; answer opens a source; compact citation previews and accessible follow-up composer. |
 | 2. Ask mobile | Pass | Natural page flow; separate evidence dialog; date/scope remain available; short viewport and long follow-up scenarios checked. |
 | 3. Evidence | Pass | One exact authorized passage; validity and context organized; secondary version/rank/integrity in disclosures. |
-| 4. Login | Pass locally; preview config pending | Clear profile selection, waiting/retry/session failure states, disabled test denial and specific origin-error guidance. Loading space reduces layout shift. |
+| 4. Login | Pass locally; approved preview origins pass backend checks | Clear profile selection, waiting/retry/session failure states, disabled test denial and specific origin-error guidance. Loading space reduces layout shift. |
 | 5. Overview | Pass | Ask and permitted documents lead; real API counts and distinctive recent answers; full history retained separately. |
 | 6. Library | Pass | Search/category/title sorting, touch-friendly phone rows. Summary API limitations respected; approval/effective fields shown in version details. |
 | 7. Document/version detail | Pass | Current approved version and reading lead; history/uploads disclosed; exclusive end dates and protected download retained. |
@@ -65,8 +65,8 @@ Original PNGs remain in ignored `outputs/product-audit`; tracked JPEGs are quali
 | Keyboard/accessibility | Native dialogs trap Tab/Shift+Tab, support Escape/Back and restore focus. Desktop citation focus remains above composer; 200% text scaling, 720 × 450 reflow emulation at DPR2, reduced motion and sampled contrast pass. |
 | Contrast | Sixteen sampled text pairs across both themes: minimum 5.919:1; sampled control boundary minimum 3.569:1. [Ratios](contrast.json). These samples are not whole-app WCAG certification. |
 | Performance/browser | Two tests pass: actual profile-loading CLS at all six widths and separate browser/API/hosted health sampling. [Measurements](performance-results.json), [six-width loading](login-loading.json). |
-| Published production alias | Normal profile login200/session200 passed; initial unauthenticated session401 is expected. This tests the unchanged published frontend, not the review UI. |
-| Owner's preview address | Confirmed403 “Origin not permitted”; no credentials tested in the diagnostic request. [Proof](preview-login-diagnosis.json). Exact-origin change remains unapplied pending approval. |
+| Published production alias | After the approved restart,52 HTTP functional assertions and one fresh Chromium login test pass. Initial unauthenticated session401 is expected. [Results](post-origin-hosted-smoke.json). This tests the unchanged published frontend, not the review UI. |
+| Current review branch/build | Original403 Origin mismatch resolved by the explicitly approved exact-origin configuration update. Both current origins pass backend login/session/query/citation200; wrong CSRF/unapproved Origin still403. [Results and protected-browser limitation](preview-origin-change.md). |
 
 Total selected browser checks: **56 unique tests passed** across regression, real workflows, captures, performance and hosted login. Opt-in live tests are intentionally disabled in the default test run, preventing accidental public/demo mutations.
 
@@ -80,4 +80,4 @@ No qualifying Event Timing entries were observed; the recorded zero event-durati
 
 ## Release status
 
-Ready for local visual review in [existing PR #6](https://github.com/NoirPrimordial7/cortex-ai/pull/6). Its existing open/non-draft state is preserved; no duplicate PR was created. No merge or production deployment has been performed. Approve the visual gallery before release; approve the concrete exact-origin change separately if the named review address should authenticate against the shared backend. After any authorized deployment, repeat hosted functional/visual checks against its exact source and public URL.
+Ready for local visual review in [existing PR #6](https://github.com/NoirPrimordial7/cortex-ai/pull/6). Its existing open/non-draft state is preserved; no duplicate PR was created. No code merge or production UI release has been performed. The separately approved Render configuration restart is complete; protected-preview browser/proxy verification remains pending in the owner's authenticated browser. Approve the visual gallery before release. After any authorized deployment, repeat hosted functional/visual checks against its exact source and public URL.

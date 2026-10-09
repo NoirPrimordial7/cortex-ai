@@ -1,5 +1,11 @@
 # Development log
 
+## 2026-10-10T04:01:00+05:30 — Approved preview login configuration
+
+- Applied owner-approved exact Render CORTEX_ORIGINS additions for the verified current review alias and build; preserved both production origins. Reused existing main2919a6d build; deployment reached Live in40.8seconds. No code merge or UI release.
+- Both preview origins passed actual backend login/session/query/citation200 and exact span/hash; wrong CSRF and arbitrary origins remain403. Public alias passed52 HTTP assertions and one fresh Chromium login after restart.
+- Protected-preview browser/proxy verification remains pending in the owner's authenticated Vercel session after automatic approval review rejected a temporary authentication-bypass link. Saved actual dashboard proof and sanitized results in the [configuration record](../design/product-audit/preview-origin-change.md).
+
 ## 2026-10-10 — Full-product audit, verified review branch
 
 - Reconciled PR #2, retained Fieldbook/toolkit head and current main without resetting working files. Main PR #5 contained no file changes. Published main JavaScript verified against an isolated build across all ten chunks.

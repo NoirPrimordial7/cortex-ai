@@ -6,7 +6,7 @@
 
 [Full pass/pending matrix, commands and scope](../design/product-audit/README.md) · [actual gallery](../design/product-audit/gallery.html) · [measured performance](../design/product-audit/performance-results.json)
 
-The owner's exact preview returns403 Origin rejection; the prepared shared-backend configuration change remains pending approval. Main and production are untouched. Physical devices/Safari/assistive technology/field INP/cold starts are not certified by these local tests.
+The approved Render origin update is live on unchanged main source. Both current review origins pass actual backend login/session/query/citation200; wrong CSRF/unapproved origins remain403. Post-restart production checks:52 HTTP assertions and one fresh browser login passed. [Configuration and protected-preview browser limitation](../design/product-audit/preview-origin-change.md). No review code was merged or released. Physical devices/Safari/assistive technology/field INP/cold starts are not certified by these local tests.
 
 ## Historical verification below
 
