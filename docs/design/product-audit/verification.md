@@ -1,6 +1,6 @@
 # Issue #4 implementation and verification log
 
-Review branch: `codex/full-product-ux`. Main and the published interface remain unchanged. The separately approved preview-origin configuration restart is recorded below; earlier checkpoints describe their historical state.
+Preserved implementation history: `codex/full-product-ux`. The owner subsequently approved publication; main is merged and the final product is live. [Actual production verification](../production-release/README.md). The separately approved preview-origin configuration restart is recorded below; earlier checkpoints describe their historical state.
 
 ## Reconciliation
 

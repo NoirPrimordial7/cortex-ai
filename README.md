@@ -2,7 +2,7 @@
 
 Conflict-aware, permission-safe enterprise knowledge intelligence for a final-year BTech Computer Science project.
 
-**Phase 3: working local evidence core and Evidence Studio UI, 2026-10-09.** Phase 1 research and Phase 2 architecture/design are owner-approved and preserved. This checkpoint is a bounded offline policy answerer: reviewed numeric claims for annual leave, remote work, notice period and executive bonus. It is not yet a general-purpose LLM chatbot or a production enterprise deployment. No paid API is required or enabled.
+**Phase 3: evidence core and full-product UI, production demo verified 2026-10-10.** Phase 1 research and Phase 2 architecture/design are owner-approved and preserved. This checkpoint is a bounded offline policy answerer: reviewed numeric claims for annual leave, remote work, notice period and executive bonus. It is not yet a general-purpose LLM chatbot or a production enterprise deployment. No paid API is required or enabled.
 
 Company knowledge can be relevant but outdated, conflicting or inaccessible. Cortex checks current identity and explicit document grants, approval, effective date and scope before reading evidence for reasoning. It then compares source authority and either produces an exact cited evidence answer or abstains. Newest upload does not imply currently effective policy.
 
@@ -22,11 +22,11 @@ Use workspace `NORTHSTAR` and employee `maya@example.test`; generated passwords 
 
 ## Genuine running UI
 
-**Atlas Professional refinement:** owner-selected first visual direction, refined for a professional premium workspace. Warm-white/forest tokens, readable evidence, responsive controls and deferred route code. [Current screenshots/QA](docs/design/redesign/implemented/README.md); historical visuals remain preserved.
+**Full-product forest/ivory refinement:** one shell, typography and responsive controls across every route, with compact citations and dedicated mobile evidence. Owner-approved production release includes the Auronix team profiles. [Current production screenshots and verification](docs/design/production-release/README.md); historical visuals remain preserved.
 
-![Actual Atlas Professional assistant browser capture](docs/design/redesign/implemented/assistant-final-1487.jpg)
+![Actual production assistant browser capture](docs/design/production-release/ask-answer-light-1440.png)
 
-Real browser screenshot of the local React/FastAPI system using fictional data. Current leave evidence is20 days; historical2025 evidence is18; equally authoritative remote-work policies produce an abstention with both citations. These values come from the provided fixture and API, not hardcoded frontend answers.
+Real browser screenshot of the published React/FastAPI system using fictional data. Current leave evidence is20 days; historical2025 evidence is18; equally authoritative remote-work policies produce an abstention with both citations. These values come from the provided fixture and API, not hardcoded frontend answers.
 
 [Running screenshot gallery](docs/design/README.md) includes desktop/tablet/mobile, dark theme, upload/review, version history, permissions, own history and redacted audit. Phase2 concept artwork remains separately labelled. [Design QA](design-qa.md) records actual checks and corrections.
 
@@ -52,9 +52,10 @@ One backend application worker serializes protected requests and access changes 
 
 | Check | Result / scope |
 |---|---|
-| Backend |29 tests pass, including ingestion/review, direct-resource denial, historical validity and concurrent revocation; one compatibility deprecation warning |
-| Frontend |8 tests pass; TypeScript/Vite build succeeds; real responsive screen checks |
+| Backend |39 tests pass, including ingestion/review, direct-resource denial, historical validity and concurrent revocation; one compatibility deprecation warning |
+| Frontend |21 tests pass; TypeScript/Vite build succeeds; real responsive screen checks |
 | Crafted fixture |12/12 outcomes,15/15 authorized peers,10/10 exact citation spans/hashes; **same development fixture, not held-out accuracy** |
+| Public release |62 API assertions, six browser tests,145 production captures across six widths/both themes,18 exact served asset hashes; [evidence](docs/design/production-release/README.md) |
 | Quality |Ruff/pip consistency pass; npm audit zero findings at this checkpoint; sampled contrast and reflow checked |
 
 No arbitrary40% completion or general accuracy claim is made. Future priorities are a held-out adjudicated corpus, richer clauses/lineage and permitted rejection explanations, parser isolation/denial audit/retention, and measured optional local semantic enhancements. Chunk ACLs, general amendments/exceptions, NLI, vector retrieval, LLM generation, agents, user creation and multiworker/durable production deployment remain unimplemented.

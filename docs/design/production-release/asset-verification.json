@@ -1,0 +1,152 @@
+{
+  "checked_at": "2026-10-09T22:52:17.397227+00:00",
+  "source_sha": "3834cda4d224784354610efb9f49cd3604454012",
+  "base_url": "https://cortex-ai-three-kappa.vercel.app",
+  "method": "Exact byte SHA256 comparison to final tested local build; no normalization.",
+  "assets": [
+    {
+      "asset": "ArrowLeft.es-D8vo1nZ7.js",
+      "status": 200,
+      "bytes": 1522,
+      "expected_sha256": "3cf43d29d70f0385a1e83beb8686397a2b95b05cb9116c6e5fbb32f3b27a4249",
+      "served_sha256": "3cf43d29d70f0385a1e83beb8686397a2b95b05cb9116c6e5fbb32f3b27a4249",
+      "match": true
+    },
+    {
+      "asset": "Assistant-CnUYVRJb.js",
+      "status": 200,
+      "bytes": 11959,
+      "expected_sha256": "833da52fd8d07f988d56599c21784d625851c9fd06e9d9277af4597c737468b0",
+      "served_sha256": "833da52fd8d07f988d56599c21784d625851c9fd06e9d9277af4597c737468b0",
+      "match": true
+    },
+    {
+      "asset": "Audit-BNSqcanH.js",
+      "status": 200,
+      "bytes": 1496,
+      "expected_sha256": "f50f8398a889d33cf0e4aa19f83576da9b366d9ac653742c87599ae567c99d5e",
+      "served_sha256": "f50f8398a889d33cf0e4aa19f83576da9b366d9ac653742c87599ae567c99d5e",
+      "match": true
+    },
+    {
+      "asset": "Conflicts-B125PwFG.js",
+      "status": 200,
+      "bytes": 3330,
+      "expected_sha256": "76574db410c5a0b267575d6a4e66223b0a10663581ab2836068ddae27333f109",
+      "served_sha256": "76574db410c5a0b267575d6a4e66223b0a10663581ab2836068ddae27333f109",
+      "match": true
+    },
+    {
+      "asset": "Dashboard-uGU0FHO5.js",
+      "status": 200,
+      "bytes": 3380,
+      "expected_sha256": "50ae66166a90d05899b97508933f99ac56333b3b59188fac241fe6fa408653a0",
+      "served_sha256": "50ae66166a90d05899b97508933f99ac56333b3b59188fac241fe6fa408653a0",
+      "match": true
+    },
+    {
+      "asset": "DocumentDetail-CR1RtCUr.js",
+      "status": 200,
+      "bytes": 13977,
+      "expected_sha256": "31118f3541563b2dbc01545052ac53ef5e7af203d27f575e2512d66c271fcff1",
+      "served_sha256": "31118f3541563b2dbc01545052ac53ef5e7af203d27f575e2512d66c271fcff1",
+      "match": true
+    },
+    {
+      "asset": "FilePicker-xnZbXgyV.js",
+      "status": 200,
+      "bytes": 938,
+      "expected_sha256": "f993413bba2f2eb5eba4955cd336e72baecb0c063d301186797139d1b094156c",
+      "served_sha256": "f993413bba2f2eb5eba4955cd336e72baecb0c063d301186797139d1b094156c",
+      "match": true
+    },
+    {
+      "asset": "FileText.es-CR21KYnO.js",
+      "status": 200,
+      "bytes": 2596,
+      "expected_sha256": "205cb75e01b742a67d1f14ccfcf78e3a0e9f2f6b5136b43c0835cfb7ba1d50fe",
+      "served_sha256": "205cb75e01b742a67d1f14ccfcf78e3a0e9f2f6b5136b43c0835cfb7ba1d50fe",
+      "match": true
+    },
+    {
+      "asset": "FormPrimitives-fa09Bglt.js",
+      "status": 200,
+      "bytes": 433,
+      "expected_sha256": "7d9e6aa5e03eec3e34600667037b69bca2930f99bd407dd35b15847434df2161",
+      "served_sha256": "7d9e6aa5e03eec3e34600667037b69bca2930f99bd407dd35b15847434df2161",
+      "match": true
+    },
+    {
+      "asset": "History-D6-E_u9A.js",
+      "status": 200,
+      "bytes": 1906,
+      "expected_sha256": "1af36d8e504159ece60b9aca9d431db0f23a3c68a9885daf4441afc0ff12af4e",
+      "served_sha256": "1af36d8e504159ece60b9aca9d431db0f23a3c68a9885daf4441afc0ff12af4e",
+      "match": true
+    },
+    {
+      "asset": "index-BySga1br.css",
+      "status": 200,
+      "bytes": 33494,
+      "expected_sha256": "74be07fbdd2fa5c9704d2c8e70a68961571f34ac5636d0a15b163302c4acd24e",
+      "served_sha256": "74be07fbdd2fa5c9704d2c8e70a68961571f34ac5636d0a15b163302c4acd24e",
+      "match": true
+    },
+    {
+      "asset": "index-cy1yge7H.js",
+      "status": 200,
+      "bytes": 309160,
+      "expected_sha256": "2ca0fb9f79c35e930248cb65d5156c1dbe959ed7ab42e4fab278691c85fe7998",
+      "served_sha256": "2ca0fb9f79c35e930248cb65d5156c1dbe959ed7ab42e4fab278691c85fe7998",
+      "match": true
+    },
+    {
+      "asset": "Library-CiSQk1_g.js",
+      "status": 200,
+      "bytes": 6417,
+      "expected_sha256": "8005ffcb2f2037fe5a09ab9b30e950b558e28f5b683647d1e31cac589e33e1b0",
+      "served_sha256": "8005ffcb2f2037fe5a09ab9b30e950b558e28f5b683647d1e31cac589e33e1b0",
+      "match": true
+    },
+    {
+      "asset": "MagnifyingGlass.es-Dy9MIlmO.js",
+      "status": 200,
+      "bytes": 1611,
+      "expected_sha256": "2039833b813982ae66662f6625838bb8d71621c6741b1e30093dc0f2aee05d49",
+      "served_sha256": "2039833b813982ae66662f6625838bb8d71621c6741b1e30093dc0f2aee05d49",
+      "match": true
+    },
+    {
+      "asset": "Permissions-Be89uBQL.js",
+      "status": 200,
+      "bytes": 9512,
+      "expected_sha256": "6cfbbad8aa046f42469ea322ee10603821b626034e2c95f00046f1674577403a",
+      "served_sha256": "6cfbbad8aa046f42469ea322ee10603821b626034e2c95f00046f1674577403a",
+      "match": true
+    },
+    {
+      "asset": "SourceInspector-B0lEENm1.js",
+      "status": 200,
+      "bytes": 2732,
+      "expected_sha256": "368a578693570a660bc7cad94d29d542b33f0bd143e0d14c1fd9f9716565bb0a",
+      "served_sha256": "368a578693570a660bc7cad94d29d542b33f0bd143e0d14c1fd9f9716565bb0a",
+      "match": true
+    },
+    {
+      "asset": "Upload-D5XdZyih.js",
+      "status": 200,
+      "bytes": 4154,
+      "expected_sha256": "d544a9864b1d6cd4366cade01e00a717382f2600e1078f6b05452acb43f96820",
+      "served_sha256": "d544a9864b1d6cd4366cade01e00a717382f2600e1078f6b05452acb43f96820",
+      "match": true
+    },
+    {
+      "asset": "useCitationAccess-BnlJIggG.js",
+      "status": 200,
+      "bytes": 1359,
+      "expected_sha256": "b95a642ee110c86848d92917929a560fa8b233219cfc452c289e00ed838de7c2",
+      "served_sha256": "b95a642ee110c86848d92917929a560fa8b233219cfc452c289e00ed838de7c2",
+      "match": true
+    }
+  ]
+}

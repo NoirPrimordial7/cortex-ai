@@ -1,5 +1,7 @@
 # Cortex AI — mobile-first design direction and quality gate
 
+**Latest status,10October2026:** The shared full-product design is owner-approved and published; [current production verification](production-release/README.md). Earlier implementation statements below are preserved history.
+
 **Current update, 2026-10-10:** Ask Cortex now uses the selected Fieldbook identity, with an independent reading area, persistent composer and dedicated mobile evidence view. Verified at 320/390/768/1280/1440 in both themes. [Selected direction and checks](evidence-desk/selected/README.md). The owner explicitly prioritized Ask before extending the design to other routes; production deployment remains a separate step.
 
 **Status: design brief and required tests, no application UI changes made in this branch.** Existing production baseline: Atlas Professional (`6c68994`) and later publication audit (`577ce5e`).

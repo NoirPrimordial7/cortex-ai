@@ -1,5 +1,13 @@
 # Development log
 
+## 2026-10-10 — Full-product production release verified
+
+- Owner explicitly approved push and production publication. PR #6 merged atfc8444f; final application3834cda is pushed to main and live on Vercel READY/production and Render Live (dep-db4mvjp7lnhs7397f87g,69seconds). No identities, permissions, exact Origins or hosted read-only boundaries weakened.
+- Production screenshot inspection found blank offscreen Audit rows from content-visibility; removed that optimization, committed before changing branches to preserve work, then repeated affected local and final public checks. Answer captures scroll to the bottom to show citations with the sticky composer in its natural position.
+- Final public verification:62 API assertions, six Chromium tests across all five profiles and route guards,145 real production PNG captures,144 geometry observations at320/390/768/1024/1280/1440 in both themes, zero overflow/clipped visible controls. All18 served JS/CSS assets match the final tested build byte-for-byte. Actual team names verified through profile/session/admin APIs and browser UI.
+- Added docs/design/production-release with representative actual screenshots, full sanitized measurements and deployment/hash/API records; updated current README/QA/hosting/test/audit documentation and gallery footer while retaining historical evidence. Credentials, databases, uploaded files and browser traces are excluded. Documentation-only commit uses the documented [skip render] directive to avoid a needless disposable-session reset; application code stays3834cda.
+- Physical devices/Safari/assistive technology, field INP, cold start, held-out accuracy and enterprise durability remain unverified. Local preview and gallery stay running. Commit reference: resolve the release evidence commit subject in Git.
+
 ## 2026-10-10 — Production release explicitly authorized
 
 - Owner requested all current code be pushed before publishing the complete product update to production. This supersedes the earlier no-merge/no-release hold; preview-origin configuration remains exact and approved.

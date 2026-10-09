@@ -1,4 +1,8 @@
-# Current full-product audit verification
+# Current production verification
+
+10 October2026: owner-approved main/application3834cda is published. Final public checks:62 API assertions, six Chromium browser tests,145 captures/144 geometry observations with zero overflow or clipped controls,18 exact JavaScript/CSS asset SHA256 matches. Four active team identities authenticate normally; the disabled profile fails. [Release evidence and bounded limitations](../design/production-release/README.md).
+
+## Preserved pre-release full-product audit verification
 
 10 October 2026 · review branch `codex/full-product-ux`
 

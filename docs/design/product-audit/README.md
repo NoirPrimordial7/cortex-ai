@@ -1,10 +1,10 @@
 # Cortex full-product review — Issue #4
 
-Reviewed 10 October 2026 on `codex/full-product-ux`. **The local implementation passes the checks below and is ready for owner visual review. Main and the published interface remain unchanged.** The owner explicitly approved the shared backend preview-origin update, which is now live and functionally verified; see [the applied change and limits](preview-origin-change.md).
+Reviewed 10 October 2026 on `codex/full-product-ux`. **The owner approved production publication; PR #6 is merged and the final UI is live. [Final production proof](../production-release/README.md) records62 API assertions, six public browser tests,145 fresh captures and18 exact asset hashes.** The owner explicitly approved the shared backend preview-origin update, which is now live and functionally verified; see [the applied change and limits](preview-origin-change.md).
 
 [Interactive before/after gallery](gallery.html) · [running gallery](http://127.0.0.1:8003/gallery.html) · [running application](http://127.0.0.1:5173/assistant) · [implementation checkpoints](verification.md)
 
-## Reconciliation and published source
+## Preserved pre-release reconciliation and published source
 
 PR #2 merged before the retained Fieldbook implementation. The review branch preserves the Fieldbook/toolkit head `a89ff66` and merges main `2919a6d` at `12ea705`; the tree was compared before editing. Main's PR #5 shared-shell proposal contained no file changes. No blind cherry-pick, checkout reset or replacement of working files was used.
 
@@ -12,7 +12,7 @@ An isolated build of main was compared to the public production alias: all ten s
 
 ## Issue-by-issue result
 
-“Pass” below means the bounded local Chromium implementation and functional checks passed, followed by inspection of genuine application screenshots. Owner approval and hosted release verification remain separate.
+“Pass” below means the bounded local Chromium implementation and functional checks passed, followed by inspection of genuine application screenshots. The original local results below remain distinct from the completed [production verification](../production-release/README.md).
 
 | Issue #4 finding | Result | Resulting behavior |
 |---|---|---|
@@ -22,7 +22,7 @@ An isolated build of main was compared to the public production alias: all ten s
 | 1. Ask empty/answer | Pass | Inspector starts closed; answer opens a source; compact citation previews and accessible follow-up composer. |
 | 2. Ask mobile | Pass | Natural page flow; separate evidence dialog; date/scope remain available; short viewport and long follow-up scenarios checked. |
 | 3. Evidence | Pass | One exact authorized passage; validity and context organized; secondary version/rank/integrity in disclosures. |
-| 4. Login | Pass locally; approved preview origins pass backend checks | Clear profile selection, waiting/retry/session failure states, disabled test denial and specific origin-error guidance. Loading space reduces layout shift. |
+| 4. Login | Pass locally and on final public production | Clear profile selection, waiting/retry/session failure states, disabled test denial and specific origin-error guidance. Loading space reduces layout shift. |
 | 5. Overview | Pass | Ask and permitted documents lead; real API counts and distinctive recent answers; full history retained separately. |
 | 6. Library | Pass | Search/category/title sorting, touch-friendly phone rows. Summary API limitations respected; approval/effective fields shown in version details. |
 | 7. Document/version detail | Pass | Current approved version and reading lead; history/uploads disclosed; exclusive end dates and protected download retained. |
@@ -37,7 +37,7 @@ The spacing rhythm uses 4/8/12/16/24/32/48 px; type tokens separate captions, co
 
 ## Genuine screenshots and comparison limits
 
-The gallery contains **652 actual captures: 198 retained before, 230 light after and 224 dark after**, across 320, 390, 768, 1024, 1280 and 1440 px. Its filters cover login, overview, library, document detail, upload/review, empty/answered/conflict Ask, focused evidence, history, conflicts/comparison, people/editor/change confirmation, document grants, audit and disabled sign-in. New dialogs/comparisons and the origin denial are explicitly marked when no retained baseline exists.
+The retained pre-release gallery contains **652 actual captures: 198 retained before, 230 light after and 224 dark after**, across 320, 390, 768, 1024, 1280 and 1440 px. Its filters cover login, overview, library, document detail, upload/review, empty/answered/conflict Ask, focused evidence, history, conflicts/comparison, people/editor/change confirmation, document grants, audit and disabled sign-in. New dialogs/comparisons and the origin denial are explicitly marked when no retained baseline exists.
 
 All canonical policy files, grants and versions derive from the same isolated database snapshot. Light and dark runs restore that snapshot independently. Real requests create history/events, so query IDs, timestamps and audit entries differ; this is not a pixel-identical synthetic fixture. The intentionally unapproved-origin captures use a separate local backend with the same fixture and normal authentication boundary. Before names remain historical; after names are the owner's Auronix team display names. The role keys in filenames remain stable for comparison.
 
@@ -72,12 +72,12 @@ Total selected browser checks: **56 unique tests passed** across regression, rea
 
 ## Measured performance and limitations
 
-Current production build: entry JavaScript approximately 96.24 kB gzip; CSS 7.09 kB gzip; Ask lazy chunk 4.03 kB gzip; largest individual route chunk, document detail, 4.72 kB gzip. Shared lazy chunks are additional transfers. Two self-hosted fonts total 73,552 bytes and use `font-display: swap`.
+Pre-release measured build: entry JavaScript approximately 96.24 kB gzip; CSS 7.09 kB gzip (final Audit correction reduces CSS to7.06kB); Ask lazy chunk 4.03 kB gzip; largest individual route chunk, document detail, 4.72 kB gzip. Shared lazy chunks are additional transfers. Two self-hosted fonts total 73,552 bytes and use `font-display: swap`.
 
 Unthrottled local Chromium sample at 1280 × 720: fresh login LCP92 ms/CLS0.0205; Ask navigation LCP44 ms/CLS0.0342; after answer interaction LCP372 ms; actual local query round-trip105 ms. The six-width login-loading sample has maximum CLS0.0169. An earlier sample exposed CLS0.1025 and prompted the loading-space fix. These local samples are not field web-vitals scores or mobile-network estimates.
 
-No qualifying Event Timing entries were observed; the recorded zero event-duration observation is **not measured zero INP**. Hosted health independently returned200: Render835 ms and Vercel proxy337 ms in this sample. The service was neither restarted nor forced idle, so cold start remains unknown. Native Safari, physical mobile keyboards, assistive-technology testing and field INP remain release checks.
+No qualifying Event Timing entries were observed; the recorded zero event-duration observation is **not measured zero INP**. Hosted health independently returned200: Render835 ms and Vercel proxy337 ms in this sample. The service was neither restarted nor forced idle, so cold start remains unknown. Native Safari, physical mobile keyboards, assistive-technology testing and field INP remain unverified limitations.
 
 ## Release status
 
-Ready for local visual review in [existing PR #6](https://github.com/NoirPrimordial7/cortex-ai/pull/6). Its existing open/non-draft state is preserved; no duplicate PR was created. No code merge or production UI release has been performed. The separately approved Render configuration restart is complete; protected-preview browser/proxy verification remains pending in the owner's authenticated browser. Approve the visual gallery before release. After any authorized deployment, repeat hosted functional/visual checks against its exact source and public URL.
+The owner explicitly approved pushing all code and production publication. [PR #6](https://github.com/NoirPrimordial7/cortex-ai/pull/6) merged; final application source `3834cda` is published by Vercel and Render. Real public login, all five profiles, route guards, answers/conflicts/citations, both themes and all six widths passed. [Final release report, measurements and genuine screenshots](../production-release/README.md). The earlier protected-preview limitation is historical; final review used the public production alias through normal authentication. Local preview and gallery remain available.
