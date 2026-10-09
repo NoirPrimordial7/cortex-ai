@@ -17,4 +17,13 @@
 - Outcome: 13 system families, 15 papers, 76 primary references, A–H gaps and experimental measurements, top five hypotheses, three scopes and conditional strong-project recommendation. No stack selected or application/experiment implemented.
 - Verification: primary publication/technical evidence reviewed; 75/76 URLs reached by independent HTTP checking, one publisher DOI access restriction with reachable author alternative; stale Elastic link repaired; relative links/structure and staged contents checked before commit/push.
 - Outstanding: unknown deadline/hardware/team/dataset access; integrated contribution and security effectiveness unvalidated; await Phase 2 approval.
-- Commit: resolve `research: compare enterprise retrieval and reliability approaches` in Git; actual hash/push result to be recorded in the subsequent verification entry.
+- Commit: [b129223edd5730e101dbb877799ac1fa05d299e1](https://github.com/NoirPrimordial7/cortex-ai/commit/b129223edd5730e101dbb877799ac1fa05d299e1); pushed and local/remote main hashes verified equal.
+
+## 2026-10-09T15:30:11+05:30 — Phase 1G publication audit
+
+- Changed this changelog, development/research logs and quality review; no removals.
+- Reason: record the immutable research commit and actual push/verification outcome after publication.
+- Outcome: research commit b129223 published to private NoirPrimordial7/cortex-ai, main; authenticated visibility/default-branch check succeeded and working tree was clean after push.
+- Verification: 19 required files; 13 profiles with 15 fields each; 15 paper records; 13 matrix rows; 76 source IDs/checks aligned; 75 HTTP successes and one documented DOI 403; no broken relative links, unexpected staged files or secret-pattern hits; ignore fixtures passed and whitespace repaired/rechecked.
+- Outstanding: Phase 2 owner approval, resources/deadline/dataset inputs and unvalidated integration benefit. No application development or experiments performed.
+- Audit commit: resolve `docs: record Phase 1 verification and publication` in Git; its hash and final remote verification are reported in the project-owner briefing. A commit cannot embed its own hash.

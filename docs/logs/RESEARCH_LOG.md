@@ -14,4 +14,12 @@ Every material finding update records timestamp with timezone, phase/module, aff
 - **Source reconciliation:** Azure FAQ still uses older no-native-DLS wording; dedicated current preview/source-specific docs qualify that claim. RAGFlow release-candidate and mutable main permission docs cannot establish stable OSS query-path parity. Elastic's initially localized indexed DLS URL returned independent HTTP 404 and was replaced by current canonical docs. RRF DOI returned HTTP 403 to automated checking but publisher metadata/web access and author-hosted full text agree.
 - **Limitations:** no products installed/benchmarked, paper experiments reproduced, actual datasets generated or paid service accessed; proprietary internals unknown; source updates and edition applicability remain to be pinned.
 - **Next actions:** preserve uncertainty, finalize repository QA/push, await owner approval. Then Phase 2 can confirm time/hardware/domain, finalize evaluation/threat model and choose candidates.
-- **Commit:** research dossier identifiable by `research: compare enterprise retrieval and reliability approaches`; exact hash/push outcome recorded in follow-up development/changelog entry once created.
+- **Commit:** [b129223edd5730e101dbb877799ac1fa05d299e1](https://github.com/NoirPrimordial7/cortex-ai/commit/b129223edd5730e101dbb877799ac1fa05d299e1), pushed and local/remote main verified equal.
+
+## 2026-10-09T15:30:11+05:30 — Phase 1G: research publication and unresolved hypotheses
+
+- **Files changed:** this log, development log, changelog and quality review; no removals.
+- **Reason/outcome:** record actual dossier commit b129223 and verified publication to private origin/main; complete Phase 1 evidence/traceability review without implying experimental validation.
+- **Verification:** paper records exist in primary sources; 76 references registered, 75 reached by independent HTTP and the RRF DOI restriction qualified using a reachable author copy; source IDs align with checks; bibliography/profile/matrix structure and relative links pass. Only intended research files were staged; credential-pattern and ignore-fixture checks passed.
+- **Open research questions:** integrated authority/validity/ACL benefit; synthetic-to-real transfer; metadata extraction; NLI/LLM judge reliability; agent versus fixed-stage benefit; connector and revocation semantics; full side-channel threat coverage. No competitor behavior or paper benchmark was reproduced.
+- **Next action:** owner review only. Phase 2 planning is prohibited until explicit approval. Final audit commit is identifiable by its descriptive subject and reported final hash.
