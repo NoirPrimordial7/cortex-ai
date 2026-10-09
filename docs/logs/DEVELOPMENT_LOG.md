@@ -3,7 +3,7 @@
 ## 2026-10-10 — Production release explicitly authorized
 
 - Owner requested all current code be pushed before publishing the complete product update to production. This supersedes the earlier no-merge/no-release hold; preview-origin configuration remains exact and approved.
-- Fresh preflight:39 backend tests,21 frontend tests,29 browser regressions, Ruff, strict TypeScript/Vite production build and zero npm-audit vulnerabilities. Existing five-profile read-only release suite tested locally; a missing other-tenant report directory and misleading dark-login capture label were corrected and their affected checks rerun successfully.
+- Fresh preflight:39 backend tests,21 frontend tests,29 browser regressions, Ruff, strict TypeScript/Vite production build and zero npm-audit vulnerabilities. Existing five-profile read-only release suite tested locally; a missing other-tenant report directory was corrected and its affected check rerun successfully. The global login theme control is included in both-theme capture coverage.
 - Added opt-in hosted release verification for all five identities, all route/role guards, team display names, actual answer/citation/conflict UI, both authenticated themes and every requested width. Trace/video/credential exports disabled; no hosted upload or governance mutations. Hosted login smoke accepts historical and current team display names.
 - Target verified: Vercel cortex-ai/project prj_fMVYoealLocAtxdAeg0mTFAy1N4F/team team_NMcgUJ09P25HEbheMx2SS4tW; existing Render cortex-ai-demo service srv-db4h9q1srm7s73b4b5g0 on main, Free. Git integration publishes main to both services. Post-release status and genuine screenshots must be checked before reporting success.
 

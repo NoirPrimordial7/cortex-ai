@@ -1676,10 +1676,6 @@ kbd {
 .audit-table code {
   font-size: var(--text-caption);
 }
-.audit-table tbody tr {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 72px;
-}
 :root {
   --space-1: 4px;
   --space-2: 8px;

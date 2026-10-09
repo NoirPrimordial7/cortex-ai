@@ -15,7 +15,7 @@ test.skip(
   "Explicit production release verification.",
 );
 const widths = [320, 390, 768, 1024, 1280, 1440];
-const folder = "../outputs/production-release";
+const folder = process.env.CORTEX_RELEASE_OUTPUT || "../outputs/production-release";
 const names: Record<string, string> = {
   maya: "Arya Dhumal",
   ravi: "Aditya Gholar",
@@ -31,8 +31,6 @@ async function capture(
 ) {
   mkdirSync(`${folder}/${profile}`, { recursive: true });
   for (const theme of ["light", "dark"]) {
-    // Login uses the initial light theme; its page has no theme control.
-    if (state === "login" && theme === "dark") continue;
     const themeButton = page.getByRole("button", {
       name: `Switch to ${theme} theme`,
     });
@@ -40,6 +38,10 @@ async function capture(
     for (const width of widths) {
       await page.setViewportSize({ width, height: 900 });
       await page.evaluate(() => document.fonts.ready);
+      if (state.startsWith("ask-") && state !== "ask-empty")
+        await page.evaluate(() =>
+          window.scrollTo(0, document.documentElement.scrollHeight),
+        );
       await page.screenshot({
         path: `${folder}/${profile}/${state}-${theme}-${width}.png`,
         fullPage: true,
