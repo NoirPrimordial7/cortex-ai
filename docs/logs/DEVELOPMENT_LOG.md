@@ -1,5 +1,28 @@
 # Development log
 
+## 2026-10-10T00:11:00+05:30 — Evidence Desk second exploration
+
+- Owner rejected the first set and requested five to six fresh concepts; generated exactly six independent built-in Image Gen results, displayed sequentially with desktop/mobile companion views.
+- Added docs/design/evidence-desk/round-2/ with six concept PNGs, selection mapping, exact prompts and artwork-correction notes. Updated parent gallery, installation record, toolkit status and chronological logs. Earlier concepts preserved; no removals.
+- All four installed project skills appear in the new turn's available-skills catalog, confirming discovery without reinstalling.
+- Grounding: actual existing baseline browser captures attached to every generation; mock date anchored to 2026-10-10. No new browser audit, runtime change, dependency change or deployment. Artwork lacks some requested details, including offline label in Carbon Evidence; corrections explicitly recorded.
+- Verification: six result files copied into workspace and visually inspected inline; staged filenames/whitespace/targeted secret scan before commit. Previous runtime 12-test/build pass is historical, not a new check. No repeat tests warranted for this artwork/documentation-only change.
+- Pending: owner choice from this latest six-image set, refinement of generated deviations, implementation and full responsive/interaction/security/performance QA.
+- Commit subject: design: explore six new Evidence Desk directions. Continue existing draft PR #2 on design/skill-toolkit-mobile-first; no main merge or live deployment.
+
+
+## 2026-10-09T23:55:00+05:30 — Evidence Desk skills and visual exploration
+
+- Branch: existing design/skill-toolkit-mobile-first, draft PR #2; starting HEAD c174003445791c7b2441bcbf6fcbb8c365ccb581. No application source, dependency manifest, backend behavior or deployment changed.
+- Added docs/design/evidence-desk/ with three independent Image Gen concept PNGs, actual current-flow browser captures, shared prompt/direction record, selection gate and pinned installation record. Changed design gallery and toolkit status plus changelog/development log. No prior artifacts removed.
+- Installed four selected pinned skills locally under ignored .agents/skills using the bundled skill-installer, after reading entries and inspecting source/license evidence. No executable scripts in the installed trees; no global install or third-party instruction execution. Fresh-turn/session discovery is pending; license/distribution gaps are recorded, and no skill files are vendored into Git.
+- Browser: reused existing fictional profile in public shared demo, asked the annual-leave example, checked the exact allowed source at 1440 and 390. Mobile citation retains focus on the citation and leaves source below the answer; no Back to answer flow. One 390px document-width check found no overflow. Screenshot/DOM scope and intermediate loading capture are labeled.
+- Outcome: three distinctly composed concepts displayed in chat, with desktop plus mobile source view, pending owner selection. Generated reviewer identities are unsupported by the API and explicitly excluded from later implementation. Artwork is not accessibility, performance or responsive proof.
+- Verification: existing frontend 12 tests across 4 suites pass; TypeScript/Vite production build passes; documentation diff whitespace checked. First sandbox test run failed before tests started with file realpath EPERM; rerun outside sandbox passed. Backend tests and full browser matrix not rerun because no runtime change was made. No new performance claim or security certification.
+- Outstanding: confirm skill discovery next turn/session, choose concept, implement exact source focus/return behavior, extend chosen design, then run both-theme 320/390/768/1280/1440, keyboard/zoom/revocation/conflict, regression and performance checks. Playwright tooling installation remains an implementation-stage setup task.
+- Commit subject: design: install curated toolkit and prepare Evidence Desk choices. Exact publication result is recorded in PUBLICATION.md after commit/push verification.
+
+
 ## 2026-10-09T23:24:44+05:30 — Atlas Professional publication verified
 
 - Published implementation [6c68994](https://github.com/NoirPrimordial7/cortex-ai/commit/6c689949b79f3d08253ed145178a5ca9be23cc40); local/remote main matched and working tree was clean.57 intended staged paths passed exact-runtime-credential/private-file/signature checks and whitespace review. Visibility/collaborators unchanged.
