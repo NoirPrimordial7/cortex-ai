@@ -1,0 +1,686 @@
+[
+  {
+    "id": "G1",
+    "title": "Glean hybrid retrieval and languages",
+    "url": "https://docs.glean.com/administration/management/features/glean-language-support",
+    "evidence_confidence": "H",
+    "claim_scope": "Documents lexical and semantic retrieval; no independent quality validation.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "G2",
+    "title": "Glean Google Drive permissions",
+    "url": "https://docs.glean.com/connectors/native/gdrive/security/permissions",
+    "evidence_confidence": "H",
+    "claim_scope": "Connector-specific permission semantics and public/domain-sharing exception.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "G3",
+    "title": "Glean verification",
+    "url": "https://docs.glean.com/user-guide/knowledge/verification/how-verification-works",
+    "evidence_confidence": "H",
+    "claim_scope": "Verification badges, verifier/time, reminders, deprecated content.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "G4",
+    "title": "Glean platform APIs",
+    "url": "https://developers.glean.com/",
+    "evidence_confidence": "H",
+    "claim_scope": "Search, cited permission-aware chat and agent APIs.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "G5",
+    "title": "Glean actions",
+    "url": "https://docs.glean.com/agents/actions/introduction-to-actions",
+    "evidence_confidence": "H",
+    "claim_scope": "Search and external write actions under configured tool permissions.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "M1",
+    "title": "Microsoft Copilot privacy and security",
+    "url": "https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-privacy",
+    "evidence_confidence": "H",
+    "claim_scope": "Current naming transition, Graph permissions, citations and prompt-injection mitigations.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "M2",
+    "title": "Microsoft semantic indexing",
+    "url": "https://learn.microsoft.com/en-us/microsoftsearch/semantic-index-for-copilot",
+    "evidence_confidence": "H",
+    "claim_scope": "Semantic indexing alongside Microsoft Search; proprietary ranking details not exposed.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "M3",
+    "title": "Microsoft Search overview",
+    "url": "https://learn.microsoft.com/en-us/microsoftsearch/overview-microsoft-search",
+    "evidence_confidence": "H",
+    "claim_scope": "Personalized, permission-trimmed search and authoritative keyword answers.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "Q1",
+    "title": "Amazon Q Business workflow",
+    "url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/how-it-works.html",
+    "evidence_confidence": "H",
+    "claim_scope": "Authorized retrieval followed by generation; identity federation trade-offs.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "Q2",
+    "title": "Amazon Q Business overview",
+    "url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html",
+    "evidence_confidence": "H",
+    "claim_scope": "Connected enterprise assistant, citations and access control.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "Q3",
+    "title": "Amazon Q hallucination mitigation",
+    "url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/hallucination-reduction.html",
+    "evidence_confidence": "H",
+    "claim_scope": "Optional correction; unsupported with orchestration, plugins and some modalities.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "Q4",
+    "title": "Amazon Q guardrails",
+    "url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/guardrails.html",
+    "evidence_confidence": "H",
+    "claim_scope": "Enterprise-only grounding, topic controls and plugin/data-source orchestration.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "C1",
+    "title": "Gemini Enterprise launch",
+    "url": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise/",
+    "evidence_confidence": "M",
+    "claim_scope": "Official product announcement; qualitative claims treated as vendor assertions.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "C2",
+    "title": "Google Agent Search",
+    "url": "https://cloud.google.com/products/gemini-enterprise-agent-platform/agent-search",
+    "evidence_confidence": "M",
+    "claim_scope": "Current name formerly Vertex AI Search; product page not a disclosed implementation.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "C3",
+    "title": "Gemini custom-source ACLs",
+    "url": "https://docs.cloud.google.com/agentspace/docs/identity",
+    "evidence_confidence": "H",
+    "claim_scope": "Identity-provider mapping and document ACL metadata for Cloud Storage/BigQuery sources.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "C4",
+    "title": "Gemini granular access controls",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/docs/iam-policy-for-apps-and-data-stores",
+    "evidence_confidence": "H",
+    "claim_scope": "App/store IAM and synced third-party document ACLs; broad-role caveat.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "C5",
+    "title": "Gemini ContentSearchSpec",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/docs/reference/rest/v1/ContentSearchSpec",
+    "evidence_confidence": "H",
+    "claim_scope": "Optional citations and query handling; configuration defaults matter.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "A1",
+    "title": "Azure AI Search overview",
+    "url": "https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search",
+    "evidence_confidence": "H",
+    "claim_scope": "Classic and agentic search, full-text/vector/hybrid retrieval.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "A2",
+    "title": "Azure hybrid search",
+    "url": "https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview",
+    "evidence_confidence": "H",
+    "claim_scope": "Parallel lexical/vector queries, RRF and optional semantic reranking.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "A3",
+    "title": "Azure document access control",
+    "url": "https://learn.microsoft.com/en-us/azure/search/search-document-level-access-overview",
+    "evidence_confidence": "H",
+    "claim_scope": "Application security filters versus native ACL ingestion/enforcement previews.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "A4",
+    "title": "Azure agentic retrieval requests",
+    "url": "https://learn.microsoft.com/en-us/azure/search/agentic-retrieval-how-to-retrieve",
+    "evidence_confidence": "H",
+    "claim_scope": "Caller identity, retrieval output and permission propagation caveats.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "A5",
+    "title": "Azure security best practices",
+    "url": "https://learn.microsoft.com/en-us/azure/search/search-security-best-practices",
+    "evidence_confidence": "H",
+    "claim_scope": "Security controls and confidential-compute feature trade-offs.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "E1",
+    "title": "Elastic Enterprise Search migration",
+    "url": "https://www.elastic.co/guide/en/enterprise-search/current/upgrading-to-9-x.html",
+    "evidence_confidence": "H",
+    "claim_scope": "Standalone Enterprise Search unavailable in 9+; self-managed connector migration.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "E2",
+    "title": "Elasticsearch hybrid search",
+    "url": "https://www.elastic.co/docs/solutions/search/hybrid-search",
+    "evidence_confidence": "H",
+    "claim_scope": "Full-text/vector fusion; currently documented RRF recommendation.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "E3",
+    "title": "Elastic connector DLS",
+    "url": "https://www.elastic.co/docs/reference/search-connectors/document-level-security",
+    "evidence_confidence": "H",
+    "claim_scope": "Supported connector ACLs, beta status and subscription restrictions.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "E4",
+    "title": "Elasticsearch document and field security",
+    "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level",
+    "evidence_confidence": "H",
+    "claim_scope": "Read-only DLS/FLS semantics and permissive-role interactions.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "O1",
+    "title": "OpenSearch hybrid search",
+    "url": "https://docs.opensearch.org/latest/vector-search/ai-search/hybrid-search/index/",
+    "evidence_confidence": "H",
+    "claim_scope": "Keyword/semantic fusion with score normalization or RRF.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "O2",
+    "title": "OpenSearch document security",
+    "url": "https://docs.opensearch.org/latest/security/access-control/document-level-security/",
+    "evidence_confidence": "H",
+    "claim_scope": "Query-based read restrictions and multi-role/write caveats.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "O3",
+    "title": "OpenSearch field security",
+    "url": "https://docs.opensearch.org/latest/security/access-control/field-level-security/",
+    "evidence_confidence": "H",
+    "claim_scope": "Field exclusions, keyword subfields and DLS interaction.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "O4",
+    "title": "OpenSearch conversational RAG",
+    "url": "https://docs.opensearch.org/latest/vector-search/ai-search/conversational-search/",
+    "evidence_confidence": "H",
+    "claim_scope": "Conversation memory and retrieval-augmented-generation processor.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "O5",
+    "title": "OpenSearch conversational agent",
+    "url": "https://docs.opensearch.org/latest/ml-commons-plugin/tutorials/rag-conversational-agent/",
+    "evidence_confidence": "H",
+    "claim_scope": "Flow agent orchestrates retrieval and LLM calls.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "N1",
+    "title": "Onyx official repository",
+    "url": "https://github.com/onyx-dot-app/onyx",
+    "evidence_confidence": "M",
+    "claim_scope": "Current agentic hybrid-search claims and mixed community/enterprise licensing.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "N2",
+    "title": "Onyx connector documentation",
+    "url": "https://docs.onyx.app/overview/core_features/connectors",
+    "evidence_confidence": "H",
+    "claim_scope": "Permission preservation expressly scoped to Enterprise Edition.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "N3",
+    "title": "Onyx MIT-only distribution",
+    "url": "https://github.com/onyx-dot-app/onyx-foss/blob/main/README.md",
+    "evidence_confidence": "M",
+    "claim_scope": "MIT mirror and community capabilities; not proof of free ACL synchronization.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "R1",
+    "title": "RAGFlow official repository",
+    "url": "https://github.com/infiniflow/ragflow",
+    "evidence_confidence": "M",
+    "claim_scope": "Document parsing, citations, retrieval and Apache-2.0 repository.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "R2",
+    "title": "RAGFlow open-source sharing",
+    "url": "https://ragflow.io/docs/v1.0.0-rc1/guides/team/sharing_scope_configuration/open_source_edition_sharing_scope_configuration",
+    "evidence_confidence": "H",
+    "claim_scope": "Versioned release-candidate docs; Only me/Team scopes.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "R3",
+    "title": "RAGFlow permission rules",
+    "url": "https://github.com/infiniflow/ragflow/blob/main/docs/guides/team/permission_system_overview/permission_effective_rules.md",
+    "evidence_confidence": "H",
+    "claim_scope": "Document operation permissions described; edition/retrieval-path applicability needs validation.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "R4",
+    "title": "RAGFlow components",
+    "url": "https://ragflow.io/docs/v1.0.0-rc1/basic_component",
+    "evidence_confidence": "H",
+    "claim_scope": "Hybrid weights, optional reranking, citations, conditional/tool workflows and latency advice.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "T1",
+    "title": "AnythingLLM official repository",
+    "url": "https://github.com/Mintplex-Labs/anything-llm",
+    "evidence_confidence": "M",
+    "claim_scope": "MIT application, local-model support and agent capabilities.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "T2",
+    "title": "AnythingLLM document behavior",
+    "url": "https://docs.anythingllm.com/chatting-with-documents/introduction",
+    "evidence_confidence": "H",
+    "claim_scope": "Workspace-wide embedded documents, context pruning, vector retrieval and LanceDB reranking.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "T3",
+    "title": "AnythingLLM custom skills",
+    "url": "https://docs.anythingllm.com/agent/custom/introduction",
+    "evidence_confidence": "H",
+    "claim_scope": "Extensible agent skills; tool safety is application responsibility.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "L1",
+    "title": "LlamaIndex official repository",
+    "url": "https://github.com/run-llama/llama_index",
+    "evidence_confidence": "M",
+    "claim_scope": "MIT framework distinct from hosted commercial services.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "L2",
+    "title": "LlamaIndex retriever guides",
+    "url": "https://developers.llamaindex.ai/python/framework/module_guides/querying/retriever/retrievers/",
+    "evidence_confidence": "H",
+    "claim_scope": "BM25, hybrid, fusion, metadata-based and composed retrieval.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "L3",
+    "title": "LlamaIndex citations",
+    "url": "https://developers.llamaindex.ai/python/framework-api-reference/query_engine/citation/",
+    "evidence_confidence": "H",
+    "claim_scope": "CitationQueryEngine source nodes, chunking and synthesis.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "L4",
+    "title": "LlamaIndex rerankers",
+    "url": "https://developers.llamaindex.ai/python/framework/module_guides/models/rerankers/",
+    "evidence_confidence": "H",
+    "claim_scope": "Postprocessors between retrieval and synthesis; stronger scoring costs latency.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "L5",
+    "title": "LlamaIndex agents",
+    "url": "https://developers.llamaindex.ai/python/framework/module_guides/deploying/agents/",
+    "evidence_confidence": "H",
+    "claim_scope": "Framework agent deployment guides; not turnkey source authorization.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "H1",
+    "title": "Haystack official repository",
+    "url": "https://github.com/deepset-ai/haystack",
+    "evidence_confidence": "M",
+    "claim_scope": "Apache-2.0 framework and modular pipelines distinct from commercial deepset products.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "H2",
+    "title": "Haystack retrievers",
+    "url": "https://docs.haystack.deepset.ai/docs/retriever",
+    "evidence_confidence": "H",
+    "claim_scope": "Sparse, dense and hybrid composition; filters are not identity policy by themselves.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "H3",
+    "title": "Haystack AnswerBuilder",
+    "url": "https://docs.haystack.deepset.ai/docs/answerbuilder",
+    "evidence_confidence": "H",
+    "claim_scope": "Parses source references; defaults list all supplied documents, not proof of citation entailment.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "H4",
+    "title": "Haystack Agent",
+    "url": "https://docs.haystack.deepset.ai/docs/agent",
+    "evidence_confidence": "H",
+    "claim_scope": "Tool-using agent component with state and exit conditions.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "V1",
+    "title": "Vectara retrieval",
+    "url": "https://docs.vectara.com/docs/search-and-retrieval",
+    "evidence_confidence": "H",
+    "claim_scope": "Hybrid search, filters, reranking and citations.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "V2",
+    "title": "Vectara platform stack",
+    "url": "https://docs.vectara.com/docs/platform-architecture/platform-stack",
+    "evidence_confidence": "H",
+    "claim_scope": "Vendor-documented retrieval RBAC, agent steps, HHEM/correction and traces; not independently audited.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "V3",
+    "title": "Vectara agent retrieval tuning",
+    "url": "https://docs.vectara.com/docs/agents/tune-retrieval-for-agents",
+    "evidence_confidence": "H",
+    "claim_scope": "Session-bound ACL/tenant filters, metadata selection and time-decay reranking.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "S1",
+    "title": "NIST ABAC guide",
+    "url": "https://csrc.nist.gov/pubs/sp/800/162/upd2/final",
+    "evidence_confidence": "H",
+    "claim_scope": "Subject/object/action/environment attributes; technical standard guidance.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "S2",
+    "title": "NIST RBAC FAQ",
+    "url": "https://csrc.nist.gov/Projects/role-based-access-control/faqs",
+    "evidence_confidence": "H",
+    "claim_scope": "Roles, permissions, hierarchies and separation of duty.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "S3",
+    "title": "W3C PROV-DM",
+    "url": "https://www.w3.org/TR/prov-dm/",
+    "evidence_confidence": "H",
+    "claim_scope": "Entities, activities and agents for provenance; provenance does not establish truth.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "S4",
+    "title": "Jensen and Snodgrass temporal database definitions",
+    "url": "https://www2.cs.arizona.edu/~rts/pubs/TRmerged.pdf",
+    "evidence_confidence": "H",
+    "claim_scope": "Valid time versus transaction time; author-hosted academic reference.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "S5",
+    "title": "OWASP RAG Security",
+    "url": "https://cheatsheetseries.owasp.org/cheatsheets/RAG_Security_Cheat_Sheet.html",
+    "evidence_confidence": "H",
+    "claim_scope": "Ingestion, embeddings, retrieval, output and agent threat boundaries.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "S6",
+    "title": "OWASP prompt injection prevention",
+    "url": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html",
+    "evidence_confidence": "H",
+    "claim_scope": "Indirect injection and exfiltration defenses; mitigation not a proof of immunity.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P01",
+    "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "url": "https://arxiv.org/abs/2005.11401",
+    "evidence_confidence": "H",
+    "claim_scope": "2020 (NeurIPS; arXiv revised 2021); arXiv:2005.11401. Primary abstract/metadata; reported findings not reproduced.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P02",
+    "title": "Reciprocal rank fusion outperforms condorcet and individual rank learning methods",
+    "url": "https://doi.org/10.1145/1571941.1572114",
+    "evidence_confidence": "H",
+    "claim_scope": "2009 (SIGIR); DOI:10.1145/1571941.1572114. Publisher abstract and bibliographic metadata; no experimental reproduction.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P03",
+    "title": "BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models",
+    "url": "https://arxiv.org/abs/2104.08663",
+    "evidence_confidence": "H",
+    "claim_scope": "2021 (NeurIPS Datasets and Benchmarks); arXiv:2104.08663. Primary abstract/metadata; author findings not reproduced.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P04",
+    "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference",
+    "url": "https://arxiv.org/abs/1704.05426",
+    "evidence_confidence": "H",
+    "claim_scope": "2018 (NAACL; preprint 2017); arXiv:1704.05426. Primary abstract/metadata; policy transfer is our hypothesis.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P05",
+    "title": "Time-Aware Language Models as Temporal Knowledge Bases",
+    "url": "https://aclanthology.org/2022.tacl-1.15/",
+    "evidence_confidence": "H",
+    "claim_scope": "2022 (TACL; preprint 2021); DOI:10.1162/tacl_a_00459; arXiv:2106.15110. Publisher abstract/metadata verified; findings not reproduced.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P06",
+    "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+    "url": "https://arxiv.org/abs/2210.03629",
+    "evidence_confidence": "H",
+    "claim_scope": "2023 (ICLR; preprint 2022); arXiv:2210.03629. Primary abstract/metadata; author results not reproduced.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P07",
+    "title": "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection",
+    "url": "https://arxiv.org/abs/2310.11511",
+    "evidence_confidence": "H",
+    "claim_scope": "2023 preprint (venue not required for this record); arXiv:2310.11511. Primary abstract/metadata; experiments not reproduced.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P08",
+    "title": "Enabling Large Language Models to Generate Text with Citations",
+    "url": "https://arxiv.org/abs/2305.14627",
+    "evidence_confidence": "H",
+    "claim_scope": "2023 (EMNLP); arXiv:2305.14627. Primary abstract/metadata; benchmark result is historical, not a universal current-model rate.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P09",
+    "title": "RAGAs: Automated Evaluation of Retrieval Augmented Generation",
+    "url": "https://aclanthology.org/2024.eacl-demo.16/",
+    "evidence_confidence": "H",
+    "claim_scope": "2024 (EACL demonstrations; preprint 2023); DOI:10.18653/v1/2024.eacl-demo.16; arXiv:2309.15217. Publisher abstract and arXiv metadata; no execution.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P10",
+    "title": "PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models",
+    "url": "https://www.usenix.org/conference/usenixsecurity25/presentation/zou-poisonedrag",
+    "evidence_confidence": "H",
+    "claim_scope": "2025 (USENIX Security; preprint 2024); arXiv:2402.07867. Official USENIX record and arXiv abstract verified; not reproduced.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P11",
+    "title": "HoH: A Dynamic Benchmark for Evaluating the Impact of Outdated Information on Retrieval-Augmented Generation",
+    "url": "https://aclanthology.org/2025.acl-long.301/",
+    "evidence_confidence": "H",
+    "claim_scope": "2025 (ACL); DOI:10.18653/v1/2025.acl-long.301. Full PDF methods/conclusion/limitations sections inspected; no reproduction.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P12",
+    "title": "Re³: Relevance & Recency Retrieval for Mitigating Temporal Hallucination",
+    "url": "https://aclanthology.org/2026.acl-long.1180/",
+    "evidence_confidence": "H",
+    "claim_scope": "2026 (ACL); DOI:10.18653/v1/2026.acl-long.1180. Full PDF methods and limitations inspected; latest-authoritative assumptions checked; not reproduced.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P13",
+    "title": "Ragability Benchmark: A Dataset and Library to Test LLMs on Inter-context Conflicts",
+    "url": "https://aclanthology.org/2026.lrec-1.182/",
+    "evidence_confidence": "H",
+    "claim_scope": "2026 (LREC); DOI:10.63317/2ty3hnn3bgb9. Full PDF limitations and primary abstract inspected; not reproduced.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P14",
+    "title": "TimelyRAG: Semantic-Temporal Hybrid Retrieval for Time-Critical Question Answering in Overlapping-Evolving Documents",
+    "url": "https://arxiv.org/abs/2609.11572",
+    "evidence_confidence": "H",
+    "claim_scope": "2026 (September arXiv preprint; peer review NOT VERIFIED); arXiv:2609.11572. Full HTML method and limitations inspected; preprint claims not independently reproduced.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P15",
+    "title": "Knowledge Management Systems: Issues, Challenges, and Benefits",
+    "url": "https://aisel.aisnet.org/cais/vol1/iss1/7/",
+    "evidence_confidence": "H",
+    "claim_scope": "1999 (Communications of the Association for Information Systems); DOI:10.17705/1CAIS.00107. Primary publisher abstract and bibliographic record; no raw study-data reanalysis.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "P02A",
+    "title": "RRF author-hosted paper",
+    "url": "https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf",
+    "evidence_confidence": "H",
+    "claim_scope": "Primary author-hosted full text; alternative when DOI publisher blocks automated HTTP.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  },
+  {
+    "id": "A6",
+    "title": "Azure AI Search FAQ — conflicting DLS wording",
+    "url": "https://learn.microsoft.com/en-us/azure/search/search-faq-frequently-asked-questions",
+    "evidence_confidence": "H",
+    "claim_scope": "Reviewed FAQ still says no built-in document permissions; reconcile using dedicated current preview docs A3/A4, not a blanket absence claim.",
+    "assessment_date": "2026-10-09",
+    "method": "Primary-source web documentation/publication review; independent HTTP check recorded separately."
+  }
+]

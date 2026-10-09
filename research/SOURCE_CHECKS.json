@@ -1,0 +1,768 @@
+{
+  "assessment_date": "2026-10-09",
+  "timezone": "Asia/Calcutta",
+  "checked_at": "2026-10-09T15:26:04+05:30",
+  "scope": "Reachability check supplements the primary-source claim review; HTTP failures do not prove a claim false or a feature absent.",
+  "results": [
+    {
+      "id": "A1",
+      "title": "Azure AI Search overview",
+      "url": "https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search",
+      "status": "reachable"
+    },
+    {
+      "id": "A2",
+      "title": "Azure hybrid search",
+      "url": "https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview",
+      "status": "reachable"
+    },
+    {
+      "id": "A3",
+      "title": "Azure document access control",
+      "url": "https://learn.microsoft.com/en-us/azure/search/search-document-level-access-overview",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/search/search-document-level-access-overview",
+      "status": "reachable"
+    },
+    {
+      "id": "A4",
+      "title": "Azure agentic retrieval requests",
+      "url": "https://learn.microsoft.com/en-us/azure/search/agentic-retrieval-how-to-retrieve",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/search/agentic-retrieval-how-to-retrieve",
+      "status": "reachable"
+    },
+    {
+      "id": "A5",
+      "title": "Azure security best practices",
+      "url": "https://learn.microsoft.com/en-us/azure/search/search-security-best-practices",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/search/search-security-best-practices",
+      "status": "reachable"
+    },
+    {
+      "id": "A6",
+      "title": "Azure AI Search FAQ — conflicting DLS wording",
+      "url": "https://learn.microsoft.com/en-us/azure/search/search-faq-frequently-asked-questions",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://learn.microsoft.com/en-us/azure/search/search-faq-frequently-asked-questions",
+      "status": "reachable"
+    },
+    {
+      "id": "C1",
+      "title": "Gemini Enterprise launch",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise/",
+      "status": "reachable"
+    },
+    {
+      "id": "C2",
+      "title": "Google Agent Search",
+      "url": "https://cloud.google.com/products/gemini-enterprise-agent-platform/agent-search",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://cloud.google.com/products/gemini-enterprise-agent-platform/agent-search",
+      "status": "reachable"
+    },
+    {
+      "id": "C3",
+      "title": "Gemini custom-source ACLs",
+      "url": "https://docs.cloud.google.com/agentspace/docs/identity",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.cloud.google.com/gemini/enterprise/docs/identity",
+      "status": "reachable"
+    },
+    {
+      "id": "C4",
+      "title": "Gemini granular access controls",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/docs/iam-policy-for-apps-and-data-stores",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.cloud.google.com/gemini/enterprise/docs/iam-policy-for-apps-and-data-stores",
+      "status": "reachable"
+    },
+    {
+      "id": "C5",
+      "title": "Gemini ContentSearchSpec",
+      "url": "https://docs.cloud.google.com/gemini/enterprise/docs/reference/rest/v1/ContentSearchSpec",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.cloud.google.com/gemini/enterprise/docs/reference/rest/v1/ContentSearchSpec",
+      "status": "reachable"
+    },
+    {
+      "id": "E1",
+      "title": "Elastic Enterprise Search migration",
+      "url": "https://www.elastic.co/guide/en/enterprise-search/current/upgrading-to-9-x.html",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://www.elastic.co/guide/en/enterprise-search/current/upgrading-to-9-x.html",
+      "status": "reachable"
+    },
+    {
+      "id": "E2",
+      "title": "Elasticsearch hybrid search",
+      "url": "https://www.elastic.co/docs/solutions/search/hybrid-search",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://www.elastic.co/docs/solutions/search/hybrid-search",
+      "status": "reachable"
+    },
+    {
+      "id": "E3",
+      "title": "Elastic connector DLS",
+      "url": "https://www.elastic.co/docs/reference/search-connectors/document-level-security",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://www.elastic.co/docs/reference/search-connectors/document-level-security",
+      "status": "reachable"
+    },
+    {
+      "id": "E4",
+      "title": "Elasticsearch document and field security",
+      "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level",
+      "status": "reachable"
+    },
+    {
+      "id": "G1",
+      "title": "Glean hybrid retrieval and languages",
+      "url": "https://docs.glean.com/administration/management/features/glean-language-support",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.glean.com/administration/management/features/glean-language-support",
+      "status": "reachable"
+    },
+    {
+      "id": "G2",
+      "title": "Glean Google Drive permissions",
+      "url": "https://docs.glean.com/connectors/native/gdrive/security/permissions",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.glean.com/connectors/native/gdrive/security/permissions",
+      "status": "reachable"
+    },
+    {
+      "id": "G3",
+      "title": "Glean verification",
+      "url": "https://docs.glean.com/user-guide/knowledge/verification/how-verification-works",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.glean.com/user-guide/knowledge/verification/how-verification-works",
+      "status": "reachable"
+    },
+    {
+      "id": "G4",
+      "title": "Glean platform APIs",
+      "url": "https://developers.glean.com/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://developers.glean.com/",
+      "status": "reachable"
+    },
+    {
+      "id": "G5",
+      "title": "Glean actions",
+      "url": "https://docs.glean.com/agents/actions/introduction-to-actions",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.glean.com/agents/actions/introduction-to-actions",
+      "status": "reachable"
+    },
+    {
+      "id": "H1",
+      "title": "Haystack official repository",
+      "url": "https://github.com/deepset-ai/haystack",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://github.com/deepset-ai/haystack",
+      "status": "reachable"
+    },
+    {
+      "id": "H2",
+      "title": "Haystack retrievers",
+      "url": "https://docs.haystack.deepset.ai/docs/retriever",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.haystack.deepset.ai/docs/retriever",
+      "status": "reachable"
+    },
+    {
+      "id": "H3",
+      "title": "Haystack AnswerBuilder",
+      "url": "https://docs.haystack.deepset.ai/docs/answerbuilder",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.haystack.deepset.ai/docs/answerbuilder",
+      "status": "reachable"
+    },
+    {
+      "id": "H4",
+      "title": "Haystack Agent",
+      "url": "https://docs.haystack.deepset.ai/docs/agent",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.haystack.deepset.ai/docs/agent",
+      "status": "reachable"
+    },
+    {
+      "id": "L1",
+      "title": "LlamaIndex official repository",
+      "url": "https://github.com/run-llama/llama_index",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://github.com/run-llama/llama_index",
+      "status": "reachable"
+    },
+    {
+      "id": "L2",
+      "title": "LlamaIndex retriever guides",
+      "url": "https://developers.llamaindex.ai/python/framework/module_guides/querying/retriever/retrievers/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://developers.llamaindex.ai/python/framework/module_guides/querying/retriever/retrievers/",
+      "status": "reachable"
+    },
+    {
+      "id": "L3",
+      "title": "LlamaIndex citations",
+      "url": "https://developers.llamaindex.ai/python/framework-api-reference/query_engine/citation/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://developers.llamaindex.ai/python/framework-api-reference/query_engine/citation/",
+      "status": "reachable"
+    },
+    {
+      "id": "L4",
+      "title": "LlamaIndex rerankers",
+      "url": "https://developers.llamaindex.ai/python/framework/module_guides/models/rerankers/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://developers.llamaindex.ai/python/framework/module_guides/models/rerankers/",
+      "status": "reachable"
+    },
+    {
+      "id": "L5",
+      "title": "LlamaIndex agents",
+      "url": "https://developers.llamaindex.ai/python/framework/module_guides/deploying/agents/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://developers.llamaindex.ai/python/framework/module_guides/deploying/agents/",
+      "status": "reachable"
+    },
+    {
+      "id": "M1",
+      "title": "Microsoft Copilot privacy and security",
+      "url": "https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-privacy",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-privacy",
+      "status": "reachable"
+    },
+    {
+      "id": "M2",
+      "title": "Microsoft semantic indexing",
+      "url": "https://learn.microsoft.com/en-us/microsoftsearch/semantic-index-for-copilot",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://learn.microsoft.com/en-us/microsoftsearch/semantic-index-for-copilot",
+      "status": "reachable"
+    },
+    {
+      "id": "M3",
+      "title": "Microsoft Search overview",
+      "url": "https://learn.microsoft.com/en-us/microsoftsearch/overview-microsoft-search",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://learn.microsoft.com/en-us/microsoftsearch/overview-microsoft-search",
+      "status": "reachable"
+    },
+    {
+      "id": "N1",
+      "title": "Onyx official repository",
+      "url": "https://github.com/onyx-dot-app/onyx",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://github.com/onyx-dot-app/onyx",
+      "status": "reachable"
+    },
+    {
+      "id": "N2",
+      "title": "Onyx connector documentation",
+      "url": "https://docs.onyx.app/overview/core_features/connectors",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.onyx.app/overview/core_features/connectors",
+      "status": "reachable"
+    },
+    {
+      "id": "N3",
+      "title": "Onyx MIT-only distribution",
+      "url": "https://github.com/onyx-dot-app/onyx-foss/blob/main/README.md",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://github.com/onyx-dot-app/onyx-foss/blob/main/README.md",
+      "status": "reachable"
+    },
+    {
+      "id": "O1",
+      "title": "OpenSearch hybrid search",
+      "url": "https://docs.opensearch.org/latest/vector-search/ai-search/hybrid-search/index/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.opensearch.org/latest/vector-search/ai-search/hybrid-search/index/",
+      "status": "reachable"
+    },
+    {
+      "id": "O2",
+      "title": "OpenSearch document security",
+      "url": "https://docs.opensearch.org/latest/security/access-control/document-level-security/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.opensearch.org/latest/security/access-control/document-level-security/",
+      "status": "reachable"
+    },
+    {
+      "id": "O3",
+      "title": "OpenSearch field security",
+      "url": "https://docs.opensearch.org/latest/security/access-control/field-level-security/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.opensearch.org/latest/security/access-control/field-level-security/",
+      "status": "reachable"
+    },
+    {
+      "id": "O4",
+      "title": "OpenSearch conversational RAG",
+      "url": "https://docs.opensearch.org/latest/vector-search/ai-search/conversational-search/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.opensearch.org/latest/vector-search/ai-search/conversational-search/",
+      "status": "reachable"
+    },
+    {
+      "id": "O5",
+      "title": "OpenSearch conversational agent",
+      "url": "https://docs.opensearch.org/latest/ml-commons-plugin/tutorials/rag-conversational-agent/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.opensearch.org/latest/ml-commons-plugin/tutorials/rag-conversational-agent/",
+      "status": "reachable"
+    },
+    {
+      "id": "P01",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2005.11401",
+      "status": "reachable"
+    },
+    {
+      "id": "P02",
+      "title": "Reciprocal rank fusion outperforms condorcet and individual rank learning methods",
+      "url": "https://doi.org/10.1145/1571941.1572114",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 403,
+      "status": "http_error",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "id": "P02A",
+      "title": "RRF author-hosted paper",
+      "url": "https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf",
+      "status": "reachable"
+    },
+    {
+      "id": "P03",
+      "title": "BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models",
+      "url": "https://arxiv.org/abs/2104.08663",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2104.08663",
+      "status": "reachable"
+    },
+    {
+      "id": "P04",
+      "title": "A Broad-Coverage Challenge Corpus for Sentence Understanding through Inference",
+      "url": "https://arxiv.org/abs/1704.05426",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/1704.05426",
+      "status": "reachable"
+    },
+    {
+      "id": "P05",
+      "title": "Time-Aware Language Models as Temporal Knowledge Bases",
+      "url": "https://aclanthology.org/2022.tacl-1.15/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://aclanthology.org/2022.tacl-1.15/",
+      "status": "reachable"
+    },
+    {
+      "id": "P06",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2210.03629",
+      "status": "reachable"
+    },
+    {
+      "id": "P07",
+      "title": "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection",
+      "url": "https://arxiv.org/abs/2310.11511",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2310.11511",
+      "status": "reachable"
+    },
+    {
+      "id": "P08",
+      "title": "Enabling Large Language Models to Generate Text with Citations",
+      "url": "https://arxiv.org/abs/2305.14627",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2305.14627",
+      "status": "reachable"
+    },
+    {
+      "id": "P09",
+      "title": "RAGAs: Automated Evaluation of Retrieval Augmented Generation",
+      "url": "https://aclanthology.org/2024.eacl-demo.16/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://aclanthology.org/2024.eacl-demo.16/",
+      "status": "reachable"
+    },
+    {
+      "id": "P10",
+      "title": "PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models",
+      "url": "https://www.usenix.org/conference/usenixsecurity25/presentation/zou-poisonedrag",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://www.usenix.org/conference/usenixsecurity25/presentation/zou-poisonedrag",
+      "status": "reachable"
+    },
+    {
+      "id": "P11",
+      "title": "HoH: A Dynamic Benchmark for Evaluating the Impact of Outdated Information on Retrieval-Augmented Generation",
+      "url": "https://aclanthology.org/2025.acl-long.301/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://aclanthology.org/2025.acl-long.301/",
+      "status": "reachable"
+    },
+    {
+      "id": "P12",
+      "title": "Re³: Relevance & Recency Retrieval for Mitigating Temporal Hallucination",
+      "url": "https://aclanthology.org/2026.acl-long.1180/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://aclanthology.org/2026.acl-long.1180/",
+      "status": "reachable"
+    },
+    {
+      "id": "P13",
+      "title": "Ragability Benchmark: A Dataset and Library to Test LLMs on Inter-context Conflicts",
+      "url": "https://aclanthology.org/2026.lrec-1.182/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://aclanthology.org/2026.lrec-1.182/",
+      "status": "reachable"
+    },
+    {
+      "id": "P14",
+      "title": "TimelyRAG: Semantic-Temporal Hybrid Retrieval for Time-Critical Question Answering in Overlapping-Evolving Documents",
+      "url": "https://arxiv.org/abs/2609.11572",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://arxiv.org/abs/2609.11572",
+      "status": "reachable"
+    },
+    {
+      "id": "P15",
+      "title": "Knowledge Management Systems: Issues, Challenges, and Benefits",
+      "url": "https://aisel.aisnet.org/cais/vol1/iss1/7/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://aisel.aisnet.org/cais/vol1/iss1/7/",
+      "status": "reachable"
+    },
+    {
+      "id": "Q1",
+      "title": "Amazon Q Business workflow",
+      "url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/how-it-works.html",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/how-it-works.html",
+      "status": "reachable"
+    },
+    {
+      "id": "Q2",
+      "title": "Amazon Q Business overview",
+      "url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/what-is.html",
+      "status": "reachable"
+    },
+    {
+      "id": "Q3",
+      "title": "Amazon Q hallucination mitigation",
+      "url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/hallucination-reduction.html",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/hallucination-reduction.html",
+      "status": "reachable"
+    },
+    {
+      "id": "Q4",
+      "title": "Amazon Q guardrails",
+      "url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/guardrails.html",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/guardrails.html",
+      "status": "reachable"
+    },
+    {
+      "id": "R1",
+      "title": "RAGFlow official repository",
+      "url": "https://github.com/infiniflow/ragflow",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://github.com/infiniflow/ragflow",
+      "status": "reachable"
+    },
+    {
+      "id": "R2",
+      "title": "RAGFlow open-source sharing",
+      "url": "https://ragflow.io/docs/v1.0.0-rc1/guides/team/sharing_scope_configuration/open_source_edition_sharing_scope_configuration",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://ragflow.io/docs/v1.0.0-rc1/guides/team/sharing_scope_configuration/open_source_edition_sharing_scope_configuration",
+      "status": "reachable"
+    },
+    {
+      "id": "R3",
+      "title": "RAGFlow permission rules",
+      "url": "https://github.com/infiniflow/ragflow/blob/main/docs/guides/team/permission_system_overview/permission_effective_rules.md",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://github.com/infiniflow/ragflow/blob/main/docs/guides/team/permission_system_overview/permission_effective_rules.md",
+      "status": "reachable"
+    },
+    {
+      "id": "R4",
+      "title": "RAGFlow components",
+      "url": "https://ragflow.io/docs/v1.0.0-rc1/basic_component",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://ragflow.io/docs/v1.0.0-rc1/basic_component",
+      "status": "reachable"
+    },
+    {
+      "id": "S1",
+      "title": "NIST ABAC guide",
+      "url": "https://csrc.nist.gov/pubs/sp/800/162/upd2/final",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://csrc.nist.gov/pubs/sp/800/162/upd2/final",
+      "status": "reachable"
+    },
+    {
+      "id": "S2",
+      "title": "NIST RBAC FAQ",
+      "url": "https://csrc.nist.gov/Projects/role-based-access-control/faqs",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://csrc.nist.gov/Projects/role-based-access-control/faqs",
+      "status": "reachable"
+    },
+    {
+      "id": "S3",
+      "title": "W3C PROV-DM",
+      "url": "https://www.w3.org/TR/prov-dm/",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://www.w3.org/TR/prov-dm/",
+      "status": "reachable"
+    },
+    {
+      "id": "S4",
+      "title": "Jensen and Snodgrass temporal database definitions",
+      "url": "https://www2.cs.arizona.edu/~rts/pubs/TRmerged.pdf",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://www2.cs.arizona.edu/~rts/pubs/TRmerged.pdf",
+      "status": "reachable"
+    },
+    {
+      "id": "S5",
+      "title": "OWASP RAG Security",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/RAG_Security_Cheat_Sheet.html",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://cheatsheetseries.owasp.org/cheatsheets/RAG_Security_Cheat_Sheet.html",
+      "status": "reachable"
+    },
+    {
+      "id": "S6",
+      "title": "OWASP prompt injection prevention",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html",
+      "status": "reachable"
+    },
+    {
+      "id": "T1",
+      "title": "AnythingLLM official repository",
+      "url": "https://github.com/Mintplex-Labs/anything-llm",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://github.com/Mintplex-Labs/anything-llm",
+      "status": "reachable"
+    },
+    {
+      "id": "T2",
+      "title": "AnythingLLM document behavior",
+      "url": "https://docs.anythingllm.com/chatting-with-documents/introduction",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.anythingllm.com/chatting-with-documents/introduction",
+      "status": "reachable"
+    },
+    {
+      "id": "T3",
+      "title": "AnythingLLM custom skills",
+      "url": "https://docs.anythingllm.com/agent/custom/introduction",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.anythingllm.com/agent/custom/introduction",
+      "status": "reachable"
+    },
+    {
+      "id": "V1",
+      "title": "Vectara retrieval",
+      "url": "https://docs.vectara.com/docs/search-and-retrieval",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.vectara.com/docs/search-and-retrieval",
+      "status": "reachable"
+    },
+    {
+      "id": "V2",
+      "title": "Vectara platform stack",
+      "url": "https://docs.vectara.com/docs/platform-architecture/platform-stack",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.vectara.com/docs/platform-architecture/platform-stack",
+      "status": "reachable"
+    },
+    {
+      "id": "V3",
+      "title": "Vectara agent retrieval tuning",
+      "url": "https://docs.vectara.com/docs/agents/tune-retrieval-for-agents",
+      "checked_at": "2026-10-09T15:26:04+05:30",
+      "method": "HTTP GET, bounded read; reachability only, not factual validation",
+      "http_status": 200,
+      "resolved_url": "https://docs.vectara.com/docs/agents/tune-retrieval-for-agents",
+      "status": "reachable"
+    }
+  ]
+}

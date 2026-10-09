@@ -44,12 +44,24 @@ indexes/
 generated/
 outputs/
 artifacts/
+models/
+local-data/
+vectorstore/
+.chroma/
+.lancedb/
+qdrant_storage/
+.cache/
+*.db3
+*.rdb
+*.dump
 *.log
 *.tmp
 *.zip
 # Editor and operating-system files
 .idea/
 .vscode/
+.codex/
+.agents/
 .DS_Store
 Thumbs.db
 
