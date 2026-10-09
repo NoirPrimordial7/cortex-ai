@@ -12,18 +12,31 @@ export function SourceInspector({
   source,
   busy,
   conflict = false,
+  context,
 }: {
   citation: Citation | null;
   source: Source | null;
   busy: boolean;
   conflict?: boolean;
+  context?: { date: string; population: string };
 }) {
-  const [context, setContext] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   if (!citation) return null;
   return (
     <div className="fb-document">
       <p className="fb-label">Source evidence</p>
       <h2>{citation.title}</h2>
+      {context && (
+        <p className="source-query-context">
+          For{" "}
+          {context.population === "india_full_time"
+            ? "India full-time employees"
+            : context.population === "india_contractor"
+              ? "India contractors"
+              : context.population.replaceAll("_", " ")}{" "}
+          · as of {context.date}
+        </p>
+      )}
       {busy ? (
         <p role="status" className="fb-source-loading">
           Checking source access…
@@ -80,14 +93,14 @@ export function SourceInspector({
             </details>
             <button
               className="fb-context-toggle"
-              aria-expanded={context}
-              onClick={() => setContext(!context)}
+              aria-expanded={expanded}
+              onClick={() => setExpanded(!expanded)}
             >
               <FileTextIcon size={18} />
-              {context ? "Hide source context" : "View source context"}
+              {expanded ? "Hide source context" : "View source context"}
               <ArrowRightIcon size={16} />
             </button>
-            {context && (
+            {expanded && (
               <div className="fb-context">
                 <HighlightedSource source={source} />
               </div>

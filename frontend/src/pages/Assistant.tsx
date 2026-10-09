@@ -218,6 +218,11 @@ export default function Assistant() {
       source={source}
       busy={sourceBusy}
       conflict={conflict}
+      context={
+        answer
+          ? { date: answer.as_of, population: answer.scope.population }
+          : undefined
+      }
     />
   );
   return (
@@ -238,7 +243,7 @@ export default function Assistant() {
           <section className="fb-reading" aria-label="Ask Cortex">
             <div className="fb-controls">
               <label>
-                <span className="fb-label">AS OF</span>
+                <span className="fb-label">As of</span>
                 <span className="fb-control">
                   <CalendarBlankIcon size={18} />
                   <input
@@ -256,7 +261,7 @@ export default function Assistant() {
                 </span>
               </label>
               <label>
-                <span className="fb-label">POLICY SCOPE</span>
+                <span className="fb-label">Policy scope</span>
                 <select
                   aria-label="Policy scope"
                   name="population"
@@ -295,7 +300,7 @@ export default function Assistant() {
             >
               {!answer && !busy && !error && (
                 <div className="fb-empty">
-                  <p className="fb-label">ASK CORTEX</p>
+                  <p className="fb-label">Ask Cortex</p>
                   <h1>
                     A clear answer.
                     <br />A source you can trust.
@@ -343,7 +348,7 @@ export default function Assistant() {
                     (answer.answer.length > 360 ? "is-long" : "")
                   }
                 >
-                  <p className="fb-label">YOUR QUESTION</p>
+                  <p className="fb-label">Your question</p>
                   <h1 className="question-bubble">{askedQuery}</h1>
                   <div className="fb-answer-label">
                     {answer.status === "answered" ? (
@@ -379,8 +384,8 @@ export default function Assistant() {
                     <div className="fb-citations">
                       <p className="fb-label">
                         {conflict
-                          ? "POLICIES TO REVIEW"
-                          : "SUPPORTING EVIDENCE"}
+                          ? "Policies to review"
+                          : "Supporting evidence"}
                       </p>
                       {answer.citations.map((c, i) => (
                         <button
@@ -407,7 +412,7 @@ export default function Assistant() {
             </div>
             <form className="fb-composer" onSubmit={(e) => void send(e)}>
               <label htmlFor="question" className="fb-label">
-                {answer ? "ASK A FOLLOW-UP QUESTION" : "YOUR QUESTION"}
+                {answer ? "Ask a follow-up question" : "Your question"}
               </label>
               <div className="fb-compose-input">
                 <textarea

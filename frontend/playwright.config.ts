@@ -5,7 +5,7 @@ export default defineConfig({
   workers: 2,
   timeout: 30000,
   use: {
-    baseURL: "http://127.0.0.1:5173",
+    baseURL: process.env.CORTEX_TEST_URL || "http://127.0.0.1:5173",
     browserName: "chromium",
     trace: "retain-on-failure",
   },

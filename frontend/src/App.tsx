@@ -1,3 +1,4 @@
+import { readableName } from "./labels";
 import { lazy, Suspense, useEffect, useState } from "react";
 import {
   NavLink,
@@ -22,7 +23,9 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Library = lazy(() => import("./pages/Library"));
 const DocumentDetail = lazy(() => import("./pages/DocumentDetail"));
 const Upload = lazy(() => import("./pages/Upload"));
-const Activity = lazy(() => import("./pages/Activity"));
+const History = lazy(() => import("./pages/History"));
+const Conflicts = lazy(() => import("./pages/Conflicts"));
+const Audit = lazy(() => import("./pages/Audit"));
 const Permissions = lazy(() => import("./pages/Permissions"));
 const navigation = [
   { to: "/", label: "Overview", name: "Overview" },
@@ -61,9 +64,23 @@ const navigation = [
 export default function App() {
   const { user, ready, signOut } = useSession();
   const location = useLocation();
-  const [dark, setDark] = useState(false),
+  const [dark, setDark] = useState(() => {
+      try {
+        return localStorage.getItem("cortex:theme:v1") === "dark";
+      } catch {
+        return false;
+      }
+    }),
     [menu, setMenu] = useState(false),
     [error, setError] = useState("");
+  useEffect(() => {
+    document.documentElement.style.colorScheme = dark ? "dark" : "light";
+    try {
+      localStorage.setItem("cortex:theme:v1", dark ? "dark" : "light");
+    } catch {
+      /* Theme remains usable when storage is unavailable. */
+    }
+  }, [dark]);
   useEffect(() => {
     setMenu(false);
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -119,11 +136,14 @@ export default function App() {
           <div className="masthead-context">
             <strong>
               {user.workspace === "NORTHSTAR"
-                ? "Northstar Works"
-                : user.workspace}
+                ? "Auronix"
+                : user.workspace === "ORBIT"
+                  ? "Auronix sandbox"
+                  : user.workspace}
             </strong>
             <span>
-              {user.display_name} · {user.roles.map((r) => r.name).join(", ")}
+              {user.display_name} ·{" "}
+              {user.roles.map((r) => readableName(r.name)).join(", ")}
             </span>
           </div>
           <div className="masthead-actions">
@@ -168,7 +188,8 @@ export default function App() {
           </div>
           <nav id="workspace-navigation">{links}</nav>
           <p className="subtle">
-            {user.display_name} · {user.roles.map((r) => r.name).join(", ")}
+            {user.display_name} ·{" "}
+            {user.roles.map((r) => readableName(r.name)).join(", ")}
           </p>
           <button
             className="button"
@@ -206,20 +227,17 @@ export default function App() {
               />
               <Route
                 path="/history"
-                element={gate("query.execute", <Activity />)}
+                element={gate("query.execute", <History />)}
               />
               <Route
                 path="/conflicts"
-                element={gate("query.execute", <Activity conflicts />)}
+                element={gate("query.execute", <Conflicts />)}
               />
               <Route
                 path="/permissions"
                 element={gate("user.manage", <Permissions />)}
               />
-              <Route
-                path="/audit"
-                element={gate("audit.read", <Activity audit />)}
-              />
+              <Route path="/audit" element={gate("audit.read", <Audit />)} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>

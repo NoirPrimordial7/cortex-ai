@@ -138,7 +138,9 @@ export function Badge({ state }: { state: string }) {
   const warning = ["Conflict", "Pending review", "Future effective"].includes(
     state,
   );
-  const neutral = ["Expired", "Abstained"].includes(state);
+  const neutral =
+    !["Approved · valid", "Evidence answer", "Active"].includes(state) &&
+    !warning;
   const failed = ["Failed extraction", "Rejected"].includes(state);
   return (
     <span

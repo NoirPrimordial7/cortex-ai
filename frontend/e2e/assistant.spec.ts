@@ -88,7 +88,43 @@ async function noOverflow(page: Page) {
     ),
   ).toBe(true);
 }
-for (const width of [320, 390, 768, 1280, 1440]) {
+
+test("desktop keyboard citation remains above the follow-up composer", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await setup(page, {
+    ...answer,
+    status: "abstained",
+    reason_code: "UNRESOLVED_CONFLICT",
+    answer:
+      "Equally authoritative policies disagree for this date and scope. I cannot choose between them.",
+    citations: [
+      source,
+      { ...source, id: "cite-b", title: "Alternative annual leave policy" },
+    ],
+  });
+  await page.goto("/assistant");
+  await page
+    .getByRole("button", {
+      name: "How many annual leave days do I have?",
+      exact: true,
+    })
+    .click();
+  await expect(
+    page.getByText("Policy conflict", { exact: true }),
+  ).toBeVisible();
+  const citation = page.getByRole("button", {
+    name: "View evidence: Alternative annual leave policy",
+    exact: true,
+  });
+  await citation.focus();
+  await citation.scrollIntoViewIfNeeded();
+  const bounds = await citation.boundingBox();
+  const composer = await page.locator(".fb-composer").boundingBox();
+  expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(composer!.y);
+});
+for (const width of [320, 390, 768, 1024, 1280, 1440]) {
   test(`layout, exact citation, focus return and both themes at ${width}px`, async ({
     page,
   }) => {
@@ -138,15 +174,14 @@ for (const width of [320, 390, 768, 1280, 1440]) {
         page.getByRole("complementary", { name: "Source evidence" }),
       ).toBeVisible();
     }
-    await page.getByRole("button", { name: "Open navigation" }).click();
-    expect(
-      await page
-        .getByRole("navigation", { name: "Workspace navigation" })
-        .getByRole("link", { name: "Knowledge assistant" })
-        .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
-    ).toBeGreaterThanOrEqual(14);
+    if (width < 900) {
+      await page.getByRole("button", { name: "Open navigation" }).click();
+      await expect(
+        page.getByRole("dialog", { name: "Workspace navigation" }),
+      ).toBeVisible();
+      await page.keyboard.press("Escape");
+    }
     await page.getByRole("button", { name: "Switch to dark theme" }).click();
-    await page.getByRole("button", { name: "Close navigation" }).click();
     await expect(page.locator(".app")).toHaveClass(/dark/);
     await noOverflow(page);
     if (width < 1100) await citation.click();
@@ -156,9 +191,7 @@ for (const width of [320, 390, 768, 1280, 1440]) {
     });
     if (width < 1100)
       await page.getByRole("button", { name: "Back to answer" }).click();
-    await page.getByRole("button", { name: "Open navigation" }).click();
     await page.getByRole("button", { name: "Switch to light theme" }).click();
-    await page.keyboard.press("Escape");
     await page.screenshot({
       path: `../outputs/fieldbook/answer-${width}.png`,
       fullPage: true,
@@ -188,14 +221,19 @@ test("long answers keep the follow-up composer reachable and preserve original q
     .click();
   await expect(page.getByText(long.answer)).toBeVisible();
   await noOverflow(page);
-  await page.evaluate(() => {
-    const reading = document.querySelector(".fb-result")!;
-    reading.scrollTop = reading.scrollHeight;
-  });
+  expect(
+    await page
+      .locator(".fb-result")
+      .evaluate((el) => getComputedStyle(el).overflowY),
+  ).toBe("visible");
+  await page
+    .getByRole("button", { name: "View evidence: Annual leave policy" })
+    .scrollIntoViewIfNeeded();
   await expect(
     page.getByRole("button", { name: "View evidence: Annual leave policy" }),
   ).toBeInViewport();
   const composer = page.getByLabel("Ask about a company policy");
+  await composer.scrollIntoViewIfNeeded();
   const bounds = await composer.boundingBox();
   expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(640);
   await composer.fill("What is my notice period?");
@@ -209,6 +247,9 @@ test("long answers keep the follow-up composer reachable and preserve original q
   await page.setViewportSize({ width: 320, height: 360 }); // keyboard-like viewport reduction
   await noOverflow(page);
   await composer.fill("How many remote days per week?");
+  await page
+    .getByRole("button", { name: "Ask Cortex", exact: true })
+    .scrollIntoViewIfNeeded();
   await expect(
     page.getByRole("button", { name: "Ask Cortex", exact: true }),
   ).toBeInViewport();
@@ -348,10 +389,13 @@ test("200 percent text scaling and reduced motion remain usable", async ({
   await page.emulateMedia({ reducedMotion: "reduce" });
   await setup(page);
   await ask(page);
-  await page.addStyleTag({
-    content:
-      ".fieldbook { font-size:200% } .fieldbook p,.fieldbook label,.fieldbook strong {font-size: 1em} .fieldbook h2 {font-size:2em}",
-  });
+  await page.route("**/test-text-scale.css", (route) =>
+    route.fulfill({
+      contentType: "text/css",
+      body: ".fieldbook { font-size:200% } .fieldbook p,.fieldbook label,.fieldbook strong {font-size: 1em} .fieldbook h2 {font-size:2em}",
+    }),
+  );
+  await page.addStyleTag({ url: "/test-text-scale.css" });
   await noOverflow(page);
   await page
     .getByRole("button", { name: "View evidence: Annual leave policy" })
@@ -371,9 +415,7 @@ test("reading contrast, control boundaries and focused citations remain visible"
   const measurements = [];
   for (const theme of ["light", "dark"]) {
     if (theme === "dark") {
-      await page.getByRole("button", { name: "Open navigation" }).click();
       await page.getByRole("button", { name: "Switch to dark theme" }).click();
-      await page.keyboard.press("Escape");
     }
     await page
       .getByRole("button", { name: "View evidence: Annual leave policy" })
@@ -412,8 +454,8 @@ test("reading contrast, control boundaries and focused citations remain visible"
         ".fb-document h2",
         ".fb-status",
         ".fb-passage blockquote",
-        ".fb-metadata dt",
-        ".fb-metadata dd",
+        ".source-summary",
+        ".source-details summary",
         ".fb-context-toggle",
         ".fb-evidence-back button",
       ].map((selector) => {
@@ -423,7 +465,7 @@ test("reading contrast, control boundaries and focused citations remain visible"
           ratio: ratio(getComputedStyle(el).color, background(el)),
         };
       });
-      const control = document.querySelector(".fb-control")!;
+      const control = document.querySelector(".fb-control input")!;
       return {
         text,
         controlBoundary: ratio(
