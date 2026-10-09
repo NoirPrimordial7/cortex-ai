@@ -206,7 +206,9 @@ export default function App() {
         <header className="topbar">
           <span>{title}</span>
           <div>
-            <span className="environment">Local workspace</span>
+            <span className="environment">
+              {user.read_only_demo ? "Shared demo" : "Local workspace"}
+            </span>
             <span className="top-date">
               {new Intl.DateTimeFormat("en", {
                 dateStyle: "medium",
@@ -216,6 +218,13 @@ export default function App() {
           </div>
         </header>
         <main id="workspace" className="workspace">
+          {user.read_only_demo && (
+            <p className="shared-demo-note">
+              Fictional shared demo · uploads and governance are view-only.
+              Profiles share their query history. Data resets after backend
+              restarts.
+            </p>
+          )}
           {error && (
             <p role="alert" className="form-error">
               {error}

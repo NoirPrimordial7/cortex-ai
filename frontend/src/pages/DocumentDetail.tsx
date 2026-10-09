@@ -25,6 +25,7 @@ function ReviewForm({
   content: Content;
   done: () => void;
 }) {
+  const { user } = useSession();
   const [segment, setSegment] = useState(
       content.segments[1] || content.segments[0],
     ),
@@ -34,6 +35,7 @@ function ReviewForm({
     [busy, setBusy] = useState(false);
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (user?.read_only_demo) return;
     const values = Object.fromEntries(new FormData(e.currentTarget));
     const mapping: Record<string, [string, string]> = {
       leave: ["annual_leave_days", "working_days_per_year"],
@@ -168,7 +170,10 @@ function ReviewForm({
           {error}
         </p>
       )}
-      <button className="button primary" disabled={busy}>
+      <button
+        className="button primary"
+        disabled={busy || user?.read_only_demo}
+      >
         {busy ? "Publishing…" : "Approve and publish"}
       </button>
     </form>
@@ -218,6 +223,7 @@ export default function DocumentDetail() {
   }
   async function add(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (user?.read_only_demo) return;
     setError("");
     try {
       await api(`/documents/${id}/versions`, {
@@ -292,7 +298,9 @@ export default function DocumentDetail() {
                       required
                     />
                   </label>
-                  <button className="button">Upload for review</button>
+                  <button className="button" disabled={user?.read_only_demo}>
+                    Upload for review
+                  </button>
                 </form>
               )}
             </section>

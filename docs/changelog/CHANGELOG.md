@@ -76,3 +76,10 @@
 - Verification: 19 required files; 13 profiles with 15 fields each; 15 paper records; 13 matrix rows; 76 source IDs/checks aligned; 75 HTTP successes and one documented DOI 403; no broken relative links, unexpected staged files or secret-pattern hits; ignore fixtures passed and whitespace repaired/rechecked.
 - Outstanding: Phase 2 owner approval, resources/deadline/dataset inputs and unvalidated integration benefit. No application development or experiments performed.
 - Audit commit: resolve `docs: record Phase 1 verification and publication` in Git; its hash and final remote verification are reported in the project-owner briefing. A commit cannot embed its own hash.
+
+## 2026-10-09T21:49:43+05:30 — Phase3 shared demo preparation
+
+- Changed backend settings/main, frontend login/types/styles/read-only screen controls and .gitignore. Added backend demo/hosted adapters, regression tests, ADR0006 and docs/implementation/SHARED_DEMO.md; updated README/decision index. No research, fixtures, credentials or prior history removed.
+- Reason: owner requested remote teammate demo and all fictional account autofill; explicitly authorized free Render backend. Outcome: opt-in finite fictional picker, normal authentication retained, exact Host/HTTPS Origin and Secure cookie settings, disposable single-worker seed and hosted mutation403. Local upload/governance remain interactive.
+- Verification:38 backend tests and11 frontend tests pass; strict TypeScript/Vite build and Ruff pass. Rendering uses the in-app browser only; no headless fallback. Previous publication6545b20.
+- Outstanding: create Render free service, wire verified backend URL, redeploy exact commit and check real HTTPS sign-in/citations/access denials before claiming live completion. Free service sleeps/resets; histories are shared per fictional profile. Commit subject: feat: add fictional demo account picker and hosted safety boundary.

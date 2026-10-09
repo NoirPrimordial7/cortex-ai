@@ -15,6 +15,9 @@ class Settings:
         "http://localhost:5173",
     )
     secure_cookie: bool = False
+    allowed_hosts: tuple[str, ...] = ("127.0.0.1", "localhost", "testserver")
+    demo_accounts_enabled: bool = False
+    shared_demo_read_only: bool = False
 
     @property
     def db_path(self):
@@ -22,8 +25,19 @@ class Settings:
 
     @classmethod
     def from_env(cls):
-        # Local-only deployment. A hosted deployment needs a reviewed HTTPS configuration.
+        data_dir = Path(os.environ.get("CORTEX_DATA_DIR", ROOT / "local-data")).resolve()
+        origins = tuple(
+            x.strip() for x in os.environ.get("CORTEX_ORIGINS", "").split(",") if x.strip()
+        )
+        hosts = tuple(
+            x.strip() for x in os.environ.get("CORTEX_ALLOWED_HOSTS", "").split(",") if x.strip()
+        )
         return cls(
-            Path(os.environ.get("CORTEX_DATA_DIR", ROOT / "local-data")).resolve(),
+            data_dir,
+            origins=origins or cls.__dataclass_fields__["origins"].default,
             secure_cookie=os.environ.get("CORTEX_SECURE_COOKIE") == "1",
+            allowed_hosts=hosts or cls.__dataclass_fields__["allowed_hosts"].default,
+            demo_accounts_enabled=os.environ.get("CORTEX_DEMO_ACCOUNTS") == "1"
+            or (data_dir / "demo-autofill.enabled").is_file(),
+            shared_demo_read_only=os.environ.get("CORTEX_SHARED_DEMO_READ_ONLY") == "1",
         )

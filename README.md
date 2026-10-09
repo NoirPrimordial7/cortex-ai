@@ -10,6 +10,8 @@ Repository: [NoirPrimordial7/cortex-ai](https://github.com/NoirPrimordial7/corte
 
 ## Run and inspect
 
+Fictional profile buttons fill workspace, email and password before normal sign-in. [Shared demo hosting contract](docs/implementation/SHARED_DEMO.md): free Vercel frontend and disposable single-process Render backend; hosted uploads/governance are read-only. Live publication checks are recorded separately from local tests.
+
 **Live development:** http://127.0.0.1:5173 (frontend hot updates; requires the two running local servers).
 
 [PowerShell startup and fictional sign-in instructions](docs/implementation/RUN_LOCAL.md) · [actual module status and limits](docs/implementation/IMPLEMENTATION_STATUS.md) · [test results](docs/implementation/TEST_RESULTS.md) · [backend API contracts](backend/README.md).
@@ -51,7 +53,7 @@ One backend application worker serializes protected requests and access changes 
 | Crafted fixture |12/12 outcomes,15/15 authorized peers,10/10 exact citation spans/hashes; **same development fixture, not held-out accuracy** |
 | Quality |Ruff/pip consistency pass; npm audit zero findings at this checkpoint; sampled contrast and reflow checked |
 
-No arbitrary40% completion or general accuracy claim is made. Future priorities are a held-out adjudicated corpus, richer clauses/lineage and permitted rejection explanations, parser isolation/denial audit/retention, and measured optional local semantic enhancements. Chunk ACLs, general amendments/exceptions, NLI, vector retrieval, LLM generation, agents, user creation and multiworker/hosted deployment remain unimplemented.
+No arbitrary40% completion or general accuracy claim is made. Future priorities are a held-out adjudicated corpus, richer clauses/lineage and permitted rejection explanations, parser isolation/denial audit/retention, and measured optional local semantic enhancements. Chunk ACLs, general amendments/exceptions, NLI, vector retrieval, LLM generation, agents, user creation and multiworker/durable production deployment remain unimplemented.
 
 ## Preserved research and approved planning
 

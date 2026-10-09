@@ -1,4 +1,50 @@
 @import "tailwindcss";
+.demo-accounts {
+  margin: 20px 0;
+  padding: 14px;
+  border: 1px solid #c2ded5;
+  border-radius: 8px;
+  background: #f1f8f5;
+}
+.demo-accounts p {
+  font-size: 12px;
+  margin: 5px 0 12px;
+  color: #526174;
+}
+.demo-accounts > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.demo-account {
+  min-height: 44px;
+  background: #fff;
+  border: 1px solid #9eaca7;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: left;
+  font-size: 12px;
+}
+.demo-account:hover {
+  background: #e3f4ef;
+  border-color: #067267;
+}
+.demo-account small {
+  display: block;
+  font-size: 10px;
+}
+.demo-accounts > span {
+  display: block;
+  margin-top: 10px;
+  color: #067267;
+  font-size: 12px;
+}
+.shared-demo-note {
+  padding: 12px 24px;
+  background: var(--accent-soft, #e3f4ef);
+  color: var(--ink, #142033);
+  font-size: 12px;
+}
 :root {
   font-family:
     "Segoe UI",

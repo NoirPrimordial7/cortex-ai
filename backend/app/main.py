@@ -32,6 +32,7 @@ from .security import (
     version,
 )
 from .settings import ROOT, Settings
+from .demo import accounts as demo_accounts
 
 hasher = PasswordHasher()
 dummy_hash = hasher.hash(secrets.token_urlsafe(32))
@@ -74,9 +75,7 @@ def create_app(settings=None):
     app.state.gate = threading.Lock()
     app.state.failures = defaultdict(deque)
     app.state.observe = None
-    app.add_middleware(
-        TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost", "testserver"]
-    )
+    app.add_middleware(TrustedHostMiddleware, allowed_hosts=list(settings.allowed_hosts))
 
     @app.middleware("http")
     async def boundary(request, call_next):
@@ -86,6 +85,21 @@ def create_app(settings=None):
                 return JSONResponse(
                     {"error": {"code": "FORBIDDEN", "message": "Origin not permitted"}},
                     status_code=403,
+                )
+            if settings.shared_demo_read_only and request.url.path not in {
+                "/api/v1/auth/login",
+                "/api/v1/auth/logout",
+                "/api/v1/queries",
+            }:
+                return JSONResponse(
+                    {
+                        "error": {
+                            "code": "DEMO_READ_ONLY",
+                            "message": "Shared demo: uploads and governance changes are disabled",
+                        }
+                    },
+                    status_code=403,
+                    headers={"Cache-Control": "no-store"},
                 )
             try:
                 length = int(request.headers.get("content-length", "-1"))
@@ -232,11 +246,20 @@ def create_app(settings=None):
             "workspace": ctx.tenant,
             "roles": ctx.roles,
             "actions": sorted(ctx.actions),
+            "read_only_demo": settings.shared_demo_read_only,
         }
 
     @app.get("/api/v1/health")
     def health():
         return {"status": "ok", "mode": "offline_evidence"}
+
+    @app.get("/api/v1/demo/accounts")
+    def demo_profiles():
+        with app.state.gate, app.state.engine.begin() as conn:
+            return {
+                "items": demo_accounts(conn, settings),
+                "read_only": settings.shared_demo_read_only,
+            }
 
     @app.post("/api/v1/auth/login")
     def login(body: Login, request: Request, response: Response):

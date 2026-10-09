@@ -2,13 +2,16 @@ import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { UploadSimpleIcon, FileTextIcon } from "@phosphor-icons/react";
 import { api } from "../api";
+import { useSession } from "../session";
 import { PageHeading } from "../components";
 export default function Upload() {
+  const { user } = useSession();
   const [busy, setBusy] = useState(false),
     [error, setError] = useState("");
   const navigate = useNavigate();
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (user?.read_only_demo) return;
     setBusy(true);
     setError("");
     try {
@@ -66,14 +69,23 @@ export default function Upload() {
         <label className="file-input">
           <FileTextIcon size={24} />
           <span>Choose a source file</span>
-          <input name="file" type="file" accept=".txt,.pdf,.docx" required />
+          <input
+            name="file"
+            type="file"
+            accept=".txt,.pdf,.docx"
+            required
+            disabled={user?.read_only_demo}
+          />
         </label>
         {error && (
           <p role="alert" className="form-error">
             {error}
           </p>
         )}
-        <button className="button primary" disabled={busy}>
+        <button
+          className="button primary"
+          disabled={busy || user?.read_only_demo}
+        >
           {busy ? "Extracting document…" : "Upload for review"}
         </button>
         <p className="subtle">

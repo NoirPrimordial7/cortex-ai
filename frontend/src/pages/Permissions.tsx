@@ -47,7 +47,7 @@ export default function Permissions() {
   }, [did]);
   async function update(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!acl) return;
+    if (!acl || user?.read_only_demo) return;
     setBusy(true);
     setMessage("");
     setError("");
@@ -81,7 +81,7 @@ export default function Permissions() {
     active: boolean,
     roles: string[],
   ) {
-    if (!directory.data) return;
+    if (!directory.data || user?.read_only_demo) return;
     setError("");
     try {
       await api(`/admin/users/${person.id}`, {
@@ -162,7 +162,10 @@ export default function Permissions() {
                     Keep an explicit grant for your governance access. Missing
                     grants deny access.
                   </p>
-                  <button className="button primary" disabled={busy}>
+                  <button
+                    className="button primary"
+                    disabled={busy || user?.read_only_demo}
+                  >
                     {busy ? "Updating…" : "Save document grants"}
                   </button>
                 </form>
@@ -202,7 +205,7 @@ export default function Permissions() {
                           void changePerson(u, u.active, roles);
                         }}
                       >
-                        <fieldset>
+                        <fieldset disabled={user?.read_only_demo}>
                           <legend>Action roles</legend>
                           {directory.data?.roles.map((r) => (
                             <label className="check-label" key={r.id}>
@@ -216,7 +219,11 @@ export default function Permissions() {
                             </label>
                           ))}
                         </fieldset>
-                        <button className="button small" type="submit">
+                        <button
+                          className="button small"
+                          type="submit"
+                          disabled={user?.read_only_demo}
+                        >
                           Save roles
                         </button>
                       </form>
@@ -224,7 +231,7 @@ export default function Permissions() {
                   </div>
                   <button
                     className="button small"
-                    disabled={u.id === user?.id}
+                    disabled={u.id === user?.id || user?.read_only_demo}
                     onClick={() => void changePerson(u, !u.active, u.role_ids)}
                   >
                     {u.active ? "Disable" : "Enable"}

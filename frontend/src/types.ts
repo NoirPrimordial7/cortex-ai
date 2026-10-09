@@ -4,6 +4,7 @@ export type User = {
   workspace: string;
   roles: { id: string; name: string }[];
   actions: string[];
+  read_only_demo?: boolean;
 };
 export type Citation = {
   id: string;
