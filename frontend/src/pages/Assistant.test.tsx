@@ -49,6 +49,10 @@ test("question uses backend result and opens the authorized exact source", async
   expect(await screen.findByText(result.answer)).toBeInTheDocument();
   expect((await screen.findAllByText(quote))[0]).toBeInTheDocument();
   expect(api).toHaveBeenNthCalledWith(2, "/queries/query/citations/cite");
+  expect(screen.getAllByText(quote)).toHaveLength(1);
+  await userEvent.click(
+    screen.getByRole("button", { name: "View source context" }),
+  );
   expect(document.querySelector("mark")?.textContent).toBe(quote);
 });
 test("changing the as-of date removes stale answer and source", async () => {
@@ -150,6 +154,9 @@ test("a slow previous citation cannot overwrite the currently selected source", 
   await screen.findByText(result.answer);
   await userEvent.click(screen.getByRole("button", { name: /Second source/ }));
   await screen.findByRole("heading", { name: "Second source" });
+  await userEvent.click(
+    await screen.findByRole("button", { name: "View source context" }),
+  );
   release(source);
   await waitFor(() =>
     expect(document.querySelector("pre")?.textContent).toBe(second.text),
@@ -157,4 +164,29 @@ test("a slow previous citation cannot overwrite the currently selected source", 
   expect(
     screen.queryByRole("heading", { name: source.title }),
   ).not.toBeInTheDocument();
+});
+
+test("a follow-up draft typed during loading survives the response", async () => {
+  let release: (answer: Answer) => void = () => {};
+  vi.mocked(api)
+    .mockImplementationOnce(
+      () =>
+        new Promise<Answer>((resolve) => {
+          release = resolve;
+        }),
+    )
+    .mockResolvedValueOnce(source);
+  render(<Assistant />);
+  await userEvent.click(
+    screen.getByText("How many annual leave days do I have?"),
+  );
+  await userEvent.type(
+    screen.getByLabelText("Ask about a company policy"),
+    "What is my notice period?",
+  );
+  release(result);
+  await screen.findByText(result.answer);
+  expect(screen.getByLabelText("Ask about a company policy")).toHaveValue(
+    "What is my notice period?",
+  );
 });

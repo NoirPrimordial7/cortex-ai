@@ -1,5 +1,17 @@
 # Development log
 
+## 2026-10-10T00:44:00+05:30 — Selected Fieldbook Ask Cortex implementation
+
+- Exact attached Fieldbook and Reference House images resolve the selection; owner locked identity and prioritized Ask UX over further variations or other-page redesign.
+- Scoped lazy assistant CSS and self-hosted OFL Fraunces/DM Sans; top masthead retains full navigation in the menu. Other routes retain Atlas.
+- Replaced duplicated evidence with compact citations and one detailed inspector. Desktop collapse restores focus; mobile native modal makes background inert, wraps Tab/Shift+Tab, supports Escape/Back and restores citation focus without moving scroll.
+- Reserved a scrolling answer area above the persistent composer. Normal scrolling takes over in short keyboard-like viewports. Long answers use a smaller reading size; follow-up drafts survive in-flight responses. Original question remains bound to its response.
+- Existing endpoints, ACLs, source hashes, tenant isolation, date/population semantics, conflict abstention, session revision invalidation and conditional full hosted disclosure preserved. No backend source changes or credential persistence.
+- Checks: frontend13, Playwright13, backend38 pass; Ruff, strict build and npm audit pass. Chromium320/390/768/1280/1440 light/dark tested. Real local annual leave and remote-work conflict exercised through existing fictional session. QA comparison source/actual captured together at1536×1024; root design-qa.md passes the bounded local gate.
+- Fixed focus escaping into browser chrome, composer covering citations, legacy label margins and paper background override, and source-loading synchronization in the contrast test. Sixteen sampled text pairs min5.38:1; control boundary min3.17:1.
+- Initial JS100.19kB gzip versus100.01kB before; assistant CSS3.77kB gzip; self-hosted fonts73,552bytes. These are build sizes, not network, API or Core Web Vitals claims.
+- Physical-device/Safari/assistive technology, measured web vitals and production deployment remain outstanding. Updated existing draft PR #2; no main merge or live deploy.
+
 ## 2026-10-10T00:11:00+05:30 — Evidence Desk second exploration
 
 - Owner rejected the first set and requested five to six fresh concepts; generated exactly six independent built-in Image Gen results, displayed sequentially with desktop/mobile companion views.

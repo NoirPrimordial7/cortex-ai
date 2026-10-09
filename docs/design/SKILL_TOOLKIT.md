@@ -1,5 +1,7 @@
 # Cortex AI — curated agent design toolkit
 
+**Current update, 2026-10-10:** Fieldbook is selected and Ask Cortex is implemented on the review branch. Playwright 1.64.0 is installed and its 13 browser scenarios pass; [implementation record](evidence-desk/selected/README.md). Historical status statements below describe the earlier preparation checkpoint.
+
 **Status:** four selected skills installed locally at project scope on 2026-10-09; all four appeared in the next turn's catalog on 2026-10-10, confirming discovery. Pinned sources and inspection results are recorded in [the installation record](evidence-desk/SKILL_INSTALLATION.md). Playwright test dependencies and browser binaries remain a later implementation step. This branch has no application UI changes. [Latest six-concept exploration](evidence-desk/round-2/README.md) awaits owner selection.
 
 ## Recommended sources (start small)

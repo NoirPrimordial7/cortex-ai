@@ -34,6 +34,8 @@ const Activity = lazy(() => import("./pages/Activity"));
 const Permissions = lazy(() => import("./pages/Permissions"));
 export default function App() {
   const { user, ready, signOut } = useSession();
+  const location = useLocation();
+  const isAssistant = location.pathname === "/assistant";
   const [dark, setDark] = useState(false),
     [menu, setMenu] = useState(false),
     [error, setError] = useState("");
@@ -52,7 +54,7 @@ export default function App() {
     return () => query.removeEventListener("change", changed);
   }, []);
   useEffect(() => {
-    if (!menu || !mobile) return;
+    if (!menu || (!mobile && !isAssistant)) return;
     rail.current?.querySelector<HTMLAnchorElement>("a")?.focus();
     const key = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -78,8 +80,7 @@ export default function App() {
     };
     document.addEventListener("keydown", key);
     return () => document.removeEventListener("keydown", key);
-  }, [menu, mobile]);
-  const location = useLocation();
+  }, [menu, mobile, isAssistant]);
   if (!ready) return <State loading />;
   if (!user) return <Login />;
   const nav = [
@@ -119,7 +120,11 @@ export default function App() {
   const title =
     nav.find((n) => n.to === location.pathname)?.label || "Document workspace";
   return (
-    <div className={"app " + (dark ? "dark" : "")}>
+    <div
+      className={
+        "app " + (dark ? "dark " : "") + (isAssistant ? "is-assistant" : "")
+      }
+    >
       <a className="skip-link" href="#workspace">
         Skip to workspace
       </a>
@@ -203,21 +208,44 @@ export default function App() {
           </div>
         </footer>
       </aside>
-      <div className="app-body" inert={mobile && menu}>
-        <header className="topbar">
-          <span>{title}</span>
-          <div>
-            <span className="environment">
-              {user.read_only_demo ? "Shared demo" : "Local workspace"}
+      <div className="app-body" inert={(mobile || isAssistant) && menu}>
+        {isAssistant ? (
+          <header className="fb-masthead">
+            <NavLink
+              to="/assistant"
+              className="fb-wordmark"
+              aria-label="Cortex home"
+            >
+              Cortex
+            </NavLink>
+            <span className="fb-tagline">The Evidence Desk</span>
+            <nav aria-label="Primary navigation">
+              <NavLink to="/assistant">Ask</NavLink>
+              <NavLink to="/documents">Policies</NavLink>
+              <NavLink to="/history">My activity</NavLink>
+            </nav>
+            <span className="fb-workspace-name">
+              {user.workspace === "NORTHSTAR"
+                ? "Northstar Works"
+                : user.workspace}
             </span>
-            <span className="top-date">
-              {new Intl.DateTimeFormat("en", {
-                dateStyle: "medium",
-                timeZone: "Asia/Kolkata",
-              }).format(new Date())}
-            </span>
-          </div>
-        </header>
+          </header>
+        ) : (
+          <header className="topbar">
+            <span>{title}</span>
+            <div>
+              <span className="environment">
+                {user.read_only_demo ? "Shared demo" : "Local workspace"}
+              </span>
+              <span className="top-date">
+                {new Intl.DateTimeFormat("en", {
+                  dateStyle: "medium",
+                  timeZone: "Asia/Kolkata",
+                }).format(new Date())}
+              </span>
+            </div>
+          </header>
+        )}
         <main id="workspace" className="workspace">
           {user.read_only_demo && (
             <p className="shared-demo-note">

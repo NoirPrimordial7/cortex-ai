@@ -1,5 +1,7 @@
 # Evidence Desk: six new directions
 
+**Selected:** Fieldbook, with editorial refinement from the owner's separate Reference House attachment. [Current implementation](../selected/README.md). The exploration notes below describe the earlier selection checkpoint.
+
 2026-10-10, Asia/Calcutta. The owner rejected the first three concepts and requested five to six new ideas. This second set contains exactly six independently generated concepts. Selection numbers refer exclusively to the six images displayed in this round, in the order below. No design has been selected or implemented.
 
 | Displayed choice | Concept | Primary composition |

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-10 — Fieldbook Ask Cortex UX
+
+- Selected Fieldbook identity with editorial refinement, scoped to Ask.
+- Compact citations, collapsible detailed document inspector and focused mobile evidence view with Back/Escape/focus return.
+- Persistent follow-up composer, separate scrolling reading area, smaller long-answer type, consistent control spacing and both themes.
+- Added pinned Playwright tooling and 13 responsive interaction scenarios. Frontend13/backend38 regressions, build, Ruff and dependency audit pass. [QA and screenshots](../design/evidence-desk/selected/README.md).
+- Review branch only; other routes retain Atlas and production deployment is pending.
+
 ## 2026-10-10T00:11:00+05:30 — Evidence Desk second exploration
 
 - Owner rejected the first set and requested five to six fresh concepts; generated exactly six independent built-in Image Gen results, displayed sequentially with desktop/mobile companion views.

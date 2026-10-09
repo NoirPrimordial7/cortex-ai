@@ -69,3 +69,5 @@ Thumbs.db
 # Ignore rules cannot guarantee secrecy. Review every staged diff before pushing.
 *.tsbuildinfo
 .vercel/
+frontend/test-results/
+frontend/playwright-report/

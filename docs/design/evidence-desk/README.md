@@ -1,5 +1,7 @@
 # Evidence Desk: visual selection checkpoint
 
+**Current, 2026-10-10:** the owner selected Fieldbook with Reference House editorial refinement and locked the identity. [Ask Cortex implementation and browser verification](selected/README.md) supersede the pending-selection notes below. Other routes and the public deployment retain Atlas Professional. Earlier exploration records are preserved as history.
+
 **Latest exploration, 2026-10-10:** the owner rejected the three concepts below and requested five to six new ideas. [Round 2 contains six new concepts](round-2/README.md). Selection numbers now refer to that newer displayed set; the original artwork below is preserved for history. All four installed skills appeared in the next turn's catalog, confirming discovery.
 
 2026-10-09, Asia/Calcutta. Four curated project skills are locally installed; fresh-session discovery is pending. [Installation and exact pins](SKILL_INSTALLATION.md). The existing design preparation branch and draft [PR #2](https://github.com/NoirPrimordial7/cortex-ai/pull/2) are used, preserving the current deployed Atlas Professional UI.
