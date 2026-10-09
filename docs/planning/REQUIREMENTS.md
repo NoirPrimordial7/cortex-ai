@@ -35,7 +35,7 @@ A local, single-company pilot answers bounded HR and operational policy question
 
 Run a single browser-to-backend vertical slice with two users, explicit ACLs, 11 fictional versions, deterministic dates/conflicts, cited evidence and revocation checks. Prefer all nine essential scenarios over adding embeddings or a fluent model. PDF/DOCX acceptance is text-bearing input only; OCR, arbitrary legal interpretation, live connectors, SSO, enterprise certification and autonomous agents are excluded.
 
-Budget assumption: one developer and roughly 8–12 focused hours after approval. Full A backlog is approximately 13–20 hours including integration; tomorrow delivery is at risk unless time/team permit. Cut polish and optional parsers first, never access checks. A minimum TXT-only slice must be labeled partial and cannot pass the full MVP gate.
+Budget assumption: one developer and roughly 8–12 focused hours after approval. Full A backlog is approximately 13–26 hours including integration; tomorrow delivery is at risk unless time/team permit. Cut polish and optional parsers first, never access checks. A minimum TXT-only slice must be labeled partial and cannot pass the full MVP gate.
 
 ## Research traceability
 

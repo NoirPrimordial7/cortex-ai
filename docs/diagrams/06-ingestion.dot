@@ -2,7 +2,7 @@ digraph G { graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.35", rank
 subgraph cluster_workflow {label="PROPOSED WORKFLOW / RELATED ENTITIES";fontsize=10;color="#dce2eb";style="rounded";
 up [label="Authorized manager uploads\nTXT / text PDF / DOCX",fillcolor="#f1f5f9"];
 bounds [label="Type + size + signature validation\nServer-generated object path",fillcolor="#e7edff"];
-parse [label="Quarantine → bounded child parser\nNo network / no macro execution",fillcolor="#e7edff"];
+parse [label="Quarantine → bounded child parser\nNo remote fetch / no macro execution",fillcolor="#e7edff"];
 fail [label="FAILED / unsupported\nSafe error; never searchable",fillcolor="#f1f5f9"];
 text [label="Immutable extracted text + hash\nPage / paragraph / line locator",fillcolor="#eef0f4"];
 review [label="PENDING REVIEW\nACL + scope + dates + claims",fillcolor="#fff1d6"];

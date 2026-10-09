@@ -16,7 +16,7 @@ The diagram groups identity, document knowledge, and query provenance. The table
 | permissions | action_key | global immutable action registry; no tenant data |
 | user_roles | user_id, role_id | composite PK; same tenant FKs |
 | role_permissions | role_id, permission_key | unique role/action mapping |
-| sessions | user_id, token_digest, csrf_digest, created_at, expires_at, revoked_at | unique token digest; raw token never stored; active user/revision checked per request |
+| sessions | user_id, token_digest, csrf_digest, created_at, last_seen_at, expires_at, revoked_at | unique token digest; raw token never stored; idle expiry checks last_seen_at; active user/revision checked per request |
 | document_acl | document_id, user_id nullable, role_id nullable, action=READ | exactly one subject (`user XOR role`); explicit grants only; no public/default allow |
 
 Roles grant operations such as `query.execute`, `document.upload`, `document.review`, `acl.manage`, `user.manage`, `audit.read`. A READ grant determines which document text may be used. Admin does not bypass READ; assigning access is a privileged, auditable governance action. Knowledge manager reviews only documents they can READ. A uploader receives an explicit private READ grant created in the upload transaction; manager must grant additional reader roles before approval.
@@ -61,3 +61,33 @@ Search joins tenant and current user/role grants before LIMIT and before selecti
 Indexes: tenant/email, session digest/expiry, document tenant/archive, ACL tenant/document/subject, clauses tenant/topic/population/jurisdiction/interval/version, version extraction/index state, query tenant/user/time, audit tenant/time. Add unique(tenant,id) on FK parents. Foreign-key cascades restricted for immutable/provenance rows; deletion becomes controlled archival with retention B, not accidental cascade.
 
 Publication/ACL edits execute in one transaction under tenant write gate; increment revisions. Validate tenant FKs, supersession cycles, interval endpoints and reviewed claims; update FTS/index_generation and audit event together. Database rollback must leave neither partially published evidence nor orphaned index entry. Fixture tests cover each constraint; schema file/migrations are Phase 3 tasks.
+
+## Editable Mermaid ERD
+
+```mermaid
+erDiagram
+ TENANTS ||--o{ USERS : contains
+ USERS ||--o{ SESSIONS : authenticates
+ USERS ||--o{ USER_ROLES : joins
+ ROLES ||--o{ USER_ROLES : assigns
+ ROLES ||--o{ ROLE_PERMISSIONS : permits
+ PERMISSIONS ||--o{ ROLE_PERMISSIONS : defines
+ TENANTS ||--o{ DOCUMENTS : owns
+ DOCUMENTS ||--o{ DOCUMENT_ACL : grants
+ USERS o|--o{ DOCUMENT_ACL : user_subject
+ ROLES o|--o{ DOCUMENT_ACL : role_subject
+ DOCUMENTS ||--o{ DOCUMENT_VERSIONS : versions
+ DOCUMENT_VERSIONS ||--o{ METADATA_REVISIONS : reviews
+ DOCUMENT_VERSIONS ||--o{ CLAUSES : contains
+ CLAUSES ||--o{ POLICY_CLAIMS : asserts
+ AUTHORITY_RULES ||--o{ CLAUSES : ranks
+ CLAUSES ||--o{ SUPERSESSION_EDGES : predecessor
+ CLAUSES ||--o{ SUPERSESSION_EDGES : successor
+ USERS ||--o{ QUERIES : asks
+ QUERIES ||--o{ CITATIONS : supports
+ CLAUSES ||--o{ CITATIONS : cites
+ QUERIES ||--o{ CONFLICTS : detects
+ CONFLICTS ||--o{ CONFLICT_EVIDENCE : explains
+ CLAUSES ||--o{ CONFLICT_EVIDENCE : compares
+ USERS o|--o{ AUDIT_EVENTS : acts
+```

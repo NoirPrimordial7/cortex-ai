@@ -10,7 +10,7 @@
 | GET /auth/session | cookie | 200 user display name, roles/action keys, CSRF token; 401; Cache-Control:no-store |
 | POST /auth/logout | CSRF | 204 revoke current session |
 | GET /dashboard | scope optional | 200 permitted document counts, own activity and readable unresolved conflict counts only |
-| GET /documents | q, category, state, cursor, limit<=50 | 200 allowed titles/metadata only; no total across hidden docs |
+| GET /documents | q, category, state, cursor, limit<=50, view=document or version | 200 allowed titles/metadata only; default grouped documents; version view permits repeated identity rows; no total across hidden docs |
 | POST /documents | multipart file, title, category | 202 document/version/job IDs; upload permission; private ACL auto-grant; protected metadata rejected |
 | GET /ingestion-jobs/{id} | — | 200 safe state/error, readable document required; generic 404 otherwise |
 | GET /documents/{id} | — | 200 permitted metadata, versions; READ required |
@@ -55,3 +55,26 @@ Internal policy/knowledge revisions, rejection lists and raw retrieval/debug sco
 ## Idempotency, pagination and races
 
 POST uploads use optional user-scoped Idempotency-Key with payload hash and replay-safe job result; mismatched payload →409. Duplicate content versions require explicit reviewer decision; never silently overwrite. Cursor binds tenant, user, filters and policy revision, signed by server; invalid/stale cursor →409 restart. No client SQL/FTS/ACL expression accepted. Query timeout 5 seconds evidence mode target, optional inference separate budget B; timeout produces safe failure with no partial hidden output. Exact achieved latency requires measurement.
+
+## Editable Mermaid request sequence
+
+```mermaid
+sequenceDiagram
+ actor U as Employee browser
+ participant A as FastAPI
+ participant P as Policy repository
+ participant R as Authorized retrieval
+ participant C as Reasoning + answerer
+ U->>A: POST /queries (cookie, query, as_of, scope)
+ A->>P: Authenticate, action permission, current revisions
+ P-->>A: Trusted identity + eligibility context
+ A->>R: Permission-filtered IDs then date/scope validation
+ R-->>C: Authorized evidence + permitted peers only
+ C-->>A: Answer or abstention + supported citations
+ A->>P: Recheck READ grants and revisions
+ alt unchanged and allowed
+ A-->>U: Permitted answer and evidence
+ else revoked or changed
+ A-->>U: Safe CONTEXT_CHANGED abstention
+ end
+```

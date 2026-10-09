@@ -4,7 +4,7 @@ title: Cortex AI — upload, indexing and versioning
 flowchart TB
   up["Authorized manager uploads<br/>TXT / text PDF / DOCX"]:::client
   bounds["Type + size + signature validation<br/>Server-generated object path"]:::app
-  parse["Quarantine → bounded child parser<br/>No network / no macro execution"]:::app
+  parse["Quarantine → bounded child parser<br/>No remote fetch / no macro execution"]:::app
   fail["FAILED / unsupported<br/>Safe error; never searchable"]:::client
   text["Immutable extracted text + hash<br/>Page / paragraph / line locator"]:::store
   review["PENDING REVIEW<br/>ACL + scope + dates + claims"]:::decision

@@ -19,37 +19,37 @@
 <!-- up -->
 <g id="node1" class="node">
 <title>up</title>
-<path fill="#f1f5f9" stroke="#8190a8" stroke-width="1.2" d="M351.71,-954.6C351.71,-954.6 208.29,-954.6 208.29,-954.6 202.29,-954.6 196.29,-948.6 196.29,-942.6 196.29,-942.6 196.29,-916.2 196.29,-916.2 196.29,-910.2 202.29,-904.2 208.29,-904.2 208.29,-904.2 351.71,-904.2 351.71,-904.2 357.71,-904.2 363.71,-910.2 363.71,-916.2 363.71,-916.2 363.71,-942.6 363.71,-942.6 363.71,-948.6 357.71,-954.6 351.71,-954.6"/>
-<text xml:space="preserve" text-anchor="middle" x="280" y="-933" font-family="Segoe UI" font-size="12.00" fill="#182238">Authorized manager uploads</text>
-<text xml:space="preserve" text-anchor="middle" x="280" y="-918.6" font-family="Segoe UI" font-size="12.00" fill="#182238">TXT / text PDF / DOCX</text>
+<path fill="#f1f5f9" stroke="#8190a8" stroke-width="1.2" d="M349.71,-954.6C349.71,-954.6 206.29,-954.6 206.29,-954.6 200.29,-954.6 194.29,-948.6 194.29,-942.6 194.29,-942.6 194.29,-916.2 194.29,-916.2 194.29,-910.2 200.29,-904.2 206.29,-904.2 206.29,-904.2 349.71,-904.2 349.71,-904.2 355.71,-904.2 361.71,-910.2 361.71,-916.2 361.71,-916.2 361.71,-942.6 361.71,-942.6 361.71,-948.6 355.71,-954.6 349.71,-954.6"/>
+<text xml:space="preserve" text-anchor="middle" x="278" y="-933" font-family="Segoe UI" font-size="12.00" fill="#182238">Authorized manager uploads</text>
+<text xml:space="preserve" text-anchor="middle" x="278" y="-918.6" font-family="Segoe UI" font-size="12.00" fill="#182238">TXT / text PDF / DOCX</text>
 </g>
 <!-- bounds -->
 <g id="node2" class="node">
 <title>bounds</title>
-<path fill="#e7edff" stroke="#8190a8" stroke-width="1.2" d="M364.31,-842.2C364.31,-842.2 195.69,-842.2 195.69,-842.2 189.69,-842.2 183.69,-836.2 183.69,-830.2 183.69,-830.2 183.69,-803.8 183.69,-803.8 183.69,-797.8 189.69,-791.8 195.69,-791.8 195.69,-791.8 364.31,-791.8 364.31,-791.8 370.31,-791.8 376.31,-797.8 376.31,-803.8 376.31,-803.8 376.31,-830.2 376.31,-830.2 376.31,-836.2 370.31,-842.2 364.31,-842.2"/>
-<text xml:space="preserve" text-anchor="middle" x="280" y="-820.6" font-family="Segoe UI" font-size="12.00" fill="#182238">Type + size + signature validation</text>
-<text xml:space="preserve" text-anchor="middle" x="280" y="-806.2" font-family="Segoe UI" font-size="12.00" fill="#182238">Server&#45;generated object path</text>
+<path fill="#e7edff" stroke="#8190a8" stroke-width="1.2" d="M362.31,-842.2C362.31,-842.2 193.69,-842.2 193.69,-842.2 187.69,-842.2 181.69,-836.2 181.69,-830.2 181.69,-830.2 181.69,-803.8 181.69,-803.8 181.69,-797.8 187.69,-791.8 193.69,-791.8 193.69,-791.8 362.31,-791.8 362.31,-791.8 368.31,-791.8 374.31,-797.8 374.31,-803.8 374.31,-803.8 374.31,-830.2 374.31,-830.2 374.31,-836.2 368.31,-842.2 362.31,-842.2"/>
+<text xml:space="preserve" text-anchor="middle" x="278" y="-820.6" font-family="Segoe UI" font-size="12.00" fill="#182238">Type + size + signature validation</text>
+<text xml:space="preserve" text-anchor="middle" x="278" y="-806.2" font-family="Segoe UI" font-size="12.00" fill="#182238">Server&#45;generated object path</text>
 </g>
 <!-- up&#45;&gt;bounds -->
 <g id="edge1" class="edge">
 <title>up&#45;&gt;bounds</title>
-<path fill="none" stroke="#62738b" d="M280,-903.62C280,-888.14 280,-868.01 280,-851.16"/>
-<polygon fill="#62738b" stroke="#62738b" points="282.45,-851.21 280,-844.21 277.55,-851.21 282.45,-851.21"/>
-<text xml:space="preserve" text-anchor="middle" x="325.41" y="-870.2" font-family="Segoe UI" font-size="10.00" fill="#334155">new document/version</text>
+<path fill="none" stroke="#62738b" d="M278,-903.62C278,-888.14 278,-868.01 278,-851.16"/>
+<polygon fill="#62738b" stroke="#62738b" points="280.45,-851.21 278,-844.21 275.55,-851.21 280.45,-851.21"/>
+<text xml:space="preserve" text-anchor="middle" x="323.41" y="-870.2" font-family="Segoe UI" font-size="10.00" fill="#334155">new document/version</text>
 </g>
 <!-- parse -->
 <g id="node3" class="node">
 <title>parse</title>
-<path fill="#e7edff" stroke="#8190a8" stroke-width="1.2" d="M303.87,-729.8C303.87,-729.8 130.13,-729.8 130.13,-729.8 124.13,-729.8 118.13,-723.8 118.13,-717.8 118.13,-717.8 118.13,-691.4 118.13,-691.4 118.13,-685.4 124.13,-679.4 130.13,-679.4 130.13,-679.4 303.87,-679.4 303.87,-679.4 309.87,-679.4 315.87,-685.4 315.87,-691.4 315.87,-691.4 315.87,-717.8 315.87,-717.8 315.87,-723.8 309.87,-729.8 303.87,-729.8"/>
-<text xml:space="preserve" text-anchor="middle" x="217" y="-708.2" font-family="Segoe UI" font-size="12.00" fill="#182238">Quarantine → bounded child parser</text>
-<text xml:space="preserve" text-anchor="middle" x="217" y="-693.8" font-family="Segoe UI" font-size="12.00" fill="#182238">No network / no macro execution</text>
+<path fill="#e7edff" stroke="#8190a8" stroke-width="1.2" d="M304.36,-729.8C304.36,-729.8 117.64,-729.8 117.64,-729.8 111.64,-729.8 105.64,-723.8 105.64,-717.8 105.64,-717.8 105.64,-691.4 105.64,-691.4 105.64,-685.4 111.64,-679.4 117.64,-679.4 117.64,-679.4 304.36,-679.4 304.36,-679.4 310.36,-679.4 316.36,-685.4 316.36,-691.4 316.36,-691.4 316.36,-717.8 316.36,-717.8 316.36,-723.8 310.36,-729.8 304.36,-729.8"/>
+<text xml:space="preserve" text-anchor="middle" x="211" y="-708.2" font-family="Segoe UI" font-size="12.00" fill="#182238">Quarantine → bounded child parser</text>
+<text xml:space="preserve" text-anchor="middle" x="211" y="-693.8" font-family="Segoe UI" font-size="12.00" fill="#182238">No remote fetch / no macro execution</text>
 </g>
 <!-- bounds&#45;&gt;parse -->
 <g id="edge2" class="edge">
 <title>bounds&#45;&gt;parse</title>
-<path fill="none" stroke="#62738b" d="M265.86,-791.22C256.78,-775.31 244.91,-754.5 235.14,-737.38"/>
-<polygon fill="#62738b" stroke="#62738b" points="237.44,-736.47 231.84,-731.61 233.18,-738.9 237.44,-736.47"/>
-<text xml:space="preserve" text-anchor="middle" x="267.87" y="-757.8" font-family="Segoe UI" font-size="10.00" fill="#334155">accepted</text>
+<path fill="none" stroke="#62738b" d="M262.96,-791.22C253.31,-775.31 240.68,-754.5 230.29,-737.38"/>
+<polygon fill="#62738b" stroke="#62738b" points="232.5,-736.3 226.77,-731.59 228.31,-738.84 232.5,-736.3"/>
+<text xml:space="preserve" text-anchor="middle" x="263.99" y="-757.8" font-family="Segoe UI" font-size="10.00" fill="#334155">accepted</text>
 </g>
 <!-- fail -->
 <g id="node4" class="node">
@@ -61,14 +61,14 @@
 <!-- bounds&#45;&gt;fail -->
 <g id="edge3" class="edge">
 <title>bounds&#45;&gt;fail</title>
-<path fill="none" stroke="#62738b" d="M303.44,-791.43C321,-770.38 342,-738.35 342,-705.6 342,-705.6 342,-705.6 342,-265 342,-238.23 334.42,-208.83 327.29,-187.1"/>
+<path fill="none" stroke="#62738b" d="M302.2,-791.56C320.32,-770.59 342,-738.61 342,-705.6 342,-705.6 342,-705.6 342,-265 342,-238.23 334.42,-208.83 327.29,-187.1"/>
 <polygon fill="#62738b" stroke="#62738b" points="329.65,-186.45 325.08,-180.61 325.01,-188.02 329.65,-186.45"/>
 <text xml:space="preserve" text-anchor="middle" x="355.89" y="-487.8" font-family="Segoe UI" font-size="10.00" fill="#334155">invalid</text>
 </g>
 <!-- parse&#45;&gt;fail -->
 <g id="edge4" class="edge">
 <title>parse&#45;&gt;fail</title>
-<path fill="none" stroke="#62738b" d="M243.48,-679.09C262.94,-658.32 286,-626.65 286,-593.2 286,-593.2 286,-593.2 286,-265 286,-238.11 294.14,-208.72 301.8,-187.03"/>
+<path fill="none" stroke="#62738b" d="M240.21,-679.13C261.27,-658.61 286,-627.26 286,-593.2 286,-593.2 286,-593.2 286,-265 286,-238.11 294.14,-208.72 301.8,-187.03"/>
 <polygon fill="#62738b" stroke="#62738b" points="304.07,-187.95 304.17,-180.53 299.47,-186.26 304.07,-187.95"/>
 <text xml:space="preserve" text-anchor="middle" x="310.85" y="-431.6" font-family="Segoe UI" font-size="10.00" fill="#334155">parse failure</text>
 </g>
@@ -82,9 +82,9 @@
 <!-- parse&#45;&gt;text -->
 <g id="edge5" class="edge">
 <title>parse&#45;&gt;text</title>
-<path fill="none" stroke="#62738b" d="M206,-678.82C199.01,-663.06 189.87,-642.47 182.31,-625.44"/>
-<polygon fill="#62738b" stroke="#62738b" points="184.65,-624.68 179.57,-619.28 180.17,-626.67 184.65,-624.68"/>
-<text xml:space="preserve" text-anchor="middle" x="208.96" y="-645.4" font-family="Segoe UI" font-size="10.00" fill="#334155">success</text>
+<path fill="none" stroke="#62738b" d="M201.35,-678.82C195.21,-663.06 187.19,-642.47 180.56,-625.44"/>
+<polygon fill="#62738b" stroke="#62738b" points="182.99,-624.94 178.17,-619.3 178.42,-626.72 182.99,-624.94"/>
+<text xml:space="preserve" text-anchor="middle" x="205.78" y="-645.4" font-family="Segoe UI" font-size="10.00" fill="#334155">success</text>
 </g>
 <!-- review -->
 <g id="node6" class="node">

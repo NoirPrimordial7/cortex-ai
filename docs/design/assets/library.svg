@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" role="img"><title>Cortex AI Phase 2 fictional design concept — not implemented</title><rect width="1440" height="1000" fill="#F6F7F9"/>
+<rect x="0" y="0" width="1440" height="32" rx="0" fill="#E9EDF2" stroke="none"/>
+<text x="24" y="21" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#526174" font-weight="600">PHASE 2 DESIGN CONCEPT  /  FICTIONAL NORTHSTAR WORKS  /  NONFUNCTIONAL</text>
+<rect x="0" y="32" width="224" height="968" rx="0" fill="#142033" stroke="none"/>
+<text x="28" y="91" font-family="Segoe UI,Arial,sans-serif" font-size="30" fill="#FFFFFF" font-weight="700">cortex</text>
+<text x="132" y="91" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6AE0C3" font-weight="600">AI</text>
+<text x="28" y="122" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#BBC7D6" font-weight="600">KNOWLEDGE INTELLIGENCE</text>
+<rect x="20" y="153" width="184" height="52" rx="8" fill="#213047" stroke="none"/>
+<text x="34" y="175" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#FFFFFF" font-weight="600">Northstar Works</text>
+<text x="34" y="193" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#BBC7D6" font-weight="400">Fictional company</text>
+<text x="30" y="258" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#BBC7D6" font-weight="400">Overview</text>
+<text x="30" y="312" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#BBC7D6" font-weight="400">Knowledge assistant</text>
+<rect x="16" y="341" width="192" height="44" rx="8" fill="#294C4B" stroke="none"/>
+<text x="30" y="366" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6AE0C3" font-weight="600">Document library</text>
+<text x="30" y="420" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#BBC7D6" font-weight="400">Conflicts &amp; validity</text>
+<path d="M24 516 L200 516" stroke="#34445B" stroke-width="1"/>
+<text x="28" y="550" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#BBC7D6" font-weight="600">WORKSPACE</text>
+<text x="28" y="585" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#BBC7D6" font-weight="400">My activity</text>
+<text x="28" y="913" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#FFFFFF" font-weight="600">Maya Shah</text>
+<text x="28" y="936" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#BBC7D6" font-weight="400">Employee · demo identity</text>
+<rect x="224" y="32" width="1216" height="64" rx="0" fill="#FFFFFF" stroke="none"/>
+<text x="264" y="71" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#526174" font-weight="600">Document library</text>
+<text x="1204" y="71" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">9 October 2026</text>
+<path d="M224 96 L1440 96" stroke="#DDE3EA" stroke-width="1"/>
+<text x="264" y="153" font-family="Segoe UI,Arial,sans-serif" font-size="30" fill="#142033" font-weight="600">Document library</text>
+<text x="264" y="183" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#526174" font-weight="400">Review the source, version and effective dates before relying on a policy.</text>
+<rect x="264" y="216" width="1136" height="58" rx="8" fill="#FFFFFF" stroke="#DDE3EA"/>
+<text x="286" y="251" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#526174" font-weight="400">Search permitted documents…</text>
+<text x="944" y="251" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#142033" font-weight="400">All categories</text>
+<text x="1132" y="251" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#142033" font-weight="400">All states</text>
+<text x="1298" y="251" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">8 visible</text>
+<rect x="264" y="300" width="1136" height="52" rx="8" fill="#EDF0F4" stroke="none"/>
+<text x="284" y="332" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#526174" font-weight="600">DOCUMENT / VERSION</text>
+<text x="700" y="332" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#526174" font-weight="600">CATEGORY</text>
+<text x="826" y="332" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#526174" font-weight="600">APPROVAL</text>
+<text x="992" y="332" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#526174" font-weight="600">EFFECTIVE PERIOD</text>
+<text x="1243" y="332" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#526174" font-weight="600">VALIDITY</text>
+<rect x="264" y="352" width="1136" height="82" rx="0" fill="#FFFFFF" stroke="none"/>
+<text x="284" y="383" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#142033" font-weight="600">Annual leave policy</text>
+<text x="284" y="408" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">LEAVE-2026</text>
+<text x="700" y="395" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">HR</text>
+<text x="826" y="395" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#067267" font-weight="400">Approved</text>
+<text x="992" y="395" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">01 Jan–31 Dec 2026</text>
+<rect x="1243" y="378" width="73" height="28" rx="14" fill="#E3F4EF" stroke="none"/>
+<text x="1255" y="397" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#067267" font-weight="600">Current</text>
+<path d="M264 434 L1400 434" stroke="#DDE3EA" stroke-width="1"/>
+<rect x="264" y="434" width="1136" height="82" rx="0" fill="#FFFFFF" stroke="none"/>
+<text x="284" y="465" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#142033" font-weight="600">Annual leave policy</text>
+<text x="284" y="490" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">LEAVE-2027 · uploaded 9 Oct</text>
+<text x="700" y="477" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">HR</text>
+<text x="826" y="477" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#067267" font-weight="400">Approved</text>
+<text x="992" y="477" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">From 01 Jan 2027</text>
+<rect x="1243" y="460" width="72" height="28" rx="14" fill="#EDF0F4" stroke="none"/>
+<text x="1255" y="479" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="600">Future</text>
+<path d="M264 516 L1400 516" stroke="#DDE3EA" stroke-width="1"/>
+<rect x="264" y="516" width="1136" height="82" rx="0" fill="#FFFFFF" stroke="none"/>
+<text x="284" y="547" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#142033" font-weight="600">Remote work policy A</text>
+<text x="284" y="572" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">REMOTE-A</text>
+<text x="700" y="559" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Operations</text>
+<text x="826" y="559" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#067267" font-weight="400">Approved</text>
+<text x="992" y="559" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">From 01 Jan 2026</text>
+<rect x="1243" y="542" width="80" height="28" rx="14" fill="#FFF3D6" stroke="none"/>
+<text x="1255" y="561" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8F5900" font-weight="600">Conflict</text>
+<path d="M264 598 L1400 598" stroke="#DDE3EA" stroke-width="1"/>
+<rect x="264" y="598" width="1136" height="82" rx="0" fill="#FFFFFF" stroke="none"/>
+<text x="284" y="629" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#142033" font-weight="600">Remote work policy B</text>
+<text x="284" y="654" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">REMOTE-B</text>
+<text x="700" y="641" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Operations</text>
+<text x="826" y="641" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#067267" font-weight="400">Approved</text>
+<text x="992" y="641" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">From 01 Jan 2026</text>
+<rect x="1243" y="624" width="80" height="28" rx="14" fill="#FFF3D6" stroke="none"/>
+<text x="1255" y="643" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8F5900" font-weight="600">Conflict</text>
+<path d="M264 680 L1400 680" stroke="#DDE3EA" stroke-width="1"/>
+<rect x="264" y="680" width="1136" height="82" rx="0" fill="#FFFFFF" stroke="none"/>
+<text x="284" y="711" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#142033" font-weight="600">Notice period policy</text>
+<text x="284" y="736" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">NOTICE-2026</text>
+<text x="700" y="723" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">HR</text>
+<text x="826" y="723" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#067267" font-weight="400">Approved</text>
+<text x="992" y="723" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">From 01 Jan 2026</text>
+<rect x="1243" y="706" width="73" height="28" rx="14" fill="#E3F4EF" stroke="none"/>
+<text x="1255" y="725" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#067267" font-weight="600">Current</text>
+<path d="M264 762 L1400 762" stroke="#DDE3EA" stroke-width="1"/>
+<rect x="264" y="762" width="1136" height="82" rx="0" fill="#FFFFFF" stroke="none"/>
+<text x="284" y="793" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#142033" font-weight="600">Draft leave proposal</text>
+<text x="284" y="818" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">LEAVE-DRAFT</text>
+<text x="700" y="805" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">HR</text>
+<text x="826" y="805" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#8F5900" font-weight="400">Pending</text>
+<text x="992" y="805" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Unadopted proposal</text>
+<rect x="1243" y="788" width="73" height="28" rx="14" fill="#FFF3D6" stroke="none"/>
+<text x="1255" y="807" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8F5900" font-weight="600">Pending</text>
+<path d="M264 844 L1400 844" stroke="#DDE3EA" stroke-width="1"/>
+<rect x="264" y="878" width="1136" height="62" rx="8" fill="#EBF5F1" stroke="none"/>
+<text x="286" y="914" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#142033" font-weight="400">Newer upload does not mean currently valid. Select a version to inspect its effective interval.</text>
+<text x="264" y="969" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Employee view — permitted documents only. Upload and administration actions depend on separate roles.</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1100" viewBox="0 0 1440 1100" role="img"><title>Cortex AI Phase 2 fictional design concept — not implemented</title><rect width="1440" height="1100" fill="#F6F7F9"/>
+<text x="40" y="57" font-family="Segoe UI,Arial,sans-serif" font-size="30" fill="#142033" font-weight="600">Secondary screen wireframes</text>
+<text x="40" y="87" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">PHASE 2 / NONFUNCTIONAL / fictional data — low-fidelity structures for implementation</text>
+<rect x="40" y="124" width="440" height="408" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<rect x="40" y="124" width="440" height="48" rx="10" fill="#EDF0F4" stroke="none"/>
+<text x="60" y="155" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#142033" font-weight="600">Login</text>
+<rect x="60" y="197" width="78" height="290" rx="5" fill="#EDF0F4" stroke="none"/>
+<rect x="158" y="202" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="170" y="229" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Email and password labels</text>
+<rect x="158" y="294" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="170" y="321" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Sign in / generic error</text>
+<rect x="158" y="386" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="170" y="413" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">No public signup</text>
+<rect x="506" y="124" width="440" height="408" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<rect x="506" y="124" width="440" height="48" rx="10" fill="#EDF0F4" stroke="none"/>
+<text x="526" y="155" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#142033" font-weight="600">Upload &amp; review</text>
+<rect x="526" y="197" width="78" height="290" rx="5" fill="#EDF0F4" stroke="none"/>
+<rect x="624" y="202" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="636" y="229" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">File limits → extraction status</text>
+<rect x="624" y="294" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="636" y="321" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Dates / scope / claims reviewed</text>
+<rect x="624" y="386" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="636" y="413" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Explicit grants → approval</text>
+<rect x="972" y="124" width="440" height="408" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<rect x="972" y="124" width="440" height="48" rx="10" fill="#EDF0F4" stroke="none"/>
+<text x="992" y="155" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#142033" font-weight="600">Document detail</text>
+<rect x="992" y="197" width="78" height="290" rx="5" fill="#EDF0F4" stroke="none"/>
+<rect x="1090" y="202" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="1102" y="229" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Source text + exact locator</text>
+<rect x="1090" y="294" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="1102" y="321" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Publication / upload / valid dates</text>
+<rect x="1090" y="386" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="1102" y="413" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Immutable version timeline</text>
+<rect x="40" y="576" width="440" height="408" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<rect x="40" y="576" width="440" height="48" rx="10" fill="#EDF0F4" stroke="none"/>
+<text x="60" y="607" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#142033" font-weight="600">Conflict analysis</text>
+<rect x="60" y="649" width="78" height="290" rx="5" fill="#EDF0F4" stroke="none"/>
+<rect x="158" y="654" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="170" y="681" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Same scope/date, authority100</text>
+<rect x="158" y="746" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="170" y="773" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">2 days [A] versus 3 days [B]</text>
+<rect x="158" y="838" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="170" y="865" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">No definitive answer</text>
+<rect x="506" y="576" width="440" height="408" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<rect x="506" y="576" width="440" height="48" rx="10" fill="#EDF0F4" stroke="none"/>
+<text x="526" y="607" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#142033" font-weight="600">Users &amp; permissions</text>
+<rect x="526" y="649" width="78" height="290" rx="5" fill="#EDF0F4" stroke="none"/>
+<rect x="624" y="654" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="636" y="681" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Role actions separate from READ</text>
+<rect x="624" y="746" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="636" y="773" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Document user/role grant matrix</text>
+<rect x="624" y="838" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="636" y="865" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Revoke → revision changes</text>
+<rect x="972" y="576" width="440" height="408" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<rect x="972" y="576" width="440" height="48" rx="10" fill="#EDF0F4" stroke="none"/>
+<text x="992" y="607" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#142033" font-weight="600">Audit activity</text>
+<rect x="992" y="649" width="78" height="290" rx="5" fill="#EDF0F4" stroke="none"/>
+<rect x="1090" y="654" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="1102" y="681" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Time / actor / action / outcome</text>
+<rect x="1090" y="746" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="1102" y="773" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Auditor role; sanitized events</text>
+<rect x="1090" y="838" width="300" height="72" rx="5" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="1102" y="865" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">No raw prompts or hidden titles</text>
+<text x="40" y="1063" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">These frames specify layout and state requirements; no workflow has executed.</text>
+</svg>

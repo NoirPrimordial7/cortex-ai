@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000" role="img"><title>Cortex AI Phase 2 fictional design concept — not implemented</title><rect width="1440" height="1000" fill="#F6F7F9"/>
+<rect x="0" y="0" width="1440" height="32" rx="0" fill="#E9EDF2" stroke="none"/>
+<text x="24" y="21" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#526174" font-weight="600">PHASE 2 DESIGN CONCEPT  /  FICTIONAL NORTHSTAR WORKS  /  NONFUNCTIONAL</text>
+<rect x="0" y="32" width="224" height="968" rx="0" fill="#142033" stroke="none"/>
+<text x="28" y="91" font-family="Segoe UI,Arial,sans-serif" font-size="30" fill="#FFFFFF" font-weight="700">cortex</text>
+<text x="132" y="91" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6AE0C3" font-weight="600">AI</text>
+<text x="28" y="122" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#BBC7D6" font-weight="600">KNOWLEDGE INTELLIGENCE</text>
+<rect x="20" y="153" width="184" height="52" rx="8" fill="#213047" stroke="none"/>
+<text x="34" y="175" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#FFFFFF" font-weight="600">Northstar Works</text>
+<text x="34" y="193" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#BBC7D6" font-weight="400">Fictional company</text>
+<rect x="16" y="233" width="192" height="44" rx="8" fill="#294C4B" stroke="none"/>
+<text x="30" y="258" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6AE0C3" font-weight="600">Overview</text>
+<text x="30" y="312" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#BBC7D6" font-weight="400">Knowledge assistant</text>
+<text x="30" y="366" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#BBC7D6" font-weight="400">Document library</text>
+<text x="30" y="420" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#BBC7D6" font-weight="400">Conflicts &amp; validity</text>
+<path d="M24 516 L200 516" stroke="#34445B" stroke-width="1"/>
+<text x="28" y="550" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#BBC7D6" font-weight="600">WORKSPACE</text>
+<text x="28" y="585" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#BBC7D6" font-weight="400">My activity</text>
+<text x="28" y="913" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#FFFFFF" font-weight="600">Maya Shah</text>
+<text x="28" y="936" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#BBC7D6" font-weight="400">Employee · demo identity</text>
+<rect x="224" y="32" width="1216" height="64" rx="0" fill="#FFFFFF" stroke="none"/>
+<text x="264" y="71" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#526174" font-weight="600">Knowledge overview</text>
+<text x="1204" y="71" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">9 October 2026</text>
+<path d="M224 96 L1440 96" stroke="#DDE3EA" stroke-width="1"/>
+<text x="264" y="153" font-family="Segoe UI,Arial,sans-serif" font-size="30" fill="#142033" font-weight="600">Knowledge overview</text>
+<text x="264" y="183" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#526174" font-weight="400">Find the policy that applies — with the evidence to understand it.</text>
+<rect x="264" y="216" width="1136" height="162" rx="12" fill="#EBF5F1" stroke="none"/>
+<text x="296" y="254" font-family="Segoe UI,Arial,sans-serif" font-size="22" fill="#142033" font-weight="600">Good afternoon, Maya.</text>
+<rect x="296" y="277" width="1072" height="62" rx="8" fill="#FFFFFF" stroke="#DDE3EA"/>
+<text x="316" y="314" font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#526174" font-weight="400">Ask a question about company policies…</text>
+<rect x="1241" y="289" width="110" height="38" rx="7" fill="#067267" stroke="none"/>
+<text x="1267" y="314" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#FFFFFF" font-weight="600">Ask Cortex</text>
+<text x="296" y="361" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Try: How many annual leave days do I have?</text>
+<rect x="264" y="402" width="368" height="128" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<text x="288" y="443" font-family="Segoe UI,Arial,sans-serif" font-size="30" fill="#142033" font-weight="600">8</text>
+<text x="288" y="475" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#142033" font-weight="600">Documents you can read</text>
+<text x="288" y="502" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Permission-filtered library</text>
+<rect x="648" y="402" width="368" height="128" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<text x="672" y="443" font-family="Segoe UI,Arial,sans-serif" font-size="30" fill="#142033" font-weight="600">5</text>
+<text x="672" y="475" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#142033" font-weight="600">Applicable sources today</text>
+<text x="672" y="502" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Approved for your scope</text>
+<rect x="1032" y="402" width="368" height="128" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<text x="1056" y="443" font-family="Segoe UI,Arial,sans-serif" font-size="30" fill="#142033" font-weight="600">1</text>
+<text x="1056" y="475" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#142033" font-weight="600">Unresolved policy conflict</text>
+<text x="1056" y="502" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Both sources are readable</text>
+<text x="264" y="578" font-family="Segoe UI,Arial,sans-serif" font-size="20" fill="#142033" font-weight="600">Policies in focus</text>
+<text x="1280" y="578" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#067267" font-weight="600">View library</text>
+<rect x="264" y="598" width="724" height="262" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<text x="288" y="637" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#142033" font-weight="600">Annual leave policy</text>
+<text x="288" y="662" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">20 working days · valid in 2026</text>
+<rect x="815" y="619" width="136" height="28" rx="14" fill="#E3F4EF" stroke="none"/>
+<text x="827" y="638" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#067267" font-weight="600">Approved / valid</text>
+<path d="M288 677 L964 677" stroke="#DDE3EA" stroke-width="1"/>
+<text x="288" y="715" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#142033" font-weight="600">Remote work policies</text>
+<text x="288" y="740" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">2 vs 3 days per week · same authority</text>
+<rect x="815" y="697" width="80" height="28" rx="14" fill="#FFF3D6" stroke="none"/>
+<text x="827" y="716" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8F5900" font-weight="600">Conflict</text>
+<path d="M288 755 L964 755" stroke="#DDE3EA" stroke-width="1"/>
+<text x="288" y="793" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#142033" font-weight="600">Notice period policy</text>
+<text x="288" y="818" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">30 calendar days · valid from Jan 2026</text>
+<rect x="815" y="775" width="136" height="28" rx="14" fill="#E3F4EF" stroke="none"/>
+<text x="827" y="794" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#067267" font-weight="600">Approved / valid</text>
+<rect x="1012" y="598" width="388" height="262" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<text x="1036" y="636" font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#142033" font-weight="600">Your recent activity</text>
+<text x="1036" y="680" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#142033" font-weight="500">Annual leave question</text>
+<text x="1036" y="701" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Today · cited evidence answer</text>
+<text x="1036" y="742" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#142033" font-weight="500">Opened policy source</text>
+<text x="1036" y="763" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Today · LEAVE-2026, line 2</text>
+<text x="1036" y="804" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#142033" font-weight="500">Notice period question</text>
+<text x="1036" y="825" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Yesterday · fictional activity</text>
+<text x="264" y="919" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Design preview: counts and activity are fictional. No live retrieval or measured results.</text>
+</svg>

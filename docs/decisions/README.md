@@ -1,7 +1,16 @@
 # Decision records
 
-No technology-stack or implementation-architecture decision has been approved as of 2026-10-09. Phase 1 documents alternatives and evidence; it must not silently freeze choices. Repository privacy and research-only scope follow the owner's explicit instructions and are not invented architecture decisions.
+Phase1 research is approved; Phase2 was authorized2026-10-09. The following selections are planning baselines awaiting owner review before implementation. They do not mean Phase3 is authorized.
 
-Once Phase 2 is authorized, add numbered records such as `0001-evidence-policy-boundary.md`. Each record should include an ISO 8601 timestamp with timezone, status (proposed/accepted/superseded), phase/module, problem/context, options and primary evidence, decision rationale, consequences, security/evaluation effects, changed files, verification, outstanding questions and commit links. Do not mark a proposal accepted before the review it requires.
+| ADR | Status / scope |
+|---|---|
+| [0001 local stack](0001-local-stack.md) | Selected planning baseline: local relational/lexical pipeline and offline evidence answerer |
+| [0002 evidence boundary](0002-evidence-and-revocation.md) | Selected planning baseline: explicit current READ grants, revisions and reauthorization |
+| [0003 temporal/conflict rules](0003-temporal-conflict-rules.md) | Selected planning baseline: reviewed intervals, structured claims and conflict abstention |
+| [0004 visual identity](0004-evidence-studio-design.md) | Proposed Evidence Studio recommendation; visual direction pending owner review |
+
+Repository was created private in Phase1; current GitHub metadata reports public. This task made no visibility change. Only explicit owner authorization may change visibility/collaborators.
+
+Every record includes an ISO8601 timestamp/timezone, status, phase/module, context/options/evidence, rationale, consequences, security/evaluation effects, files, verification, outstanding questions and commit reference. Do not mark owner review complete before it occurs.
 
 Preserve previous accepted records when a decision changes; add a superseding ADR and link both directions. Decision records explain why; Git records exactly what changed. Update the changelog and relevant activity/research logs for meaningful decisions.

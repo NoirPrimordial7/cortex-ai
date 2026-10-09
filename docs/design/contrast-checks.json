@@ -1,0 +1,47 @@
+{
+  "method": "WCAG relative luminance; selected token pairs only; no full app audit",
+  "pairs": [
+    {
+      "name": "body",
+      "foreground": "#142033",
+      "background": "#FFFFFF",
+      "ratio": 16.35,
+      "normal_text_AA": true
+    },
+    {
+      "name": "muted",
+      "foreground": "#526174",
+      "background": "#FFFFFF",
+      "ratio": 6.32,
+      "normal_text_AA": true
+    },
+    {
+      "name": "primary action",
+      "foreground": "#FFFFFF",
+      "background": "#067267",
+      "ratio": 5.82,
+      "normal_text_AA": true
+    },
+    {
+      "name": "warning",
+      "foreground": "#8F5900",
+      "background": "#FFF3D6",
+      "ratio": 5.29,
+      "normal_text_AA": true
+    },
+    {
+      "name": "sidebar",
+      "foreground": "#BBC7D6",
+      "background": "#142033",
+      "ratio": 9.54,
+      "normal_text_AA": true
+    },
+    {
+      "name": "approved",
+      "foreground": "#067267",
+      "background": "#E3F4EF",
+      "ratio": 5.11,
+      "normal_text_AA": true
+    }
+  ]
+}

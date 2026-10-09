@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840" role="img"><title>Cortex AI Phase 2 fictional design concept — not implemented</title><rect width="1440" height="840" fill="#F6F7F9"/>
+<text x="40" y="62" font-family="Segoe UI,Arial,sans-serif" font-size="30" fill="#142033" font-weight="600">Cortex AI / Evidence Studio moodboard</text>
+<text x="40" y="93" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Original interpretation of inspected SaaS navigation patterns — no copied product screenshots</text>
+<rect x="40" y="133" width="420" height="248" rx="10" fill="#142033" stroke="none"/>
+<text x="64" y="178" font-family="Segoe UI,Arial,sans-serif" font-size="25" fill="#FFFFFF" font-weight="600">Quiet navigation</text>
+<text x="64" y="215" font-family="Segoe UI,Arial,sans-serif" font-size="28" fill="#FFFFFF" font-weight="600">cortex AI</text>
+<text x="64" y="263" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#6AE0C3" font-weight="400">Knowledge assistant</text>
+<text x="64" y="297" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#BBC7D6" font-weight="400">Document library</text>
+<text x="64" y="331" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#BBC7D6" font-weight="400">Conflicts &amp; validity</text>
+<text x="40" y="413" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Reference: SaaSUI / navigation</text>
+<text x="40" y="435" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#526174" font-weight="400">www.saasui.design/pattern/navigation</text>
+<rect x="492" y="133" width="420" height="248" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<text x="516" y="178" font-family="Segoe UI,Arial,sans-serif" font-size="22" fill="#142033" font-weight="600">Clear reading hierarchy</text>
+<text x="516" y="221" font-family="Segoe UI,Arial,sans-serif" font-size="31" fill="#142033" font-weight="600">20 working days</text>
+<text x="516" y="259" font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#526174" font-weight="400">Supported by the approved HR policy, valid</text>
+<text x="516" y="285" font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#526174" font-weight="400">for your employee scope.</text>
+<rect x="516" y="330" width="108" height="28" rx="14" fill="#E3F4EF" stroke="none"/>
+<text x="528" y="349" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#067267" font-weight="600">Citation [1]</text>
+<text x="492" y="413" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Original evidence-first pattern</text>
+<text x="492" y="435" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#526174" font-weight="400">Citation/validity contract, not reference copying</text>
+<rect x="944" y="133" width="456" height="248" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<text x="968" y="178" font-family="Segoe UI,Arial,sans-serif" font-size="22" fill="#142033" font-weight="600">Restrained identity</text>
+<rect x="968" y="210" width="80" height="72" rx="7" fill="#142033" stroke="#DDE3EA"/>
+<text x="968" y="308" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Ink</text>
+<rect x="1066" y="210" width="80" height="72" rx="7" fill="#067267" stroke="#DDE3EA"/>
+<text x="1066" y="308" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Teal</text>
+<rect x="1164" y="210" width="80" height="72" rx="7" fill="#F6F7F9" stroke="#DDE3EA"/>
+<text x="1164" y="308" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Canvas</text>
+<rect x="1262" y="210" width="80" height="72" rx="7" fill="#FFF3D6" stroke="#DDE3EA"/>
+<text x="1262" y="308" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#526174" font-weight="400">Warning</text>
+<text x="968" y="351" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#142033" font-weight="400">One type family. Deliberate spacing.</text>
+<text x="944" y="413" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Reference directory: Mobbin / Dribbble</text>
+<text x="944" y="435" font-family="Segoe UI,Arial,sans-serif" font-size="11" fill="#526174" font-weight="400">Public access limited; individual flows not audited</text>
+<rect x="40" y="491" width="1360" height="236" rx="10" fill="#FFFFFF" stroke="#DDE3EA"/>
+<text x="64" y="535" font-family="Segoe UI,Arial,sans-serif" font-size="22" fill="#142033" font-weight="600">Typography and rhythm</text>
+<text x="64" y="588" font-family="Segoe UI,Arial,sans-serif" font-size="36" fill="#142033" font-weight="600">Knowledge you can inspect.</text>
+<text x="64" y="626" font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#526174" font-weight="400">Segoe UI · body 16/24 · compact 14/20 · labels 12/18</text>
+<text x="64" y="666" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#526174" font-weight="400">Spacing: 8 / 16 / 24 / 32 / 40 px     •     Teal action, amber uncertainty, text labels always.</text>
+<text x="40" y="784" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526174" font-weight="400">Sources assessed 9 October 2026. Accessibility: WCAG 2.2 target; application testing remains pending.</text>
+</svg>
