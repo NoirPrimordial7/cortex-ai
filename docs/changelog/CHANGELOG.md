@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-10T00:11:00+05:30 — Evidence Desk second exploration
+
+- Owner rejected the first set and requested five to six fresh concepts; generated exactly six independent built-in Image Gen results, displayed sequentially with desktop/mobile companion views.
+- Added docs/design/evidence-desk/round-2/ with six concept PNGs, selection mapping, exact prompts and artwork-correction notes. Updated parent gallery, installation record, toolkit status and chronological logs. Earlier concepts preserved; no removals.
+- All four installed project skills appear in the new turn's available-skills catalog, confirming discovery without reinstalling.
+- Grounding: actual existing baseline browser captures attached to every generation; mock date anchored to 2026-10-10. No new browser audit, runtime change, dependency change or deployment. Artwork lacks some requested details, including offline label in Carbon Evidence; corrections explicitly recorded.
+- Verification: six result files copied into workspace and visually inspected inline; staged filenames/whitespace/targeted secret scan before commit. Previous runtime 12-test/build pass is historical, not a new check. No repeat tests warranted for this artwork/documentation-only change.
+- Pending: owner choice from this latest six-image set, refinement of generated deviations, implementation and full responsive/interaction/security/performance QA.
+- Commit subject: design: explore six new Evidence Desk directions. Continue existing draft PR #2 on design/skill-toolkit-mobile-first; no main merge or live deployment.
+
+
 ## 2026-10-09T23:55:00+05:30 — Evidence Desk skills and visual exploration
 
 - Branch: existing design/skill-toolkit-mobile-first, draft PR #2; starting HEAD c174003445791c7b2441bcbf6fcbb8c365ccb581. No application source, dependency manifest, backend behavior or deployment changed.

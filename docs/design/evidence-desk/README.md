@@ -1,5 +1,7 @@
 # Evidence Desk: visual selection checkpoint
 
+**Latest exploration, 2026-10-10:** the owner rejected the three concepts below and requested five to six new ideas. [Round 2 contains six new concepts](round-2/README.md). Selection numbers now refer to that newer displayed set; the original artwork below is preserved for history. All four installed skills appeared in the next turn's catalog, confirming discovery.
+
 2026-10-09, Asia/Calcutta. Four curated project skills are locally installed; fresh-session discovery is pending. [Installation and exact pins](SKILL_INSTALLATION.md). The existing design preparation branch and draft [PR #2](https://github.com/NoirPrimordial7/cortex-ai/pull/2) are used, preserving the current deployed Atlas Professional UI.
 
 These are three independent Image Gen mockups, displayed in this order in the current chat. Each explores one desktop assistant and its companion mobile evidence view. These are artwork, not screenshots of a new app; generated type sizes and viewport dimensions are approximate. Actual 320/390/768/1280/1440 behavior, dark mode and accessibility need implementation and testing.

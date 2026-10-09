@@ -1,5 +1,7 @@
 # Project skill installation record
 
+**Discovery confirmed, 2026-10-10:** all four installed entries now appear in this project's available-skills catalog: frontend-design, web-design-guidelines, vercel-react-best-practices and vercel-composition-patterns. References below to pending discovery describe the original installation checkpoint.
+
 Date: 2026-10-09, Asia/Calcutta. Preparation branch: `design/skill-toolkit-mobile-first`, draft PR #2. Initial branch HEAD: `c174003445791c7b2441bcbf6fcbb8c365ccb581`.
 
 Installed using the bundled Codex skill-installer helper, with explicit pinned `--ref` and project-local `--dest E:/Cortex AI/.agents/skills`. This replaces the guide's illustrative npx workflow with the available purpose-built installer; no remote shell installer or global installation was used.

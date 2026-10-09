@@ -1,6 +1,6 @@
 # Cortex AI — curated agent design toolkit
 
-**Status:** four selected skills installed locally at project scope on 2026-10-09. Pinned sources, inspection results and discovery limits are recorded in [the installation record](evidence-desk/SKILL_INSTALLATION.md). Codex discovery must still be confirmed on the next turn/new session. Playwright test dependencies and browser binaries remain a later implementation step. This branch has no application UI changes.
+**Status:** four selected skills installed locally at project scope on 2026-10-09; all four appeared in the next turn's catalog on 2026-10-10, confirming discovery. Pinned sources and inspection results are recorded in [the installation record](evidence-desk/SKILL_INSTALLATION.md). Playwright test dependencies and browser binaries remain a later implementation step. This branch has no application UI changes. [Latest six-concept exploration](evidence-desk/round-2/README.md) awaits owner selection.
 
 ## Recommended sources (start small)
 
