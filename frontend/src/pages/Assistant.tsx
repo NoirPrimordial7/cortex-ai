@@ -20,108 +20,7 @@ import {
 import { api } from "../api";
 import { localPolicyDate } from "../components";
 import type { Answer, Citation, Source } from "../types";
-import { HighlightedSource } from "../SourcePassage";
-import "../fieldbook.css";
-
-function DocumentInspector({
-  citation,
-  source,
-  busy,
-  conflict,
-}: {
-  citation: Citation | null;
-  source: Source | null;
-  busy: boolean;
-  conflict: boolean;
-}) {
-  const [context, setContext] = useState(false);
-  const StatusIcon = conflict ? WarningCircleIcon : CheckCircleIcon;
-  return (
-    <div className="fb-document">
-      <p className="fb-label">DOCUMENT INSPECTOR</p>
-      {!citation ? (
-        <div className="fb-inspector-empty">
-          <BookOpenTextIcon size={28} weight="light" />
-          <h2>The source, in context.</h2>
-          <p>
-            Select an answer’s citation to read the exact passage and policy
-            details.
-          </p>
-        </div>
-      ) : (
-        <>
-          <h2>{citation.title}</h2>
-          {busy ? (
-            <p role="status" className="fb-source-loading">
-              Checking source access…
-            </p>
-          ) : source ? (
-            <>
-              <span className={"fb-status " + (conflict ? "is-conflict" : "")}>
-                <StatusIcon size={16} />
-                {conflict ? "Unresolved conflict" : "Approved · valid"}
-              </span>
-              <section className="fb-passage">
-                <h3 className="fb-label">EXACT PASSAGE</h3>
-                <blockquote>
-                  {source.text.slice(source.start_char, source.end_char)}
-                </blockquote>
-              </section>
-              <dl className="fb-metadata">
-                <div>
-                  <dt>Version</dt>
-                  <dd>{source.version_id}</dd>
-                </div>
-                <div>
-                  <dt>Effective from</dt>
-                  <dd>{source.valid_from}</dd>
-                </div>
-                <div>
-                  <dt>Valid before</dt>
-                  <dd>{source.valid_to || "Open-ended"}</dd>
-                </div>
-                <div>
-                  <dt>Location</dt>
-                  <dd>{source.locator}</dd>
-                </div>
-                <div>
-                  <dt>Source type</dt>
-                  <dd>
-                    {source.source_kind === "hr_policy"
-                      ? "HR policy"
-                      : source.source_kind === "operations_policy"
-                        ? "Operations policy"
-                        : "Informal note"}
-                  </dd>
-                </div>
-                {source.authority_rank !== undefined && (
-                  <div>
-                    <dt>Authority rank</dt>
-                    <dd>{source.authority_rank}</dd>
-                  </div>
-                )}
-              </dl>
-              <button
-                className="fb-context-toggle"
-                aria-expanded={context}
-                onClick={() => setContext(!context)}
-              >
-                <FileTextIcon size={18} />
-                {context ? "Hide source context" : "View source context"}
-                <ArrowRightIcon size={16} />
-              </button>
-              {context && (
-                <div className="fb-context">
-                  <HighlightedSource source={source} />
-                </div>
-              )}
-            </>
-          ) : null}
-        </>
-      )}
-    </div>
-  );
-}
+import { SourceInspector } from "../SourceInspector";
 
 // A native modal makes the rest of the app inert, traps focus, and handles Escape.
 function EvidenceView({
@@ -201,7 +100,7 @@ export default function Assistant() {
       typeof matchMedia === "function" &&
       matchMedia("(max-width: 1099px)").matches,
   );
-  const [inspector, setInspector] = useState(true),
+  const [inspector, setInspector] = useState(false),
     [evidenceView, setEvidenceView] = useState(false);
   const input = useRef<HTMLTextAreaElement>(null),
     reading = useRef<HTMLDivElement>(null),
@@ -218,6 +117,7 @@ export default function Assistant() {
     setSelected(null);
     setError("");
     setEvidenceView(false);
+    setInspector(false);
   }
   useEffect(() => {
     if (typeof matchMedia !== "function") return;
@@ -297,7 +197,10 @@ export default function Assistant() {
       if (epoch.current !== stamp) return;
       setAnswer(result);
       setAskedQuery(prompt);
-      if (result.citations[0]) await inspect(result.citations[0], result);
+      if (result.citations[0]) {
+        if (!narrow) setInspector(true);
+        await inspect(result.citations[0], result);
+      }
     } catch (e) {
       if (epoch.current === stamp) {
         setError((e as Error).message);
@@ -309,7 +212,7 @@ export default function Assistant() {
   }
   const conflict = answer?.reason_code === "UNRESOLVED_CONFLICT";
   const inspectorContent = (
-    <DocumentInspector
+    <SourceInspector
       key={selected?.id || "empty"}
       citation={selected}
       source={source}
@@ -368,7 +271,7 @@ export default function Assistant() {
                   <option value="india_contractor">India · contractor</option>
                 </select>
               </label>
-              {!narrow && (
+              {!narrow && selected && (
                 <button
                   className="fb-inspector-toggle"
                   ref={inspectorToggle}

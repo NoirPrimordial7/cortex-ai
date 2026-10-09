@@ -42,16 +42,24 @@ export function useResource<T>(path: string) {
 export function SourceDialog({
   children,
   onClose,
+  label = "Authorized source",
+  className = "",
 }: {
   children: ReactNode;
   onClose: () => void;
+  label?: string;
+  className?: string;
 }) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDialogElement>(null);
   const close = useRef(onClose);
   close.current = onClose;
   useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
     const panel = ref.current;
+    const overflow = document.body.style.overflow;
+    if (panel?.showModal) panel.showModal();
+    else panel?.setAttribute("open", "");
+    document.body.style.overflow = "hidden";
     panel?.querySelector<HTMLButtonElement>("button")?.focus();
     const key = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -77,21 +85,25 @@ export function SourceDialog({
     document.addEventListener("keydown", key);
     return () => {
       document.removeEventListener("keydown", key);
-      if (previous?.isConnected) previous.focus();
+      panel?.close?.();
+      document.body.style.overflow = overflow;
+      if (previous?.isConnected) previous.focus({ preventScroll: true });
     };
   }, []);
   return (
-    <div className="dialog-backdrop">
-      <section
-        ref={ref}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Authorized source"
-        className="source-dialog"
-      >
-        {children}
-      </section>
-    </div>
+    <dialog
+      ref={ref}
+      role="dialog"
+      aria-modal="true"
+      aria-label={label}
+      className={"source-dialog " + className}
+      onCancel={(e) => {
+        e.preventDefault();
+        onClose();
+      }}
+    >
+      {children}
+    </dialog>
   );
 }
 export function State({
