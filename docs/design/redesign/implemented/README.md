@@ -24,3 +24,7 @@ The final source/reference comparison uses 1487×1058 pixels on both sides; matc
 Viewport images of long review/audit/history screens require scrolling and do not prove every control appears above the fold. CSS viewport labels may exclude scrollbar in capture dimensions. One stale/reflowed native full-page upload capture was replaced after checking settled DOM bounds with a viewport capture. Native screenshot privacy masks may cover email/password controls; no passwords or session cookies are stored here. Empty-state final mobile images follow a hot update that remounted the route; earlier answer images show real supported evidence. Subsequent supported-answer rechecks are captured separately where available.
 
 Current observations are bounded visual checks, not a WCAG certification, performance benchmark or proof of general semantic reasoning. See [root QA](../../../../design-qa.md) and [test scope](../../../implementation/TEST_RESULTS.md).
+
+## Verified public release — 2026-10-09T23:24:44+05:30
+
+[Live application](https://cortex-ai-three-kappa.vercel.app) · [actual hosted1487](hosted-assistant-1487.jpg) · [actual hosted390](hosted-assistant-390.jpg) · [matching-dimension reference/hosted comparison](comparison-hosted.jpg). Correct implementation commit6c68994 is READY/Live on Vercel/Render. Normal demo autofill/login, exact authorized source, full demo disclosure and mobile evidence layout checked in the released UI. [HTTP smoke](../hosted-smoke.json) and [repeat measurements](../performance-http-final.json) are separately scoped.

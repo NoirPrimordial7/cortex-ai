@@ -1,0 +1,72 @@
+{
+  "captured_at": "2026-10-09T23:22:15.285320+05:30",
+  "method": "serial HTTP GET, four samples per route, persistent client; no response bodies/credentials recorded; not controlled benchmark or browser web vitals",
+  "base_url": "https://cortex-ai-three-kappa.vercel.app",
+  "implementation_commit": "6c689949b79f3d08253ed145178a5ca9be23cc40",
+  "frontend_final_entry_verified": true,
+  "routes": {
+    "/": {
+      "samples": [
+        {
+          "ms": 61.73,
+          "status": 200
+        },
+        {
+          "ms": 12.99,
+          "status": 200
+        },
+        {
+          "ms": 11.37,
+          "status": 200
+        },
+        {
+          "ms": 13.56,
+          "status": 200
+        }
+      ],
+      "median_success_ms": 13.28
+    },
+    "/api/v1/health": {
+      "samples": [
+        {
+          "ms": 280.73,
+          "status": 200
+        },
+        {
+          "ms": 258.75,
+          "status": 200
+        },
+        {
+          "ms": 271.8,
+          "status": 200
+        },
+        {
+          "ms": 266.76,
+          "status": 200
+        }
+      ],
+      "median_success_ms": 269.28
+    },
+    "/api/v1/demo/accounts": {
+      "samples": [
+        {
+          "ms": 275.71,
+          "status": 200
+        },
+        {
+          "ms": 286.32,
+          "status": 200
+        },
+        {
+          "ms": 252.58,
+          "status": 200
+        },
+        {
+          "ms": 269.18,
+          "status": 200
+        }
+      ],
+      "median_success_ms": 272.44
+    }
+  }
+}
