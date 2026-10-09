@@ -10,7 +10,7 @@
 - Checks: frontend13, Playwright13, backend38 pass; Ruff, strict build and npm audit pass. Chromium320/390/768/1280/1440 light/dark tested. Real local annual leave and remote-work conflict exercised through existing fictional session. QA comparison source/actual captured together at1536×1024; root design-qa.md passes the bounded local gate.
 - Fixed focus escaping into browser chrome, composer covering citations, legacy label margins and paper background override, and source-loading synchronization in the contrast test. Sixteen sampled text pairs min5.38:1; control boundary min3.17:1.
 - Initial JS100.19kB gzip versus100.01kB before; assistant CSS3.77kB gzip; self-hosted fonts73,552bytes. These are build sizes, not network, API or Core Web Vitals claims.
-- Physical-device/Safari/assistive technology, measured web vitals and production deployment remain outstanding. Updated existing draft PR #2; no main merge or live deploy.
+- Physical-device/Safari/assistive technology, measured web vitals and production deployment remain outstanding. Updated existing PR #2; remote reports it open and ready for review (not draft), and that existing state is preserved. No main merge or live deploy.
 
 ## 2026-10-10T00:11:00+05:30 — Evidence Desk second exploration
 
