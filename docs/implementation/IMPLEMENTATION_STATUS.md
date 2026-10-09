@@ -1,5 +1,7 @@
 # Phase 3 implementation checkpoint
 
+Hosted-demo extension: [shared demo](SHARED_DEMO.md) is now verified over HTTPS on Vercel/Render, using the existing one-process core. Hosted uploads/governance are read-only; data is ephemeral. Latest local suites38 backend/11 frontend pass. The earlier checkpoint details below describe the original implementation.
+
 Assessment: 2026-10-09, Asia/Calcutta. Phase 2 and Evidence Studio were owner-approved; this is real local application code. Research/planning documents remain preserved baselines; [ADR 0005](../decisions/0005-local-execution-boundary.md) records implementation deviations. No project completion percentage is asserted: the college 40% rubric is still unknown.
 
 | Module / actual source | Implemented behavior | Boundary or next work |

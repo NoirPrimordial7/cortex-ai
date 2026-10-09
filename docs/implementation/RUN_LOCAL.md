@@ -35,6 +35,8 @@ npm run dev
 
 Open **http://127.0.0.1:5173**. Vite updates React/CSS while you watch; Uvicorn reloads backend application changes. The frontend proxies `/api` to port 8000, keeping browser requests on one origin. Health: http://127.0.0.1:5173/api/v1/health. Both commands stay running until Ctrl+C. A backend reload may interrupt a request and resets the in-memory login failure counters.
 
+Fictional autofill is enabled in this existing checkout with an ignored `local-data/demo-autofill.enabled` marker. On a fresh checkout, create that empty marker after fictional seeding and reload the backend to show all five profile buttons. Normal login still verifies the selected account; Noor is disabled. Shared hosting is described separately in [SHARED_DEMO.md](SHARED_DEMO.md).
+
 Use **one application worker only**; do not add `--workers`. Loopback HTTP is the supported local boundary. LAN hosting, tunnels, hosted TLS and production deployment are outside this checkpoint.
 
 ## Fictional sign-in and demonstration

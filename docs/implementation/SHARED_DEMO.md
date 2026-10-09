@@ -31,4 +31,10 @@ Render health; Vercel READY/source SHA; production alias accessible without Verc
 - `frontend/vercel.json` sends /api to this actual assigned backend and falls back to index.html for SPA routes. Explicit API no-store headers; external rewrite caching disabled in the project.
 - Vercel uses standard protection: previews/build URLs protected, production project domains public. Neither account collaborators nor repository visibility changed.
 
-Backend readiness and end-to-end checks are pending at this configuration commit; exact observed results follow below only after validation.
+## Observed live verification
+
+2026-10-09T21:57:13+05:30: public Vercel alias and API proxy passed52 functional assertions; [sanitized timestamp/check list](hosted-smoke.json). All five profiles returned; four active accounts authenticated normally with Secure HTTP-only host-only SameSite cookies, Noor denied. Current leave20/historical18/conflict two-citation abstention/missing and restricted abstention/exact citation span-hash passed. Cross-tenant/direct restricted reads404; wrong CSRF/Origin403; hosted admin writes/uploads403. Local picker also HTTP200 with five profiles.
+
+Vercel deployment dpl_13t6423uXxh18PvhJsM2Af1zm5tX READY, sourcec6ca3f6b27764ed4945012140067d8ced60ea4a0; production alias accessible without Vercel account. Render first working source5ec7ca8, automatic configuration commitc6ca3f6 follows. Browser observed public profile picker, Maya authentication, actual20-day answer and authorized exact source. Genuine screenshots: [picker](../design/screenshots/shared-demo-login.jpg), [answer](../design/screenshots/shared-demo-answer.jpg).
+
+These checks use the fictional development fixture and provide no general accuracy or production security certification. Subsequent documentation commits may trigger automatic redeploy and invalidate the disposable session; current source/status is verified after final push.

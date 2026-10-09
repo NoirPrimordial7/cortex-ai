@@ -1,5 +1,11 @@
 # Actual verification — Phase 3
 
+## Hosted-demo extension —2026-10-09
+
+Latest full local suites: **38 backend**, **11 frontend** tests pass; TypeScript/Vite build and Ruff pass. Live Vercel/Render smoke: **52 assertions** on the same fictional development seed, covering all five profiles, Secure host-only cookies, normal sign-in/session/logout, approved/current/historical answers, equal-authority conflict, missing/restricted evidence, exact citation span/hash, other-tenant404, CSRF/Origin403 and hosted upload/governance403. These are repeated functional assertions, not52 independent scenarios or a security assessment. [Exact timestamp/results](hosted-smoke.json). Real in-app browser verified picker → Maya sign-in → current leave answer/source; genuine captures are in docs/design/screenshots/shared-demo-*.jpg.
+
+## Preserved original checkpoint
+
 Date: 2026-10-09, Asia/Calcutta. These results apply to the bounded offline implementation and fictional fixture. The source report includes its exact timestamp, environment and fixture hash: [fixture-results.json](fixture-results.json). This is development sanity checking, not held-out research or a production certification.
 
 | Check | Actual result / evidence | What it establishes |

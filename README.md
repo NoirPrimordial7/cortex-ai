@@ -10,6 +10,8 @@ Repository: [NoirPrimordial7/cortex-ai](https://github.com/NoirPrimordial7/corte
 
 ## Run and inspect
 
+**Live shared demo: https://cortex-ai-three-kappa.vercel.app** — choose a fictional profile, then click Enter your workspace. No remembered credentials required.
+
 Fictional profile buttons fill workspace, email and password before normal sign-in. [Shared demo hosting contract](docs/implementation/SHARED_DEMO.md): free Vercel frontend and disposable single-process Render backend; hosted uploads/governance are read-only. Live publication checks are recorded separately from local tests.
 
 **Live development:** http://127.0.0.1:5173 (frontend hot updates; requires the two running local servers).
