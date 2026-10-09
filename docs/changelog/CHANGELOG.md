@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-09T21:32:06+05:30 — Phase3 publication verified
+
+- Backend03de2dc and live UI/integrationa370378 were pushed to existing main and verified against remote HEAD. GitHub confirms PUBLIC visibility unchanged and the genuine assistant screenshot is published.
+- Updated development log/changelog with actual hashes and verification; no application changes.99 staged paths passed private-file/exact-runtime-password/signature checks; Phase1 research and canonical fixtures preserved.29 backend/8 frontend tests, build and bounded browser/fixture evidence remain the integration checkpoint results.
+- Local servers remain running for the owner to watch; future priorities and unimplemented scope remain explicit in docs/implementation/. Audit commit subject `docs: record verified Phase 3 publication`; this commit cannot contain its own hash.
+
 ## 2026-10-09T21:21:45+05:30 — Phase3 live Evidence Studio and integration verification
 
 - Files added: frontend/ (real React screens, lockfile and tests), backend/evaluate.py, docs/implementation/, docs/design/screenshots/ and browser/contrast reports, diagram11 Mermaid/DOT/SVG/PNG and design-qa.md. Changed backend citation rank/assertion, README, roadmap/docs index, design/learning reports, diagram manifest, acceptance status and decision index; no Phase1 research or fixture bytes removed.

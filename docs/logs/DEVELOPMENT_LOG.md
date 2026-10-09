@@ -1,5 +1,13 @@
 # Development log
 
+## 2026-10-09T21:32:06+05:30 — Phase3 publication audit
+
+- Published backend [03de2dc](https://github.com/NoirPrimordial7/cortex-ai/commit/03de2dcca937a1fa90fd8516f3d47b2d10b90500) and live UI/integration [a370378](https://github.com/NoirPrimordial7/cortex-ai/commit/a37037838f2eb0c13b5d5a01a598438a732e7bc4). Verified each successful push against remote main; working tree clean at the integration checkpoint.
+- GitHub API confirms main/PUBLIC and the actual assistant screenshot at its committed path (62669bytes). Visibility/collaborators unchanged. Phase1 research and canonical Phase2 demo fixture compare unchanged to647e4af.
+- Staged review passed99 intended paths: no exact local runtime passwords, credential signatures, private databases/uploads or generated dependency/build directories. Markdown targets, JSON syntax, JPEG integrity and whitespace checks passed.
+- Files changed here: development log and changelog, to record actual publication hashes/outcomes. No application source changes. Local smoke check required the authorized shell network boundary after the sandbox blocked localhost sockets; backend/frontend remain running, with no LAN exposure.
+- Next: reproduce the demonstration on target hardware, obtain the college rubric, then improve held-out evaluation and bounded clause/lineage/security limitations listed in implementation status. No general LLM or production completion claim. Audit commit subject `docs: record verified Phase 3 publication`.
+
 ## 2026-10-09T21:21:45+05:30 — Phase3 live Evidence Studio and integration verification
 
 - Files added: frontend/ (real React screens, lockfile and tests), backend/evaluate.py, docs/implementation/, docs/design/screenshots/ and browser/contrast reports, diagram11 Mermaid/DOT/SVG/PNG and design-qa.md. Changed backend citation rank/assertion, README, roadmap/docs index, design/learning reports, diagram manifest, acceptance status and decision index; no Phase1 research or fixture bytes removed.
