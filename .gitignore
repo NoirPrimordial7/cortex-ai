@@ -1,0 +1,56 @@
+# Secrets and private configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*
+secrets*
+*service-account*.json
+.aws/
+.azure/
+.gcloud/
+.ssh/
+# Dependencies, local runtimes and build products
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+dist/
+build/
+target/
+.next/
+coverage/
+.pytest_cache/
+.mypy_cache/
+# Local databases, embeddings, models, uploads, generated output
+*.db
+*.db-*
+*.sqlite*
+*.duckdb*
+*.parquet
+*.npy
+*.npz
+*.pt
+*.pth
+*.safetensors
+*.gguf
+data/
+uploads/
+indexes/
+generated/
+outputs/
+artifacts/
+*.log
+*.tmp
+*.zip
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Ignore rules cannot guarantee secrecy. Review every staged diff before pushing.
