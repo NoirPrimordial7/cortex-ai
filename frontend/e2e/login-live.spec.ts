@@ -1,14 +1,17 @@
 import { test, expect } from "@playwright/test";
 test.use({ trace: "off", video: "off" });
-test.skip(!process.env.CORTEX_LIVE_LOGIN, 'Explicit real-backend sign-in verification.');
-for (const profile of ["Maya", "Ravi", "Isha", "Orbit", "Noor"])
+test.skip(
+  !process.env.CORTEX_LIVE_LOGIN,
+  "Explicit real-backend sign-in verification.",
+);
+for (const profile of ["maya", "ravi", "isha", "orbit", "noor"])
   test(`actual preview sign-in ${profile}`, async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("button", { name: new RegExp(profile) }).click();
+    await page.getByTestId("demo-profile-" + profile).click();
     await page
       .getByRole("button", { name: "Enter your workspace", exact: true })
       .click();
-    if (profile === "Noor") {
+    if (profile === "noor") {
       await expect(page.getByRole("alert")).toHaveText(
         "Invalid sign-in details",
       );

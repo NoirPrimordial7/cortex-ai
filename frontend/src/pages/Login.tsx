@@ -5,7 +5,7 @@ import {
   LockKeyIcon,
   CirclesThreePlusIcon,
 } from "@phosphor-icons/react";
-import { api } from "../api";
+import { api, ApiError } from "../api";
 import { useSession } from "../session";
 export default function Login() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -52,16 +52,19 @@ export default function Login() {
     setSelected(profile.label);
     setSelectedDisabled(!profile.active);
     setError("");
+    setOriginDenied(false);
     (form.elements.namedItem("email") as HTMLInputElement).focus();
   }
   const { refresh } = useSession();
   const [error, setError] = useState(""),
+    [originDenied, setOriginDenied] = useState(false),
     [busy, setBusy] = useState(false);
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     setBusy(true);
     setError("");
+    setOriginDenied(false);
     try {
       await api("/auth/login", {
         method: "POST",
@@ -70,12 +73,19 @@ export default function Login() {
       });
       await refresh(true);
     } catch (e) {
+      const blockedOrigin =
+        e instanceof ApiError &&
+        e.status === 403 &&
+        e.message === "Origin not permitted";
+      setOriginDenied(blockedOrigin);
       setError(
-        e instanceof DOMException && e.name === "TimeoutError"
-          ? "The sign-in service is taking too long to respond. Wait a moment, then retry."
-          : e instanceof TypeError
-            ? "The sign-in service could not be reached. Wait a moment, then try again. Your details are still here."
-            : (e as Error).message,
+        blockedOrigin
+          ? "This review address is not approved for sign-in by the shared backend. Open the published demo below, or ask the workspace owner to approve this exact review address."
+          : e instanceof DOMException && e.name === "TimeoutError"
+            ? "The sign-in service is taking too long to respond. Wait a moment, then retry."
+            : e instanceof TypeError
+              ? "The sign-in service could not be reached. Wait a moment, then try again. Your details are still here."
+              : (e as Error).message,
       );
     } finally {
       setBusy(false);
@@ -141,8 +151,9 @@ export default function Login() {
             <section className="demo-accounts" aria-label="Demo account picker">
               <strong>Try a demo account</strong>
               <p>
-                Choose a fictional profile, then sign in below. Each role sees
-                its permitted documents. Shared profiles share demo history.
+                Choose an Auronix team demo profile, then sign in below. Roles
+                are examples; each profile sees its permitted documents and
+                shares demo history.
               </p>
               <div>
                 {profiles.map((profile) => (
@@ -154,6 +165,7 @@ export default function Login() {
                     }
                     aria-pressed={selected === profile.label}
                     key={profile.key}
+                    data-testid={"demo-profile-" + profile.key}
                     disabled={busy}
                     onClick={() => fill(profile)}
                   >
@@ -205,7 +217,15 @@ export default function Login() {
               <p role="alert" className="form-error">
                 {error}
               </p>
-              {profiles.length > 0 && !selectedDisabled && (
+              {originDenied && (
+                <a
+                  className="button"
+                  href="https://cortex-ai-three-kappa.vercel.app/"
+                >
+                  Open approved published demo
+                </a>
+              )}
+              {profiles.length > 0 && !selectedDisabled && !originDenied && (
                 <>
                   <p className="section-note">
                     Shared demo details can reset when the backend restarts.

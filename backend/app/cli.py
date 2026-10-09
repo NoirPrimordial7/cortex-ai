@@ -11,6 +11,7 @@ from . import db as models
 from .documents import Review, ingest, review
 from .security import Context, execute, now, one, uid
 from .settings import ROOT, Settings
+from .demo import TEAM_NAMES
 
 ACTIONS = {
     "employee": ["query.execute"],
@@ -44,12 +45,12 @@ def seed(engine, settings):
                 )
             )
         hasher = PasswordHasher()
-        for key, display, tid, role_names, active in [
-            ("maya", "Maya Shah", "NORTHSTAR", ["employee"], True),
-            ("ravi", "Ravi Mehta", "NORTHSTAR", ["employee", "knowledge_manager", "admin"], True),
-            ("isha", "Isha Rao", "NORTHSTAR", ["auditor"], True),
-            ("noor", "Noor Khan", "NORTHSTAR", ["employee"], False),
-            ("orbit", "Orbit Employee", "ORBIT", ["employee"], True),
+        for key, tid, role_names, active in [
+            ("maya", "NORTHSTAR", ["employee"], True),
+            ("ravi", "NORTHSTAR", ["employee", "knowledge_manager", "admin"], True),
+            ("isha", "NORTHSTAR", ["auditor"], True),
+            ("noor", "NORTHSTAR", ["employee"], False),
+            ("orbit", "ORBIT", ["employee"], True),
         ]:
             password = secrets.token_urlsafe(18)
             userid = key if tid == "NORTHSTAR" else "orbit-user"
@@ -58,7 +59,7 @@ def seed(engine, settings):
                     id=userid,
                     tenant_id=tid,
                     email_normalized=f"{key}@example.test",
-                    display_name=display,
+                    display_name=TEAM_NAMES[key],
                     password_hash=hasher.hash(password),
                     active=active,
                     created_at=now(),

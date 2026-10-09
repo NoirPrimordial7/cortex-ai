@@ -2,10 +2,13 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi, test, expect } from "vitest";
 import Login from "./Login";
-import { api } from "../api";
+import { api, ApiError } from "../api";
 const refresh = vi.hoisted(() => vi.fn());
 vi.mock("../session", () => ({ useSession: () => ({ refresh }) }));
-vi.mock("../api", () => ({ api: vi.fn() }));
+vi.mock("../api", async () => ({
+  ...(await vi.importActual<typeof import("../api")>("../api")),
+  api: vi.fn(),
+}));
 const profiles = [
   {
     key: "maya",
@@ -32,6 +35,27 @@ const profiles = [
     active: false,
   },
 ];
+test("unapproved preview origin explains the configuration error and links to the approved demo", async () => {
+  vi.mocked(api)
+    .mockResolvedValueOnce({ items: profiles })
+    .mockRejectedValueOnce(new ApiError(403, "Origin not permitted"));
+  render(<Login />);
+  await userEvent.click(
+    await screen.findByRole("button", { name: "Maya · Employee" }),
+  );
+  await userEvent.click(
+    screen.getByRole("button", { name: "Enter your workspace" }),
+  );
+  expect(await screen.findByRole("alert")).toHaveTextContent(
+    "This review address is not approved",
+  );
+  expect(
+    screen.getByRole("link", { name: "Open approved published demo" }),
+  ).toHaveAttribute("href", "https://cortex-ai-three-kappa.vercel.app/");
+  expect(
+    screen.queryByRole("button", { name: "Reload demo accounts" }),
+  ).not.toBeInTheDocument();
+});
 test("picker fills all credentials and tenant, without bypassing normal sign-in", async () => {
   vi.mocked(api)
     .mockResolvedValueOnce({ items: profiles })
