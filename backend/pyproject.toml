@@ -1,0 +1,16 @@
+[project]
+name = "cortex-ai"
+version = "0.1.0"
+description = "Local permission-aware policy evidence system"
+requires-python = ">=3.12,<3.13"
+dependencies = ["fastapi", "uvicorn", "SQLAlchemy>=2.0,<2.1", "alembic", "argon2-cffi", "python-multipart", "pypdf", "python-docx"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]

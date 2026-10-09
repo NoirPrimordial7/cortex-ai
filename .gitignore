@@ -26,6 +26,7 @@ target/
 coverage/
 .pytest_cache/
 .mypy_cache/
+.ruff_cache/
 # Local databases, embeddings, models, uploads, generated output
 *.db
 *.db-*
@@ -66,3 +67,4 @@ qdrant_storage/
 Thumbs.db
 
 # Ignore rules cannot guarantee secrecy. Review every staged diff before pushing.
+*.tsbuildinfo

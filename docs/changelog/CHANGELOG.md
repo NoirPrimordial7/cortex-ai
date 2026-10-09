@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-09T20:30:22.0109156+05:30 — Phase 3 backend vertical slice
+
+- Added backend/app/, backend/tests/, initial Alembic migration/config, exact requirements.lock, backend/README.md and ADR0005; changed .gitignore to exclude TypeScript build metadata. No research removed.
+- Reason: owner approved Phase 3 and offline Evidence Studio implementation; build real authorization, ingestion, validity, authority, conflict/abstention and exact citation workflows before optional AI.
+- Outcome: local fictional seed, opaque sessions, explicit ACLs, current owner/history checks, private TXT/PDF/DOCX review, offline finite claim answering, administration endpoints and redacted audit. One-process exclusive gate is a documented throughput trade-off.
+- Verification: 29 backend tests passed in 6.71s, including concurrent revocation and protected endpoint matrix; one Starlette HTTPX adapter deprecation warning. pip check and Ruff check passed. Initial ingestion tests assumed no pre-existing notice policy and were corrected to isolate that test input; no fixture labels changed. No model, paid API or cloud used.
+- Outstanding: frontend publication/visual QA, held-out retrieval/conflict evaluation, robust parser sandbox, chunk ACLs, multiworker deployment, general semantic reasoning and denial auditing. Frontend is still a separate uncommitted work unit.
+- Publication: commit subject feat: implement permission-safe offline evidence core; hash and remote equality to be recorded after push. Current remote is PUBLIC; no visibility change.
+
 ## 2026-10-09T16:59:30+05:30 — Phase 2 publication verified
 
 - Changed quality review, development log and changelog to record verified planning publication; no implementation files or research deletions.
