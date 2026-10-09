@@ -8,7 +8,7 @@
 - Actual preview403 diagnosed as Origin rejection, not invalid credentials. Specific error guidance and published-demo link verified at all six widths. Exact Render origin configuration proposal prepared; production remains untouched awaiting owner approval.
 - 39 backend,21 frontend,56 selected browser tests pass; Ruff/build/npm audit pass. Real role, private upload/review/hash/denial, text/reflow, keyboard, theme, target and contrast checks included.
 - 652 genuine before/after captures retained in an annotated gallery. Independent snapshot restores for light/dark; current profile names intentional. Login-loading CLS issue found in measurement and reduced from0.1025 to0.0205 in the fresh local sample. Entry JS96.24kB gzip/CSS7.09kB; no field INP/cold-start claim.
-- [Complete issue matrix, evidence and limitations](../design/product-audit/README.md). Local preview and gallery remain running; review commits pushed and draft PR prepared. No merge or production deployment.
+- [Complete issue matrix, evidence and limitations](../design/product-audit/README.md). Local preview and gallery remain running; review commits pushed and existing PR #6 updated with the completed report (open/non-draft state preserved). No merge or production deployment.
 
 
 ## 2026-10-10T00:44:00+05:30 — Selected Fieldbook Ask Cortex implementation

@@ -80,4 +80,4 @@ No qualifying Event Timing entries were observed; the recorded zero event-durati
 
 ## Release status
 
-Ready for local visual review and a draft PR. No merge or production deployment has been performed. Approve the visual gallery before release; approve the concrete exact-origin change separately if the named review address should authenticate against the shared backend. After any authorized deployment, repeat hosted functional/visual checks against its exact source and public URL.
+Ready for local visual review in [existing PR #6](https://github.com/NoirPrimordial7/cortex-ai/pull/6). Its existing open/non-draft state is preserved; no duplicate PR was created. No merge or production deployment has been performed. Approve the visual gallery before release; approve the concrete exact-origin change separately if the named review address should authenticate against the shared backend. After any authorized deployment, repeat hosted functional/visual checks against its exact source and public URL.

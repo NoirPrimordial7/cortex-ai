@@ -56,3 +56,7 @@ Main and production remain unchanged. Preview server5173 and gallery8003 remain 
 ## Final visual correction: mobile People controls
 
 Direct screenshot review caught a legacy library column label leaking into the mobile People action cell. Its “Uploaded” pseudo-label clipped the full-width edit button even though document scrollWidth stayed within the viewport. Removed all obsolete unlabelled-column pseudo-label fallbacks and duplicate People width declarations. Existing explicit data-labels now provide each table's own semantics. Governance checks assert the edit button's complete viewport bounds and absence of the wrong label. Final capture measurements also reject clipped visible controls. All six widths and both themes recaptured and checked; the final gallery contains the corrected page.
+
+## GitHub review handoff
+
+Existing [PR #6](https://github.com/NoirPrimordial7/cortex-ai/pull/6) already tracked this branch. Updated its title/body with final behavior, validation, gallery and pending origin configuration; preserved its open/non-draft state and attached it to this task. Main remains2919a6d. Review commits are pushed; no merge or production deployment.
