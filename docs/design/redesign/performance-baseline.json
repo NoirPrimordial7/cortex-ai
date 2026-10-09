@@ -1,0 +1,126 @@
+{
+  "captured_at": "2026-10-09T22:33:13.831350+05:30",
+  "method": "serial HTTP GET, four samples per route, persistent HTTP client; wall time includes network/proxy; no browser interaction or LCP/INP claim",
+  "routes": {
+    "/": {
+      "samples": [
+        {
+          "ms": 72.68,
+          "status": 200
+        },
+        {
+          "ms": 35.8,
+          "status": 200
+        },
+        {
+          "ms": 20.99,
+          "status": 200
+        },
+        {
+          "ms": 15.28,
+          "status": 200
+        }
+      ],
+      "median_success_ms": 28.39
+    },
+    "/api/health": {
+      "samples": [
+        {
+          "ms": 289.64,
+          "status": 404
+        },
+        {
+          "ms": 272.61,
+          "status": 404
+        },
+        {
+          "ms": 287.05,
+          "status": 404
+        },
+        {
+          "ms": 287.08,
+          "status": 404
+        }
+      ],
+      "median_success_ms": null
+    },
+    "/api/demo/accounts": {
+      "samples": [
+        {
+          "ms": 271.25,
+          "status": 404
+        },
+        {
+          "ms": 718.63,
+          "status": 404
+        },
+        {
+          "ms": 437.45,
+          "status": 404
+        },
+        {
+          "ms": 278.5,
+          "status": 404
+        }
+      ],
+      "median_success_ms": null
+    },
+    "/api/v1/health": {
+      "samples": [
+        {
+          "ms": 334.9,
+          "status": 200
+        },
+        {
+          "ms": 267.35,
+          "status": 200
+        },
+        {
+          "ms": 266.81,
+          "status": 200
+        },
+        {
+          "ms": 254.54,
+          "status": 200
+        }
+      ],
+      "median_success_ms": 267.08
+    },
+    "/api/v1/demo/accounts": {
+      "samples": [
+        {
+          "ms": 259.34,
+          "status": 200
+        },
+        {
+          "ms": 261.92,
+          "status": 200
+        },
+        {
+          "ms": 311.34,
+          "status": 200
+        },
+        {
+          "ms": 279.22,
+          "status": 200
+        }
+      ],
+      "median_success_ms": 270.57
+    }
+  },
+  "assets": [
+    {
+      "file": "index-CjW8_cV6.css",
+      "bytes": 29050,
+      "gzip_bytes": 6799
+    },
+    {
+      "file": "index-UD0jggvh.js",
+      "bytes": 373780,
+      "gzip_bytes": 109217
+    }
+  ],
+  "limits": "Small opportunistic sample, not a controlled benchmark; first sample is not a verified cold start. Assets are existing local dist, not proof of remote response compression. No query latency, mobile/network throttle, LCP, CLS or INP measured.",
+  "correction": "Initial API probes omitted /v1 and returned404; excluded from successful endpoint comparison. Correct canonical routes verified from backend/app/main.py below.",
+  "completed_at": "2026-10-09T22:33:54.968650+05:30"
+}

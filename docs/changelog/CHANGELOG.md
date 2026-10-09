@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-09T22:38:00+05:30 — Phase3 visual redesign exploration
+
+- Added Awwwards reference brief, genuine current-flow captures, three separate original UI concept directions and a qualified HTTP/build-size baseline under docs/design/redesign/. Updated design gallery and chronological research/development records; preserved prior design/research.
+- Verified official daily/latest completed monthly/annual references and real employee answer/source flow. Baseline records four serial successful GET samples per canonical route and retains corrected404 probes; no browser-vital, cold-start or “best latency” claim.
+- Redesign selection, application implementation, mobile QA and post-change performance comparison remain pending. Current application source is unchanged; concept artwork is explicitly distinguished from running screenshots. No paid resources or permission/visibility changes. Previous publication c1fa59e; current commit subject design: document Awwwards redesign concepts and measured baseline.
+
 ## 2026-10-09T21:32:06+05:30 — Phase3 publication verified
 
 - Backend03de2dc and live UI/integrationa370378 were pushed to existing main and verified against remote HEAD. GitHub confirms PUBLIC visibility unchanged and the genuine assistant screenshot is published.

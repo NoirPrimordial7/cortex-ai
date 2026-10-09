@@ -1,5 +1,7 @@
 # Cortex AI design gallery
 
+**New visual exploration, October 9, 2026:** [Awwwards-based redesign brief, current-screen audit and performance baseline](redesign/REDESIGN_BRIEF.md). Three fresh concepts are being reviewed; the running application below remains the current implementation until a direction is selected and verified.
+
 **Current Phase3 running gallery.** These JPEGs are genuine in-app browser captures of the implemented React/FastAPI application with fictional data. The Phase2 concept gallery below remains artwork, separately labelled; its localhost limitation applied then, not to this successful browser session.
 
 ![Running assistant](screenshots/assistant-answer-1440.jpg)
