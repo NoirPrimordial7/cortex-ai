@@ -20,9 +20,12 @@ export default function Login() {
     }[]
   >([]);
   const [selected, setSelected] = useState("");
+  const [selectedDisabled, setSelectedDisabled] = useState(false);
   const [demoError, setDemoError] = useState(false);
+  const [profilesLoading, setProfilesLoading] = useState(true);
   async function loadProfiles(signal?: AbortSignal) {
     setDemoError(false);
+    setProfilesLoading(true);
     try {
       const data = await api<{ items: typeof profiles }>("/demo/accounts", {
         signal,
@@ -30,6 +33,8 @@ export default function Login() {
       if (!signal?.aborted) setProfiles(data.items);
     } catch {
       if (!signal?.aborted) setDemoError(true);
+    } finally {
+      if (!signal?.aborted) setProfilesLoading(false);
     }
   }
   useEffect(() => {
@@ -45,6 +50,7 @@ export default function Login() {
       input.value = profile[field];
     }
     setSelected(profile.label);
+    setSelectedDisabled(!profile.active);
     setError("");
     (form.elements.namedItem("email") as HTMLInputElement).focus();
   }
@@ -59,11 +65,18 @@ export default function Login() {
     try {
       await api("/auth/login", {
         method: "POST",
+        signal: AbortSignal.timeout(90000),
         body: JSON.stringify(Object.fromEntries(form)),
       });
-      await refresh();
+      await refresh(true);
     } catch (e) {
-      setError((e as Error).message);
+      setError(
+        e instanceof DOMException && e.name === "TimeoutError"
+          ? "The sign-in service is taking too long to respond. Wait a moment, then retry."
+          : e instanceof TypeError
+            ? "The sign-in service could not be reached. Wait a moment, then try again. Your details are still here."
+            : (e as Error).message,
+      );
     } finally {
       setBusy(false);
     }
@@ -72,20 +85,15 @@ export default function Login() {
     <main className="login">
       <section className="login-story">
         <div className="brand">
-          <CirclesThreePlusIcon size={28} weight="duotone" />
-          <span>
-            cortex<span className="brand-ai">AI</span>
-          </span>
+          <span>Cortex</span>
         </div>
         <div>
           <p className="eyebrow">KNOWLEDGE, WITH CONTEXT</p>
-          <h1>
-            A clear answer.
+          <p className="login-statement">
+            Policy knowledge,
             <br />
-            The evidence
-            <br />
-            to trust it.
-          </h1>
+            with its evidence.
+          </p>
           <p>
             Find the policy that applies, understand its source, and see when
             the evidence disagrees.
@@ -104,10 +112,16 @@ export default function Login() {
       <section className="login-form">
         <form ref={formRef} onSubmit={submit}>
           <p className="eyebrow">YOUR WORKSPACE</p>
-          <h2>Welcome to Cortex.</h2>
+          <h1>Welcome to Cortex.</h1>
           <p className="description">
             Sign in to the knowledge you’re permitted to read.
           </p>
+          {profilesLoading && (
+            <p role="status" className="login-service-status">
+              Connecting to the demo service… The free backend may take a moment
+              to wake up.
+            </p>
+          )}
           {demoError && (
             <div className="demo-accounts">
               <p>
@@ -127,8 +141,8 @@ export default function Login() {
             <section className="demo-accounts" aria-label="Demo account picker">
               <strong>Try a demo account</strong>
               <p>
-                Fictional accounts only. Choose a profile, then sign in. Shared
-                profiles share their demo history.
+                Choose a fictional profile, then sign in below. Each role sees
+                its permitted documents. Shared profiles share demo history.
               </p>
               <div>
                 {profiles.map((profile) => (
@@ -149,7 +163,11 @@ export default function Login() {
                 ))}
               </div>
               {selected && (
-                <span role="status">Filled {selected}. Ready to sign in.</span>
+                <span role="status">
+                  {selectedDisabled
+                    ? "This account is disabled. Signing in demonstrates an access denial."
+                    : `Filled ${selected}. Ready to sign in.`}
+                </span>
               )}
             </section>
           )}
@@ -167,6 +185,7 @@ export default function Login() {
             <input
               name="email"
               type="email"
+              spellCheck={false}
               autoComplete="username"
               placeholder="you@example.test"
               required
@@ -182,14 +201,38 @@ export default function Login() {
             />
           </label>
           {error && (
-            <p role="alert" className="form-error">
-              {error}
-            </p>
+            <div className="login-error-state">
+              <p role="alert" className="form-error">
+                {error}
+              </p>
+              {profiles.length > 0 && !selectedDisabled && (
+                <>
+                  <p className="section-note">
+                    Shared demo details can reset when the backend restarts.
+                    Reload the profiles, choose your profile again, then retry.
+                  </p>
+                  <button
+                    type="button"
+                    className="button"
+                    disabled={profilesLoading}
+                    onClick={() => void loadProfiles()}
+                  >
+                    Reload demo accounts
+                  </button>
+                </>
+              )}
+            </div>
           )}
           <button className="button primary" disabled={busy}>
             {busy ? "Signing in…" : "Enter your workspace"}
             <ArrowRightIcon size={18} />
           </button>
+          {busy && (
+            <p role="status" className="login-service-status">
+              Connecting securely… Keep this page open while the backend
+              responds.
+            </p>
+          )}
           <p className="login-note">
             <LockKeyIcon size={16} /> Access follows your current document
             permissions.

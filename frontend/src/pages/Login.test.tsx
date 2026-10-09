@@ -50,9 +50,10 @@ test("picker fills all credentials and tenant, without bypassing normal sign-in"
   await userEvent.click(
     screen.getByRole("button", { name: "Enter your workspace" }),
   );
-  await waitFor(() => expect(refresh).toHaveBeenCalled());
+  await waitFor(() => expect(refresh).toHaveBeenCalledWith(true));
   expect(api).toHaveBeenLastCalledWith("/auth/login", {
     method: "POST",
+    signal: expect.any(AbortSignal),
     body: JSON.stringify({
       workspace: "ORBIT",
       email: "orbit@example.test",
@@ -84,4 +85,26 @@ test("cold backend shows an explicit profile retry, preserving manual login", as
   expect(
     await screen.findByRole("button", { name: "Maya · Employee" }),
   ).toBeInTheDocument();
+});
+
+test("a failed post-login session check remains visible instead of silently leaving the login form", async () => {
+  vi.mocked(api)
+    .mockResolvedValueOnce({ items: profiles })
+    .mockResolvedValueOnce({});
+  refresh.mockRejectedValueOnce(
+    new Error("Sign-in could not establish a session. Please retry."),
+  );
+  render(<Login />);
+  await userEvent.click(
+    await screen.findByRole("button", { name: "Maya · Employee" }),
+  );
+  await userEvent.click(
+    screen.getByRole("button", { name: "Enter your workspace" }),
+  );
+  expect(await screen.findByRole("alert")).toHaveTextContent(
+    "Sign-in could not establish a session",
+  );
+  expect(
+    screen.getByRole("button", { name: "Reload demo accounts" }),
+  ).toBeEnabled();
 });
