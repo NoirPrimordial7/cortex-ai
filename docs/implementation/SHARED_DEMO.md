@@ -24,4 +24,11 @@ Render health; Vercel READY/source SHA; production alias accessible without Verc
 
 [Render free services](https://render.com/docs/free) sleep after inactivity, use ephemeral files, offer no persistent free disk and share monthly quotas. Cold start may take about a minute. [Vercel SQLite guidance](https://vercel.com/kb/guide/is-sqlite-supported-in-vercel) rules out moving this stateful database into functions. Free quotas/outages, single-process serialization, shared history growth and in-memory failure counters remain limitations. This is disposable demo infrastructure. Do not enter confidential data, personal information or real passwords.
 
-Exact backend URL and live verification will be recorded after service creation.
+## Allocated services
+
+- Frontend production alias: https://cortex-ai-three-kappa.vercel.app (also https://cortex-ai-noir-s-projects2.vercel.app).
+- Backend: https://cortex-ai-demo.onrender.com. Render service srv-db4h9q1srm7s73b4b5g0, Free instance confirmed in dashboard, first deploy uses5ec7ca8e2a53bd55ef3ae5081991ef4c0d2a77f5.
+- `frontend/vercel.json` sends /api to this actual assigned backend and falls back to index.html for SPA routes. Explicit API no-store headers; external rewrite caching disabled in the project.
+- Vercel uses standard protection: previews/build URLs protected, production project domains public. Neither account collaborators nor repository visibility changed.
+
+Backend readiness and end-to-end checks are pending at this configuration commit; exact observed results follow below only after validation.

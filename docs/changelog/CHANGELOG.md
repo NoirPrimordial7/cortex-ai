@@ -83,3 +83,9 @@
 - Reason: owner requested remote teammate demo and all fictional account autofill; explicitly authorized free Render backend. Outcome: opt-in finite fictional picker, normal authentication retained, exact Host/HTTPS Origin and Secure cookie settings, disposable single-worker seed and hosted mutation403. Local upload/governance remain interactive.
 - Verification:38 backend tests and11 frontend tests pass; strict TypeScript/Vite build and Ruff pass. Rendering uses the in-app browser only; no headless fallback. Previous publication6545b20.
 - Outstanding: create Render free service, wire verified backend URL, redeploy exact commit and check real HTTPS sign-in/citations/access denials before claiming live completion. Free service sleeps/resets; histories are shared per fictional profile. Commit subject: feat: add fictional demo account picker and hosted safety boundary.
+
+## 2026-10-09T21:53:30+05:30 — Phase3 assigned hosting route
+
+- Published5ec7ca8e2a53bd55ef3ae5081991ef4c0d2a77f5; origin/main confirmed identical. Render Free service cortex-ai-demo created from that exact commit, assigned https://cortex-ai-demo.onrender.com. No paid instance/disk or collaborator change.
+- Added frontend/vercel.json; updated shared-demo guide. Reason: bind real assigned backend to same-origin API and SPA routes with explicit no-store. Vercel production project aliases are public; previews/build URLs retain standard protection. Backend allows only the two verified project HTTPS origins.
+- Verification: Git/staged actual-credential scan passed before prior push; production frontend alias HTTP200 without account login. Service build and full hosted API/browser checks still pending; no functional deployment claim yet. Commit subject: deploy: connect Vercel frontend to free Render demo backend.
