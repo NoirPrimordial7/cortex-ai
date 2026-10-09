@@ -37,4 +37,3 @@ All concepts use the same fictional annual-leave question and permitted exact pa
 Installed skills are now confirmed discoverable in the 2026-10-10 turn's available-skills catalog: frontend-design, web-design-guidelines, vercel-react-best-practices and vercel-composition-patterns. No new installation was needed.
 
 Selection is pending. The deployed UI, application source, package manifests and security/retrieval behavior were not changed. Existing tests/build were last run at the prior checkpoint; no fresh runtime verification is claimed for this artwork-only iteration.
-
