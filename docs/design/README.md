@@ -1,5 +1,7 @@
 # Cortex AI design gallery
 
+**Evidence Desk exploration (draft PR #2):** [three new desktop/mobile concepts and current-flow findings](evidence-desk/README.md), [project-local skill installation and pins](evidence-desk/SKILL_INSTALLATION.md). Owner selection is pending; these concepts are artwork, and deployed Atlas Professional remains the current implementation.
+
 **Current Atlas Professional refinement:** the owner selected displayed option1 and requested a more professional premium treatment. [Actual new gallery and comparison](redesign/implemented/README.md), [selected revised source](redesign/concepts/atlas-professional.png), [research and baseline](redesign/REDESIGN_BRIEF.md), [current QA](../../design-qa.md).
 
 ![Current assistant](redesign/implemented/assistant-final-1487.jpg)

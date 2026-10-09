@@ -1,6 +1,6 @@
 # Cortex AI — curated agent design toolkit
 
-**Status:** curated installation plan, not an assertion of installation on the owner's Windows PC. Updated 2026-10-09. This guide accompanies the working app. No unreviewed third-party instructions have been executed.
+**Status:** four selected skills installed locally at project scope on 2026-10-09. Pinned sources, inspection results and discovery limits are recorded in [the installation record](evidence-desk/SKILL_INSTALLATION.md). Codex discovery must still be confirmed on the next turn/new session. Playwright test dependencies and browser binaries remain a later implementation step. This branch has no application UI changes.
 
 ## Recommended sources (start small)
 
