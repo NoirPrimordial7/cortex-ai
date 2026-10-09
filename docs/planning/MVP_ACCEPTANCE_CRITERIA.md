@@ -1,5 +1,11 @@
 # MVP acceptance gate — October 10 demonstration
 
+**Phase3 checkpoint: the original gate is now assessed against real code.** A-G1 startup/locks/FTS/offline, A-G2 auth, A-G3 TXT/PDF/DOCX, A-G4 permission/race/isolation route matrix, A-G5 temporal, A-G6 authority/conflict/scope and A-G7 exact citation/abstention have passing API tests in the bounded reviewed-claim domain. A-G8 real screens and essential flows have responsive browser evidence; browser approval/grant submissions are not claimed. A-G9 redacted success events and crafted fixture results exist; held-out quality, denied-attempt audit and target-machine demonstration remain outstanding. See [actual results](../implementation/TEST_RESULTS.md) for counts/limits; “zero observed violations” applies to checked stages/tests, not all possible attacks. No college40% conclusion follows. Historical gate language below is preserved.
+
+---
+
+## Preserved Phase 2 baseline
+
 **No criterion is currently passed by a functional application.** Architecture and static previews are planning deliverables. Milestone A must be evaluated after Phase 3 approval and implementation.
 
 | Gate | Required evidence |

@@ -22,6 +22,7 @@ def test_d01_d03_d04_d05_d11(system, as_of, value, clause):
     assert result["status"] == "answered"
     assert result["citations"][0]["clause_id"] == clause
     assert result["citations"][0]["reviewed_value"] == value
+    assert result["citations"][0]["authority_rank"] == 100
     assert "99" not in result["answer"]
     assert all(e.clause_id not in {"LD-C1", "LO-C1", "E26-C1"} for e in seen)
 

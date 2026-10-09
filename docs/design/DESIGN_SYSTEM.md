@@ -1,5 +1,15 @@
 # Cortex design system — Evidence Studio proposal
 
+**Implemented Evidence Studio, Phase3.** Actual shared tokens/styles are in `frontend/src/styles.css`; light/dark themes run in the application. Ink#142033, canvas#F6F7F9, muted#526174, teal#067267 and the planned dark values are retained. Actual typography: system SegoeUI fallbacks,14px base/compact reading,30px primary heading,19px section heading,15px subheading,16px/1.7 source passage and12px metadata. No external font/CDN. Phosphor library icons accompany an original typographic cortexAI wordmark; no copied product imagery.
+
+Desktop224px rail, tablet/icon rail and mobile drawer;8px-derived spacing, restrained6px controls/separators, visible focus, reduced-motion rule, mobile44px controls. Current badges separate approval from validity; expired is neutral, future/pending amber, rejection/failure red. Date and source metadata are text, not color-only. Theme choice is in memory, not persisted.
+
+[12 sampled actual light/dark contrast pairs](contrast-results.json) all≥4.5 (minimum5.11); this is not certification of every state. [Screenshots](README.md) and [design QA](../../design-qa.md) replace deferred testing claims for inspected views. Historical proposed sizing/tokens follow for provenance.
+
+---
+
+## Preserved Phase 2 baseline
+
 **Original proposed tokens, implementation pending.** See [moodboard](previews/moodboard.png) and [three directions](previews/visual-directions.png).
 
 | Token | Light value | Purpose |

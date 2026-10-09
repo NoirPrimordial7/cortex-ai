@@ -1,65 +1,61 @@
 # Cortex AI
 
-Conflict-aware and permission-safe enterprise knowledge intelligence, proposed as a final-year BTech Computer Science project.
+Conflict-aware, permission-safe enterprise knowledge intelligence for a final-year BTech Computer Science project.
 
-Company knowledge is scattered across policies, SOPs, legal documents, and project files. Relevant text can still be outdated, inconsistent, or inaccessible to the person asking. Cortex AI will investigate whether retrieval augmented generation, explicit validity metadata, source authority, and authorization checks can produce more reliable, evidence-backed answers.
+**Phase 3: working local evidence core and Evidence Studio UI, 2026-10-09.** Phase 1 research and Phase 2 architecture/design are owner-approved and preserved. This checkpoint is a bounded offline policy answerer: reviewed numeric claims for annual leave, remote work, notice period and executive bonus. It is not yet a general-purpose LLM chatbot or a production enterprise deployment. No paid API is required or enabled.
 
-**Status: Phase 1 approved; Phase 2 planning and design prepared for owner review, as of 2026-10-09 (Asia/Calcutta).** Stack and contracts are selected as a planning baseline. No functional application, agents, database or measured evaluation has been implemented. Phase 3 requires explicit owner approval.
+Company knowledge can be relevant but outdated, conflicting or inaccessible. Cortex checks current identity and explicit document grants, approval, effective date and scope before reading evidence for reasoning. It then compares source authority and either produces an exact cited evidence answer or abstains. Newest upload does not imply currently effective policy.
 
-The preserved Phase 1 dossier covers 13 competitor families, 15 academic works and 76 primary references. Paper findings are author-reported, product behavior is documentation-based, and unverified functionality is explicitly qualified. No experiments or product benchmarks have been run. No paid services are authorized.
+Repository: [NoirPrimordial7/cortex-ai](https://github.com/NoirPrimordial7/cortex-ai), `main`. GitHub currently reports **PUBLIC**; the repository was created private in Phase 1. This task did not change visibility or collaborators. Local database, uploaded files and generated credentials are excluded from Git.
 
-Repository: https://github.com/NoirPrimordial7/cortex-ai. Created private in Phase 1; authenticated GitHub metadata on 2026-10-09 now reports **public**. This change was not performed by this planning task. Visibility must not change without explicit approval.
+## Run and inspect
 
-Change policy: meaningful work must update the appropriate changelog and research/development log, be reviewed for sensitive content, and be committed and pushed with the outcome verified. Never force-push or discard existing work.
+**Live development:** http://127.0.0.1:5173 (frontend hot updates; requires the two running local servers).
 
-## Objectives and proposed capabilities
+[PowerShell startup and fictional sign-in instructions](docs/implementation/RUN_LOCAL.md) · [actual module status and limits](docs/implementation/IMPLEMENTATION_STATUS.md) · [test results](docs/implementation/TEST_RESULTS.md) · [backend API contracts](backend/README.md).
 
-- Find company policies with source-span citations and inspectable evidence.
-- Enforce current identity/tenant/document grants before evidence analysis.
-- Distinguish publication/upload dates from the date a rule becomes effective.
-- Prefer reviewed topic authority while reporting unresolved equal-authority conflicts.
-- Decline unsupported policy answers and evaluate quality/access failures reproducibly.
+Use workspace `NORTHSTAR` and employee `maya@example.test`; generated passwords exist only in ignored `local-data/credentials.json`. Reviewer/admin and auditor accounts demonstrate separate actions and document access. Do not publish that file or use real company data.
 
-These capabilities are planned, not implemented. The project evaluates established techniques as a coherent bounded engineering system; no world-first claim.
+## Genuine running UI
 
-## Documentation and visual gallery
+![Actual assistant browser capture](docs/design/screenshots/assistant-answer-1440.jpg)
 
-| Review goal | Start here |
+Real browser screenshot of the local React/FastAPI system using fictional data. Current leave evidence is20 days; historical2025 evidence is18; equally authoritative remote-work policies produce an abstention with both citations. These values come from the provided fixture and API, not hardcoded frontend answers.
+
+[Running screenshot gallery](docs/design/README.md) includes desktop/tablet/mobile, dark theme, upload/review, version history, permissions, own history and redacted audit. Phase2 concept artwork remains separately labelled. [Design QA](design-qa.md) records actual checks and corrections.
+
+## Implemented stack and modules
+
+| Layer | Actual checkpoint |
 |---|---|
-| Understand the whole project | [Documentation landing page](docs/README.md), [plain-English system guide](docs/learning/SYSTEM_EXPLAINED.md) |
-| Inspect architecture | [Ten-diagram gallery](docs/DIAGRAMS.md), [system contract](docs/planning/SYSTEM_ARCHITECTURE.md), [database](docs/planning/DATABASE_SCHEMA.md) |
-| Review the interface | [UI gallery](docs/design/README.md), [three directions](docs/design/previews/visual-directions.png), [design system](docs/design/DESIGN_SYSTEM.md) |
-| Begin development after approval | [Backlog](docs/planning/IMPLEMENTATION_BACKLOG.md), [exact task order](docs/planning/DEVELOPMENT_SEQUENCE.md) |
-| Check tomorrow's demonstration | [Fictional expected outputs](docs/planning/DEMO_SCENARIOS.md), [MVP gates](docs/planning/MVP_ACCEPTANCE_CRITERIA.md), [evaluation](docs/planning/TEST_STRATEGY.md) |
-| Review decisions and limits | [ADRs](docs/decisions/README.md), [security](docs/planning/SECURITY_MODEL.md), [Phase2 quality review](docs/planning/QUALITY_REVIEW.md) |
+| Frontend | React19, Vite7, TypeScript, Tailwind4 with shared original CSS tokens, React Router, Phosphor icons; `package-lock.json` |
+| Backend/auth | Python3.12, FastAPI, opaque HTTP-only sessions, Argon2id, Origin/CSRF checks, action roles and explicit document grants |
+| Database/retrieval | SQLite/FTS5, SQLAlchemy Core, Alembic; permission-filtered clause IDs, authorized lexical scoring and topic peers |
+| Processing/reasoning | pypdf, python-docx, UTF-8 TXT; bounded parser child, trusted review, deterministic interval/authority/conflict rules |
+| Verification | Pytest/HTTPX, Ruff, Vitest/RTL, TypeScript production build, live in-app browser checks; exact Python lock |
 
-![Assistant design concept](docs/design/previews/assistant.png)
+Backend and UI cover login/session, permitted knowledge dashboard, assistant/citations, document library, private upload, immutable version/detail/download, metadata review, conflict/history inspection, existing-user roles/enable-disable, document grants and sanitized audit activity. Admin action does not bypass READ.
 
-Original high-fidelity concept artwork with fictional data. PNGs are SVG exports, not browser screenshots or proof of running AI. Static HTML/CSS sources are included; local browser verification was unavailable and owner declined headless fallback.
+## Architecture actually implemented
 
-## Selected planning stack
+![Implemented local architecture](docs/diagrams/11-implemented-core.svg)
 
-| Layer | Baseline |
+One backend application worker serializes protected requests and access changes with an exclusive process gate and one transaction. This is a conservative local deadline trade-off; synchronous parsing may hold the gate for30 seconds. [ADR0005](docs/decisions/0005-local-execution-boundary.md) explains changes from the approved design. [Earlier diagrams](docs/DIAGRAMS.md) remain planning references, not proof that optional AI is implemented.
+
+## Verified progress and remaining work
+
+| Check | Result / scope |
 |---|---|
-| Frontend | React, Vite, TypeScript, TailwindCSS |
-| Backend / auth | Python3.12, FastAPI, opaque backend sessions, Argon2id and explicit role actions/document grants |
-| Data / retrieval | SQLite, SQLAlchemy2.0, Alembic; FTS5 IDs and permitted-text scoring |
-| Processing / answers | pypdf, python-docx, UTF-8 TXT; mandatory offline evidence answerer |
-| Testing / operation | Pytest/HTTPX, Vitest/RTL, future Playwright E2E; local loopback/same-origin first |
+| Backend |29 tests pass, including ingestion/review, direct-resource denial, historical validity and concurrent revocation; one compatibility deprecation warning |
+| Frontend |8 tests pass; TypeScript/Vite build succeeds; real responsive screen checks |
+| Crafted fixture |12/12 outcomes,15/15 authorized peers,10/10 exact citation spans/hashes; **same development fixture, not held-out accuracy** |
+| Quality |Ruff/pip consistency pass; npm audit zero findings at this checkpoint; sampled contrast and reflow checked |
 
-[Trade-offs and primary evidence](docs/planning/TECH_STACK.md). Optional local embeddings/NLI/generation come later; no paid API is required or enabled. Owner review precedes Phase3; exact dependency locks are not yet created.
+No arbitrary40% completion or general accuracy claim is made. Future priorities are a held-out adjudicated corpus, richer clauses/lineage and permitted rejection explanations, parser isolation/denial audit/retention, and measured optional local semantic enhancements. Chunk ACLs, general amendments/exceptions, NLI, vector retrieval, LLM generation, agents, user creation and multiworker/hosted deployment remain unimplemented.
 
-## Development progress and feature roadmap
+## Preserved research and approved planning
 
-| Unit | Current state |
-|---|---|
-| Phase1 research | Approved;13families,15papers,76primary references preserved |
-| Phase2 engineering/design | Contracts,backlog,diagrams,fictional scenario specifications and concept previews prepared |
-| MilestoneA working MVP | Not implemented; deadline10Oct2026;13–26h estimate, capacity/rubric unknown |
-| MilestoneB strong core | Planned lineage/evaluation,optional semantic/local AI enhancements |
-| MilestoneC advanced | Conditional planner/connectors/scalability,only with measurable justification |
-
-[Roadmap](docs/PROJECT_ROADMAP.md) is DRAFT / PENDING OWNER REVIEW. No completion percentage or measured quality is claimed. Application setup/run commands will be documented after implementation starts; present files are research/planning/static design artifacts only.
+The Phase1 dossier covers13 competitor families,15 academic works and76 primary references, with documentation-based claims and explicit evidence limits. No world-first claim is made. [Documentation index](docs/README.md), [planning backlog](docs/planning/IMPLEMENTATION_BACKLOG.md), [draft future roadmap](docs/PROJECT_ROADMAP.md), [ADRs](docs/decisions/README.md) and [plain-English guides](docs/learning/SYSTEM_EXPLAINED.md) connect plans to current implementation.
 
 ## Research documents
 
@@ -70,29 +66,6 @@ Original high-fidelity concept artwork with fictional data. PNGs are SVG exports
 - [Draft roadmap and three scopes](docs/PROJECT_ROADMAP.md) and [observed/proposed architecture notes](docs/ARCHITECTURE_NOTES.md)
 - [Quality review](docs/QUALITY_REVIEW.md), [decision policy](docs/decisions/README.md), [changelog](docs/changelog/CHANGELOG.md), [development log](docs/logs/DEVELOPMENT_LOG.md) and [research log](docs/logs/RESEARCH_LOG.md)
 - [Paper registry](research/papers/README.md), [competitor registry](research/competitors/README.md), [proposed experiment protocol](research/experiments/README.md), [source inventory](research/SOURCE_INVENTORY.json) and [dated link checks](research/SOURCE_CHECKS.json)
-
-Selected planning direction: a bounded, reproducible policy-answering system using reviewed access, validity and approval metadata, with conflict/abstention evaluation and matched retrieval baselines. Temporal/conflict-aware retrieval, permissions, citations and agents already exist; no world-first claim is made. [Selected stack](docs/planning/TECH_STACK.md), [architecture](docs/planning/SYSTEM_ARCHITECTURE.md), [security contract](docs/planning/SECURITY_MODEL.md), [visual diagrams](docs/DIAGRAMS.md) and [fictional demonstration expectations](docs/planning/DEMO_SCENARIOS.md) are planning artifacts awaiting owner review before implementation.
-
-## Visual architecture — planned
-
-![Cortex system architecture](docs/diagrams/01-system-architecture.svg)
-
-The browser uses one backend that checks identity and access before evidence analysis. Offline evidence answers are the required baseline; local generation is an optional later enhancement.
-
-## Core request workflow — intended
-
-```mermaid
-flowchart LR
- Q[Question and as-of date] --> I[Trusted identity]
- I --> P[Current READ grants before text]
- P --> V[Approved valid scope]
- V --> R[Permitted retrieval and peers]
- R --> C[Authority and conflicts]
- C --> A[Cited evidence answer or abstention]
- A --> F[Reauthorize before response]
-```
-
-Historical questions keep current permissions. A future-effective version is not selected simply because it was uploaded most recently. Exact stage contracts are in [RAG_PIPELINE](docs/planning/RAG_PIPELINE.md).
 
 ## Long-term traceability
 

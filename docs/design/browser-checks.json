@@ -1,0 +1,453 @@
+{
+  "checked_at": "2026-10-09T15:44:23.040Z",
+  "method": "Live Codex in-app browser; read-only DOM metrics and genuine screenshots; no headless renderer",
+  "checks": [
+    {
+      "page": "library",
+      "heading": "Document library",
+      "height": 1000,
+      "scrollWidth": 1425,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "library",
+      "heading": "Document library",
+      "height": 900,
+      "scrollWidth": 1009,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "library",
+      "heading": "Document library",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "dashboard",
+      "heading": "Knowledge overview",
+      "height": 1000,
+      "scrollWidth": 1425,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "dashboard",
+      "heading": "Knowledge overview",
+      "height": 900,
+      "scrollWidth": 1009,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "dashboard",
+      "heading": "Knowledge overview",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "document-detail",
+      "heading": "Annual leave policy",
+      "height": 1000,
+      "scrollWidth": 1440,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "document-detail",
+      "heading": "Annual leave policy",
+      "height": 900,
+      "scrollWidth": 1024,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "document-detail",
+      "heading": "Annual leave policy",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "assistant-answer",
+      "heading": "Knowledge assistant",
+      "height": 1000,
+      "scrollWidth": 1440,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "assistant-answer",
+      "heading": "Knowledge assistant",
+      "height": 900,
+      "scrollWidth": 1009,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "assistant-answer",
+      "heading": "Knowledge assistant",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "theme": "light",
+      "contrast_samples": [
+        {
+          "background": "rgb(246, 247, 249)",
+          "color": "rgb(20, 32, 51)",
+          "font": "30px",
+          "selector": "h1"
+        },
+        {
+          "background": "rgb(246, 247, 249)",
+          "color": "rgb(82, 97, 116)",
+          "font": "14px",
+          "selector": ".description"
+        },
+        {
+          "background": "rgb(227, 244, 239)",
+          "color": "rgb(20, 32, 51)",
+          "font": "16px",
+          "selector": ".source-text mark"
+        },
+        {
+          "background": "rgb(227, 244, 239)",
+          "color": "rgb(20, 32, 51)",
+          "font": "14px",
+          "selector": ".citation"
+        },
+        {
+          "background": "rgb(227, 244, 239)",
+          "color": "rgb(6, 114, 103)",
+          "font": "11px",
+          "selector": ".badge"
+        },
+        {
+          "background": "rgb(35, 77, 71)",
+          "color": "rgb(188, 235, 221)",
+          "font": "12px",
+          "selector": ".rail nav a.active"
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "contrast_samples": [
+        {
+          "background": "rgb(15, 23, 36)",
+          "color": "rgb(244, 247, 251)",
+          "font": "30px",
+          "selector": "h1"
+        },
+        {
+          "background": "rgb(15, 23, 36)",
+          "color": "rgb(187, 199, 214)",
+          "font": "14px",
+          "selector": ".description"
+        },
+        {
+          "background": "rgb(25, 63, 57)",
+          "color": "rgb(244, 247, 251)",
+          "font": "16px",
+          "selector": ".source-text mark"
+        },
+        {
+          "background": "rgb(25, 63, 57)",
+          "color": "rgb(244, 247, 251)",
+          "font": "14px",
+          "selector": ".citation"
+        },
+        {
+          "background": "rgb(25, 63, 57)",
+          "color": "rgb(106, 224, 195)",
+          "font": "11px",
+          "selector": ".badge"
+        },
+        {
+          "background": "rgb(35, 77, 71)",
+          "color": "rgb(188, 235, 221)",
+          "font": "12px",
+          "selector": ".rail nav a.active"
+        }
+      ]
+    },
+    {
+      "page": "assistant-dark",
+      "heading": "Knowledge assistant",
+      "height": 1000,
+      "scrollWidth": 1440,
+      "theme": "app dark",
+      "width": 1440
+    },
+    {
+      "page": "conflicts",
+      "heading": "Conflicts & validity",
+      "height": 1000,
+      "scrollWidth": 1440,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "conflicts",
+      "heading": "Conflicts & validity",
+      "height": 900,
+      "scrollWidth": 1009,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "conflicts",
+      "heading": "Conflicts & validity",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "login",
+      "heading": "A clear answer.The evidenceto trust it.",
+      "height": 1000,
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "page": "login",
+      "heading": "A clear answer.The evidenceto trust it.",
+      "height": 900,
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "page": "login",
+      "heading": "A clear answer.The evidenceto trust it.",
+      "height": 844,
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "page": "permissions",
+      "heading": "Permissions & people",
+      "height": 1000,
+      "scrollWidth": 1425,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "permissions",
+      "heading": "Permissions & people",
+      "height": 900,
+      "scrollWidth": 1009,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "permissions",
+      "heading": "Permissions & people",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "permissions",
+      "heading": "Permissions & people",
+      "height": 1000,
+      "scrollWidth": 1425,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "permissions",
+      "heading": "Permissions & people",
+      "height": 900,
+      "scrollWidth": 1009,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "permissions",
+      "heading": "Permissions & people",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "upload",
+      "heading": "Upload a document",
+      "height": 1000,
+      "scrollWidth": 1440,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "upload",
+      "heading": "Upload a document",
+      "height": 900,
+      "scrollWidth": 1009,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "upload",
+      "heading": "Upload a document",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "document-review",
+      "heading": "Browser verification — fictional notice",
+      "height": 1000,
+      "scrollWidth": 1440,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "document-review",
+      "heading": "Browser verification — fictional notice",
+      "height": 900,
+      "scrollWidth": 1024,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "document-review",
+      "heading": "Browser verification — fictional notice",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "review-form",
+      "heading": "Browser verification — fictional notice",
+      "height": 1000,
+      "scrollWidth": 1425,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "review-form",
+      "heading": "Browser verification — fictional notice",
+      "height": 900,
+      "scrollWidth": 1009,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "review-form",
+      "heading": "Browser verification — fictional notice",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "audit",
+      "heading": "Audit activity",
+      "height": 1000,
+      "scrollWidth": 1425,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "audit",
+      "heading": "Audit activity",
+      "height": 900,
+      "scrollWidth": 1009,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "audit",
+      "heading": "Audit activity",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "document-detail",
+      "heading": "Annual leave policy",
+      "height": 1000,
+      "scrollWidth": 1440,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "document-detail",
+      "heading": "Annual leave policy",
+      "height": 900,
+      "scrollWidth": 1024,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "document-detail",
+      "heading": "Annual leave policy",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "history",
+      "heading": "Answer history",
+      "height": 1000,
+      "scrollWidth": 1425,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "history",
+      "heading": "Answer history",
+      "height": 900,
+      "scrollWidth": 1009,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "history",
+      "heading": "Answer history",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    },
+    {
+      "page": "assistant-answer",
+      "heading": "Knowledge assistant",
+      "height": 1000,
+      "scrollWidth": 1440,
+      "theme": "app ",
+      "width": 1440
+    },
+    {
+      "page": "assistant-answer",
+      "heading": "Knowledge assistant",
+      "height": 900,
+      "scrollWidth": 1009,
+      "theme": "app ",
+      "width": 1024
+    },
+    {
+      "page": "assistant-answer",
+      "heading": "Knowledge assistant",
+      "height": 844,
+      "scrollWidth": 375,
+      "theme": "app ",
+      "width": 390
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+digraph Cortex {
+ graph [rankdir=TB,bgcolor="white",pad="0.4",nodesep="0.4",ranksep="0.55",fontname="Segoe UI",fontsize=20,labelloc=t,label="Cortex AI — implemented local evidence core\nSingle application worker · finite reviewed-policy domain"];
+ node [shape=box,style="rounded,filled",fontname="Segoe UI",fontsize=12,margin="0.2,0.16",color="#8190a8",fontcolor="#142033",fillcolor="#e7edff"];
+ edge [fontname="Segoe UI",fontsize=10,color="#62738b",arrowsize=0.7];
+ browser [label="React / Vite browser\nLoopback API proxy or same-origin built assets",fillcolor="#f1f5f9"];
+ api [label="FastAPI: Origin + body bounds\nOpaque cookie, current identity and CSRF"];
+ subgraph cluster_gate {
+  label="PROTECTED REQUEST: EXCLUSIVE PROCESS GATE + ONE TRANSACTION"; fontname="Segoe UI";fontsize=11;color="#cdd8e5";style=rounded;
+  auth [label="Current roles permit actions\nExplicit document grants permit READ"];
+  ids [label="Permission / approval / date / scope SQL\nFTS5 returns eligible clause IDs",fillcolor="#def4ed"];
+  peers [label="Authorized evidence only\nExpand all eligible topic peers (cap 100)",fillcolor="#def4ed"];
+  reason [label="Reviewed claims + strongest authority\nEqual-strength disagreement → abstain",fillcolor="#fff1d6"];
+  verify [label="Exact source span + hash + revision check\nCurrent source access rechecked",fillcolor="#def4ed"];
+  result [label="Offline answer or abstention + ≤8 citations\nPersist owner-only dependencies",fillcolor="#def4ed"];
+  upload [label="Upload action + explicit access\nPrivate file path; 10 MiB TXT/PDF/DOCX"];
+  parse [label="Parser child: 30 seconds / format limits\nNot an OS security sandbox"];
+  pending [label="Immutable text, hash and locators\nFailed / pending review; no answer context",fillcolor="#eef0f4"];
+  review [label="Reviewer confirms uniform document access\nOne numeric span, dates, scope and source kind",fillcolor="#fff1d6"];
+  publish [label="Atomic metadata + claim + FTS publication\nIncrement knowledge revision",fillcolor="#def4ed"];
+  edit [label="ACL / role mutations use same gate\nCurrent action + READ, optimistic revision"];
+  history [label="History/citations reauthorized per read\nRevoked or changed revision → withhold",fillcolor="#def4ed"];
+ }
+ db [shape=cylinder,label="Private SQLite + uploads\n21 domain tables + FTS5\nExcluded from Git",fillcolor="#eef0f4"];
+ absent [label="Later: chunk ACLs, general amendments\nSemantic models / agents / multiple workers",fillcolor="#f1f5f9",style="rounded,filled,dashed"];
+ browser -> api -> auth;
+ auth -> ids -> peers -> reason -> verify -> result;
+ result -> browser [label="authorized result",constraint=false];
+ auth -> upload -> parse -> pending -> review -> publish;
+ publish -> ids [label="reviewed publication",constraint=false];
+ auth -> edit -> history;
+ history -> browser [label="permitted retained result",constraint=false];
+ db -> auth [style=dashed,label="current state",constraint=false];
+ pending -> db [style=dashed,constraint=false];
+ absent -> reason [style=dotted,constraint=false];
+}

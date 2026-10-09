@@ -1,5 +1,24 @@
 # Visual research and original identity
 
+**Phase3 targeted reference review, 2026-10-09.** Eight accessible examples were inspected before final UI refinement. These are component/public reference pages, not eight authenticated enterprise products. Actual interactive controls were inspected where available; no paywalls, paid assets or product screenshots were copied.
+
+| Accessible example | What was actually observed | Influence / deliberate departure |
+|---|---|---|
+| [Geist Button](https://vercel.com/geist/button) | Live variants/loading/disabled examples | Restrained primary/secondary states, explicit busy feedback; teal Cortex palette |
+| [Geist Table](https://vercel.com/geist/table) | Live semantic examples;14px headers/cells, quiet separators | Bounded readable library/audit tables; document versions open separately |
+| [Geist Empty State](https://vercel.com/geist/empty-state) | Public empty-state hierarchy/examples | Clear actionable empty/missing/error states; no fabricated charts |
+| [Geist Command Menu](https://vercel.com/geist/command-menu) | Opened actual example menu; focused input, grouped commands and Escape hint | Keyboard focus conventions; Cortex implements query focus shortcut, not a full command palette |
+| [Linear design refresh](https://linear.app/now/behind-the-latest-design-refresh) | Publisher article “A calmer interface for a product in motion”, diagrams and comparison figures | Quiet hierarchy, restrained navigation and spacing; not an authenticated Linear workflow audit |
+| [SaaSUI navigation](https://www.saasui.design/pattern/navigation) | Public reference gallery with navigation screenshots | Stable rail/grouping/breadcrumb conventions; not a live ActiveCollab/Basedash session |
+| [Raycast](https://www.raycast.com/) | Public marketing page, black/white typography and product imagery | Crisp contrast/keyboard emphasis; native app interactions not verified |
+| [Behance SaaS gallery](https://www.behance.net/search/projects/saas%20dashboard) | Public grid including NexaFlow, CentrFlow and Meridian concept previews | Compare density/directions; reject generic purple and decorative business metrics without evidence |
+
+Current access supersedes the earlier Behance fetch limitation. Awwwards navigation timed out; detailed findings remain NOT VERIFIED. Mobbin public landing/gated examples do not establish full workflow access. Inspiration is design judgment, not empirical product-usability evidence. Original Evidence Studio stays the approved direction: ink rail, teal evidence, readable neutral surfaces, system typography and actual source transparency.
+
+---
+
+## Preserved Phase 2 baseline
+
 **Reviewed2026-10-09; design inspiration, not empirical usability findings.** Only public, free-access material inspected. No paid subscription, account registration or proprietary asset copying.
 
 | Requested source / actual URL | Access and observation | Cortex interpretation |

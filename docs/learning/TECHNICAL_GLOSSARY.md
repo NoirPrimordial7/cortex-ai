@@ -1,5 +1,11 @@
 # Technical glossary
 
+**Phase3 implementation note.** In this implementation, evidence answer means a deterministic reviewed-policy result, not model generation. Authority rank is a reviewed source rule, not confidence. Current READ is an explicit grant, independent of an admin action role. The global process gate serializes protected requests and mutations; it only works with one backend application process. [Run and inspect](../implementation/RUN_LOCAL.md) · [actual limits](../implementation/IMPLEMENTATION_STATUS.md) · [implemented diagram](../diagrams/11-implemented-core.svg). The explanation below preserves Phase2 planned context.
+
+---
+
+## Preserved Phase 2 baseline
+
 | Term | Plain meaning / Cortex example |
 |---|---|
 | API | A defined conversation between browser and backend, such as POST /queries |

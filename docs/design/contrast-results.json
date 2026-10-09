@@ -1,0 +1,89 @@
+{
+  "method": "WCAG relative luminance on selected actual computed text/background pairs, not a complete accessibility audit",
+  "pairs": [
+    {
+      "theme": "light",
+      "selector": "h1",
+      "foreground": "rgb(20, 32, 51)",
+      "background": "rgb(246, 247, 249)",
+      "ratio": 15.26
+    },
+    {
+      "theme": "light",
+      "selector": ".description",
+      "foreground": "rgb(82, 97, 116)",
+      "background": "rgb(246, 247, 249)",
+      "ratio": 5.9
+    },
+    {
+      "theme": "light",
+      "selector": ".source-text mark",
+      "foreground": "rgb(20, 32, 51)",
+      "background": "rgb(227, 244, 239)",
+      "ratio": 14.37
+    },
+    {
+      "theme": "light",
+      "selector": ".citation",
+      "foreground": "rgb(20, 32, 51)",
+      "background": "rgb(227, 244, 239)",
+      "ratio": 14.37
+    },
+    {
+      "theme": "light",
+      "selector": ".badge",
+      "foreground": "rgb(6, 114, 103)",
+      "background": "rgb(227, 244, 239)",
+      "ratio": 5.11
+    },
+    {
+      "theme": "light",
+      "selector": ".rail nav a.active",
+      "foreground": "rgb(188, 235, 221)",
+      "background": "rgb(35, 77, 71)",
+      "ratio": 7.22
+    },
+    {
+      "theme": "dark",
+      "selector": "h1",
+      "foreground": "rgb(244, 247, 251)",
+      "background": "rgb(15, 23, 36)",
+      "ratio": 16.73
+    },
+    {
+      "theme": "dark",
+      "selector": ".description",
+      "foreground": "rgb(187, 199, 214)",
+      "background": "rgb(15, 23, 36)",
+      "ratio": 10.49
+    },
+    {
+      "theme": "dark",
+      "selector": ".source-text mark",
+      "foreground": "rgb(244, 247, 251)",
+      "background": "rgb(25, 63, 57)",
+      "ratio": 10.79
+    },
+    {
+      "theme": "dark",
+      "selector": ".citation",
+      "foreground": "rgb(244, 247, 251)",
+      "background": "rgb(25, 63, 57)",
+      "ratio": 10.79
+    },
+    {
+      "theme": "dark",
+      "selector": ".badge",
+      "foreground": "rgb(106, 224, 195)",
+      "background": "rgb(25, 63, 57)",
+      "ratio": 7.21
+    },
+    {
+      "theme": "dark",
+      "selector": ".rail nav a.active",
+      "foreground": "rgb(188, 235, 221)",
+      "background": "rgb(35, 77, 71)",
+      "ratio": 7.22
+    }
+  ]
+}

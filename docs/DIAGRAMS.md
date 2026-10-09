@@ -1,9 +1,10 @@
 # Visual architecture gallery
 
-**All diagrams describe intended Phase 3 behavior, not running software.** Assessment: 2026-10-09. SVG provides scalable GitHub viewing; PNG supports presentations; `.mmd` is editable Mermaid source and `.dot` is a paired editable Graphviz layout. [Manifest](diagrams/MANIFEST.json) records actual export tooling; no fake screenshots or proprietary internals are depicted.
+**Diagrams01–10 preserve the approved Phase2 plan. Diagram11 describes the implemented Phase3 local core.** Assessment: 2026-10-09. SVG provides scalable GitHub viewing; PNG supports presentations; `.mmd` is editable Mermaid source and `.dot` is a paired editable Graphviz layout. [Manifest](diagrams/MANIFEST.json) records actual export tooling; no fake screenshots or proprietary internals are depicted.
 
 | Diagram | View / editable source | Explanation and example |
 |---|---|---|
+| Implemented local core | [SVG](diagrams/11-implemented-core.svg) · [PNG](diagrams/11-implemented-core.png) · [Mermaid](diagrams/11-implemented-core.mmd) | Real one-process gate, private parser/review, authorized offline answering and revision-safe reads; absent advanced capabilities explicitly marked. |
 | Complete architecture | [SVG](diagrams/01-system-architecture.svg) · [PNG](diagrams/01-system-architecture.png) · [Mermaid](diagrams/01-system-architecture.mmd) | One backend controls identity and evidence. Employee leave question reaches only approved permitted clauses. |
 | Application data flow | [SVG](diagrams/02-data-flow.svg) · [PNG](diagrams/02-data-flow.png) · [Mermaid](diagrams/02-data-flow.mmd) | Upload review and querying are separate paths; pending upload is not answer evidence. |
 | Retrieval / answering | [SVG](diagrams/03-rag-pipeline.svg) · [PNG](diagrams/03-rag-pipeline.png) · [Mermaid](diagrams/03-rag-pipeline.mmd) | IDs are permission-filtered before text hydration; offline evidence answering is mandatory. |
@@ -20,3 +21,10 @@ Color legend: blue application/trusted control; teal authorized evidence; amber 
 ![Architecture](diagrams/01-system-architecture.svg)
 
 One company policy question passes through explicit checks; optional AI cannot grant itself document access.
+
+
+## Implemented execution boundary
+
+![Actual local core](diagrams/11-implemented-core.svg)
+
+ADR0005 replaces planned fine reader/writer execution with one exclusive process gate. This diagram records the actual synchronous parser and one-span reviewed claim limits; optional AI/agents/multiworker are future boxes.

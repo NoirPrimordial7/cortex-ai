@@ -1,5 +1,11 @@
 # How the database represents knowledge
 
+**Phase3 implementation note.** The actual database has21 domain tables plus FTS5, tenant-safe keys, reviewed metadata revisions and stored query/citation dependencies. SQLAlchemy Core accesses SQLite; Alembic migrates it. Version text/hash/segments and private bytes are local, ignored by Git. The diagram below is the earlier schema plan; app/db.py is the implemented catalog. [Run and inspect](../implementation/RUN_LOCAL.md) · [actual limits](../implementation/IMPLEMENTATION_STATUS.md) · [implemented diagram](../diagrams/11-implemented-core.svg). The explanation below preserves Phase2 planned context.
+
+---
+
+## Preserved Phase 2 baseline
+
 ![Relationships](../diagrams/05-database-erd.svg)
 
 A document is a continuing policy identity. A version is one immutable file/text snapshot. A clause is a passage we can cite. Metadata revisions record reviewed changes to approval, dates and scope without rewriting the original file. A claim records a reviewed structured fact, such as annual leave = 20 working days for India full-time employees.

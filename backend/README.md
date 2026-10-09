@@ -57,3 +57,7 @@ All routes use `/api/v1`. Mutation requests require an allowed Origin; authentic
 | `GET /audit-events` | Auditor action; event identifiers/outcomes without document text or raw prompts |
 
 `401` requires sign-in; `403` denies an action or CSRF/Origin; `404` conceals an inaccessible resource; `409` signals stale revision/constraint; `413/415/422` reject bounded/unsupported input. API errors exclude parser content, filesystem paths and supplied credentials. Upload returns `202` with a completed bounded extraction job state; it is synchronous, not a background queue.
+
+## Integrated frontend and fixture evaluation
+
+The React interface is now implemented. [Live startup instructions](../docs/implementation/RUN_LOCAL.md), [actual verification](../docs/implementation/TEST_RESULTS.md) and [running screenshots](../docs/design/README.md) describe the current checkpoint. Run `..\.venv\Scripts\python.exe evaluate.py` from backend/ to produce the separate crafted-fixture report; it never resets local-data/. Current citations include reviewed source kind and numeric authority rank.

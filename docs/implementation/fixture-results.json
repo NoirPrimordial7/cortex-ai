@@ -1,0 +1,218 @@
+{
+  "timestamp": "2026-10-09T15:31:42.762806+00:00",
+  "protocol": "Crafted Phase 2 fixture sanity checks; same development fixture; no held-out data or ablation; no generalization claim",
+  "fixture_sha256": "549af023c196a0491612cecde4b02ba47161208cdc62dac26d4431835897dd7f",
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "transport": "FastAPI TestClient in-process HTTP, not network or browser latency",
+    "workers": 1
+  },
+  "metrics": {
+    "scenario_correct": 12,
+    "scenario_count": 12,
+    "authorized_peer_recall": {
+      "retrieved": 15,
+      "eligible": 15
+    },
+    "temporal_correct": 5,
+    "temporal_count": 5,
+    "conflict_precision": {
+      "tp": 1,
+      "fp": 0
+    },
+    "conflict_recall": {
+      "tp": 1,
+      "fn": 0
+    },
+    "citation_span_hash_supported": 10,
+    "citation_count": 10,
+    "abstention_correct": 4,
+    "abstention_count": 4,
+    "restricted_canary_violations_in_checked_stages_and_payloads": 0,
+    "warm_query_latency_ms": {
+      "n": 50,
+      "median": 9.422,
+      "p95_nearest_rank": 10.502
+    }
+  },
+  "scenarios": [
+    {
+      "id": "D01 authorized",
+      "passed": true,
+      "status": "answered",
+      "reason": null,
+      "selected": [
+        "L26-C1"
+      ],
+      "gold_selected": [
+        "L26-C1"
+      ],
+      "peer_recall_numerator": 2,
+      "peer_recall_denominator": 2,
+      "query_latency_ms": 11.102
+    },
+    {
+      "id": "D02 restricted",
+      "passed": true,
+      "status": "abstained",
+      "reason": "NO_ELIGIBLE_EVIDENCE",
+      "selected": [],
+      "gold_selected": [],
+      "peer_recall_numerator": 0,
+      "peer_recall_denominator": 0,
+      "query_latency_ms": 9.25
+    },
+    {
+      "id": "D03 future upload",
+      "passed": true,
+      "status": "answered",
+      "reason": null,
+      "selected": [
+        "L26-C1"
+      ],
+      "gold_selected": [
+        "L26-C1"
+      ],
+      "peer_recall_numerator": 2,
+      "peer_recall_denominator": 2,
+      "query_latency_ms": 9.252
+    },
+    {
+      "id": "D03 future effective",
+      "passed": true,
+      "status": "answered",
+      "reason": null,
+      "selected": [
+        "L27-C1"
+      ],
+      "gold_selected": [
+        "L27-C1"
+      ],
+      "peer_recall_numerator": 2,
+      "peer_recall_denominator": 2,
+      "query_latency_ms": 9.356
+    },
+    {
+      "id": "D04 historical",
+      "passed": true,
+      "status": "answered",
+      "reason": null,
+      "selected": [
+        "L25-C1"
+      ],
+      "gold_selected": [
+        "L25-C1"
+      ],
+      "peer_recall_numerator": 1,
+      "peer_recall_denominator": 1,
+      "query_latency_ms": 9.659
+    },
+    {
+      "id": "D05 authority",
+      "passed": true,
+      "status": "answered",
+      "reason": null,
+      "selected": [
+        "L26-C1"
+      ],
+      "gold_selected": [
+        "L26-C1"
+      ],
+      "peer_recall_numerator": 2,
+      "peer_recall_denominator": 2,
+      "query_latency_ms": 9.512
+    },
+    {
+      "id": "D06 conflict",
+      "passed": true,
+      "status": "abstained",
+      "reason": "UNRESOLVED_CONFLICT",
+      "selected": [
+        "RA-C1",
+        "RB-C1"
+      ],
+      "gold_selected": [
+        "RA-C1",
+        "RB-C1"
+      ],
+      "peer_recall_numerator": 2,
+      "peer_recall_denominator": 2,
+      "query_latency_ms": 9.741
+    },
+    {
+      "id": "D07 missing",
+      "passed": true,
+      "status": "abstained",
+      "reason": "NO_ELIGIBLE_EVIDENCE",
+      "selected": [],
+      "gold_selected": [],
+      "peer_recall_numerator": 0,
+      "peer_recall_denominator": 0,
+      "query_latency_ms": 8.826
+    },
+    {
+      "id": "D09 notice citation",
+      "passed": true,
+      "status": "answered",
+      "reason": null,
+      "selected": [
+        "N26-C1"
+      ],
+      "gold_selected": [
+        "N26-C1"
+      ],
+      "peer_recall_numerator": 1,
+      "peer_recall_denominator": 1,
+      "query_latency_ms": 9.224
+    },
+    {
+      "id": "D10 scope",
+      "passed": true,
+      "status": "answered",
+      "reason": null,
+      "selected": [
+        "C26-C1"
+      ],
+      "gold_selected": [
+        "C26-C1"
+      ],
+      "peer_recall_numerator": 1,
+      "peer_recall_denominator": 1,
+      "query_latency_ms": 9.212
+    },
+    {
+      "id": "D11 boundary",
+      "passed": true,
+      "status": "answered",
+      "reason": null,
+      "selected": [
+        "L26-C1"
+      ],
+      "gold_selected": [
+        "L26-C1"
+      ],
+      "peer_recall_numerator": 2,
+      "peer_recall_denominator": 2,
+      "query_latency_ms": 9.665
+    },
+    {
+      "id": "D11 no valid interval",
+      "passed": true,
+      "status": "abstained",
+      "reason": "NO_ELIGIBLE_EVIDENCE",
+      "selected": [],
+      "gold_selected": [],
+      "peer_recall_numerator": 0,
+      "peer_recall_denominator": 0,
+      "query_latency_ms": 8.863
+    }
+  ],
+  "limitations": [
+    "Only one positive equal-authority conflict case",
+    "Reviewer-supplied claims, small lexical domain; no semantic contradiction classification",
+    "Citation support checks exact spans/hashes, not independent semantic entailment",
+    "Revocation, isolation and upload security are separate pytest tests",
+    "No application completion percentage or production-security certification"
+  ]
+}

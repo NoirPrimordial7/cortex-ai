@@ -1,18 +1,18 @@
-# Project roadmap — Phase2 DRAFT / PENDING OWNER REVIEW
+# Project roadmap — future stages DRAFT / PENDING REVIEW
 
-Updated2026-10-09. Phase1 research is approved. Phase2 has selected a planning stack, contracts, visuals and task order. **Phase3 functional development requires explicit approval.** The historical Phase1 scope estimates below are retained for provenance, not the current deadline commitment.
+Updated2026-10-09. Phase1/2 and Evidence Studio are approved. Phase3 local code now implements the bounded offline core and main application screens. This status supersedes earlier “not started” notes without deleting historical planning.
 
-| Phase / milestone | Purpose | Deliverables / gate | Status |
-|---|---|---|---|
-| Phase1 | Research and competitive analysis | 13 system families,15 papers,source evidence/gaps | Completed and owner-approved |
-| Phase2 | Implementation-ready planning and visual design | Schema/security/API/pipeline,12 required planning docs,ADRs,diagrams,UI concepts,backlog,fixture expectations | Prepared for review; no app |
-| Phase3 / A | Local working vertical slice for10Oct demonstration | Authentication,explicit grants,ingestion,validity,authority/conflicts,citations,assistant/library; [acceptance gates](planning/MVP_ACCEPTANCE_CRITERIA.md) | Not started;13–26h estimate, deadline at risk |
-| B | Strong evaluated final-year core | Partial lineage,scope/exception accuracy,held-out benchmark,optional hybrid/NLI/local generation | After A; schedule after hardware/team review |
-| C | Advanced extensions | Measured planner benefit,connectors/ACL sync,multiworker/tenant deployment,container packaging | Conditional; no autonomous-agent assumption |
+| Phase/milestone | Actual status | Next gate |
+|---|---|---|
+| Phase1 | Owner-approved research;13 families,15 papers, source register preserved | Research updates stay evidence-qualified |
+| Phase2 | Owner-approved architecture, contracts, visual direction, backlog and fixtures | ADRs record actual deviations |
+| Phase3/A | Local sessions/ACLs, private TXT/PDF/DOCX/review, finite offline retrieval/validity/authority/conflicts, citations/history, responsive UI and governance implemented | [Actual test evidence](implementation/TEST_RESULTS.md); reproduce demonstration on target machine and review college rubric |
+| B | Draft: independently labelled held-out corpus, richer clauses/lineage, rejection explanations, stronger security/retention | Freeze benchmark and extension contracts before claiming improved accuracy |
+| C | Conditional: optional local semantic/NLI/generation, connectors, measured orchestration, scalable deployment | Hardware/benefit/security experiments; no paid dependency assumed |
 
-Critical path and precise task order: [backlog](planning/IMPLEMENTATION_BACKLOG.md), [development sequence](planning/DEVELOPMENT_SEQUENCE.md). Core runs without a paid LLM. Architecture selection is documented; exact dependency locks and model hardware tests belong to Phase3. Do not equate static design concepts or documentation with implemented project percentage.
+Next sequence: reproduce local demonstration → define held-out labels and baselines → expand reviewed clause/lineage contracts → add denial auditing/parser isolation/retention → assess optional local semantic models. Keep current auth/date/citation gates during every increment. See [implementation status](implementation/IMPLEMENTATION_STATUS.md), [run instructions](implementation/RUN_LOCAL.md), [backlog](planning/IMPLEMENTATION_BACKLOG.md) and [ADR0005](decisions/0005-local-execution-boundary.md).
 
-Budget assumption: one developer,8–12focused hours available before deadline; full A may need more time or team parallel work. Minimum partial fallback keeps backend auth/READ/date/citations and TXT evidence answering; missing formats/admin UI must be disclosed. College40%rubric remains unknown. No permissions weakened to meet deadline.
+The October10 deadline is a demonstration milestone, not proof of40% completion. The institution's rubric, team capacity and target hardware remain unresolved. Future dates/scopes remain draft; no expensive cloud/model choice is locked.
 
 ## Historical Phase1 draft scopes — preserved research context
 

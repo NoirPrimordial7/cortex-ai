@@ -3,7 +3,7 @@
   "diagrams": [
     {
       "name": "01-system-architecture",
-      "title": "Cortex AI — proposed system architecture",
+      "title": "Cortex AI \u00e2\u20ac\u201d proposed system architecture",
       "mermaid": "01-system-architecture.mmd",
       "export_source": "01-system-architecture.dot",
       "svg": "01-system-architecture.svg",
@@ -11,7 +11,7 @@
     },
     {
       "name": "02-data-flow",
-      "title": "Cortex AI — end-to-end application data flow",
+      "title": "Cortex AI \u00e2\u20ac\u201d end-to-end application data flow",
       "mermaid": "02-data-flow.mmd",
       "export_source": "02-data-flow.dot",
       "svg": "02-data-flow.svg",
@@ -19,7 +19,7 @@
     },
     {
       "name": "03-rag-pipeline",
-      "title": "Cortex AI — retrieval and grounded answering",
+      "title": "Cortex AI \u00e2\u20ac\u201d retrieval and grounded answering",
       "mermaid": "03-rag-pipeline.mmd",
       "export_source": "03-rag-pipeline.dot",
       "svg": "03-rag-pipeline.svg",
@@ -27,7 +27,7 @@
     },
     {
       "name": "04-auth-permissions",
-      "title": "Cortex AI — authentication and permission flow",
+      "title": "Cortex AI \u00e2\u20ac\u201d authentication and permission flow",
       "mermaid": "04-auth-permissions.mmd",
       "export_source": "04-auth-permissions.dot",
       "svg": "04-auth-permissions.svg",
@@ -35,7 +35,7 @@
     },
     {
       "name": "05-database-erd",
-      "title": "Cortex AI — database relationship overview",
+      "title": "Cortex AI \u00e2\u20ac\u201d database relationship overview",
       "mermaid": "05-database-erd.mmd",
       "export_source": "05-database-erd.dot",
       "svg": "05-database-erd.svg",
@@ -43,7 +43,7 @@
     },
     {
       "name": "06-ingestion",
-      "title": "Cortex AI — upload, indexing and versioning",
+      "title": "Cortex AI \u00e2\u20ac\u201d upload, indexing and versioning",
       "mermaid": "06-ingestion.mmd",
       "export_source": "06-ingestion.dot",
       "svg": "06-ingestion.svg",
@@ -51,7 +51,7 @@
     },
     {
       "name": "07-temporal-conflict",
-      "title": "Cortex AI — temporal validity and conflict decisions",
+      "title": "Cortex AI \u00e2\u20ac\u201d temporal validity and conflict decisions",
       "mermaid": "07-temporal-conflict.mmd",
       "export_source": "07-temporal-conflict.dot",
       "svg": "07-temporal-conflict.svg",
@@ -59,7 +59,7 @@
     },
     {
       "name": "08-api-sequence",
-      "title": "Cortex AI — user-to-backend request sequence",
+      "title": "Cortex AI \u00e2\u20ac\u201d user-to-backend request sequence",
       "mermaid": "08-api-sequence.mmd",
       "export_source": "08-api-sequence.dot",
       "svg": "08-api-sequence.svg",
@@ -67,7 +67,7 @@
     },
     {
       "name": "09-sitemap",
-      "title": "Cortex AI — frontend navigation and sitemap",
+      "title": "Cortex AI \u00e2\u20ac\u201d frontend navigation and sitemap",
       "mermaid": "09-sitemap.mmd",
       "export_source": "09-sitemap.dot",
       "svg": "09-sitemap.svg",
@@ -75,11 +75,21 @@
     },
     {
       "name": "10-local-deployment",
-      "title": "Cortex AI — local development and demonstration",
+      "title": "Cortex AI \u00e2\u20ac\u201d local development and demonstration",
       "mermaid": "10-local-deployment.mmd",
       "export_source": "10-local-deployment.dot",
       "svg": "10-local-deployment.svg",
       "png": "10-local-deployment.png"
+    },
+    {
+      "name": "11-implemented-core",
+      "title": "Cortex AI \u2014 implemented local evidence core",
+      "mermaid": "11-implemented-core.mmd",
+      "export_source": "11-implemented-core.dot",
+      "svg": "11-implemented-core.svg",
+      "png": "11-implemented-core.png",
+      "status": "implemented Phase3 bounded core",
+      "checked_at": "2026-10-09T21:21:45+05:30"
     }
   ]
 }

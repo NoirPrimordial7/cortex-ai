@@ -217,6 +217,7 @@ def answer(ctx, question: Question, observe=None):
             "valid_from": e.valid_from,
             "valid_to": e.valid_to,
             "source_kind": e.source_kind,
+            "authority_rank": e.rank,
             "reviewed_value": e.value,
         }
         for e in selected

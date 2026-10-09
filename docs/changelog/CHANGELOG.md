@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-09T21:21:45+05:30 — Phase3 live Evidence Studio and integration verification
+
+- Files added: frontend/ (real React screens, lockfile and tests), backend/evaluate.py, docs/implementation/, docs/design/screenshots/ and browser/contrast reports, diagram11 Mermaid/DOT/SVG/PNG and design-qa.md. Changed backend citation rank/assertion, README, roadmap/docs index, design/learning reports, diagram manifest, acceptance status and decision index; no Phase1 research or fixture bytes removed.
+- Reason: implement owner-approved Evidence Studio, expose a watchable localhost server, connect all screens to the permission-safe core, and document actual boundaries instead of claiming planned features.
+- Outcome: live5173 frontend/8000 backend with hot reload; nine main page families plus own history/audit; exact source/authority display, private upload/review/version UI, current grants/roles and fail-closed history. Browser TXT upload remains private pending review; no live grants changed.
+- Verification: final backend29 tests pass (7.42s; one TestClient deprecation warning), frontend8 tests pass and strict TypeScript/Vite build passes; Ruff/pip checks pass, npm audit zero at checkpoint. Fixture12/12 outcomes,15/15 authorized peers,10/10 span/hash checks; one conflict positive only.50 warm in-process repeats median9.422ms/P9510.502ms, not browser latency.46 real layout observations have no horizontal overflow;12 sampled contrast pairs≥4.5; approved concepts compared against actual captures after corrections.
+- Corrections: source passage16px/metadata12px; show actual source-kind/authority rank; distinguish open-ended/expired from missing approval; stable shared session context for hot reload; guard rapid source responses and asked-question labels. Browser selector/file-picker limitations disclosed; no headless fallback used.
+- Previous published backend: [03de2dc](https://github.com/NoirPrimordial7/cortex-ai/commit/03de2dcca937a1fa90fd8516f3d47b2d10b90500), verified local/remote main equality. Current milestone subject: `feat: deliver live Evidence Studio and verified local workflows`; actual hash/publication recorded after push.
+- Outstanding: held-out independent labels, broader clauses/lineage/rejection explanations, robust parser sandbox, denial audit/retention, full-browser automation and production/multiworker safeguards. Core has no LLM/NLI/vector/agents; college percentage/rubric unresolved. Repository PUBLIC, unchanged; no paid/cloud services.
+
+
 ## 2026-10-09T20:30:22.0109156+05:30 — Phase 3 backend vertical slice
 
 - Added backend/app/, backend/tests/, initial Alembic migration/config, exact requirements.lock, backend/README.md and ADR0005; changed .gitignore to exclude TypeScript build metadata. No research removed.

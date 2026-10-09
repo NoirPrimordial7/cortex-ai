@@ -1,5 +1,14 @@
 # Research log
 
+## 2026-10-09T21:21:45+05:30 — Phase3 visual references and bounded fixture findings
+
+- Updated design research/system/components/review with eight accessible component/public examples: Geist button/table/empty-state/command-menu, Linear design article, SaaSUI navigation, Raycast public page and Behance public concepts. Exact URLs/access qualifications are in docs/design/DESIGN_RESEARCH.md; no copied third-party assets or full authenticated product audits claimed.
+- Observed interactive Geist command-menu and real table/button examples; publisher/gallery references support inspiration, not usability claims. Awwwards timed out; Mobbin remains landing/gated-only. Behance public gallery became accessible, superseding the earlier fetch limitation.
+- Added reproducible backend/evaluate.py and docs/implementation/fixture-results.json.12 crafted development outcomes passed; one conflict positive cannot justify generalized conflict accuracy. Span/hash support is not independent entailment. Local latency excludes network/browser/load.
+- Verification: live browser captures/metrics/contrast and existing fixture hashes; no academic citations or Phase1 competitor findings were rewritten. Main open research task is independent held-out adjudication and matched baseline/ablation, before semantic improvements or accuracy claims.
+- Previous commit03de2dc published; current subject `feat: deliver live Evidence Studio and verified local workflows`; publication hash recorded after push.
+
+
 Every material finding update records timestamp with timezone, phase/module, affected files, reason, outcome, verification, outstanding questions and commit reference. Findings and proposals must remain distinguished.
 
 ## 2026-10-09T15:22:58+05:30 — Phase 1B–1G: primary-source survey and dossier

@@ -1,5 +1,13 @@
 # Reusable UI component contracts
 
+**Current functional component inventory.** `App.tsx` implements session-aware shell/navigation/theme/drawer/route UX; `components.tsx` implements State, Badge, PageHeading, bounded resource loading, SourceDialog and date/state helpers; `api.ts` sends same-origin CSRF requests; `session.tsx` invalidates evidence on observed identity/role/revision changes. `pages/Assistant.tsx` implements composer, grounded answer, citations and exact escaped highlight; `Library.tsx` permitted rows/filter; `DocumentDetail.tsx` versions/source/download/review/version upload; `Upload.tsx` private ingestion; `Permissions.tsx` actual roles/grants; `Activity.tsx` history/conflicts/audit; Login/Dashboard use real session/API data.
+
+The table below remains a design contract, not a claim every specified enhancement exists. Current library groups documents and opens versions separately; category/state filtering, full command palette, copy-quote control, broad sort/pagination and graphical lineage are not implemented. Ctrl+K focuses the query field. No mock application data is shipped as an alternative to API calls. [Actual scope](../implementation/IMPLEMENTATION_STATUS.md).
+
+---
+
+## Preserved Phase 2 baseline
+
 **Design specification only.** Components consume allowed API data; a hidden route/button is not a permission check.
 
 | Component | Content / states | Interaction and accessibility |

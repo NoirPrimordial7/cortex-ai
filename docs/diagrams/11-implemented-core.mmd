@@ -1,0 +1,25 @@
+---
+title: Cortex AI — implemented local evidence boundary
+---
+flowchart TB
+  B[React browser<br/>Vite /api proxy or built same-origin assets] --> A[FastAPI loopback<br/>Origin, body bounds, opaque cookie]
+  A --> G[Exclusive process gate + one SQLite transaction<br/>ONE application worker]
+  G --> I[Trusted current identity<br/>CSRF, action roles, explicit document READ]
+  I --> Q[Permission + approval + date + scope SQL filters<br/>FTS5 eligible IDs]
+  Q --> P[Hydrate authorized peer evidence only<br/>Maximum 100 peers]
+  P --> C[Reviewed numeric claims + authority<br/>Equal-strength disagreement abstains]
+  C --> V[Reauthorize source dependency<br/>Check exact span, hash and revisions]
+  V --> R[Offline evidence answer or abstention<br/>At most 8 citations; owner-only history]
+  R --> B
+  I --> U[Upload action + private generated file path<br/>TXT, text PDF, DOCX; 10 MiB]
+  U --> W[Bounded parser child<br/>30-second timeout; NOT OS-sandboxed]
+  W --> D[Immutable source text and hash<br/>Failed or pending review; not answer context]
+  D --> T[Authorized reviewer verifies uniform access<br/>One span, source kind, dates, scope and numeric claim]
+  T --> F[Atomic metadata, claim and FTS publication<br/>Increment knowledge revision]
+  F --> Q
+  I --> M[Action + READ checked ACL / role edits<br/>Same gate; increment policy revision]
+  M --> H[Later history / source requests reauthorized<br/>Changed dependency or revision withheld]
+  H --> B
+  S[(Private SQLite + upload directory<br/>21 domain tables and FTS5; ignored by Git)] --- G
+  S --- D
+  N[Absent: LLM, agents, vectors, cache, chunk ACLs<br/>General amendment reasoning and multiworker deployment] -. later work .-> C

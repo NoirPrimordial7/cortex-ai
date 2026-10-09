@@ -1,5 +1,11 @@
 # Decision records
 
+**Phase 2 / Evidence Studio owner-approved; Phase 3 authorized.** ADR0001–0004 now serve as the approved baseline; their original timestamps/status statements are preserved. [ADR0005](0005-local-execution-boundary.md) is an accepted implementation decision: one-process exclusive gate, synchronous bounded extraction, SQLAlchemy Core and one reviewed evidence span/version. It supersedes only the fine reader/writer implementation detail in ADR0002, retaining current authorization/revocation requirements.
+
+---
+
+## Preserved Phase 2 baseline
+
 Phase1 research is approved; Phase2 was authorized2026-10-09. The following selections are planning baselines awaiting owner review before implementation. They do not mean Phase3 is authorized.
 
 | ADR | Status / scope |
