@@ -1,0 +1,28 @@
+---
+title: Cortex AI — database relationship overview
+---
+erDiagram
+ TENANTS ||--o{ USERS : contains
+ USERS ||--o{ SESSIONS : authenticates
+ USERS ||--o{ USER_ROLES : joins
+ ROLES ||--o{ USER_ROLES : assigns
+ ROLES ||--o{ ROLE_PERMISSIONS : permits
+ PERMISSIONS ||--o{ ROLE_PERMISSIONS : defines
+ TENANTS ||--o{ DOCUMENTS : owns
+ DOCUMENTS ||--o{ DOCUMENT_ACL : grants
+ USERS o|--o{ DOCUMENT_ACL : user_subject
+ ROLES o|--o{ DOCUMENT_ACL : role_subject
+ DOCUMENTS ||--o{ DOCUMENT_VERSIONS : versions
+ DOCUMENT_VERSIONS ||--o{ METADATA_REVISIONS : reviews
+ DOCUMENT_VERSIONS ||--o{ CLAUSES : contains
+ CLAUSES ||--o{ POLICY_CLAIMS : asserts
+ AUTHORITY_RULES ||--o{ CLAUSES : ranks
+ CLAUSES ||--o{ SUPERSESSION_EDGES : predecessor
+ CLAUSES ||--o{ SUPERSESSION_EDGES : successor
+ USERS ||--o{ QUERIES : asks
+ QUERIES ||--o{ CITATIONS : supports
+ CLAUSES ||--o{ CITATIONS : cites
+ QUERIES ||--o{ CONFLICTS : detects
+ CONFLICTS ||--o{ CONFLICT_EVIDENCE : explains
+ CLAUSES ||--o{ CONFLICT_EVIDENCE : compares
+ USERS o|--o{ AUDIT_EVENTS : acts

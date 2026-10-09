@@ -1,0 +1,28 @@
+---
+title: Cortex AI — frontend navigation and sitemap
+---
+flowchart TB
+  login["Login"]:::client
+  shell["Authenticated application shell"]:::app
+  dash["Dashboard<br/>Permitted overview + own activity"]:::app
+  assistant["Knowledge assistant<br/>As-of + answer + evidence pane"]:::evidence
+  library["Document library<br/>Allowed records + filters"]:::app
+  upload["Upload<br/>Review progress"]:::app
+  detail["Document detail<br/>Version history + approved metadata"]:::store
+  conflicts["Conflicts / validity<br/>Readable pairs only"]:::decision
+  admin["Administration<br/>Users + roles + explicit ACLs"]:::app
+  activity["System activity<br/>Redacted auditor view"]:::store
+  login -->|"session"| shell
+  shell --> dash
+  shell --> assistant
+  shell --> library
+  library -->|"upload action"| upload
+  library -->|"READ"| detail
+  shell -->|"READ both"| conflicts
+  shell -->|"manage action"| admin
+  shell -->|"audit.read"| activity
+  classDef client fill:#f1f5f9,stroke:#8190a8,color:#182238
+  classDef app fill:#e7edff,stroke:#8190a8,color:#182238
+  classDef evidence fill:#def4ed,stroke:#8190a8,color:#182238
+  classDef decision fill:#fff1d6,stroke:#8190a8,color:#182238
+  classDef store fill:#eef0f4,stroke:#8190a8,color:#182238

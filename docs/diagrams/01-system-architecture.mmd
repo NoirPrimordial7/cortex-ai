@@ -1,0 +1,33 @@
+---
+title: Cortex AI — proposed system architecture
+---
+flowchart LR
+  ui["React browser<br/>Session UI + evidence viewer"]:::client
+  api["FastAPI<br/>Trusted identity + action checks"]:::app
+  gate["Policy boundary<br/>Tenant + current document READ"]:::app
+  search["Authorized retrieval<br/>Date + approval + scope"]:::evidence
+  reason["Authority + structured conflicts<br/>Agree / conflict / insufficient"]:::decision
+  answer["Evidence answerer<br/>Verify spans + reauthorize"]:::evidence
+  model["Optional local model<br/>Disabled in Milestone A"]:::decision
+  db["SQLite<br/>Metadata + ACL + clauses + FTS5"]:::store
+  ingest["Bounded ingestion + review<br/>Immutable version publication"]:::app
+  files["Private local files<br/>Quarantine + immutable uploads"]:::store
+  audit["Redacted audit events"]:::store
+  ui -->|"cookie / query"| api
+  api -->|"identity"| gate
+  gate -->|"eligible IDs only"| search
+  search -->|"authorized evidence"| reason
+  reason -->|"decision"| answer
+  answer -->|"safe answer + citations"| api
+  answer -->|"B only: permitted context"| model
+  gate -->|"current grants"| db
+  search -->|"scoped reads"| db
+  api -->|"authorized upload"| ingest
+  ingest -->|"bounded parser"| files
+  ingest -->|"approved publication"| db
+  api -->|"safe action outcome"| audit
+  classDef client fill:#f1f5f9,stroke:#8190a8,color:#182238
+  classDef app fill:#e7edff,stroke:#8190a8,color:#182238
+  classDef evidence fill:#def4ed,stroke:#8190a8,color:#182238
+  classDef decision fill:#fff1d6,stroke:#8190a8,color:#182238
+  classDef store fill:#eef0f4,stroke:#8190a8,color:#182238

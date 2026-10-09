@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-09T16:37:31+05:30 — Phase 2 architecture and security contracts
+
+- Added ten core planning contracts, three ADRs, six learning guides, visual index and ten editable diagram/export sets; added 11 fictional policy versions with exact citation/hash specification. Updated README/development log; no Phase 1 research overwritten.
+- Selected local React/FastAPI/SQLite/FTS5 stack with mandatory offline evidence answering, explicit current document grants, reviewed validity and structured conflict abstention. Defined API/schema/threat model and expected tests; implementation not started.
+- Verified links, fixture hashes/quote spans, preserved research, credential patterns and whitespace. SVG/PNG exports are Graphviz concept diagrams; Mermaid preserved; browser export unavailable and owner declined headless fallback.
+- Remote metadata discrepancy: repository now public; visibility not changed by this task. Owner informed; no confidential data added.
+- Next: complete static UI concepts/backlog and planning audit; await Phase 3 approval. Commit subject: `docs: define Cortex AI architecture and security contracts` (hash recorded after commit).
+
 ## 2026-10-09 — Phase 1 initialization
 
 - Timestamp: 2026-10-09T14:59:58+05:30 (Asia/Calcutta).

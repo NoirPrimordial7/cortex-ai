@@ -4,11 +4,11 @@ Conflict-aware and permission-safe enterprise knowledge intelligence, proposed a
 
 Company knowledge is scattered across policies, SOPs, legal documents, and project files. Relevant text can still be outdated, inconsistent, or inaccessible to the person asking. Cortex AI will investigate whether retrieval augmented generation, explicit validity metadata, source authority, and authorization checks can produce more reliable, evidence-backed answers.
 
-**Status: Phase 1 — research and competitive analysis only, as of 2026-10-09 (Asia/Calcutta).** No application, production infrastructure, agents, database, or technology stack has been implemented or selected. Proposed capabilities are hypotheses to test, not achieved results or claims of novelty.
+**Status: Phase 1 approved; Phase 2 architecture and development planning in progress, as of 2026-10-09 (Asia/Calcutta).** Stack and contracts are selected as a planning baseline. No functional application, agents, database or measured evaluation has been implemented. Phase 3 requires explicit owner approval.
 
-The Phase 1 dossier covers 13 competitor families, 15 academic works and 76 primary references. Paper findings are author-reported, product behavior is documentation-based, and unverified functionality is explicitly qualified. No experiments or product benchmarks have been run. Phase 2 requires explicit project-owner approval. No paid services are authorized.
+The preserved Phase 1 dossier covers 13 competitor families, 15 academic works and 76 primary references. Paper findings are author-reported, product behavior is documentation-based, and unverified functionality is explicitly qualified. No experiments or product benchmarks have been run. No paid services are authorized.
 
-Repository: https://github.com/NoirPrimordial7/cortex-ai (created private; visibility must not change without approval).
+Repository: https://github.com/NoirPrimordial7/cortex-ai. Created private in Phase 1; authenticated GitHub metadata on 2026-10-09 now reports **public**. This change was not performed by this planning task. Visibility must not change without explicit approval.
 
 Change policy: meaningful work must update the appropriate changelog and research/development log, be reviewed for sensitive content, and be committed and pushed with the outcome verified. Never force-push or discard existing work.
 
@@ -22,7 +22,13 @@ Change policy: meaningful work must update the appropriate changelog and researc
 - [Quality review](docs/QUALITY_REVIEW.md), [decision policy](docs/decisions/README.md), [changelog](docs/changelog/CHANGELOG.md), [development log](docs/logs/DEVELOPMENT_LOG.md) and [research log](docs/logs/RESEARCH_LOG.md)
 - [Paper registry](research/papers/README.md), [competitor registry](research/competitors/README.md), [proposed experiment protocol](research/experiments/README.md), [source inventory](research/SOURCE_INVENTORY.json) and [dated link checks](research/SOURCE_CHECKS.json)
 
-Recommended direction: a bounded, reproducible policy-answering study using curated access, validity and approval metadata, with conflict/abstention evaluation and matched retrieval baselines. This is an unimplemented recommendation. Temporal/conflict-aware retrieval, permissions, citations and agents already exist; no world-first claim is made. The roadmap remains **DRAFT / PENDING REVIEW** and the technology stack remains open.
+Selected planning direction: a bounded, reproducible policy-answering system using reviewed access, validity and approval metadata, with conflict/abstention evaluation and matched retrieval baselines. Temporal/conflict-aware retrieval, permissions, citations and agents already exist; no world-first claim is made. [Selected stack](docs/planning/TECH_STACK.md), [architecture](docs/planning/SYSTEM_ARCHITECTURE.md), [security contract](docs/planning/SECURITY_MODEL.md), [visual diagrams](docs/DIAGRAMS.md) and [fictional demonstration expectations](docs/planning/DEMO_SCENARIOS.md) are planning artifacts awaiting owner review before implementation.
+
+## Visual architecture — planned
+
+![Cortex system architecture](docs/diagrams/01-system-architecture.svg)
+
+The browser uses one backend that checks identity and access before evidence analysis. Offline evidence answers are the required baseline; local generation is an optional later enhancement.
 
 ## Long-term traceability
 

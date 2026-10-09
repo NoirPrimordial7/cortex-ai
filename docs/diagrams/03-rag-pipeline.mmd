@@ -1,0 +1,30 @@
+---
+title: Cortex AI — retrieval and grounded answering
+---
+flowchart TB
+  q["Question + explicit as-of + scope"]:::client
+  id["Authenticated identity<br/>Query action permission"]:::app
+  acl["SQL tenant + READ filtering<br/>Candidate IDs only"]:::app
+  time["Approval + validity + scope<br/>Reject uncertain metadata"]:::evidence
+  rank["Authorized text hydration<br/>Token coverage rank"]:::evidence
+  peer["Expand all permitted claim peers<br/>Cap overflow → abstain"]:::decision
+  conf["Authority + conflict comparison"]:::decision
+  select["Select supporting clauses<br/>Or safe abstention"]:::evidence
+  ans["Offline evidence answerer<br/>Optional local AI in B"]:::app
+  check["Citation spans + hashes<br/>Current ACL + revisions"]:::evidence
+  res["Answer / abstain / clarify<br/>Only permitted explanation"]:::client
+  q -->|"1"| id
+  id -->|"2"| acl
+  acl -->|"3"| time
+  time -->|"4"| rank
+  rank -->|"5"| peer
+  peer -->|"6"| conf
+  conf -->|"7"| select
+  select -->|"8"| ans
+  ans -->|"9"| check
+  check -->|"10"| res
+  classDef client fill:#f1f5f9,stroke:#8190a8,color:#182238
+  classDef app fill:#e7edff,stroke:#8190a8,color:#182238
+  classDef evidence fill:#def4ed,stroke:#8190a8,color:#182238
+  classDef decision fill:#fff1d6,stroke:#8190a8,color:#182238
+  classDef store fill:#eef0f4,stroke:#8190a8,color:#182238

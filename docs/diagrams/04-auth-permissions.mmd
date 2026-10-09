@@ -1,0 +1,30 @@
+---
+title: Cortex AI — authentication and permission flow
+---
+flowchart TB
+  request["Request + opaque session cookie"]:::client
+  session["Valid session + active user?"]:::decision
+  noauth["401 generic authentication failure"]:::client
+  action["Role permits requested action?"]:::decision
+  deny["403 operation denied"]:::client
+  tenant["Trusted tenant + explicit current READ grant?"]:::decision
+  hidden["404 unavailable<br/>No title / existence disclosure"]:::client
+  ids["Filtered candidate IDs<br/>Then date / approval / scope"]:::evidence
+  text["Authorized evidence only<br/>Rerank / conflicts / optional model"]:::evidence
+  revision["Recheck ACL + revisions before output"]:::decision
+  safe["Permitted response<br/>Or CONTEXT_CHANGED abstention"]:::client
+  request --> session
+  session -->|"no"| noauth
+  session -->|"yes"| action
+  action -->|"no"| deny
+  action -->|"yes"| tenant
+  tenant -->|"no / direct object"| hidden
+  tenant -->|"yes"| ids
+  ids -->|"eligible"| text
+  text --> revision
+  revision -->|"never stale context"| safe
+  classDef client fill:#f1f5f9,stroke:#8190a8,color:#182238
+  classDef app fill:#e7edff,stroke:#8190a8,color:#182238
+  classDef evidence fill:#def4ed,stroke:#8190a8,color:#182238
+  classDef decision fill:#fff1d6,stroke:#8190a8,color:#182238
+  classDef store fill:#eef0f4,stroke:#8190a8,color:#182238

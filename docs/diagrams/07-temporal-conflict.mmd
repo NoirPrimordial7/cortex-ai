@@ -1,0 +1,28 @@
+---
+title: Cortex AI — temporal validity and conflict decisions
+---
+flowchart TB
+  allowed["Authorized candidates + requested date"]:::evidence
+  valid["Approved + exact scope<br/>valid_from ≤ date < valid_to"]:::decision
+  none["No eligible evidence<br/>Safe abstention"]:::client
+  key["Reviewed claim key matches?"]:::decision
+  uncertain["Uncertain / unsupported<br/>Clarify or abstain"]:::client
+  lineage["Apply reviewed amendment boundary<br/>Different scope / date is not conflict"]:::evidence
+  authority["Select strongest topic authority<br/>Expand all applicable peers"]:::decision
+  agree["Strongest values agree?"]:::decision
+  answer["Answer + supporting citations<br/>Readable lower-rank note optional"]:::evidence
+  conflict["Equal strongest values disagree<br/>Cited conflict abstention"]:::decision
+  allowed --> valid
+  valid -->|"none"| none
+  valid -->|"eligible"| key
+  key -->|"no / ambiguous"| uncertain
+  key -->|"yes"| lineage
+  lineage --> authority
+  authority --> agree
+  agree -->|"yes"| answer
+  agree -->|"no"| conflict
+  classDef client fill:#f1f5f9,stroke:#8190a8,color:#182238
+  classDef app fill:#e7edff,stroke:#8190a8,color:#182238
+  classDef evidence fill:#def4ed,stroke:#8190a8,color:#182238
+  classDef decision fill:#fff1d6,stroke:#8190a8,color:#182238
+  classDef store fill:#eef0f4,stroke:#8190a8,color:#182238

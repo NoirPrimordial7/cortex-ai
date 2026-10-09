@@ -1,0 +1,28 @@
+---
+title: Cortex AI — end-to-end application data flow
+---
+flowchart TB
+  user["Employee or knowledge manager"]:::client
+  auth["Authenticate + authorize action"]:::app
+  upload["Upload route<br/>Quarantine + extraction"]:::app
+  review["Review ACL + approval<br/>Validity + claims + authority"]:::decision
+  index["Immutable knowledge generation"]:::store
+  query["Query route<br/>Permission-filtered IDs"]:::app
+  valid["Approved date + scope eligibility"]:::evidence
+  analysis["Rank + authorized peer analysis"]:::decision
+  out["Verify + current ACL recheck<br/>Answer / abstention + citations"]:::evidence
+  user -->|"session"| auth
+  auth -->|"upload action"| upload
+  upload -->|"pending evidence"| review
+  review -->|"atomic publish"| index
+  auth -->|"query action"| query
+  index -->|"current grants / IDs"| query
+  query -->|"eligible IDs"| valid
+  valid -->|"authorized text only"| analysis
+  analysis -->|"decision"| out
+  out -->|"permitted result"| user
+  classDef client fill:#f1f5f9,stroke:#8190a8,color:#182238
+  classDef app fill:#e7edff,stroke:#8190a8,color:#182238
+  classDef evidence fill:#def4ed,stroke:#8190a8,color:#182238
+  classDef decision fill:#fff1d6,stroke:#8190a8,color:#182238
+  classDef store fill:#eef0f4,stroke:#8190a8,color:#182238

@@ -1,0 +1,3 @@
+# Fixture hashes and citation character offsets require stable LF source bytes.
+docs/planning/demo/policies/*.txt text eol=lf
+*.png binary

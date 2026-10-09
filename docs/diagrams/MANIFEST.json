@@ -1,0 +1,85 @@
+{
+  "method": "Graphviz WASM 3.25.0 DOT layout; sharp PNG rasterization; paired Mermaid semantic source, not a Mermaid pixel export",
+  "diagrams": [
+    {
+      "name": "01-system-architecture",
+      "title": "Cortex AI — proposed system architecture",
+      "mermaid": "01-system-architecture.mmd",
+      "export_source": "01-system-architecture.dot",
+      "svg": "01-system-architecture.svg",
+      "png": "01-system-architecture.png"
+    },
+    {
+      "name": "02-data-flow",
+      "title": "Cortex AI — end-to-end application data flow",
+      "mermaid": "02-data-flow.mmd",
+      "export_source": "02-data-flow.dot",
+      "svg": "02-data-flow.svg",
+      "png": "02-data-flow.png"
+    },
+    {
+      "name": "03-rag-pipeline",
+      "title": "Cortex AI — retrieval and grounded answering",
+      "mermaid": "03-rag-pipeline.mmd",
+      "export_source": "03-rag-pipeline.dot",
+      "svg": "03-rag-pipeline.svg",
+      "png": "03-rag-pipeline.png"
+    },
+    {
+      "name": "04-auth-permissions",
+      "title": "Cortex AI — authentication and permission flow",
+      "mermaid": "04-auth-permissions.mmd",
+      "export_source": "04-auth-permissions.dot",
+      "svg": "04-auth-permissions.svg",
+      "png": "04-auth-permissions.png"
+    },
+    {
+      "name": "05-database-erd",
+      "title": "Cortex AI — database relationship overview",
+      "mermaid": "05-database-erd.mmd",
+      "export_source": "05-database-erd.dot",
+      "svg": "05-database-erd.svg",
+      "png": "05-database-erd.png"
+    },
+    {
+      "name": "06-ingestion",
+      "title": "Cortex AI — upload, indexing and versioning",
+      "mermaid": "06-ingestion.mmd",
+      "export_source": "06-ingestion.dot",
+      "svg": "06-ingestion.svg",
+      "png": "06-ingestion.png"
+    },
+    {
+      "name": "07-temporal-conflict",
+      "title": "Cortex AI — temporal validity and conflict decisions",
+      "mermaid": "07-temporal-conflict.mmd",
+      "export_source": "07-temporal-conflict.dot",
+      "svg": "07-temporal-conflict.svg",
+      "png": "07-temporal-conflict.png"
+    },
+    {
+      "name": "08-api-sequence",
+      "title": "Cortex AI — user-to-backend request sequence",
+      "mermaid": "08-api-sequence.mmd",
+      "export_source": "08-api-sequence.dot",
+      "svg": "08-api-sequence.svg",
+      "png": "08-api-sequence.png"
+    },
+    {
+      "name": "09-sitemap",
+      "title": "Cortex AI — frontend navigation and sitemap",
+      "mermaid": "09-sitemap.mmd",
+      "export_source": "09-sitemap.dot",
+      "svg": "09-sitemap.svg",
+      "png": "09-sitemap.png"
+    },
+    {
+      "name": "10-local-deployment",
+      "title": "Cortex AI — local development and demonstration",
+      "mermaid": "10-local-deployment.mmd",
+      "export_source": "10-local-deployment.dot",
+      "svg": "10-local-deployment.svg",
+      "png": "10-local-deployment.png"
+    }
+  ]
+}

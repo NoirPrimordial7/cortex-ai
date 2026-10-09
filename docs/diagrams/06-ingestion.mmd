@@ -1,0 +1,30 @@
+---
+title: Cortex AI — upload, indexing and versioning
+---
+flowchart TB
+  up["Authorized manager uploads<br/>TXT / text PDF / DOCX"]:::client
+  bounds["Type + size + signature validation<br/>Server-generated object path"]:::app
+  parse["Quarantine → bounded child parser<br/>No network / no macro execution"]:::app
+  fail["FAILED / unsupported<br/>Safe error; never searchable"]:::client
+  text["Immutable extracted text + hash<br/>Page / paragraph / line locator"]:::store
+  review["PENDING REVIEW<br/>ACL + scope + dates + claims"]:::decision
+  approval["Reviewer approves<br/>Separate authority rule lookup"]:::decision
+  lineage["Validate interval + supersession<br/>Cycle / tenant checks"]:::decision
+  pub["Atomic clauses + FTS publication<br/>Increment knowledge revision"]:::evidence
+  history["Version history preserved<br/>Current ACL on all reads"]:::store
+  up -->|"new document/version"| bounds
+  bounds -->|"accepted"| parse
+  bounds -->|"invalid"| fail
+  parse -->|"parse failure"| fail
+  parse -->|"success"| text
+  text --> review
+  review -->|"metadata complete"| approval
+  approval -->|"approved"| lineage
+  lineage -->|"valid"| pub
+  lineage -->|"invalid metadata"| fail
+  pub -->|"new generation"| history
+  classDef client fill:#f1f5f9,stroke:#8190a8,color:#182238
+  classDef app fill:#e7edff,stroke:#8190a8,color:#182238
+  classDef evidence fill:#def4ed,stroke:#8190a8,color:#182238
+  classDef decision fill:#fff1d6,stroke:#8190a8,color:#182238
+  classDef store fill:#eef0f4,stroke:#8190a8,color:#182238

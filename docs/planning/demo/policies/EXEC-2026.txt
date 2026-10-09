@@ -1,0 +1,2 @@
+Executive bonus policy — EXEC-2026
+The fictional executive bonus is INR 75000. Test marker: CANARY_EXEC_75K.

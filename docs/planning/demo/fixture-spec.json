@@ -1,0 +1,517 @@
+{
+  "status": "Phase 2 fictional fixture specification; not ingested or executed",
+  "timezone": "Asia/Kolkata",
+  "anchor_date": "2026-10-09",
+  "documents": [
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "HR-LEAVE",
+      "title": "Annual leave policy",
+      "version_id": "LEAVE-2025",
+      "clause_id": "L25-C1",
+      "file": "policies/LEAVE-2025.txt",
+      "sha256": "d6c0808e32329ac0e16451d842c365ad64e5135b89985e2440d3028236dc7734",
+      "published_at": "2025-01-01T09:00:00+05:30",
+      "ingested_at": "2026-10-08T10:00:00+05:30",
+      "valid_from": "2025-01-01",
+      "valid_to": "2026-01-01",
+      "open_ended": false,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "hr_policy",
+      "topic": "leave",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "claim": {
+        "subject": "india_full_time",
+        "predicate": "annual_leave_days",
+        "value": 18,
+        "unit": "working_days_per_year",
+        "modality": "entitlement",
+        "condition_key": "default"
+      },
+      "locator": "TXT line 2",
+      "quote": "India full-time employees receive 18 working days of annual leave per year.",
+      "start_char": 33,
+      "end_char": 108
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "HR-LEAVE",
+      "title": "Annual leave policy",
+      "version_id": "LEAVE-2026",
+      "clause_id": "L26-C1",
+      "file": "policies/LEAVE-2026.txt",
+      "sha256": "99cb8c48dd237f177a3ed3a2ccf8b76541ce5317385ca19f3d1afdfc5e50e0de",
+      "published_at": "2026-01-01T09:00:00+05:30",
+      "ingested_at": "2026-10-08T10:00:00+05:30",
+      "valid_from": "2026-01-01",
+      "valid_to": "2027-01-01",
+      "open_ended": false,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "hr_policy",
+      "topic": "leave",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "claim": {
+        "subject": "india_full_time",
+        "predicate": "annual_leave_days",
+        "value": 20,
+        "unit": "working_days_per_year",
+        "modality": "entitlement",
+        "condition_key": "default"
+      },
+      "locator": "TXT line 2",
+      "quote": "India full-time employees receive 20 working days of annual leave per year.",
+      "start_char": 33,
+      "end_char": 108
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "HR-LEAVE",
+      "title": "Annual leave policy",
+      "version_id": "LEAVE-2027",
+      "clause_id": "L27-C1",
+      "file": "policies/LEAVE-2027.txt",
+      "sha256": "9bfdf2575cb1fd15ef292957ef68acd7bacf04579d931fbbdbaebc10d83494e7",
+      "published_at": "2027-01-01T09:00:00+05:30",
+      "ingested_at": "2026-10-09T10:00:00+05:30",
+      "valid_from": "2027-01-01",
+      "valid_to": null,
+      "open_ended": true,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "hr_policy",
+      "topic": "leave",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "claim": {
+        "subject": "india_full_time",
+        "predicate": "annual_leave_days",
+        "value": 24,
+        "unit": "working_days_per_year",
+        "modality": "entitlement",
+        "condition_key": "default"
+      },
+      "locator": "TXT line 2",
+      "quote": "India full-time employees receive 24 working days of annual leave per year.",
+      "start_char": 33,
+      "end_char": 108
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "HR-NOTE",
+      "title": "Informal leave discussion",
+      "version_id": "LEAVE-NOTE",
+      "clause_id": "LN-C1",
+      "file": "policies/LEAVE-NOTE.txt",
+      "sha256": "e71e1dfc1e2530bb680e53ca172ae42021f61e4877607bb36c646b8190ef862e",
+      "published_at": "2026-01-01T09:00:00+05:30",
+      "ingested_at": "2026-10-09T10:00:00+05:30",
+      "valid_from": "2026-01-01",
+      "valid_to": null,
+      "open_ended": true,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "informal_note",
+      "topic": "leave",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "claim": {
+        "subject": "india_full_time",
+        "predicate": "annual_leave_days",
+        "value": 30,
+        "unit": "working_days_per_year",
+        "modality": "entitlement",
+        "condition_key": "default"
+      },
+      "locator": "TXT line 2",
+      "quote": "An informal discussion suggests 30 working days of annual leave per year for India full-time employees; this note is not governing HR policy.",
+      "start_char": 39,
+      "end_char": 180
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "OPS-REMOTE-A",
+      "title": "Remote work policy A",
+      "version_id": "REMOTE-A",
+      "clause_id": "RA-C1",
+      "file": "policies/REMOTE-A.txt",
+      "sha256": "3f0c6a66b3bdc10759265e2fb8fb21295dfa1e49dc69eeefa87945ea9f18a407",
+      "published_at": "2026-01-01T09:00:00+05:30",
+      "ingested_at": "2026-10-08T10:00:00+05:30",
+      "valid_from": "2026-01-01",
+      "valid_to": null,
+      "open_ended": true,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "operations_policy",
+      "topic": "remote_work",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "claim": {
+        "subject": "india_full_time",
+        "predicate": "remote_days_per_week",
+        "value": 2,
+        "unit": "days_per_week",
+        "modality": "entitlement",
+        "condition_key": "default"
+      },
+      "locator": "TXT line 2",
+      "quote": "India full-time employees may work remotely 2 days per week.",
+      "start_char": 32,
+      "end_char": 92
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "OPS-REMOTE-B",
+      "title": "Remote work policy B",
+      "version_id": "REMOTE-B",
+      "clause_id": "RB-C1",
+      "file": "policies/REMOTE-B.txt",
+      "sha256": "be2d5354308f59aad010b751aff2d4587d4821daef68e8b19e84e5600cb995d9",
+      "published_at": "2026-01-01T09:00:00+05:30",
+      "ingested_at": "2026-10-09T10:00:00+05:30",
+      "valid_from": "2026-01-01",
+      "valid_to": null,
+      "open_ended": true,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "operations_policy",
+      "topic": "remote_work",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "claim": {
+        "subject": "india_full_time",
+        "predicate": "remote_days_per_week",
+        "value": 3,
+        "unit": "days_per_week",
+        "modality": "entitlement",
+        "condition_key": "default"
+      },
+      "locator": "TXT line 2",
+      "quote": "India full-time employees may work remotely 3 days per week.",
+      "start_char": 32,
+      "end_char": 92
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "HR-NOTICE",
+      "title": "Notice period policy",
+      "version_id": "NOTICE-2026",
+      "clause_id": "N26-C1",
+      "file": "policies/NOTICE-2026.txt",
+      "sha256": "60ff56e2885eb1bc8fdf12c6eddab065c3e3af31e3e8f48a5e11e0f1d55e8afd",
+      "published_at": "2026-01-01T09:00:00+05:30",
+      "ingested_at": "2026-10-08T10:00:00+05:30",
+      "valid_from": "2026-01-01",
+      "valid_to": null,
+      "open_ended": true,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "hr_policy",
+      "topic": "notice",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "claim": {
+        "subject": "india_full_time",
+        "predicate": "notice_period_days",
+        "value": 30,
+        "unit": "calendar_days",
+        "modality": "entitlement",
+        "condition_key": "default"
+      },
+      "locator": "TXT line 2",
+      "quote": "India full-time employees must provide 30 calendar days of notice.",
+      "start_char": 35,
+      "end_char": 101
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "EXEC-BONUS",
+      "title": "Executive bonus policy",
+      "version_id": "EXEC-2026",
+      "clause_id": "E26-C1",
+      "file": "policies/EXEC-2026.txt",
+      "sha256": "b5b71ae11a23b9bb90890f1c677774ff54b7058faab14ded71456a0eb9d5f6d6",
+      "published_at": "2026-01-01T09:00:00+05:30",
+      "ingested_at": "2026-10-08T10:00:00+05:30",
+      "valid_from": "2026-01-01",
+      "valid_to": null,
+      "open_ended": true,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "hr_policy",
+      "topic": "bonus",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "claim": {
+        "subject": "india_full_time",
+        "predicate": "executive_bonus",
+        "value": 75000,
+        "unit": "INR",
+        "modality": "entitlement",
+        "condition_key": "default"
+      },
+      "locator": "TXT line 2",
+      "quote": "The fictional executive bonus is INR 75000. Test marker: CANARY_EXEC_75K.",
+      "start_char": 35,
+      "end_char": 108
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "HR-OLD",
+      "title": "Expired leave policy",
+      "version_id": "LEAVE-OLD",
+      "clause_id": "LO-C1",
+      "file": "policies/LEAVE-OLD.txt",
+      "sha256": "200a74af3486692d854e0202d6521a5915cd495edae455409d3457cedb867762",
+      "published_at": "2024-01-01T09:00:00+05:30",
+      "ingested_at": "2026-10-09T10:00:00+05:30",
+      "valid_from": "2024-01-01",
+      "valid_to": "2025-01-01",
+      "open_ended": false,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "hr_policy",
+      "topic": "leave",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "claim": {
+        "subject": "india_full_time",
+        "predicate": "annual_leave_days",
+        "value": 16,
+        "unit": "working_days_per_year",
+        "modality": "entitlement",
+        "condition_key": "default"
+      },
+      "locator": "TXT line 2",
+      "quote": "India full-time employees receive 16 working days of annual leave per year.",
+      "start_char": 33,
+      "end_char": 108
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "HR-DRAFT",
+      "title": "Draft leave proposal",
+      "version_id": "LEAVE-DRAFT",
+      "clause_id": "LD-C1",
+      "file": "policies/LEAVE-DRAFT.txt",
+      "sha256": "edc93b55d375f29a02f7869246da7ba3bb6d8baaa873ff803d408517a788f683",
+      "published_at": "2026-01-01T09:00:00+05:30",
+      "ingested_at": "2026-10-09T10:00:00+05:30",
+      "valid_from": "2026-01-01",
+      "valid_to": null,
+      "open_ended": true,
+      "approval_state": "pending",
+      "reviewer": "ravi",
+      "source_kind": "hr_policy",
+      "topic": "leave",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "claim": {
+        "subject": "india_full_time",
+        "predicate": "annual_leave_days",
+        "value": 99,
+        "unit": "working_days_per_year",
+        "modality": "entitlement",
+        "condition_key": "default"
+      },
+      "locator": "TXT line 2",
+      "quote": "India full-time employees receive 99 working days of annual leave per year.",
+      "start_char": 35,
+      "end_char": 110
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "HR-CONTRACTOR",
+      "title": "Contractor leave policy",
+      "version_id": "CONTRACTOR-2026",
+      "clause_id": "C26-C1",
+      "file": "policies/CONTRACTOR-2026.txt",
+      "sha256": "84d66c17f14537a2b4854bb445964931fe52eb13f895c7275db895a58cde49fd",
+      "published_at": "2026-01-01T09:00:00+05:30",
+      "ingested_at": "2026-10-08T10:00:00+05:30",
+      "valid_from": "2026-01-01",
+      "valid_to": null,
+      "open_ended": true,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "hr_policy",
+      "topic": "leave",
+      "population": "india_contractor",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "claim": {
+        "subject": "india_contractor",
+        "predicate": "annual_leave_days",
+        "value": 8,
+        "unit": "working_days_per_year",
+        "modality": "entitlement",
+        "condition_key": "default"
+      },
+      "locator": "TXT line 2",
+      "quote": "India contractors receive 8 working days of annual leave per year.",
+      "start_char": 42,
+      "end_char": 108
+    }
+  ],
+  "users": [
+    {
+      "id": "maya",
+      "roles": [
+        "employee"
+      ]
+    },
+    {
+      "id": "ravi",
+      "roles": [
+        "employee",
+        "knowledge_manager",
+        "admin"
+      ]
+    },
+    {
+      "id": "isha",
+      "roles": [
+        "auditor"
+      ]
+    },
+    {
+      "id": "noor",
+      "roles": [
+        "employee"
+      ],
+      "active": false
+    }
+  ],
+  "authority_rules": [
+    {
+      "topic": "leave",
+      "jurisdiction": "IN",
+      "source_kind": "hr_policy",
+      "rank": 100
+    },
+    {
+      "topic": "leave",
+      "jurisdiction": "IN",
+      "source_kind": "informal_note",
+      "rank": 10
+    },
+    {
+      "topic": "remote_work",
+      "jurisdiction": "IN",
+      "source_kind": "operations_policy",
+      "rank": 100
+    },
+    {
+      "topic": "notice",
+      "jurisdiction": "IN",
+      "source_kind": "hr_policy",
+      "rank": 100
+    },
+    {
+      "topic": "bonus",
+      "jurisdiction": "IN",
+      "source_kind": "hr_policy",
+      "rank": 100
+    }
+  ],
+  "supersession": [
+    {
+      "from": "L25-C1",
+      "to": "L26-C1",
+      "effective_from": "2026-01-01"
+    },
+    {
+      "from": "L26-C1",
+      "to": "L27-C1",
+      "effective_from": "2027-01-01"
+    }
+  ]
+}

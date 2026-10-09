@@ -1,0 +1,21 @@
+---
+title: Cortex AI — user-to-backend request sequence
+---
+sequenceDiagram
+ actor U as Employee browser
+ participant A as FastAPI
+ participant P as Policy repository
+ participant R as Authorized retrieval
+ participant C as Reasoning + answerer
+ U->>A: POST /queries (cookie, query, as_of, scope)
+ A->>P: Authenticate, action permission, current revisions
+ P-->>A: Trusted identity + eligibility context
+ A->>R: Permission-filtered IDs then date/scope validation
+ R-->>C: Authorized evidence + permitted peers only
+ C-->>A: Answer or abstention + supported citations
+ A->>P: Recheck READ grants and revisions
+ alt unchanged and allowed
+ A-->>U: Permitted answer and evidence
+ else revoked or changed
+ A-->>U: Safe CONTEXT_CHANGED abstention
+ end

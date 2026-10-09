@@ -1,6 +1,17 @@
 # Development log
 
-No application development is authorized in Phase 1. This log includes repository and documentation maintenance.
+## 2026-10-09T16:37:31+05:30 — Phase 2 architecture and evidence contracts
+
+- Authorization: owner approved Phase 1 and requested full Phase 2 planning; Phase 3 remains unapproved.
+- Files added: docs/planning/{REQUIREMENTS,TECH_STACK,SYSTEM_ARCHITECTURE,DATABASE_SCHEMA,SECURITY_MODEL,RAG_PIPELINE,API_DESIGN,DEMO_SCENARIOS,TEST_STRATEGY,MVP_ACCEPTANCE_CRITERIA}.md; demo/fixture-spec.json and 11 fictional policy TXT files; docs/learning/ six explanation documents; docs/DIAGRAMS.md; docs/diagrams/ ten .mmd/.dot/.svg/.png export sets plus MANIFEST.json; three numbered ADRs. Changed README and tracking files; no deletions. UI/backlog/sequence drafts remain unstaged for the next complete unit.
+- Reason/outcome: select an offline-capable local stack and define tenant/ACL, validity, authority/conflict, citation, API and test contracts before implementation. All behavior remains planned; fictional policy files are test specifications, not ingested application data.
+- Environment: authenticated account NoirPrimordial7; main local/remote matched 06334ae on inspection. GitHub API now reports PUBLIC; previous Phase 1 records reported PRIVATE. No visibility mutation performed; owner informed. Only non-sensitive fictional documentation is published.
+- Verification: local link checks, 11 policy hashes and exact quote offsets, 10 complete export sets, strict credential-pattern scan and Git whitespace passed; Phase 1 research/source artifacts compare byte-equivalent after newline normalization to 06334ae. Graphviz exports visually inspected; flow grouping adjusted for readability.
+- Tooling limits: bundled Graphviz WASM/sharp exported real SVG/PNG from paired DOT source; Mermaid source preserved. In-app browser could not reach local static preview, Chrome control unavailable. Owner chose editable sources and reporting limitation instead of headless Playwright. No browser screenshot claim; no paid services.
+- Outstanding: UI concepts/backlog integration and final planning audit; exact dependency locks, all application tests, hardware/team/40% rubric unknown; owner review before Phase 3.
+- Commit: resolve `docs: define Cortex AI architecture and security contracts`; actual hash/push outcome recorded next once available.
+
+Historical Phase 1 entries below concern repository and research maintenance. Phase 2 authorizes planning/static design artifacts only; functional application development remains pending approval.
 
 ## Initial repository inspection and setup — Phase 1A
 

@@ -1,0 +1,30 @@
+digraph G { graph [rankdir=LR, bgcolor="white", pad="0.35", nodesep="0.35", ranksep="0.7", fontname="Segoe UI", fontsize=20, labelloc="t", label="Cortex AI — database relationship overview\nPHASE 2 PLAN · NOT IMPLEMENTED"]; node [shape=box, style="rounded,filled", fontname="Segoe UI", fontsize=12, margin="0.2,0.15", color="#8190a8", fontcolor="#182238", penwidth=1.2]; edge [fontname="Segoe UI", fontsize=10, color="#62738b", fontcolor="#334155", arrowsize=0.7];
+subgraph cluster_workflow {label="PROPOSED WORKFLOW / RELATED ENTITIES";fontsize=10;color="#dce2eb";style="rounded";
+tenants [label="TENANTS\nid · policy_revision · knowledge_revision",fillcolor="#eef0f4"];
+users [label="USERS + SESSIONS\nuser_id · tenant_id · token_digest",fillcolor="#e7edff"];
+roles [label="ROLES + MEMBERSHIPS\nrole_permissions → action keys",fillcolor="#e7edff"];
+docs [label="DOCUMENTS + ACL\ndocument_id · tenant_id · explicit READ",fillcolor="#eef0f4"];
+versions [label="DOCUMENT_VERSIONS\nversion_id · hash · current_metadata_revision",fillcolor="#eef0f4"];
+meta [label="METADATA_REVISIONS\napproval · dates · reviewed scope",fillcolor="#fff1d6"];
+clauses [label="CLAUSES + FTS\nclause_id · locator · text · reviewed interval",fillcolor="#def4ed"];
+claims [label="POLICY_CLAIMS + AUTHORITY\nsubject · predicate · value · scope",fillcolor="#fff1d6"];
+edges [label="SUPERSESSION_EDGES\npredecessor → successor · effective_from",fillcolor="#fff1d6"];
+queries [label="QUERIES\nowner_user_id · as_of · status",fillcolor="#e7edff"];
+cites [label="CITATIONS + CONFLICT_EVIDENCE\nquery_id · clause_id · supported span",fillcolor="#def4ed"];
+audit [label="AUDIT_EVENTS\nactor · action · outcome · revision",fillcolor="#eef0f4"];
+}
+tenants -> users [label="1 : many"];
+users -> roles [label="many : many"];
+tenants -> docs [label="1 : many"];
+roles -> docs [label="READ grants"];
+users -> docs [label="READ grants"];
+docs -> versions [label="1 : many"];
+versions -> meta [label="1 : many"];
+versions -> clauses [label="1 : many"];
+clauses -> claims [label="1 : many"];
+clauses -> edges [label="predecessor / successor"];
+users -> queries [label="1 : many"];
+queries -> cites [label="1 : many"];
+clauses -> cites [label="source dependency"];
+users -> audit [label="actor"];
+}

@@ -1,0 +1,36 @@
+digraph G { graph [rankdir=LR, bgcolor="white", pad="0.35", nodesep="0.35", ranksep="0.7", fontname="Segoe UI", fontsize=20, labelloc="t", label="Cortex AI — proposed system architecture\nPHASE 2 PLAN · NOT IMPLEMENTED"]; node [shape=box, style="rounded,filled", fontname="Segoe UI", fontsize=12, margin="0.2,0.15", color="#8190a8", fontcolor="#182238", penwidth=1.2]; edge [fontname="Segoe UI", fontsize=10, color="#62738b", fontcolor="#334155", arrowsize=0.7];
+subgraph cluster_client {label="USER SURFACE";fontsize=10;color="#dce2eb";style="rounded";
+ui [label="React browser\nSession UI + evidence viewer", fillcolor="#f1f5f9"];
+}
+subgraph cluster_app {label="APPLICATION / TRUSTED CONTROL";fontsize=10;color="#dce2eb";style="rounded";
+api [label="FastAPI\nTrusted identity + action checks", fillcolor="#e7edff"];
+gate [label="Policy boundary\nTenant + current document READ", fillcolor="#e7edff"];
+ingest [label="Bounded ingestion + review\nImmutable version publication", fillcolor="#e7edff"];
+}
+subgraph cluster_evidence {label="AUTHORIZED EVIDENCE";fontsize=10;color="#dce2eb";style="rounded";
+search [label="Authorized retrieval\nDate + approval + scope", fillcolor="#def4ed"];
+answer [label="Evidence answerer\nVerify spans + reauthorize", fillcolor="#def4ed"];
+}
+subgraph cluster_decision {label="REVIEW / DECISION";fontsize=10;color="#dce2eb";style="rounded";
+reason [label="Authority + structured conflicts\nAgree / conflict / insufficient", fillcolor="#fff1d6"];
+model [label="Optional local model\nDisabled in Milestone A", fillcolor="#fff1d6"];
+}
+subgraph cluster_store {label="LOCAL STORAGE";fontsize=10;color="#dce2eb";style="rounded";
+db [label="SQLite\nMetadata + ACL + clauses + FTS5", fillcolor="#eef0f4"];
+files [label="Private local files\nQuarantine + immutable uploads", fillcolor="#eef0f4"];
+audit [label="Redacted audit events", fillcolor="#eef0f4"];
+}
+ui -> api [label="cookie / query"];
+api -> gate [label="identity"];
+gate -> search [label="eligible IDs only"];
+search -> reason [label="authorized evidence"];
+reason -> answer [label="decision"];
+answer -> api [label="safe answer + citations"];
+answer -> model [label="B only: permitted context"];
+gate -> db [label="current grants"];
+search -> db [label="scoped reads"];
+api -> ingest [label="authorized upload"];
+ingest -> files [label="bounded parser"];
+ingest -> db [label="approved publication"];
+api -> audit [label="safe action outcome"];
+}

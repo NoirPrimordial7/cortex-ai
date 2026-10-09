@@ -1,0 +1,25 @@
+---
+title: Cortex AI — local development and demonstration
+---
+flowchart LR
+  dev["Development browser"]:::client
+  vite["Vite localhost<br/>Frontend + /api proxy"]:::app
+  demo["Demo browser<br/>Same-origin application"]:::client
+  api["Single FastAPI localhost process<br/>Built assets + /api/v1 + tenant gates"]:::app
+  db["Local SQLite<br/>Rollback journal baseline"]:::store
+  disk["Private upload / quarantine paths<br/>Outside public assets + Git"]:::store
+  parser["Bounded child parser<br/>PDF / DOCX / TXT"]:::app
+  optional["Optional loopback model server<br/>Disabled A; no paid provider"]:::decision
+  dev -->|"HTTP loopback only"| vite
+  vite -->|"proxy"| api
+  demo -->|"same-origin cookie"| api
+  api -->|"scoped transactions"| db
+  api -->|"private files"| disk
+  api -->|"bounded job"| parser
+  parser -->|"local bytes"| disk
+  api -->|"B only authorized context"| optional
+  classDef client fill:#f1f5f9,stroke:#8190a8,color:#182238
+  classDef app fill:#e7edff,stroke:#8190a8,color:#182238
+  classDef evidence fill:#def4ed,stroke:#8190a8,color:#182238
+  classDef decision fill:#fff1d6,stroke:#8190a8,color:#182238
+  classDef store fill:#eef0f4,stroke:#8190a8,color:#182238

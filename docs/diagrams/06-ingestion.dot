@@ -1,0 +1,25 @@
+digraph G { graph [rankdir=TB, bgcolor="white", pad="0.35", nodesep="0.35", ranksep="0.7", fontname="Segoe UI", fontsize=20, labelloc="t", label="Cortex AI — upload, indexing and versioning\nPHASE 2 PLAN · NOT IMPLEMENTED"]; node [shape=box, style="rounded,filled", fontname="Segoe UI", fontsize=12, margin="0.2,0.15", color="#8190a8", fontcolor="#182238", penwidth=1.2]; edge [fontname="Segoe UI", fontsize=10, color="#62738b", fontcolor="#334155", arrowsize=0.7];
+subgraph cluster_workflow {label="PROPOSED WORKFLOW / RELATED ENTITIES";fontsize=10;color="#dce2eb";style="rounded";
+up [label="Authorized manager uploads\nTXT / text PDF / DOCX",fillcolor="#f1f5f9"];
+bounds [label="Type + size + signature validation\nServer-generated object path",fillcolor="#e7edff"];
+parse [label="Quarantine → bounded child parser\nNo network / no macro execution",fillcolor="#e7edff"];
+fail [label="FAILED / unsupported\nSafe error; never searchable",fillcolor="#f1f5f9"];
+text [label="Immutable extracted text + hash\nPage / paragraph / line locator",fillcolor="#eef0f4"];
+review [label="PENDING REVIEW\nACL + scope + dates + claims",fillcolor="#fff1d6"];
+approval [label="Reviewer approves\nSeparate authority rule lookup",fillcolor="#fff1d6"];
+lineage [label="Validate interval + supersession\nCycle / tenant checks",fillcolor="#fff1d6"];
+pub [label="Atomic clauses + FTS publication\nIncrement knowledge revision",fillcolor="#def4ed"];
+history [label="Version history preserved\nCurrent ACL on all reads",fillcolor="#eef0f4"];
+}
+up -> bounds [label="new document/version"];
+bounds -> parse [label="accepted"];
+bounds -> fail [label="invalid"];
+parse -> fail [label="parse failure"];
+parse -> text [label="success"];
+text -> review [label=""];
+review -> approval [label="metadata complete"];
+approval -> lineage [label="approved"];
+lineage -> pub [label="valid"];
+lineage -> fail [label="invalid metadata"];
+pub -> history [label="new generation"];
+}
