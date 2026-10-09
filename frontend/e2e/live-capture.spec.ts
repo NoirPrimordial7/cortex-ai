@@ -35,6 +35,26 @@ async function capture(page: Page, role: string, name: string) {
       width: innerWidth,
       scrollWidth: document.documentElement.scrollWidth,
       scrollHeight: document.documentElement.scrollHeight,
+      clippedTargets: Array.from(
+        document.querySelectorAll("a,button,input,select,textarea,summary"),
+      )
+        .filter((e) => {
+          const r = e.getBoundingClientRect();
+          return (
+            r.width > 0 &&
+            r.height > 0 &&
+            r.y >= 0 &&
+            r.y < innerHeight &&
+            getComputedStyle(e).visibility !== "hidden" &&
+            getComputedStyle(e).clipPath === "none" &&
+            (r.x < -0.1 || r.right > innerWidth + 0.1)
+          );
+        })
+        .map((e) => ({
+          label:
+            e.getAttribute("aria-label") || e.textContent?.trim().slice(0, 70),
+          right: e.getBoundingClientRect().right,
+        })),
       internalScrollers: Array.from(document.querySelectorAll("*"))
         .filter(
           (e) =>
@@ -85,6 +105,11 @@ async function capture(page: Page, role: string, name: string) {
       expect(
         measure.smallTargets,
         `${role}/${name}@${width} touch targets`,
+      ).toEqual([]);
+    if (phase !== "before")
+      expect(
+        measure.clippedTargets,
+        `${role}/${name}@${width} clipped controls`,
       ).toEqual([]);
   }
 }

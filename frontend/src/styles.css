@@ -1614,9 +1614,6 @@ kbd {
   margin-top: 4px;
   overflow-wrap: anywhere;
 }
-.people-table td:last-child {
-  width: 150px;
-}
 .grants-panel {
   max-width: 1000px;
 }
@@ -1984,18 +1981,6 @@ strong {
   .document-link small {
     display: none;
   }
-  .table-wrap td:nth-child(2):not([data-label])::before {
-    content: "Category: ";
-    color: var(--muted);
-  }
-  .table-wrap td:nth-child(3):not([data-label])::before {
-    content: "Versions: ";
-    color: var(--muted);
-  }
-  .table-wrap td:nth-child(4):not([data-label])::before {
-    content: "Uploaded: ";
-    color: var(--muted);
-  }
   .detail-grid {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -2290,9 +2275,6 @@ strong {
     border-radius: 0;
     border: 0;
     padding: 24px 16px;
-  }
-  .people-table td:last-child {
-    width: 100%;
   }
   .fb-evidence-view {
     padding-bottom: env(safe-area-inset-bottom);

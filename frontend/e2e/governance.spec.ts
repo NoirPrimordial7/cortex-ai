@@ -69,6 +69,15 @@ for (const width of [320, 390, 768, 1024, 1280, 1440])
     await page.setViewportSize({ width, height: 900 });
     const writes = await admin(page);
     await page.goto("/permissions");
+    const edit = page.getByRole("button", { name: "Edit Maya Shah" });
+    const bounds = await edit.boundingBox();
+    expect(bounds).not.toBeNull();
+    expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
+    const cell = edit.locator("..");
+    if (width < 600)
+      expect(
+        await cell.evaluate((e) => getComputedStyle(e, "::before").content),
+      ).not.toContain("Uploaded");
     await page.getByRole("button", { name: "Edit Maya Shah" }).click();
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
@@ -110,21 +119,17 @@ test("upload rejects unsupported files and displays the selected valid source", 
 }) => {
   await admin(page);
   await page.goto("/upload");
-  await page
-    .getByLabel("Source file")
-    .setInputFiles({
-      name: "unsafe.exe",
-      mimeType: "application/octet-stream",
-      buffer: Buffer.from("fixture"),
-    });
+  await page.getByLabel("Source file").setInputFiles({
+    name: "unsafe.exe",
+    mimeType: "application/octet-stream",
+    buffer: Buffer.from("fixture"),
+  });
   await expect(page.getByText("Choose a TXT, PDF or DOCX file.")).toBeVisible();
-  await page
-    .getByLabel("Source file")
-    .setInputFiles({
-      name: "policy.txt",
-      mimeType: "text/plain",
-      buffer: Buffer.from("Policy\nFictional fixture."),
-    });
+  await page.getByLabel("Source file").setInputFiles({
+    name: "policy.txt",
+    mimeType: "text/plain",
+    buffer: Buffer.from("Policy\nFictional fixture."),
+  });
   await expect(page.getByText("policy.txt", { exact: true })).toBeVisible();
   expect(
     await page
