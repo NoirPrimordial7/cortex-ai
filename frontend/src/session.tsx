@@ -6,7 +6,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null),
     [ready, setReady] = useState(false);
   const evidenceRevision = useRef<string | null>(null);
-  async function refresh() {
+  async function refresh(requireSession = false) {
     try {
       const s = await api<{
         user: User;
@@ -30,11 +30,16 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       evidenceRevision.current = revision;
       setCsrf(s.csrf_token);
       setUser(s.user);
-    } catch {
+    } catch (error) {
       setUser(null);
       setCsrf("");
       evidenceRevision.current = null;
       window.dispatchEvent(new Event("cortex:evidence-changed"));
+      if (requireSession)
+        throw new Error(
+          "Sign-in could not establish a session. Please retry. " +
+            (error instanceof Error ? error.message : ""),
+        );
     } finally {
       setReady(true);
     }

@@ -32,7 +32,7 @@ from .security import (
     version,
 )
 from .settings import ROOT, Settings
-from .demo import accounts as demo_accounts
+from .demo import accounts as demo_accounts, display_name as demo_display_name
 
 hasher = PasswordHasher()
 dummy_hash = hasher.hash(secrets.token_urlsafe(32))
@@ -242,7 +242,8 @@ def create_app(settings=None):
     def public_user(ctx):
         return {
             "id": ctx.user["id"],
-            "display_name": ctx.user["display_name"],
+            "display_name": demo_display_name(ctx.user)
+            if settings.demo_accounts_enabled else ctx.user["display_name"],
             "workspace": ctx.tenant,
             "roles": ctx.roles,
             "actions": sorted(ctx.actions),
@@ -506,10 +507,13 @@ def create_app(settings=None):
         ctx.require("user.manage")
         people = rows(
             ctx.db,
-            "SELECT id,display_name,email_normalized,active FROM users WHERE tenant_id=:tenant ORDER BY display_name",
+            "SELECT id,tenant_id,display_name,email_normalized,active FROM users WHERE tenant_id=:tenant ORDER BY display_name",
             tenant=ctx.tenant,
         )
         for u in people:
+            if settings.demo_accounts_enabled:
+                u["display_name"] = demo_display_name(u)
+            u.pop("tenant_id")
             u["role_ids"] = [
                 r["role_id"]
                 for r in rows(

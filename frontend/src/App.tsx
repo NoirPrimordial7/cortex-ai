@@ -1,4 +1,5 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { readableName } from "./labels";
+import { lazy, Suspense, useEffect, useState } from "react";
 import {
   NavLink,
   Navigate,
@@ -7,22 +8,14 @@ import {
   useLocation,
 } from "react-router-dom";
 import {
-  BookOpenTextIcon,
-  FilesIcon,
-  SquaresFourIcon,
-  WarningCircleIcon,
-  UsersThreeIcon,
-  ClockCounterClockwiseIcon,
-  SignOutIcon,
+  ListIcon,
   MoonIcon,
   SunIcon,
-  ListIcon,
+  SignOutIcon,
   XIcon,
-  CirclesThreePlusIcon,
-  ShieldCheckIcon,
 } from "@phosphor-icons/react";
 import { useSession } from "./session";
-import { State } from "./components";
+import { SourceDialog, State } from "./components";
 import Login from "./pages/Login";
 import { RouteBoundary } from "./RouteBoundary";
 const Assistant = lazy(() => import("./pages/Assistant"));
@@ -30,260 +23,230 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Library = lazy(() => import("./pages/Library"));
 const DocumentDetail = lazy(() => import("./pages/DocumentDetail"));
 const Upload = lazy(() => import("./pages/Upload"));
-const Activity = lazy(() => import("./pages/Activity"));
+const History = lazy(() => import("./pages/History"));
+const Conflicts = lazy(() => import("./pages/Conflicts"));
+const Audit = lazy(() => import("./pages/Audit"));
 const Permissions = lazy(() => import("./pages/Permissions"));
+const navigation = [
+  { to: "/", label: "Overview", name: "Overview" },
+  {
+    to: "/assistant",
+    label: "Ask Cortex",
+    name: "Knowledge assistant",
+    action: "query.execute",
+  },
+  { to: "/documents", label: "Library", name: "Document library" },
+  {
+    to: "/conflicts",
+    label: "Conflicts",
+    name: "Conflicts & validity",
+    action: "query.execute",
+  },
+  {
+    to: "/history",
+    label: "Activity",
+    name: "My activity",
+    action: "query.execute",
+  },
+  {
+    to: "/permissions",
+    label: "People & access",
+    name: "Permissions & people",
+    action: "user.manage",
+  },
+  {
+    to: "/audit",
+    label: "Audit",
+    name: "Audit activity",
+    action: "audit.read",
+  },
+];
 export default function App() {
   const { user, ready, signOut } = useSession();
-  const [dark, setDark] = useState(false),
+  const location = useLocation();
+  const [dark, setDark] = useState(() => {
+      try {
+        return localStorage.getItem("cortex:theme:v1") === "dark";
+      } catch {
+        return false;
+      }
+    }),
     [menu, setMenu] = useState(false),
     [error, setError] = useState("");
-  const [mobile, setMobile] = useState(
-    () => matchMedia("(max-width: 700px)").matches,
+  useEffect(() => {
+    document.documentElement.style.colorScheme = dark ? "dark" : "light";
+    try {
+      localStorage.setItem("cortex:theme:v1", dark ? "dark" : "light");
+    } catch {
+      /* Theme remains usable when storage is unavailable. */
+    }
+  }, [dark]);
+  useEffect(() => {
+    setMenu(false);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [location.pathname]);
+  const themeButton = (
+    <button
+      className="icon-button"
+      aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
+      onClick={() => setDark(!dark)}
+    >
+      {dark ? <SunIcon size={20} /> : <MoonIcon size={20} />}
+    </button>
   );
-  const rail = useRef<HTMLElement>(null),
-    menuButton = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    const query = matchMedia("(max-width: 700px)");
-    const changed = () => {
-      setMobile(query.matches);
-      if (!query.matches) setMenu(false);
-    };
-    query.addEventListener("change", changed);
-    return () => query.removeEventListener("change", changed);
-  }, []);
-  useEffect(() => {
-    if (!menu || !mobile) return;
-    rail.current?.querySelector<HTMLAnchorElement>("a")?.focus();
-    const key = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setMenu(false);
-        menuButton.current?.focus();
-      }
-      if (e.key !== "Tab") return;
-      const items = [
-        menuButton.current,
-        ...Array.from(
-          rail.current?.querySelectorAll<HTMLElement>("a,button") || [],
-        ),
-      ].filter((x): x is HTMLElement => x !== null);
-      const first = items[0],
-        last = items[items.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last?.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first?.focus();
-      }
-    };
-    document.addEventListener("keydown", key);
-    return () => document.removeEventListener("keydown", key);
-  }, [menu, mobile]);
-  const location = useLocation();
   if (!ready) return <State loading />;
-  if (!user) return <Login />;
-  const nav = [
-    { to: "/", label: "Overview", icon: SquaresFourIcon },
-    {
-      to: "/assistant",
-      label: "Knowledge assistant",
-      icon: BookOpenTextIcon,
-      action: "query.execute",
-    },
-    { to: "/documents", label: "Document library", icon: FilesIcon },
-    {
-      to: "/conflicts",
-      label: "Conflicts & validity",
-      icon: WarningCircleIcon,
-      action: "query.execute",
-    },
-    {
-      to: "/history",
-      label: "My activity",
-      icon: ClockCounterClockwiseIcon,
-      action: "query.execute",
-    },
-    {
-      to: "/permissions",
-      label: "Permissions & people",
-      icon: UsersThreeIcon,
-      action: "user.manage",
-    },
-    {
-      to: "/audit",
-      label: "Audit activity",
-      icon: ShieldCheckIcon,
-      action: "audit.read",
-    },
-  ];
-  const title =
-    nav.find((n) => n.to === location.pathname)?.label || "Document workspace";
+  if (!user)
+    return (
+      <div className={"app " + (dark ? "dark" : "")}>
+        <div className="login-theme">{themeButton}</div>
+        <Login />
+      </div>
+    );
+  const allowed = navigation.filter(
+    (n) => !n.action || user.actions.includes(n.action),
+  );
+  const links = allowed.map((n) => (
+    <NavLink
+      key={n.to}
+      to={n.to}
+      end={n.to === "/"}
+      aria-label={n.name}
+      onClick={() => setMenu(false)}
+    >
+      {n.label}
+    </NavLink>
+  ));
+  function gate(action: string, element: React.ReactNode, to = "/") {
+    return user!.actions.includes(action) ? (
+      element
+    ) : (
+      <Navigate to={to} replace />
+    );
+  }
   return (
     <div className={"app " + (dark ? "dark" : "")}>
       <a className="skip-link" href="#workspace">
         Skip to workspace
       </a>
-      <button
-        ref={menuButton}
-        className="menu-toggle icon-button"
-        aria-label={menu ? "Close navigation" : "Open navigation"}
-        aria-expanded={menu}
-        aria-controls="workspace-navigation"
-        onClick={() => setMenu(!menu)}
-      >
-        {menu ? <XIcon size={22} /> : <ListIcon size={22} />}
-      </button>
-      <aside
-        id="workspace-navigation"
-        ref={rail}
-        className={"rail " + (menu ? "expanded" : "")}
-      >
-        <div className="brand">
-          <CirclesThreePlusIcon size={25} weight="duotone" />
-          <span>
-            cortex<span className="brand-ai">AI</span>
-          </span>
-        </div>
-        <div className="workspace-label">
-          <span className="workspace-initial">N</span>
-          <div>
+      <header className="app-masthead">
+        <div className="masthead-inner">
+          <NavLink className="wordmark" to="/" aria-label="Cortex home">
+            Cortex<span>The Evidence Desk</span>
+          </NavLink>
+          <div className="masthead-context">
             <strong>
               {user.workspace === "NORTHSTAR"
-                ? "Northstar Works"
-                : user.workspace}
+                ? "Auronix"
+                : user.workspace === "ORBIT"
+                  ? "Auronix sandbox"
+                  : user.workspace}
             </strong>
-            <span>Fictional company</span>
-          </div>
-        </div>
-        <nav aria-label="Workspace navigation">
-          {nav
-            .filter((n) => !n.action || user.actions.includes(n.action))
-            .map((n) => (
-              <NavLink
-                to={n.to}
-                end={n.to === "/"}
-                key={n.to}
-                aria-label={n.label}
-                onClick={() => setMenu(false)}
-              >
-                <n.icon size={20} weight="regular" />
-                {n.label}
-              </NavLink>
-            ))}
-        </nav>
-        <footer className="rail-footer">
-          <div className="profile">
             <span>
-              {user.display_name
-                .split(" ")
-                .map((s) => s[0])
-                .join("")
-                .slice(0, 2)}
+              {user.display_name} ·{" "}
+              {user.roles.map((r) => readableName(r.name)).join(", ")}
             </span>
-            <div>
-              <strong>{user.display_name}</strong>
-              <small>{user.roles.map((r) => r.name).join(" · ")}</small>
-            </div>
           </div>
-          <div className="rail-actions">
+          <div className="masthead-actions">
+            {themeButton}
             <button
-              aria-label={
-                dark ? "Switch to light theme" : "Switch to dark theme"
-              }
-              onClick={() => setDark(!dark)}
-            >
-              {dark ? <SunIcon size={18} /> : <MoonIcon size={18} />}Theme
-            </button>
-            <button
+              className="icon-button signout"
+              aria-label="Sign out"
               onClick={() => void signOut().catch((e) => setError(e.message))}
             >
-              <SignOutIcon size={18} />
-              Sign out
+              <SignOutIcon size={20} />
+            </button>
+            <button
+              className="icon-button mobile-menu"
+              aria-label="Open navigation"
+              aria-expanded={menu}
+              aria-controls="workspace-navigation"
+              onClick={() => setMenu(true)}
+            >
+              <ListIcon size={22} />
             </button>
           </div>
-        </footer>
-      </aside>
-      <div className="app-body" inert={mobile && menu}>
-        <header className="topbar">
-          <span>{title}</span>
-          <div>
-            <span className="environment">
-              {user.read_only_demo ? "Shared demo" : "Local workspace"}
-            </span>
-            <span className="top-date">
-              {new Intl.DateTimeFormat("en", {
-                dateStyle: "medium",
-                timeZone: "Asia/Kolkata",
-              }).format(new Date())}
-            </span>
+        </div>
+        <nav className="app-navigation" aria-label="Workspace navigation">
+          {links}
+        </nav>
+      </header>
+      {menu && (
+        <SourceDialog
+          onClose={() => setMenu(false)}
+          label="Workspace navigation"
+          className="navigation-dialog"
+        >
+          <div className="section-heading">
+            <h2>Your workspace</h2>
+            <button
+              className="icon-button"
+              aria-label="Close navigation"
+              onClick={() => setMenu(false)}
+            >
+              <XIcon size={22} />
+            </button>
           </div>
-        </header>
-        <main id="workspace" className="workspace">
-          {user.read_only_demo && (
-            <p className="shared-demo-note">
-              Fictional shared demo · documents and permissions are view-only.
-              Histories are shared by profile; data resets on backend restart.
-            </p>
-          )}
-          {error && (
-            <p role="alert" className="form-error">
-              {error}
-            </p>
-          )}
-          <RouteBoundary key={location.pathname}>
-            <Suspense fallback={<State loading />}>
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route
-                  path="/assistant"
-                  element={
-                    user.actions.includes("query.execute") ? (
-                      <Assistant />
-                    ) : (
-                      <Navigate to="/" replace />
-                    )
-                  }
-                />
-                <Route path="/documents" element={<Library />} />
-                <Route path="/documents/:id" element={<DocumentDetail />} />
-                <Route
-                  path="/upload"
-                  element={
-                    user.actions.includes("document.upload") ? (
-                      <Upload />
-                    ) : (
-                      <Navigate to="/documents" replace />
-                    )
-                  }
-                />
-                <Route path="/conflicts" element={<Activity conflicts />} />
-                <Route path="/history" element={<Activity />} />
-                <Route
-                  path="/permissions"
-                  element={
-                    user.actions.includes("user.manage") ? (
-                      <Permissions />
-                    ) : (
-                      <Navigate to="/" replace />
-                    )
-                  }
-                />
-                <Route
-                  path="/audit"
-                  element={
-                    user.actions.includes("audit.read") ? (
-                      <Activity audit />
-                    ) : (
-                      <Navigate to="/" replace />
-                    )
-                  }
-                />
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
-            </Suspense>
-          </RouteBoundary>
-        </main>
-      </div>
+          <nav id="workspace-navigation">{links}</nav>
+          <p className="subtle">
+            {user.display_name} ·{" "}
+            {user.roles.map((r) => readableName(r.name)).join(", ")}
+          </p>
+          <button
+            className="button"
+            onClick={() => void signOut().catch((e) => setError(e.message))}
+          >
+            Sign out
+          </button>
+        </SourceDialog>
+      )}
+      <main id="workspace" className="workspace" tabIndex={-1}>
+        {user.read_only_demo && (
+          <p className="shared-demo-note">
+            Fictional shared demo · documents and permissions are view-only.
+            Histories are shared by profile; data resets on backend restart.
+          </p>
+        )}
+        {error && (
+          <p role="alert" className="form-error">
+            {error}
+          </p>
+        )}
+        <RouteBoundary key={location.pathname}>
+          <Suspense fallback={<State loading />}>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route
+                path="/assistant"
+                element={gate("query.execute", <Assistant />)}
+              />
+              <Route path="/documents" element={<Library />} />
+              <Route path="/documents/:id" element={<DocumentDetail />} />
+              <Route
+                path="/upload"
+                element={gate("document.upload", <Upload />, "/documents")}
+              />
+              <Route
+                path="/history"
+                element={gate("query.execute", <History />)}
+              />
+              <Route
+                path="/conflicts"
+                element={gate("query.execute", <Conflicts />)}
+              />
+              <Route
+                path="/permissions"
+                element={gate("user.manage", <Permissions />)}
+              />
+              <Route path="/audit" element={gate("audit.read", <Audit />)} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Suspense>
+        </RouteBoundary>
+      </main>
+      <footer className="app-footer">
+        <span>Policy knowledge, with context.</span>
+        <span>Evidence · versions · effective dates</span>
+      </footer>
     </div>
   );
 }

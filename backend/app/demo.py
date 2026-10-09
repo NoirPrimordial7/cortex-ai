@@ -11,6 +11,34 @@ PROFILES = {
     "orbit": ("Orbit · Other tenant", "ORBIT", "orbit@example.test", "orbit-user"),
 }
 
+TEAM_NAMES = {
+    "maya": "Arya Dhumal",
+    "ravi": "Aditya Gholar",
+    "isha": "Ashwin Gudur",
+    "orbit": "Yashraj Bansal",
+    "noor": "Disabled test account",
+}
+LEGACY_NAMES = {
+    "maya": "Maya Shah",
+    "ravi": "Ravi Mehta",
+    "isha": "Isha Rao",
+    "orbit": "Orbit Employee",
+    "noor": "Noor Khan",
+}
+
+
+def display_name(user):
+    """Presentation-only rename of exact seed identities; never rename real users."""
+    for key, (_, tenant, email, user_id) in PROFILES.items():
+        if (
+            user["id"] == user_id
+            and user["tenant_id"] == tenant
+            and user["email_normalized"] == email
+            and user["display_name"] in {LEGACY_NAMES[key], TEAM_NAMES[key]}
+        ):
+            return TEAM_NAMES[key]
+    return user["display_name"]
+
 
 def accounts(conn, settings):
     if not settings.demo_accounts_enabled:
@@ -33,7 +61,7 @@ def accounts(conn, settings):
             continue
         user = one(
             conn,
-            "SELECT active FROM users WHERE id=:id AND tenant_id=:tenant AND email_normalized=:email",
+            "SELECT * FROM users WHERE id=:id AND tenant_id=:tenant AND email_normalized=:email",
             id=user_id,
             tenant=workspace,
             email=email,
@@ -43,7 +71,8 @@ def accounts(conn, settings):
         result.append(
             {
                 "key": key,
-                "label": label,
+                "label": display_name(user) + " · " + label.split(" · ", 1)[1]
+                if key != "noor" else display_name(user),
                 "workspace": workspace,
                 "email": email,
                 "password": password,

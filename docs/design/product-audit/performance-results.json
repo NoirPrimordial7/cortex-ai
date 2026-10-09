@@ -1,0 +1,136 @@
+{
+  "sampledAt": "2026-10-09T22:15:59.648Z",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "firstBrowserLogin": {
+    "lcpMs": 92,
+    "cls": 0.020537526210149128,
+    "maxEventDurationMs": 0,
+    "navigationMs": 47.80000000074506,
+    "resourceCount": 6
+  },
+  "assistantNavigation": {
+    "lcpMs": 44,
+    "cls": 0.03415853897730509,
+    "maxEventDurationMs": 0,
+    "navigationMs": 14.900000002235174,
+    "resourceCount": 9
+  },
+  "afterInteraction": {
+    "lcpMs": 372,
+    "cls": 0.03415853897730509,
+    "maxEventDurationMs": 0,
+    "navigationMs": 14.900000002235174,
+    "resourceCount": 11
+  },
+  "queryRoundTripMs": 105,
+  "hosted": [
+    {
+      "url": "https://cortex-ai-demo.onrender.com/api/v1/health",
+      "status": 200,
+      "elapsedMs": 835,
+      "coldStart": "unknown; service not restarted or forced idle"
+    },
+    {
+      "url": "https://cortex-ai-three-kappa.vercel.app/api/v1/health",
+      "status": 200,
+      "elapsedMs": 337,
+      "coldStart": "unknown; service not restarted or forced idle"
+    }
+  ],
+  "assets": [
+    {
+      "file": "ArrowLeft.es-6_hdPw6y.js",
+      "bytes": 1522,
+      "gzipBytes": 592
+    },
+    {
+      "file": "Assistant-beaBEu5q.js",
+      "bytes": 11959,
+      "gzipBytes": 4026
+    },
+    {
+      "file": "Audit-BbtAl8xp.js",
+      "bytes": 1496,
+      "gzipBytes": 693
+    },
+    {
+      "file": "Conflicts-BCHQFs3w.js",
+      "bytes": 3330,
+      "gzipBytes": 1431
+    },
+    {
+      "file": "Dashboard-BoGfJ_FL.js",
+      "bytes": 3380,
+      "gzipBytes": 1349
+    },
+    {
+      "file": "DocumentDetail-B9_VjP_y.js",
+      "bytes": 13977,
+      "gzipBytes": 4723
+    },
+    {
+      "file": "FilePicker-QMS9HT20.js",
+      "bytes": 938,
+      "gzipBytes": 590
+    },
+    {
+      "file": "FileText.es-irBpkFE3.js",
+      "bytes": 2596,
+      "gzipBytes": 778
+    },
+    {
+      "file": "FormPrimitives-F5CC6aq2.js",
+      "bytes": 433,
+      "gzipBytes": 256
+    },
+    {
+      "file": "History-BX4wr39f.js",
+      "bytes": 1906,
+      "gzipBytes": 943
+    },
+    {
+      "file": "index-BfpUp_Ed.css",
+      "bytes": 33573,
+      "gzipBytes": 7088
+    },
+    {
+      "file": "index-D07dXZwB.js",
+      "bytes": 309160,
+      "gzipBytes": 96235
+    },
+    {
+      "file": "Library-DjTjbsw4.js",
+      "bytes": 6417,
+      "gzipBytes": 2202
+    },
+    {
+      "file": "MagnifyingGlass.es-w6Z7v4r2.js",
+      "bytes": 1611,
+      "gzipBytes": 644
+    },
+    {
+      "file": "Permissions-BEa7VDcC.js",
+      "bytes": 9512,
+      "gzipBytes": 3133
+    },
+    {
+      "file": "SourceInspector-DYX8Dt2x.js",
+      "bytes": 2732,
+      "gzipBytes": 1035
+    },
+    {
+      "file": "Upload-DZ6dkr0c.js",
+      "bytes": 4154,
+      "gzipBytes": 1702
+    },
+    {
+      "file": "useCitationAccess-CF4nrmEx.js",
+      "bytes": 1359,
+      "gzipBytes": 743
+    }
+  ],
+  "limitations": "Single unthrottled local Chromium sample. Browser login uses a fresh browser context; route navigation follows sign-in. Event duration is an observation, not certified INP or field CWV. Hosted health round trips differ from browser LCP and backend query time. Render cold start not observed."
+}

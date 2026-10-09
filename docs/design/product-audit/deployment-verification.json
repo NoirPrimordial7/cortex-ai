@@ -1,0 +1,80 @@
+{
+  "main": "2919a6dfe649db097d132a3e0dac1e9464cde304",
+  "deploymentRecordId": 6970390386,
+  "publishedUrl": "https://cortex-ai-three-kappa.vercel.app",
+  "entry": "/assets/index-M8wdEcYr.js",
+  "normalization": "Only eight-character hashes in imported JS/CSS filenames are replaced. All other JavaScript bytes must match.",
+  "results": [
+    {
+      "chunk": "Activity",
+      "publishedAsset": "/assets/Activity-Dk2_VFjo.js",
+      "bytes": 3382,
+      "normalizedMatch": true,
+      "publishedSha256": "5528fec765a34317afe53fea47d596d3e338f071d43c71e4bfc4636228a1652e"
+    },
+    {
+      "chunk": "Assistant",
+      "publishedAsset": "/assets/Assistant-DFqVij6Q.js",
+      "bytes": 14503,
+      "normalizedMatch": true,
+      "publishedSha256": "c152439278fe0223a5c92b446a87e40ecab911091b7e09089021d52143dbefc5"
+    },
+    {
+      "chunk": "Dashboard",
+      "publishedAsset": "/assets/Dashboard-CFuym9M2.js",
+      "bytes": 2714,
+      "normalizedMatch": true,
+      "publishedSha256": "5a1f92350b94e5a77d4511a5ab9891f73bc035b040c7ade6ebde7a1868b3057c"
+    },
+    {
+      "chunk": "DocumentDetail",
+      "publishedAsset": "/assets/DocumentDetail-1kCXt0VL.js",
+      "bytes": 10887,
+      "normalizedMatch": true,
+      "publishedSha256": "5fc03ad386bda8e1c2a6ba10915e84e18491969d76cbed76a37a158a38298a1b"
+    },
+    {
+      "chunk": "FileText.es",
+      "publishedAsset": "/assets/FileText.es-BmiiXezJ.js",
+      "bytes": 2596,
+      "normalizedMatch": true,
+      "publishedSha256": "635678b258a2bad1c501b6d5ef3163bf97d0d6fe40d992efccb8871f3b21f769"
+    },
+    {
+      "chunk": "index",
+      "publishedAsset": "/assets/index-M8wdEcYr.js",
+      "bytes": 327143,
+      "normalizedMatch": true,
+      "publishedSha256": "4676eff845f4917084be7710008f55709e17b58b1e1d3a9cdf24c28d39936dbf"
+    },
+    {
+      "chunk": "Library",
+      "publishedAsset": "/assets/Library-w233O0nd.js",
+      "bytes": 6769,
+      "normalizedMatch": true,
+      "publishedSha256": "3eea82b6e618668bf5d678e5fa4703f493527389afda7de500a72be678bc1bfa"
+    },
+    {
+      "chunk": "Permissions",
+      "publishedAsset": "/assets/Permissions-Cw44Kj4n.js",
+      "bytes": 4286,
+      "normalizedMatch": true,
+      "publishedSha256": "b0a5aeff361dd88cf77765ded4219b6593b9db60098f5b9fce76ddd0597e484c"
+    },
+    {
+      "chunk": "SourcePassage",
+      "publishedAsset": "/assets/SourcePassage-DDtO_DIb.js",
+      "bytes": 254,
+      "normalizedMatch": true,
+      "publishedSha256": "96765144b2f1b734d3663899e6d8e1b02e2c59d9d67b7052db8b542eb058fb18"
+    },
+    {
+      "chunk": "Upload",
+      "publishedAsset": "/assets/Upload-DQ6-DtgR.js",
+      "bytes": 3990,
+      "normalizedMatch": true,
+      "publishedSha256": "c37304cb40bb65346e3397b3f0a7cd282c52af495d36297cd4bedf78b5573d89"
+    }
+  ],
+  "limits": "This establishes main JavaScript consistency with the deployment record; it is not a byte-identical full asset or infrastructure attestation."
+}

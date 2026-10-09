@@ -1,5 +1,41 @@
 # Development log
 
+## 2026-10-10 — Production release explicitly authorized
+
+- Owner requested all current code be pushed before publishing the complete product update to production. This supersedes the earlier no-merge/no-release hold; preview-origin configuration remains exact and approved.
+- Fresh preflight:39 backend tests,21 frontend tests,29 browser regressions, Ruff, strict TypeScript/Vite production build and zero npm-audit vulnerabilities. Existing five-profile read-only release suite tested locally; a missing other-tenant report directory and misleading dark-login capture label were corrected and their affected checks rerun successfully.
+- Added opt-in hosted release verification for all five identities, all route/role guards, team display names, actual answer/citation/conflict UI, both authenticated themes and every requested width. Trace/video/credential exports disabled; no hosted upload or governance mutations. Hosted login smoke accepts historical and current team display names.
+- Target verified: Vercel cortex-ai/project prj_fMVYoealLocAtxdAeg0mTFAy1N4F/team team_NMcgUJ09P25HEbheMx2SS4tW; existing Render cortex-ai-demo service srv-db4h9q1srm7s73b4b5g0 on main, Free. Git integration publishes main to both services. Post-release status and genuine screenshots must be checked before reporting success.
+
+## 2026-10-10T04:01:00+05:30 — Approved preview login configuration
+
+- Applied owner-approved exact Render CORTEX_ORIGINS additions for the verified current review alias and build; preserved both production origins. Reused existing main2919a6d build; deployment reached Live in40.8seconds. No code merge or UI release.
+- Both preview origins passed actual backend login/session/query/citation200 and exact span/hash; wrong CSRF and arbitrary origins remain403. Public alias passed52 HTTP assertions and one fresh Chromium login after restart.
+- Protected-preview browser/proxy verification remains pending in the owner's authenticated Vercel session after automatic approval review rejected a temporary authentication-bypass link. Saved actual dashboard proof and sanitized results in the [configuration record](../design/product-audit/preview-origin-change.md).
+
+## 2026-10-10 — Full-product audit, verified review branch
+
+- Reconciled PR #2, retained Fieldbook/toolkit head and current main without resetting working files. Main PR #5 contained no file changes. Published main JavaScript verified against an isolated build across all ten chunks.
+- One forest/ivory shell, typography/control system and semantic stylesheet across every route. Removed obsolete overlays; rebuilt policy reading, responsive library/history/conflict comparison, focused upload/review and people/grant confirmation flows. Preserved backend authorization, temporal reasoning, conflict abstention and citations.
+- Auronix team display names added for exact fictional seed identities while preserving credentials, IDs, roles and existing database records. Disabled account remains a separate test profile.
+- Actual preview403 diagnosed as Origin rejection, not invalid credentials. Specific error guidance and published-demo link verified at all six widths. Exact Render origin configuration proposal prepared; production remains untouched awaiting owner approval.
+- 39 backend,21 frontend,56 selected browser tests pass; Ruff/build/npm audit pass. Real role, private upload/review/hash/denial, text/reflow, keyboard, theme, target and contrast checks included.
+- 652 genuine before/after captures retained in an annotated gallery. Independent snapshot restores for light/dark; current profile names intentional. Login-loading CLS issue found in measurement and reduced from0.1025 to0.0205 in the fresh local sample. Entry JS96.24kB gzip/CSS7.09kB; no field INP/cold-start claim.
+- [Complete issue matrix, evidence and limitations](../design/product-audit/README.md). Local preview and gallery remain running; review commits pushed and existing PR #6 updated with the completed report (open/non-draft state preserved). No merge or production deployment.
+
+
+## 2026-10-10T00:44:00+05:30 — Selected Fieldbook Ask Cortex implementation
+
+- Exact attached Fieldbook and Reference House images resolve the selection; owner locked identity and prioritized Ask UX over further variations or other-page redesign.
+- Scoped lazy assistant CSS and self-hosted OFL Fraunces/DM Sans; top masthead retains full navigation in the menu. Other routes retain Atlas.
+- Replaced duplicated evidence with compact citations and one detailed inspector. Desktop collapse restores focus; mobile native modal makes background inert, wraps Tab/Shift+Tab, supports Escape/Back and restores citation focus without moving scroll.
+- Reserved a scrolling answer area above the persistent composer. Normal scrolling takes over in short keyboard-like viewports. Long answers use a smaller reading size; follow-up drafts survive in-flight responses. Original question remains bound to its response.
+- Existing endpoints, ACLs, source hashes, tenant isolation, date/population semantics, conflict abstention, session revision invalidation and conditional full hosted disclosure preserved. No backend source changes or credential persistence.
+- Checks: frontend13, Playwright13, backend38 pass; Ruff, strict build and npm audit pass. Chromium320/390/768/1280/1440 light/dark tested. Real local annual leave and remote-work conflict exercised through existing fictional session. QA comparison source/actual captured together at1536×1024; root design-qa.md passes the bounded local gate.
+- Fixed focus escaping into browser chrome, composer covering citations, legacy label margins and paper background override, and source-loading synchronization in the contrast test. Sixteen sampled text pairs min5.38:1; control boundary min3.17:1.
+- Initial JS100.19kB gzip versus100.01kB before; assistant CSS3.77kB gzip; self-hosted fonts73,552bytes. These are build sizes, not network, API or Core Web Vitals claims.
+- Physical-device/Safari/assistive technology, measured web vitals and production deployment remain outstanding. Updated existing PR #2; remote reports it open and ready for review (not draft), and that existing state is preserved. No main merge or live deploy.
+
 ## 2026-10-10T00:11:00+05:30 — Evidence Desk second exploration
 
 - Owner rejected the first set and requested five to six fresh concepts; generated exactly six independent built-in Image Gen results, displayed sequentially with desktop/mobile companion views.

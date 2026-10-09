@@ -1,0 +1,78 @@
+[
+  {
+    "theme": "light",
+    "text": [
+      {
+        "selector": ".fb-document .fb-label",
+        "ratio": 5.380789055834482
+      },
+      {
+        "selector": ".fb-document h2",
+        "ratio": 11.84178770537249
+      },
+      {
+        "selector": ".fb-status",
+        "ratio": 9.573109869885053
+      },
+      {
+        "selector": ".fb-passage blockquote",
+        "ratio": 11.84178770537249
+      },
+      {
+        "selector": ".fb-metadata dt",
+        "ratio": 5.380789055834482
+      },
+      {
+        "selector": ".fb-metadata dd",
+        "ratio": 11.84178770537249
+      },
+      {
+        "selector": ".fb-context-toggle",
+        "ratio": 11.84178770537249
+      },
+      {
+        "selector": ".fb-evidence-back button",
+        "ratio": 10.437947573733874
+      }
+    ],
+    "controlBoundary": 3.1732428621233444
+  },
+  {
+    "theme": "dark",
+    "text": [
+      {
+        "selector": ".fb-document .fb-label",
+        "ratio": 8.521686163423812
+      },
+      {
+        "selector": ".fb-document h2",
+        "ratio": 13.886271301796441
+      },
+      {
+        "selector": ".fb-status",
+        "ratio": 7.7462480585659925
+      },
+      {
+        "selector": ".fb-passage blockquote",
+        "ratio": 13.886271301796441
+      },
+      {
+        "selector": ".fb-metadata dt",
+        "ratio": 8.521686163423812
+      },
+      {
+        "selector": ".fb-metadata dd",
+        "ratio": 13.886271301796441
+      },
+      {
+        "selector": ".fb-context-toggle",
+        "ratio": 13.886271301796441
+      },
+      {
+        "selector": ".fb-evidence-back button",
+        "ratio": 10.437947573733874
+      }
+    ],
+    "controlBoundary": 4.66850297650359
+  }
+]

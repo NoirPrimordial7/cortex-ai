@@ -5,6 +5,38 @@ from fastapi.testclient import TestClient
 from app.main import create_app
 from app.hosted import prepare
 from conftest import ask, client_for
+from app.demo import TEAM_NAMES, LEGACY_NAMES, PROFILES, display_name
+from sqlalchemy import text
+
+
+def test_team_display_names_preserve_seed_identity_and_authentication(system):
+    app, credentials = system
+    with app.state.engine.begin() as conn:
+        for key, (_, _, _, user_id) in PROFILES.items():
+            conn.execute(text("UPDATE users SET display_name=:name WHERE id=:id"), {"name": LEGACY_NAMES[key], "id": user_id})
+        before = [dict(row._mapping) for row in conn.execute(text("SELECT * FROM users ORDER BY id"))]
+    path = app.state.settings.data_dir / "credentials.json"
+    path.write_text(json.dumps(credentials))
+    original = path.read_bytes()
+    demo = create_app(replace(app.state.settings, demo_accounts_enabled=True))
+    try:
+        labels = TestClient(demo).get("/api/v1/demo/accounts").json()["items"]
+        assert all(item["label"].startswith(TEAM_NAMES[item["key"]]) for item in labels)
+        employee = client_for((demo, credentials))
+        assert employee.get("/api/v1/auth/session").json()["user"]["display_name"] == TEAM_NAMES["maya"]
+        admin = client_for((demo, credentials), "ravi")
+        users = admin.get("/api/v1/admin/users").json()["items"]
+        assert next(user for user in users if user["id"] == "maya")["display_name"] == TEAM_NAMES["maya"]
+        assert not next(user for user in users if user["id"] == "noor")["active"]
+        with app.state.engine.begin() as conn:
+            after = [dict(row._mapping) for row in conn.execute(text("SELECT * FROM users ORDER BY id"))]
+        assert before == after
+        assert path.read_bytes() == original
+        assert client_for(system).get("/api/v1/auth/session").json()["user"]["display_name"] == LEGACY_NAMES["maya"]
+        custom = {"id": "maya", "tenant_id": "NORTHSTAR", "email_normalized": "actual@example.test", "display_name": "Actual person"}
+        assert display_name(custom) == "Actual person"
+    finally:
+        demo.state.engine.dispose()
 
 
 def test_picker_is_opt_in_and_whitelists_only_seed_accounts(system):

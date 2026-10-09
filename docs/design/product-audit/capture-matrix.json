@@ -1,0 +1,1431 @@
+[
+  {
+    "role": "isha",
+    "state": "audit",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "isha",
+    "state": "audit",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "isha",
+    "state": "audit",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "isha",
+    "state": "library",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "isha",
+    "state": "library",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "isha",
+    "state": "library",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "isha",
+    "state": "overview",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "isha",
+    "state": "overview",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "isha",
+    "state": "overview",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "activity",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "activity",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "activity",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "ask-answer",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "ask-answer",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "ask-answer",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "ask-conflict",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "ask-conflict",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "ask-conflict",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "ask-empty",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "ask-empty",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "ask-empty",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "conflict-comparison",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "conflict-comparison",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "conflicts",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "conflicts",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "conflicts",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "document",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "document",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "document",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "evidence",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "evidence",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "evidence",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "library",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "library",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "library",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "login",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "login",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "login",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "origin-denied",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "overview",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "overview",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "maya",
+    "state": "overview",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "noor",
+    "state": "disabled-signin",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "noor",
+    "state": "disabled-signin",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "noor",
+    "state": "disabled-signin",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "activity",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "activity",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "activity",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "ask-answer",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "ask-answer",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "ask-answer",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "ask-conflict",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "ask-conflict",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "ask-conflict",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "ask-empty",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "ask-empty",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "ask-empty",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "conflicts",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "conflicts",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "conflicts",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "library",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "library",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "library",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "overview",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "overview",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "orbit",
+    "state": "overview",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "access-change-review",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "access-change-review",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "activity",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "activity",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "activity",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "ask-answer",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "ask-answer",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "ask-answer",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "ask-conflict",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "ask-conflict",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "ask-conflict",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "ask-empty",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "ask-empty",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "ask-empty",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "conflict-comparison",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "conflict-comparison",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "conflicts",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "conflicts",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "conflicts",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "document",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "document",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "document",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "evidence",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "evidence",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "evidence",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "grants",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "grants",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "grants",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "library",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "library",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "library",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "overview",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "overview",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "overview",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "people",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "people",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "people",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "person-edit",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "person-edit",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "review",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "review",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "review",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "upload",
+    "phase": "after",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "upload",
+    "phase": "after-dark",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  },
+  {
+    "role": "ravi",
+    "state": "upload",
+    "phase": "before",
+    "widths": [
+      320,
+      390,
+      768,
+      1024,
+      1280,
+      1440
+    ]
+  }
+]

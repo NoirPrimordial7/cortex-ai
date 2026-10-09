@@ -1,3 +1,15 @@
+# Current full-product audit verification
+
+10 October 2026 · review branch `codex/full-product-ux`
+
+39 backend pytest tests and21 frontend tests pass. Ruff, strict TypeScript/Vite build and npm audit pass (zero vulnerabilities). 56 unique selected Chromium browser checks passed:29 deterministic UI regressions,14 actual role/login/workflow/reflow/origin checks,10 real capture runs,2 performance checks and1 unchanged published-alias login smoke. Opt-in live suites intentionally skip unless their environment flags are set.
+
+[Full pass/pending matrix, commands and scope](../design/product-audit/README.md) · [actual gallery](../design/product-audit/gallery.html) · [measured performance](../design/product-audit/performance-results.json)
+
+The approved Render origin update is live on unchanged main source. Both current review origins pass actual backend login/session/query/citation200; wrong CSRF/unapproved origins remain403. Post-restart production checks:52 HTTP assertions and one fresh browser login passed. [Configuration and protected-preview browser limitation](../design/product-audit/preview-origin-change.md). No review code was merged or released. Physical devices/Safari/assistive technology/field INP/cold starts are not certified by these local tests.
+
+## Historical verification below
+
 # Actual verification — Phase 3
 
 ## Hosted-demo extension —2026-10-09

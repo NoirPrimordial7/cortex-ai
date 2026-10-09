@@ -1,6 +1,8 @@
+import { FormField } from "../FormPrimitives";
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { UploadSimpleIcon, FileTextIcon } from "@phosphor-icons/react";
+import { UploadSimpleIcon } from "@phosphor-icons/react";
+import { FilePicker } from "../FilePicker";
 import { api } from "../api";
 import { useSession } from "../session";
 import { PageHeading } from "../components";
@@ -40,43 +42,38 @@ export default function Upload() {
         description="New files stay private and outside answers until reviewed and approved."
       />
       <form className="upload-form" onSubmit={(e) => void submit(e)}>
-        <div className="upload-intro">
-          <UploadSimpleIcon size={36} weight="light" />
-          <h2>Bring the source. Review the context.</h2>
-          <p>
-            UTF-8 TXT, text-bearing PDF or DOCX · up to 10 MiB.
-            <br />
-            Scanned and encrypted PDFs are unsupported.
-          </p>
-        </div>
-        <label>
-          Document title
-          <input
-            name="title"
-            maxLength={200}
-            placeholder="A clear policy title"
-            required
-          />
-        </label>
-        <label>
-          Category
-          <select name="category">
-            <option value="policy">Policy</option>
-            <option value="SOP">SOP</option>
-            <option value="project">Project</option>
-          </select>
-        </label>
-        <label className="file-input">
-          <FileTextIcon size={24} />
-          <span>Choose a source file</span>
-          <input
-            name="file"
-            type="file"
-            accept=".txt,.pdf,.docx"
-            required
-            disabled={user?.read_only_demo}
-          />
-        </label>
+        <fieldset
+          disabled={busy || user?.read_only_demo}
+          className="upload-fields"
+        >
+          <div className="upload-intro">
+            <UploadSimpleIcon size={24} />
+            <h2>Start with the source</h2>
+            <p>
+              UTF-8 TXT, text-bearing PDF or DOCX · up to 10 MiB.
+              <br />
+              Scanned and encrypted PDFs are unsupported.
+            </p>
+          </div>
+          <FilePicker disabled={busy || user?.read_only_demo} />
+          <div className="form-grid">
+            <FormField label="Document title">
+              <input
+                name="title"
+                maxLength={200}
+                placeholder="A clear policy title"
+                required
+              />
+            </FormField>
+            <FormField label="Category">
+              <select name="category">
+                <option value="policy">Policy</option>
+                <option value="SOP">SOP</option>
+                <option value="project">Project</option>
+              </select>
+            </FormField>
+          </div>
+        </fieldset>
         {error && (
           <p role="alert" className="form-error">
             {error}
@@ -89,8 +86,9 @@ export default function Upload() {
           {busy ? "Extracting document…" : "Upload for review"}
         </button>
         <p className="subtle">
-          Review effective dates, source authority and access before
-          publication.
+          {user?.read_only_demo
+            ? "This shared demo is view-only. Uploads are disabled."
+            : "After extraction, review effective dates, the exact passage, source authority and access before publishing. Uploading alone does not make a policy eligible for answers."}
         </p>
       </form>
     </>

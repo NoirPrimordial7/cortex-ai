@@ -1,3 +1,4 @@
+import { populationName } from "../labels";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
@@ -5,6 +6,7 @@ import {
   DownloadSimpleIcon,
   FileTextIcon,
   ShieldCheckIcon,
+  XIcon,
 } from "@phosphor-icons/react";
 import { api } from "../api";
 import {
@@ -13,7 +15,9 @@ import {
   State,
   useResource,
   versionState,
+  SourceDialog,
 } from "../components";
+import { FilePicker } from "../FilePicker";
 import { useSession } from "../session";
 import type { Content, Detail, Version } from "../types";
 function ReviewForm({
@@ -29,8 +33,8 @@ function ReviewForm({
   const [segment, setSegment] = useState(
       content.segments[1] || content.segments[0],
     ),
-    [topic, setTopic] = useState("leave"),
-    [open, setOpen] = useState(false),
+    [topic, setTopic] = useState(v.topic || "leave"),
+    [open, setOpen] = useState(Boolean(v.valid_from && !v.valid_to)),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
   async function submit(e: FormEvent<HTMLFormElement>) {
@@ -84,87 +88,118 @@ function ReviewForm({
   }
   return (
     <form className="review-form" onSubmit={(e) => void submit(e)}>
-      <h3>Review and approve this version</h3>
-      <p className="description">
-        Confirm uniform document access and select a source passage. Approval
-        metadata comes from your review, not the uploaded text.
-      </p>
-      <label>
-        Evidence passage
-        <select
-          value={segment.start}
-          onChange={(e) =>
-            setSegment(
-              content.segments.find((s) => s.start === Number(e.target.value))!,
-            )
-          }
-        >
-          {content.segments.map((s) => (
-            <option key={s.start} value={s.start}>
-              {s.locator} · {content.text.slice(s.start, s.end).slice(0, 65)}
-            </option>
-          ))}
-        </select>
-      </label>
-      <blockquote>{content.text.slice(segment.start, segment.end)}</blockquote>
-      <div className="form-grid">
+      <fieldset
+        disabled={busy || user?.read_only_demo}
+        className="review-fields"
+      >
+        <h3>Review and approve this version</h3>
+        <p className="description">
+          Confirm uniform document access and select a source passage. Approval
+          metadata comes from your review, not the uploaded text.
+        </p>
         <label>
-          Policy topic
-          <select value={topic} onChange={(e) => setTopic(e.target.value)}>
-            <option value="leave">Annual leave</option>
-            <option value="remote_work">Remote work</option>
-            <option value="notice">Notice period</option>
-            <option value="bonus">Executive bonus</option>
+          Evidence passage
+          <select
+            value={segment.start}
+            onChange={(e) =>
+              setSegment(
+                content.segments.find(
+                  (s) => s.start === Number(e.target.value),
+                )!,
+              )
+            }
+          >
+            {content.segments.map((s) => (
+              <option key={s.start} value={s.start}>
+                {s.locator} · {content.text.slice(s.start, s.end).slice(0, 65)}
+              </option>
+            ))}
           </select>
         </label>
+        <blockquote>
+          {content.text.slice(segment.start, segment.end)}
+        </blockquote>
+        <div className="form-grid">
+          <label>
+            Policy topic
+            <select value={topic} onChange={(e) => setTopic(e.target.value)}>
+              <option value="leave">Annual leave</option>
+              <option value="remote_work">Remote work</option>
+              <option value="notice">Notice period</option>
+              <option value="bonus">Executive bonus</option>
+            </select>
+          </label>
+          <label>
+            Source kind
+            <select
+              name="source_kind"
+              defaultValue={v.source_kind || "hr_policy"}
+            >
+              <option value="hr_policy">HR policy</option>
+              <option value="operations_policy">Operations policy</option>
+              <option value="informal_note">Informal note</option>
+            </select>
+          </label>
+          <label>
+            Reviewed numeric value
+            <input name="value" type="number" min="0" max="1000000" required />
+          </label>
+          <label>
+            Population
+            <select
+              name="population"
+              defaultValue={v.population || "india_full_time"}
+            >
+              <option value="india_full_time">India · full-time</option>
+              <option value="india_contractor">India · contractor</option>
+            </select>
+          </label>
+          <label>
+            Published on
+            <input
+              name="published_at"
+              type="date"
+              defaultValue={v.published_at || ""}
+              required
+            />
+          </label>
+          <label>
+            Effective from
+            <input
+              name="valid_from"
+              type="date"
+              defaultValue={v.valid_from || ""}
+              required
+            />
+          </label>
+          <label>
+            Effective until (exclusive)
+            <input
+              name="valid_to"
+              type="date"
+              defaultValue={v.valid_to || ""}
+              disabled={open}
+              required={!open}
+            />
+          </label>
+          <label className="check-label">
+            <input
+              type="checkbox"
+              checked={open}
+              onChange={(e) => setOpen(e.target.checked)}
+            />
+            Explicitly open-ended
+          </label>
+        </div>
         <label>
-          Source kind
-          <select name="source_kind">
-            <option value="hr_policy">HR policy</option>
-            <option value="operations_policy">Operations policy</option>
-            <option value="informal_note">Informal note</option>
-          </select>
-        </label>
-        <label>
-          Reviewed numeric value
-          <input name="value" type="number" min="0" max="1000000" required />
-        </label>
-        <label>
-          Population
-          <select name="population">
-            <option value="india_full_time">India · full-time</option>
-            <option value="india_contractor">India · contractor</option>
-          </select>
-        </label>
-        <label>
-          Published on
-          <input name="published_at" type="date" required />
-        </label>
-        <label>
-          Effective from
-          <input name="valid_from" type="date" required />
-        </label>
-        <label>
-          Effective until (exclusive)
-          <input name="valid_to" type="date" disabled={open} required={!open} />
+          Review reason
+          <textarea name="reason" minLength={3} maxLength={500} required />
         </label>
         <label className="check-label">
-          <input
-            type="checkbox"
-            checked={open}
-            onChange={(e) => setOpen(e.target.checked)}
-          />
-          Explicitly open-ended
+          <input type="checkbox" required />I verified that all sections share
+          the document's access permissions.
         </label>
-      </div>
-      <label>
-        Review reason
-        <textarea name="reason" minLength={3} maxLength={500} required />
-      </label>
-      <label className="check-label">
-        <input type="checkbox" required />I verified that all sections share the
-        document's access permissions.
-      </label>
+      </fieldset>
       {error && (
         <p role="alert" className="form-error">
           {error}
@@ -188,6 +223,7 @@ export default function DocumentDetail() {
     [content, setContent] = useState<Content | null>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
+    [uploading, setUploading] = useState(false),
     [reviewing, setReviewing] = useState(false);
   useEffect(() => {
     const clear = () => {
@@ -223,7 +259,8 @@ export default function DocumentDetail() {
   }
   async function add(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (user?.read_only_demo) return;
+    if (user?.read_only_demo || uploading) return;
+    setUploading(true);
     setError("");
     try {
       await api(`/documents/${id}/versions`, {
@@ -233,8 +270,24 @@ export default function DocumentDetail() {
       resource.reload();
     } catch (e) {
       setError((e as Error).message);
+    } finally {
+      setUploading(false);
     }
   }
+  useEffect(() => {
+    if (
+      !resource.data ||
+      resource.loading ||
+      resource.data.document.id !== id ||
+      selected
+    )
+      return;
+    const version =
+      resource.data.versions.find(
+        (v) => versionState(v) === "Approved · valid",
+      ) || resource.data.versions[0];
+    if (version) void inspect(version);
+  }, [resource.data, id, resource.loading]);
   return (
     <>
       <Link className="back-link" to="/documents">
@@ -258,50 +311,54 @@ export default function DocumentDetail() {
         {resource.data && (
           <div className="detail-grid">
             <section className="version-panel">
-              <h2>Version history</h2>
-              {resource.data.versions.map((v) => (
-                <button
-                  className={
-                    "version-row " + (selected?.id === v.id ? "selected" : "")
-                  }
-                  key={v.id}
-                  onClick={() => void inspect(v)}
-                >
-                  <div>
-                    <strong>{v.version_label}</strong>
-                    <Badge state={versionState(v)} />
-                  </div>
-                  <span>
-                    Effective {v.valid_from || "Not reviewed"} —{" "}
-                    {v.valid_to ||
-                      (v.valid_from ? "Open-ended" : "Not reviewed")}
-                  </span>
-                  <small>
-                    Published {v.published_at || "Not reviewed"} · uploaded{" "}
-                    {v.ingested_at.slice(0, 10)}
-                  </small>
-                </button>
-              ))}
-              {user?.actions.includes("document.upload") && (
-                <form className="version-upload" onSubmit={(e) => void add(e)}>
-                  <h3>Add a version</h3>
-                  <label>
-                    Version label
-                    <input name="version_label" required maxLength={80} />
-                  </label>
-                  <label>
-                    Document file
-                    <input
-                      name="file"
-                      type="file"
-                      accept=".txt,.pdf,.docx"
-                      required
-                    />
-                  </label>
-                  <button className="button" disabled={user?.read_only_demo}>
-                    Upload for review
+              <details className="panel version-history">
+                <summary>
+                  Version history · {resource.data.versions.length}
+                </summary>
+                {resource.data.versions.map((v) => (
+                  <button
+                    className={
+                      "version-row " + (selected?.id === v.id ? "selected" : "")
+                    }
+                    key={v.id}
+                    onClick={() => void inspect(v)}
+                  >
+                    <div>
+                      <strong>{v.version_label}</strong>
+                      <Badge state={versionState(v)} />
+                    </div>
+                    <span>
+                      Effective {v.valid_from || "Not reviewed"} —{" "}
+                      {v.valid_to ||
+                        (v.valid_from ? "Open-ended" : "Not reviewed")}
+                    </span>
+                    <small>
+                      Published {v.published_at || "Not reviewed"} · uploaded{" "}
+                      {v.ingested_at.slice(0, 10)}
+                    </small>
                   </button>
-                </form>
+                ))}
+              </details>
+              {user?.actions.includes("document.upload") && (
+                <details className="panel">
+                  <summary>Add a version</summary>
+                  <form
+                    className="version-upload"
+                    onSubmit={(e) => void add(e)}
+                  >
+                    <label>
+                      Version label
+                      <input name="version_label" required maxLength={80} />
+                    </label>
+                    <FilePicker disabled={user?.read_only_demo || uploading} />
+                    <button
+                      className="button"
+                      disabled={user?.read_only_demo || uploading}
+                    >
+                      {uploading ? "Uploading…" : "Upload for review"}
+                    </button>
+                  </form>
+                </details>
               )}
             </section>
             <section className="document-reading">
@@ -317,6 +374,20 @@ export default function DocumentDetail() {
                         <DownloadSimpleIcon size={18} />
                         Download
                       </a>
+                    </div>
+                    <div className="document-validity">
+                      <Badge state={versionState(selected)} />
+                      <span>
+                        Effective {selected.valid_from || "Not reviewed"} →{" "}
+                        {selected.valid_to ||
+                          (selected.valid_from ? "open-ended" : "Not reviewed")}
+                        {selected.valid_to ? " (end exclusive)" : ""}
+                      </span>
+                      <span>
+                        {(selected.population
+                          ? populationName(selected.population)
+                          : null) || "Scope not reviewed"}
+                      </span>
                     </div>
                     <pre className="source-text">{content.text}</pre>
                     <details className="hash-details">
@@ -334,16 +405,28 @@ export default function DocumentDetail() {
                             {reviewing ? "Close review" : "Review metadata"}
                           </button>
                           {reviewing && (
-                            <ReviewForm
-                              v={selected}
-                              content={content}
-                              done={() => {
-                                setReviewing(false);
-                                setSelected(null);
-                                setContent(null);
-                                resource.reload();
-                              }}
-                            />
+                            <SourceDialog
+                              label="Review and approve version"
+                              onClose={() => setReviewing(false)}
+                            >
+                              <button
+                                className="icon-button dialog-close"
+                                aria-label="Close review"
+                                onClick={() => setReviewing(false)}
+                              >
+                                <XIcon size={20} />
+                              </button>
+                              <ReviewForm
+                                v={selected}
+                                content={content}
+                                done={() => {
+                                  setReviewing(false);
+                                  setSelected(null);
+                                  setContent(null);
+                                  resource.reload();
+                                }}
+                              />
+                            </SourceDialog>
                           )}
                         </>
                       )}

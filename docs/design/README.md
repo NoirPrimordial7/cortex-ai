@@ -1,8 +1,12 @@
 # Cortex AI design gallery
 
-**Evidence Desk exploration (draft PR #2):** [three new desktop/mobile concepts and current-flow findings](evidence-desk/README.md), [project-local skill installation and pins](evidence-desk/SKILL_INSTALLATION.md). Owner selection is pending; these concepts are artwork, and deployed Atlas Professional remains the current implementation.
+**Current full-product review:** [Issue #4 report and pass/pending matrix](product-audit/README.md), [652 real before/after screenshots](product-audit/gallery.html), [verification checkpoints](product-audit/verification.md). The owner locked forest/ivory Fieldbook with editorial refinement. All routes are unified on the review branch; main and production remain unchanged pending approval.
 
-**Current Atlas Professional refinement:** the owner selected displayed option1 and requested a more professional premium treatment. [Actual new gallery and comparison](redesign/implemented/README.md), [selected revised source](redesign/concepts/atlas-professional.png), [research and baseline](redesign/REDESIGN_BRIEF.md), [current QA](../../design-qa.md).
+## Historical explorations and earlier implementations
+
+**Evidence Desk exploration (draft PR #2):** [three new desktop/mobile concepts and current-flow findings](evidence-desk/README.md), [project-local skill installation and pins](evidence-desk/SKILL_INSTALLATION.md). These are historical concept artwork. The subsequent Fieldbook selection and full-product implementation are documented above.
+
+**Earlier Atlas Professional refinement:** the owner selected displayed option1 and requested a more professional premium treatment. [Actual new gallery and comparison](redesign/implemented/README.md), [selected revised source](redesign/concepts/atlas-professional.png), [research and baseline](redesign/REDESIGN_BRIEF.md), [current QA](../../design-qa.md).
 
 ![Current assistant](redesign/implemented/assistant-final-1487.jpg)
 

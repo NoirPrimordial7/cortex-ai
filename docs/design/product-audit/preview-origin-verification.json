@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-09T22:31:00.036636+00:00",
+  "scope": "Actual shared backend with approved preview Origin headers. Protected Vercel browser/proxy not tested in this check.",
+  "results": [
+    {
+      "origin": "https://cortex-ai-git-codex-full-product-ux-noir-s-projects2.vercel.app",
+      "login": 200,
+      "session": 200,
+      "query": 200,
+      "citation": 200,
+      "annualLeaveDays": 20,
+      "exactSpanAndHash": true,
+      "wrongCsrfDenied": true,
+      "unapprovedOriginDenied": true
+    },
+    {
+      "origin": "https://cortex-phokpl83t-noir-s-projects2.vercel.app",
+      "login": 200,
+      "session": 200,
+      "query": 200,
+      "citation": 200,
+      "annualLeaveDays": 20,
+      "exactSpanAndHash": true,
+      "wrongCsrfDenied": true,
+      "unapprovedOriginDenied": true
+    }
+  ]
+}
