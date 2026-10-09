@@ -13,7 +13,7 @@
 | Learning/tracking | Six explanation guides, source notes, central docs/diagram/design galleries, changelog and development log |
 | Phase1 preservation | Research summaries/profiles/matrix/literature/gaps/improvements/architecture/source inventory/checks compare unchanged to06334ae, allowing working-copy newline normalization |
 | Integrity | Relative links/images, fixture hashes/quote spans, SVG XML, PNG dimensions, contrast pairs, secret-pattern scan, Git whitespace and staged file manifest checked before push |
-| GitHub display | First milestone architecture image loaded in GitHub README (naturalWidth1640) and visually inspected in live browser; final gallery verification recorded after push |
+| GitHub display | Published architecture SVG loaded (naturalWidth 1640); design gallery's five embedded previews loaded with expected dimensions; GitHub Mermaid API sequence and database ERD rendered and were visually inspected after 9534cd3 was pushed |
 
 ## Corrections during review
 
@@ -30,3 +30,7 @@ Reviewed informal note alone cannot support policy entitlement after HR grant re
 - Manual metadata/claim annotation, intent mapping, exception/partial lineage limits, shared-index timing side channels, host compromise and privileged reviewer mistakes remain important risks.
 
 Stop after Phase2 publication and owner review request. No Phase3 application, models, database, agents or paid infrastructure created. Exact final commit/remote match and clean status are reported in the final briefing and development log publication audit.
+
+## Publication audit — 2026-10-09T16:59:30+05:30
+
+Architecture/contracts published in [0dd651e](https://github.com/NoirPrimordial7/cortex-ai/commit/0dd651e0c329e612c73a3548c4a807b35b576973). Delivery/design published in [9534cd3](https://github.com/NoirPrimordial7/cortex-ai/commit/9534cd3e393820dd9f20901c4266f00f277aefb8); local and remote main matched its full hash and the working tree was clean after that push. All ten diagram exports and seven concept boards have now been visually inspected. The live GitHub gallery loads moodboard/directions plus dashboard/assistant/library PNGs; API sequence and ERD Mermaid diagrams render there. This verifies documentation publication, not local HTML layout or application behavior. Local browser and responsive interaction verification remain unavailable, with editable sources retained as requested. The temporary local documentation preview server was stopped. This audit adds only quality/tracking documentation; final audit commit is resolved by subject `docs: verify Phase 2 planning publication`.
