@@ -1,5 +1,16 @@
 # Development log
 
+## 2026-10-10 — Full-product audit, verified review branch
+
+- Reconciled PR #2, retained Fieldbook/toolkit head and current main without resetting working files. Main PR #5 contained no file changes. Published main JavaScript verified against an isolated build across all ten chunks.
+- One forest/ivory shell, typography/control system and semantic stylesheet across every route. Removed obsolete overlays; rebuilt policy reading, responsive library/history/conflict comparison, focused upload/review and people/grant confirmation flows. Preserved backend authorization, temporal reasoning, conflict abstention and citations.
+- Auronix team display names added for exact fictional seed identities while preserving credentials, IDs, roles and existing database records. Disabled account remains a separate test profile.
+- Actual preview403 diagnosed as Origin rejection, not invalid credentials. Specific error guidance and published-demo link verified at all six widths. Exact Render origin configuration proposal prepared; production remains untouched awaiting owner approval.
+- 39 backend,21 frontend,56 selected browser tests pass; Ruff/build/npm audit pass. Real role, private upload/review/hash/denial, text/reflow, keyboard, theme, target and contrast checks included.
+- 652 genuine before/after captures retained in an annotated gallery. Independent snapshot restores for light/dark; current profile names intentional. Login-loading CLS issue found in measurement and reduced from0.1025 to0.0205 in the fresh local sample. Entry JS96.24kB gzip/CSS7.09kB; no field INP/cold-start claim.
+- [Complete issue matrix, evidence and limitations](../design/product-audit/README.md). Local preview and gallery remain running; review commits pushed and draft PR prepared. No merge or production deployment.
+
+
 ## 2026-10-10T00:44:00+05:30 — Selected Fieldbook Ask Cortex implementation
 
 - Exact attached Fieldbook and Reference House images resolve the selection; owner locked identity and prioritized Ask UX over further variations or other-page redesign.

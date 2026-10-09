@@ -1,0 +1,170 @@
+{
+  "isha": [
+    {
+      "path": "/",
+      "allowed": true,
+      "actualPath": "/"
+    },
+    {
+      "path": "/documents",
+      "allowed": true,
+      "actualPath": "/documents"
+    },
+    {
+      "path": "/assistant",
+      "allowed": false,
+      "actualPath": "/"
+    },
+    {
+      "path": "/history",
+      "allowed": false,
+      "actualPath": "/"
+    },
+    {
+      "path": "/conflicts",
+      "allowed": false,
+      "actualPath": "/"
+    },
+    {
+      "path": "/upload",
+      "allowed": false,
+      "actualPath": "/documents"
+    },
+    {
+      "path": "/permissions",
+      "allowed": false,
+      "actualPath": "/"
+    },
+    {
+      "path": "/audit",
+      "allowed": true,
+      "actualPath": "/audit"
+    }
+  ],
+  "maya": [
+    {
+      "path": "/",
+      "allowed": true,
+      "actualPath": "/"
+    },
+    {
+      "path": "/documents",
+      "allowed": true,
+      "actualPath": "/documents"
+    },
+    {
+      "path": "/assistant",
+      "allowed": true,
+      "actualPath": "/assistant"
+    },
+    {
+      "path": "/history",
+      "allowed": true,
+      "actualPath": "/history"
+    },
+    {
+      "path": "/conflicts",
+      "allowed": true,
+      "actualPath": "/conflicts"
+    },
+    {
+      "path": "/upload",
+      "allowed": false,
+      "actualPath": "/documents"
+    },
+    {
+      "path": "/permissions",
+      "allowed": false,
+      "actualPath": "/"
+    },
+    {
+      "path": "/audit",
+      "allowed": false,
+      "actualPath": "/"
+    }
+  ],
+  "orbit": [
+    {
+      "path": "/",
+      "allowed": true,
+      "actualPath": "/"
+    },
+    {
+      "path": "/documents",
+      "allowed": true,
+      "actualPath": "/documents"
+    },
+    {
+      "path": "/assistant",
+      "allowed": true,
+      "actualPath": "/assistant"
+    },
+    {
+      "path": "/history",
+      "allowed": true,
+      "actualPath": "/history"
+    },
+    {
+      "path": "/conflicts",
+      "allowed": true,
+      "actualPath": "/conflicts"
+    },
+    {
+      "path": "/upload",
+      "allowed": false,
+      "actualPath": "/documents"
+    },
+    {
+      "path": "/permissions",
+      "allowed": false,
+      "actualPath": "/"
+    },
+    {
+      "path": "/audit",
+      "allowed": false,
+      "actualPath": "/"
+    }
+  ],
+  "ravi": [
+    {
+      "path": "/",
+      "allowed": true,
+      "actualPath": "/"
+    },
+    {
+      "path": "/documents",
+      "allowed": true,
+      "actualPath": "/documents"
+    },
+    {
+      "path": "/assistant",
+      "allowed": true,
+      "actualPath": "/assistant"
+    },
+    {
+      "path": "/history",
+      "allowed": true,
+      "actualPath": "/history"
+    },
+    {
+      "path": "/conflicts",
+      "allowed": true,
+      "actualPath": "/conflicts"
+    },
+    {
+      "path": "/upload",
+      "allowed": true,
+      "actualPath": "/upload"
+    },
+    {
+      "path": "/permissions",
+      "allowed": true,
+      "actualPath": "/permissions"
+    },
+    {
+      "path": "/audit",
+      "allowed": false,
+      "actualPath": "/"
+    }
+  ]
+}

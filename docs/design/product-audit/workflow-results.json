@@ -1,0 +1,9 @@
+{
+  "upload": "passed",
+  "review": "passed",
+  "futureValidity": "passed",
+  "immutableHash": "passed",
+  "authorizedDownload": "passed",
+  "privateEmployeeDenial": "passed",
+  "backend": "isolated disposable fixture; no production writes"
+}

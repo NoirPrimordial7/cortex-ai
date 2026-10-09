@@ -12,7 +12,7 @@ Prepared2026-10-09. Owner authorized free Vercel frontend and free Render backen
 
 ## Account picker
 
-Choose Maya employee, Ravi reviewer/admin, Isha auditor, Orbit other tenant or Noor disabled negative test. All three fields fill; click **Enter your workspace** for normal authentication. Noor must fail. If the backend is waking up, wait and click **Load demo accounts**. No LLM API/key is required.
+The review branch uses Arya Dhumal employee, Aditya Gholar reviewer/admin, Ashwin Gudur auditor and Yashraj Bansal other tenant, plus a separate disabled test account. Published main retains the old names until an approved deployment. Existing identity keys, fictional emails and roles are unchanged. Choose a profile. All three fields fill; click **Enter your workspace** for normal authentication. The disabled test account must fail. If the backend is waking up, wait and click **Load demo accounts**. No LLM API/key is required.
 
 Normal deployments expose no profiles by default. Enable local autofill by creating an empty ignored `local-data/demo-autofill.enabled` after fictional seeding and reloading the backend. Remove marker and reload to disable. Never enable it with real users/data.
 
@@ -38,3 +38,7 @@ Render health; Vercel READY/source SHA; production alias accessible without Verc
 Vercel deployment dpl_13t6423uXxh18PvhJsM2Af1zm5tX READY, sourcec6ca3f6b27764ed4945012140067d8ced60ea4a0; production alias accessible without Vercel account. Render first working source5ec7ca8, automatic configuration commitc6ca3f6 follows. Browser observed public profile picker, Maya authentication, actual20-day answer and authorized exact source. Genuine screenshots: [picker](../design/screenshots/shared-demo-login.jpg), [answer](../design/screenshots/shared-demo-answer.jpg).
 
 These checks use the fictional development fixture and provide no general accuracy or production security certification. Subsequent documentation commits may trigger automatic redeploy and invalidate the disposable session; current source/status is verified after final push.
+
+## Owner-reported preview login403
+
+The supplied Vercel review preview is not an approved backend origin; a real request returned403 “Origin not permitted” before credentials were checked. Public production alias login still passes. The review frontend explains this condition and links to the approved published demo. [Exact Render configuration change, pending approval](../design/product-audit/preview-origin-change.md); [diagnostic proof](../design/product-audit/preview-login-diagnosis.json). Production environment was not edited.
