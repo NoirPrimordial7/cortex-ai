@@ -4,7 +4,10 @@ test.use({
   trace: "off",
   video: "off",
 });
-test.skip(!process.env.CORTEX_HOSTED_SMOKE, 'Explicit read-only hosted verification.');
+test.skip(
+  !process.env.CORTEX_HOSTED_SMOKE,
+  "Explicit read-only hosted verification.",
+);
 test("published demo normal login diagnosis", async ({ page }) => {
   test.setTimeout(150000);
   const calls: { path: string; status: number }[] = [];
@@ -13,10 +16,12 @@ test("published demo normal login diagnosis", async ({ page }) => {
       calls.push({ path: new URL(r.url()).pathname, status: r.status() });
   });
   await page.goto("/");
-  await expect(page.getByRole("button", { name: /Maya/ })).toBeVisible({
+  await expect(
+    page.getByRole("button", { name: /Maya|Arya Dhumal/ }),
+  ).toBeVisible({
     timeout: 90000,
   });
-  await page.getByRole("button", { name: /Maya/ }).click();
+  await page.getByRole("button", { name: /Maya|Arya Dhumal/ }).click();
   await page
     .getByRole("button", { name: "Enter your workspace", exact: true })
     .click();
