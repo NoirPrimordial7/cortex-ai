@@ -1,7 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi, test, expect } from "vitest";
-import Assistant, { HighlightedSource } from "./Assistant";
+import Assistant from "./Assistant";
+import { HighlightedSource } from "../SourcePassage";
 import { ApiError, api } from "../api";
 import type { Answer, Source } from "../types";
 vi.mock("../api", async () => {
@@ -46,7 +47,7 @@ test("question uses backend result and opens the authorized exact source", async
   );
   await userEvent.click(screen.getByRole("button", { name: "Ask Cortex" }));
   expect(await screen.findByText(result.answer)).toBeInTheDocument();
-  expect(await screen.findByText(quote)).toBeInTheDocument();
+  expect((await screen.findAllByText(quote))[0]).toBeInTheDocument();
   expect(api).toHaveBeenNthCalledWith(2, "/queries/query/citations/cite");
   expect(document.querySelector("mark")?.textContent).toBe(quote);
 });
@@ -69,7 +70,7 @@ test("permission change notification clears all visible derived evidence", async
   await userEvent.click(
     screen.getByText("How many annual leave days do I have?"),
   );
-  await screen.findByText(quote);
+  await screen.findAllByText(quote);
   window.dispatchEvent(new Event("cortex:evidence-changed"));
   await waitFor(() =>
     expect(screen.queryByText(quote)).not.toBeInTheDocument(),

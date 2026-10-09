@@ -1,0 +1,650 @@
+[
+  {
+    "label": "assistant-1487",
+    "heading": "Knowledge assistant",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 330
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 330
+      },
+      {
+        "height": 77,
+        "tag": "TEXTAREA",
+        "width": 566
+      }
+    ],
+    "scrollWidth": 1487,
+    "width": 1487
+  },
+  {
+    "label": "assistant-1024",
+    "heading": "Knowledge assistant",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 221
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 221
+      },
+      {
+        "height": 77,
+        "tag": "TEXTAREA",
+        "width": 454
+      }
+    ],
+    "scrollWidth": 1009,
+    "width": 1009
+  },
+  {
+    "label": "assistant-768",
+    "heading": "Knowledge assistant",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 311
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 311
+      },
+      {
+        "height": 77,
+        "tag": "TEXTAREA",
+        "width": 485
+      }
+    ],
+    "scrollWidth": 753,
+    "width": 753
+  },
+  {
+    "label": "assistant-390",
+    "heading": "Knowledge assistant",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 164
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 164
+      },
+      {
+        "height": 77,
+        "tag": "TEXTAREA",
+        "width": 339
+      }
+    ],
+    "scrollWidth": 375,
+    "width": 375
+  },
+  {
+    "label": "assistant-dark-390",
+    "heading": "Knowledge assistant",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 164
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 164
+      },
+      {
+        "height": 77,
+        "tag": "TEXTAREA",
+        "width": 339
+      }
+    ],
+    "scrollWidth": 375,
+    "width": 375
+  },
+  {
+    "label": "assistant-320",
+    "heading": "Knowledge assistant",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 133
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 124
+      },
+      {
+        "height": 77,
+        "tag": "TEXTAREA",
+        "width": 269
+      }
+    ],
+    "scrollWidth": 305,
+    "width": 305
+  },
+  {
+    "label": "dashboard-320",
+    "heading": "Knowledge overview",
+    "inputs": [],
+    "scrollWidth": 305,
+    "width": 305
+  },
+  {
+    "label": "library-320",
+    "heading": "Document library",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 179
+      }
+    ],
+    "scrollWidth": 305,
+    "width": 305
+  },
+  {
+    "label": "history-320",
+    "heading": "Answer history",
+    "inputs": [],
+    "scrollWidth": 305,
+    "width": 305
+  },
+  {
+    "label": "conflicts-320",
+    "heading": "Conflicts & validity",
+    "inputs": [],
+    "scrollWidth": 305,
+    "width": 305
+  },
+  {
+    "label": "detail-320",
+    "heading": "Annual leave policy",
+    "inputs": [],
+    "scrollWidth": 305,
+    "width": 305
+  },
+  {
+    "label": "dashboard-1487",
+    "heading": "Knowledge overview",
+    "inputs": [],
+    "scrollWidth": 1472,
+    "width": 1472
+  },
+  {
+    "label": "library-1487",
+    "heading": "Document library",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 278
+      }
+    ],
+    "scrollWidth": 1472,
+    "width": 1472
+  },
+  {
+    "label": "conflicts-1487",
+    "heading": "Conflicts & validity",
+    "inputs": [],
+    "scrollWidth": 1487,
+    "width": 1487
+  },
+  {
+    "label": "history-1487",
+    "heading": "Answer history",
+    "inputs": [],
+    "scrollWidth": 1472,
+    "width": 1472
+  },
+  {
+    "label": "permissions-1487",
+    "heading": "Permissions & people",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 530
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      }
+    ],
+    "scrollWidth": 1487,
+    "width": 1487
+  },
+  {
+    "label": "permissions-320",
+    "heading": "Permissions & people",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 242
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      }
+    ],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "label": "upload-320",
+    "heading": "Upload a document",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 242
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 242
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 200
+      }
+    ],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "label": "upload-1487",
+    "heading": "Upload a document",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 584
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 584
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 542
+      }
+    ],
+    "scrollWidth": 1487,
+    "width": 1487
+  },
+  {
+    "label": "review-1487",
+    "heading": "Annual leave policy",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 270
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 270
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 789
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 386
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 386
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 386
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 386
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 386
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 386
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 386
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 62,
+        "tag": "TEXTAREA",
+        "width": 789
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      }
+    ],
+    "scrollWidth": 1487,
+    "width": 1487
+  },
+  {
+    "label": "review-320",
+    "heading": "Annual leave policy",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 234
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 234
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 234
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 234
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 234
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 234
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 234
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 234
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 234
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 234
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 18
+      },
+      {
+        "height": 62,
+        "tag": "TEXTAREA",
+        "width": 234
+      },
+      {
+        "height": 18,
+        "tag": "INPUT",
+        "width": 13
+      }
+    ],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "label": "audit-1487",
+    "heading": "Audit activity",
+    "inputs": [],
+    "scrollWidth": 1472,
+    "width": 1472
+  },
+  {
+    "label": "audit-320",
+    "heading": "Audit activity",
+    "inputs": [],
+    "scrollWidth": 305,
+    "width": 305
+  },
+  {
+    "label": "login-320",
+    "heading": "Audit activity",
+    "inputs": [],
+    "scrollWidth": 305,
+    "width": 305
+  },
+  {
+    "label": "login-320",
+    "heading": "A clear answer.The evidenceto trust it.",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 261
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 261
+      },
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 261
+      }
+    ],
+    "scrollWidth": 305,
+    "width": 305
+  },
+  {
+    "label": "assistant-final-1487",
+    "heading": "Knowledge assistant",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 330
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 330
+      },
+      {
+        "height": 77,
+        "tag": "TEXTAREA",
+        "width": 566
+      }
+    ],
+    "scrollWidth": 1487,
+    "width": 1487
+  },
+  {
+    "label": "assistant-final-320",
+    "heading": "Knowledge assistant",
+    "inputs": [
+      {
+        "height": 44,
+        "tag": "INPUT",
+        "width": 269
+      },
+      {
+        "height": 44,
+        "tag": "SELECT",
+        "width": 269
+      },
+      {
+        "height": 77,
+        "tag": "TEXTAREA",
+        "width": 269
+      }
+    ],
+    "scrollWidth": 305,
+    "width": 305
+  },
+  {
+    "label": "audit-final-320",
+    "heading": "Audit activity",
+    "inputs": [],
+    "scrollWidth": 305,
+    "width": 305
+  }
+]

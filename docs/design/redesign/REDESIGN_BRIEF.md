@@ -24,7 +24,7 @@ The public demo was inspected through its actual login → Maya fictional accoun
 
 These are layout judgments from the captured desktop flow, not a complete accessibility audit. No current mobile usability or contrast certification is asserted. Preserve the useful existing features: explicit scope/date, citation selection, source inspection, current-user display, normal authentication and honest demo limits.
 
-## Three directions to choose between
+## Preserved three-direction exploration
 
 Three separate ImageGen concepts are prepared from actual Cortex and reference captures. They are **visual proposals**, not working pages. Visible selection numbers follow the order of displayed generated images.
 
@@ -34,7 +34,7 @@ Three separate ImageGen concepts are prepared from actual Cortex and reference c
 
 Each image is a separate generated result, shown once in the main chat in this order and copied here without altering its original. The prompt requested 1440×1024; the tool returned approximately 1487×1058 artwork. These image dimensions are not browser viewport measurements. Generated typography/content and unsupported visual affordances are to be reconciled with real contracts when implementing the selected direction. Existing disclosures, exact citations and permission boundaries take precedence over artwork details.
 
-All concepts use the same real demonstration: Northstar Works, Maya employee, India full-time, as-of 2026-10-09, annual leave 20 working days/year, LEAVE-2026, HR policy, TXT line 2, effective interval 2026-01-01 to 2027-01-01 and reviewed authority rank 100. No invented confidence percentage, agent activity or semantic capability is allowed. Two fonts maximum; body and passages stay readable. The Product Design ideation workflow requires selection before implementation; selection remains outstanding.
+All concepts use the same real demonstration: Northstar Works, Maya employee, India full-time, as-of 2026-10-09, annual leave 20 working days/year, LEAVE-2026, HR policy, TXT line 2, effective interval 2026-01-01 to 2027-01-01 and reviewed authority rank 100. No invented confidence percentage, agent activity or semantic capability is allowed. Two fonts maximum; body and passages stay readable. The Product Design ideation workflow requires selection before implementation; the owner subsequently selected displayed option 1 and requested a more professional, premium refinement.
 
 ## Performance baseline and implementation checks
 
@@ -55,3 +55,9 @@ Code inspection identifies two candidates to verify experimentally: eager import
 After selection, implement the chosen visual system across login, shell, dashboard, assistant, documents/upload/detail, conflicts, history, administration and audit. Test actual behavior at 1440, 1024, 768, 390 and 320px; inspect wrapping/overflow, touch targets, keyboard navigation/focus, reduced motion and both themes. Source evidence must reflow below the answer on small screens without being discarded. Keep dates and policy scope visible and usable.
 
 Run existing meaningful frontend/backend regression checks and a production build. Compare actual same-viewport captures against the selected concept. Repeat the baseline with the same method, separately report route chunks and browser measurements when the in-app browser supports them. Publish only after integration checks; report exact commit, remote equality and live deployment verification. No headless browser fallback, paid upgrade, speculative performance claims or backend capability expansion is authorized by this redesign.
+
+## Owner selection and implemented refinement — 2026-10-09T23:17:29+05:30
+
+Displayed option 1 was selected. [Atlas Professional](concepts/atlas-professional.png) is the single revised concept generated from that feedback before build. Its restrained warm-white/forest treatment is now implemented across the real app. Native typography, readable exact evidence, real scope/date controls and truthful capability/demo disclosures take precedence over literal generated typography.
+
+[Actual capture gallery and validation](implemented/README.md), [final build sizes](performance-build-final.json), [root design QA](../../../design-qa.md) and [ADR0007](../../decisions/0007-atlas-professional.md) distinguish reference artwork, working screenshots and diagnostic comparison sheets. Public deployment verification will be recorded after the implementation commit reaches the existing main branch.

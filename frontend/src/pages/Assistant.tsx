@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
-  ArrowUpIcon,
+  ArrowRightIcon,
   ArrowSquareOutIcon,
   BookOpenTextIcon,
   CalendarBlankIcon,
@@ -12,15 +12,7 @@ import {
 import { api } from "../api";
 import { Badge, localPolicyDate, PageHeading } from "../components";
 import type { Answer, Citation, Source } from "../types";
-export function HighlightedSource({ source }: { source: Source }) {
-  return (
-    <pre className="source-text">
-      {source.text.slice(0, source.start_char)}
-      <mark>{source.text.slice(source.start_char, source.end_char)}</mark>
-      {source.text.slice(source.end_char)}
-    </pre>
-  );
-}
+import { HighlightedSource } from "../SourcePassage";
 export default function Assistant() {
   const [query, setQuery] = useState(""),
     [askedQuery, setAskedQuery] = useState(""),
@@ -119,7 +111,7 @@ export default function Assistant() {
       <PageHeading
         eyebrow="EVIDENCE STUDIO"
         title="Knowledge assistant"
-        description="Ask a question. Follow the evidence."
+        description="Answers grounded in the policy that applies."
         action={
           <span className="mode-label">
             <CheckCircleIcon size={16} /> Offline evidence answers
@@ -156,6 +148,33 @@ export default function Assistant() {
               </select>
             </label>
           </div>
+          <form className="composer" onSubmit={(e) => void send(e)}>
+            <label htmlFor="question">Your question</label>
+            <div className="composer-input">
+              <textarea
+                id="question"
+                aria-label="Ask about a company policy"
+                ref={input}
+                maxLength={1000}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Ask about a company policy…"
+                rows={2}
+                required
+              />
+              <button
+                className="button primary send"
+                aria-label="Ask Cortex"
+                disabled={busy || !query.trim() || !date}
+              >
+                <ArrowRightIcon size={20} />
+                {busy ? "Checking…" : "Ask Cortex"}
+              </button>
+            </div>
+            <p className="composer-hint">
+              Sources first. Answers when supported. <kbd>Ctrl / ⌘ K</kbd>
+            </p>
+          </form>
           <div className="conversation-body" aria-live="polite">
             {!answer && !busy && !error && (
               <div className="assistant-empty">
@@ -216,7 +235,7 @@ export default function Assistant() {
                     )}
                     <span>
                       {answer.status === "answered"
-                        ? "Evidence answer"
+                        ? "Supported answer"
                         : answer.reason_code === "UNRESOLVED_CONFLICT"
                           ? "Policy conflict"
                           : "Unable to answer"}
@@ -264,31 +283,6 @@ export default function Assistant() {
               </>
             )}
           </div>
-          <form className="composer" onSubmit={(e) => void send(e)}>
-            <label className="sr-only" htmlFor="question">
-              Ask about a company policy
-            </label>
-            <textarea
-              id="question"
-              ref={input}
-              maxLength={1000}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Ask about a company policy…"
-              rows={2}
-              required
-            />
-            <div>
-              <span>Sources first. Answers when supported.</span>
-              <button
-                className="button primary send"
-                aria-label="Ask Cortex"
-                disabled={busy || !query.trim() || !date}
-              >
-                <ArrowUpIcon size={20} />
-              </button>
-            </div>
-          </form>
         </section>
         <aside
           className={"evidence-workspace " + (selected ? "is-open" : "")}
@@ -296,8 +290,8 @@ export default function Assistant() {
         >
           <div className="evidence-header">
             <div>
-              <p className="eyebrow">THE SOURCE OF THE ANSWER</p>
-              <h2>Evidence</h2>
+              <p className="eyebrow">SOURCE EVIDENCE</p>
+              <h2>{selected?.title || "Evidence"}</h2>
             </div>
             {selected && (
               <button
@@ -328,7 +322,21 @@ export default function Assistant() {
                       : "Approved · valid"
                   }
                 />
-                <h3>{selected.title}</h3>
+                <div className="source-reading">
+                  {sourceBusy ? (
+                    <div role="status" className="skeleton long" />
+                  ) : source ? (
+                    <>
+                      <blockquote className="source-excerpt">
+                        {source.text.slice(source.start_char, source.end_char)}
+                      </blockquote>
+                      <details className="source-context">
+                        <summary>View source context</summary>
+                        <HighlightedSource source={source} />
+                      </details>
+                    </>
+                  ) : null}
+                </div>
                 <dl>
                   <div>
                     <dt>Version</dt>
@@ -363,18 +371,12 @@ export default function Assistant() {
                   )}
                 </dl>
               </div>
-              <div className="source-reading">
-                <p className="eyebrow">EXACT AUTHORIZED PASSAGE</p>
-                {sourceBusy ? (
-                  <div role="status" className="skeleton long" />
-                ) : (
-                  source && <HighlightedSource source={source} />
-                )}
-              </div>
-              <div className="source-integrity">
-                <CheckCircleIcon size={16} />
-                <span>Source span and hash checked by the backend.</span>
-              </div>
+              {source && (
+                <div className="source-integrity">
+                  <CheckCircleIcon size={16} />
+                  <span>Source span and hash checked by the backend.</span>
+                </div>
+              )}
             </>
           )}
         </aside>

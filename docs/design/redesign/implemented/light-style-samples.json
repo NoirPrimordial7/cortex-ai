@@ -1,0 +1,51 @@
+[
+  {
+    "background": "rgb(250, 251, 249)",
+    "font": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+    "fontSize": "15px",
+    "foreground": "rgb(25, 44, 37)",
+    "selector": ".app"
+  },
+  {
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+    "fontSize": "16px",
+    "foreground": "rgb(88, 104, 95)",
+    "selector": ".description"
+  },
+  {
+    "background": "rgb(22, 76, 58)",
+    "font": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+    "fontSize": "14px",
+    "foreground": "rgb(255, 255, 255)",
+    "selector": ".button.primary"
+  },
+  {
+    "background": "rgb(236, 243, 238)",
+    "font": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+    "fontSize": "20px",
+    "foreground": "rgb(25, 44, 37)",
+    "selector": ".source-excerpt"
+  },
+  {
+    "background": "rgb(236, 243, 238)",
+    "font": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+    "fontSize": "14px",
+    "foreground": "rgb(22, 76, 58)",
+    "selector": ".rail nav a.active"
+  },
+  {
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+    "fontSize": "12px",
+    "foreground": "rgb(88, 104, 95)",
+    "selector": ".source-integrity"
+  },
+  {
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+    "fontSize": "14px",
+    "foreground": "rgb(22, 76, 58)",
+    "selector": ".badge"
+  }
+]

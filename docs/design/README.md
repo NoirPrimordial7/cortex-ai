@@ -1,6 +1,10 @@
 # Cortex AI design gallery
 
-**New visual exploration, October 9, 2026:** [Awwwards-based redesign brief, current-screen audit and performance baseline](redesign/REDESIGN_BRIEF.md). Three fresh concepts are being reviewed; the running application below remains the current implementation until a direction is selected and verified.
+**Current Atlas Professional refinement:** the owner selected displayed option1 and requested a more professional premium treatment. [Actual new gallery and comparison](redesign/implemented/README.md), [selected revised source](redesign/concepts/atlas-professional.png), [research and baseline](redesign/REDESIGN_BRIEF.md), [current QA](../../design-qa.md).
+
+![Current assistant](redesign/implemented/assistant-final-1487.jpg)
+
+## Preserved earlier Phase3 gallery
 
 **Current Phase3 running gallery.** These JPEGs are genuine in-app browser captures of the implemented React/FastAPI application with fictional data. The Phase2 concept gallery below remains artwork, separately labelled; its localhost limitation applied then, not to this successful browser session.
 

@@ -134,7 +134,11 @@ export default function Login() {
                 {profiles.map((profile) => (
                   <button
                     type="button"
-                    className="demo-account"
+                    className={
+                      "demo-account " +
+                      (selected === profile.label ? "selected" : "")
+                    }
+                    aria-pressed={selected === profile.label}
                     key={profile.key}
                     disabled={busy}
                     onClick={() => fill(profile)}

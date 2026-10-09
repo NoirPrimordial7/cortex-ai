@@ -22,7 +22,9 @@ Use workspace `NORTHSTAR` and employee `maya@example.test`; generated passwords 
 
 ## Genuine running UI
 
-![Actual assistant browser capture](docs/design/screenshots/assistant-answer-1440.jpg)
+**Atlas Professional refinement:** owner-selected first visual direction, refined for a professional premium workspace. Warm-white/forest tokens, readable evidence, responsive controls and deferred route code. [Current screenshots/QA](docs/design/redesign/implemented/README.md); historical visuals remain preserved.
+
+![Actual Atlas Professional assistant browser capture](docs/design/redesign/implemented/assistant-final-1487.jpg)
 
 Real browser screenshot of the local React/FastAPI system using fictional data. Current leave evidence is20 days; historical2025 evidence is18; equally authoritative remote-work policies produce an abstention with both citations. These values come from the provided fixture and API, not hardcoded frontend answers.
 

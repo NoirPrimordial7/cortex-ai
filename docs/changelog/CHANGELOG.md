@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-09T23:17:29+05:30 — Phase3 Atlas Professional refinement
+
+- Added frontend theme, shared authorized passage component, deferred route error boundary/test, revised concept, genuine captures/comparisons, build/contrast/layout reports and ADR0007. Changed shell, assistant, login, activity, source-test selectors, README/design index and QA; preserved previous QA and all Phase1 research/history.
+- Reason: owner selected first concept and requested professional/premium refinement across the working app.
+- Outcome: warm-white/forest system, restrained type, composer above answer, quote-first evidence, mobile date/scope stacking, selected autofill profile, labelled audit scroll region. Deferred route code reduces initial JS without private-data caching.
+- Verification:38 backend tests pass (one existing warning),12 frontend tests and production build pass;28 DOM observations without page overflow;11 sampled contrast pairs≥4.5; same-size generated/real comparison and browser workflows checked. No passwords/real company data included.
+- Build scope: raw initial JS373780→327143; offline gzip109217→99536; CSS6799→8650 gzip. No page-load/query-latency improvement claimed. Hosted deployment check pending commit/push; subject `feat: refine Cortex into the Atlas Professional workspace`.
+- Outstanding: public smoke/remote verification, broader accessibility/usability/web-vitals and free-backend cold-start limitation. No paid resources, backend capability expansion or permissions changed.
+
+
 ## 2026-10-09T22:38:00+05:30 — Phase3 visual redesign exploration
 
 - Added Awwwards reference brief, genuine current-flow captures, three separate original UI concept directions and a qualified HTTP/build-size baseline under docs/design/redesign/. Updated design gallery and chronological research/development records; preserved prior design/research.

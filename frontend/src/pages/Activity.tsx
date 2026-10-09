@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { BookOpenTextIcon, XIcon } from "@phosphor-icons/react";
 import { api } from "../api";
-import { HighlightedSource } from "./Assistant";
+import { HighlightedSource } from "../SourcePassage";
 import {
   Badge,
   PageHeading,
@@ -103,7 +103,15 @@ export default function Activity({
             </p>
           </div>
         ) : audit ? (
-          <div className="table-wrap">
+          <div
+            className="table-wrap audit-table"
+            role="region"
+            aria-label="Audit events; scroll horizontally on smaller screens"
+            tabIndex={0}
+          >
+            <p className="audit-scroll-hint subtle">
+              Scroll horizontally to inspect all event details.
+            </p>
             <table>
               <thead>
                 <tr>

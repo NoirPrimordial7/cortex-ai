@@ -1,0 +1,72 @@
+{
+  "captured_at": "2026-10-09T23:14:34.518385+05:30",
+  "method": "offline gzip.compress of final local dist, matching baseline; initial entry separated from additional route chunks; not LCP/INP/CLS",
+  "assets": [
+    {
+      "file": "Activity-Dk2_VFjo.js",
+      "bytes": 3382,
+      "gzip_bytes": 1529,
+      "initial_entry": false
+    },
+    {
+      "file": "Assistant-DFqVij6Q.js",
+      "bytes": 14503,
+      "gzip_bytes": 4351,
+      "initial_entry": false
+    },
+    {
+      "file": "Dashboard-CFuym9M2.js",
+      "bytes": 2714,
+      "gzip_bytes": 1030,
+      "initial_entry": false
+    },
+    {
+      "file": "DocumentDetail-1kCXt0VL.js",
+      "bytes": 10887,
+      "gzip_bytes": 3668,
+      "initial_entry": false
+    },
+    {
+      "file": "FileText.es-BmiiXezJ.js",
+      "bytes": 2596,
+      "gzip_bytes": 780,
+      "initial_entry": false
+    },
+    {
+      "file": "index-C1L_sa07.css",
+      "bytes": 39856,
+      "gzip_bytes": 8650,
+      "initial_entry": true
+    },
+    {
+      "file": "index-M8wdEcYr.js",
+      "bytes": 327143,
+      "gzip_bytes": 99536,
+      "initial_entry": true
+    },
+    {
+      "file": "Library-w233O0nd.js",
+      "bytes": 6769,
+      "gzip_bytes": 2203,
+      "initial_entry": false
+    },
+    {
+      "file": "Permissions-Cw44Kj4n.js",
+      "bytes": 4286,
+      "gzip_bytes": 1661,
+      "initial_entry": false
+    },
+    {
+      "file": "SourcePassage-DDtO_DIb.js",
+      "bytes": 254,
+      "gzip_bytes": 189,
+      "initial_entry": false
+    },
+    {
+      "file": "Upload-DQ6-DtgR.js",
+      "bytes": 3990,
+      "gzip_bytes": 1627,
+      "initial_entry": false
+    }
+  ]
+}

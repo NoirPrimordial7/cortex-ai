@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { SessionProvider } from "./session";
 import App from "./App";
 import "./styles.css";
+import "./atlas.css";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>

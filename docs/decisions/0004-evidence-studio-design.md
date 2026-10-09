@@ -11,3 +11,7 @@
 - Files: docs/design/, UI_UX_PLAN, learning/navigation docs, README/gallery. No functional app.
 - Outstanding: owner visual choice, real browser/screens/readability/accessibility and API state integration in Phase3.
 - Commit: resolve `docs: plan delivery backlog and Cortex visual experience`; hash recorded after commit.
+
+## Subsequent visual refinement
+
+On 2026-10-09 the owner selected Atlas Editorial and requested a professional premium refinement. [ADR0007](0007-atlas-professional.md) supersedes only the original visual treatment; this record and its original review status are preserved.

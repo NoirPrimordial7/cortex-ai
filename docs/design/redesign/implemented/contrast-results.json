@@ -1,0 +1,90 @@
+[
+  {
+    "theme": "light",
+    "selector": ".app",
+    "foreground": "rgb(25, 44, 37)",
+    "resolved_background": "rgb(250, 251, 249)",
+    "contrast": 14.16,
+    "passes_4_5": true
+  },
+  {
+    "theme": "light",
+    "selector": ".description",
+    "foreground": "rgb(88, 104, 95)",
+    "resolved_background": "rgb(255,255,255)",
+    "contrast": 5.9,
+    "passes_4_5": true
+  },
+  {
+    "theme": "light",
+    "selector": ".button.primary",
+    "foreground": "rgb(255, 255, 255)",
+    "resolved_background": "rgb(22, 76, 58)",
+    "contrast": 9.86,
+    "passes_4_5": true
+  },
+  {
+    "theme": "light",
+    "selector": ".source-excerpt",
+    "foreground": "rgb(25, 44, 37)",
+    "resolved_background": "rgb(236, 243, 238)",
+    "contrast": 13.04,
+    "passes_4_5": true
+  },
+  {
+    "theme": "light",
+    "selector": ".rail nav a.active",
+    "foreground": "rgb(22, 76, 58)",
+    "resolved_background": "rgb(236, 243, 238)",
+    "contrast": 8.75,
+    "passes_4_5": true
+  },
+  {
+    "theme": "light",
+    "selector": ".source-integrity",
+    "foreground": "rgb(88, 104, 95)",
+    "resolved_background": "rgb(255,255,255)",
+    "contrast": 5.9,
+    "passes_4_5": true
+  },
+  {
+    "theme": "light",
+    "selector": ".badge",
+    "foreground": "rgb(22, 76, 58)",
+    "resolved_background": "rgb(255,255,255)",
+    "contrast": 9.86,
+    "passes_4_5": true
+  },
+  {
+    "theme": "dark",
+    "selector": ".app",
+    "foreground": "rgb(238, 245, 240)",
+    "resolved_background": "rgb(19, 29, 24)",
+    "contrast": 15.58,
+    "passes_4_5": true
+  },
+  {
+    "theme": "dark",
+    "selector": ".description",
+    "foreground": "rgb(184, 201, 191)",
+    "resolved_background": "rgb(27,41,33)",
+    "contrast": 8.76,
+    "passes_4_5": true
+  },
+  {
+    "theme": "dark",
+    "selector": ".button.primary",
+    "foreground": "rgb(15, 23, 36)",
+    "resolved_background": "rgb(166, 213, 185)",
+    "contrast": 10.99,
+    "passes_4_5": true
+  },
+  {
+    "theme": "dark",
+    "selector": ".rail nav a.active",
+    "foreground": "rgb(166, 213, 185)",
+    "resolved_background": "rgb(40, 63, 48)",
+    "contrast": 6.96,
+    "passes_4_5": true
+  }
+]

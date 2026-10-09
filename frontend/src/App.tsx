@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import {
   NavLink,
   Navigate,
@@ -24,13 +24,14 @@ import {
 import { useSession } from "./session";
 import { State } from "./components";
 import Login from "./pages/Login";
-import Assistant from "./pages/Assistant";
-import Dashboard from "./pages/Dashboard";
-import Library from "./pages/Library";
-import DocumentDetail from "./pages/DocumentDetail";
-import Upload from "./pages/Upload";
-import Activity from "./pages/Activity";
-import Permissions from "./pages/Permissions";
+import { RouteBoundary } from "./RouteBoundary";
+const Assistant = lazy(() => import("./pages/Assistant"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Library = lazy(() => import("./pages/Library"));
+const DocumentDetail = lazy(() => import("./pages/DocumentDetail"));
+const Upload = lazy(() => import("./pages/Upload"));
+const Activity = lazy(() => import("./pages/Activity"));
+const Permissions = lazy(() => import("./pages/Permissions"));
 export default function App() {
   const { user, ready, signOut } = useSession();
   const [dark, setDark] = useState(false),
@@ -220,9 +221,8 @@ export default function App() {
         <main id="workspace" className="workspace">
           {user.read_only_demo && (
             <p className="shared-demo-note">
-              Fictional shared demo · uploads and governance are view-only.
-              Profiles share their query history. Data resets after backend
-              restarts.
+              Fictional shared demo · documents and permissions are view-only.
+              Histories are shared by profile; data resets on backend restart.
             </p>
           )}
           {error && (
@@ -230,54 +230,58 @@ export default function App() {
               {error}
             </p>
           )}
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route
-              path="/assistant"
-              element={
-                user.actions.includes("query.execute") ? (
-                  <Assistant />
-                ) : (
-                  <Navigate to="/" replace />
-                )
-              }
-            />
-            <Route path="/documents" element={<Library />} />
-            <Route path="/documents/:id" element={<DocumentDetail />} />
-            <Route
-              path="/upload"
-              element={
-                user.actions.includes("document.upload") ? (
-                  <Upload />
-                ) : (
-                  <Navigate to="/documents" replace />
-                )
-              }
-            />
-            <Route path="/conflicts" element={<Activity conflicts />} />
-            <Route path="/history" element={<Activity />} />
-            <Route
-              path="/permissions"
-              element={
-                user.actions.includes("user.manage") ? (
-                  <Permissions />
-                ) : (
-                  <Navigate to="/" replace />
-                )
-              }
-            />
-            <Route
-              path="/audit"
-              element={
-                user.actions.includes("audit.read") ? (
-                  <Activity audit />
-                ) : (
-                  <Navigate to="/" replace />
-                )
-              }
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          <RouteBoundary key={location.pathname}>
+            <Suspense fallback={<State loading />}>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route
+                  path="/assistant"
+                  element={
+                    user.actions.includes("query.execute") ? (
+                      <Assistant />
+                    ) : (
+                      <Navigate to="/" replace />
+                    )
+                  }
+                />
+                <Route path="/documents" element={<Library />} />
+                <Route path="/documents/:id" element={<DocumentDetail />} />
+                <Route
+                  path="/upload"
+                  element={
+                    user.actions.includes("document.upload") ? (
+                      <Upload />
+                    ) : (
+                      <Navigate to="/documents" replace />
+                    )
+                  }
+                />
+                <Route path="/conflicts" element={<Activity conflicts />} />
+                <Route path="/history" element={<Activity />} />
+                <Route
+                  path="/permissions"
+                  element={
+                    user.actions.includes("user.manage") ? (
+                      <Permissions />
+                    ) : (
+                      <Navigate to="/" replace />
+                    )
+                  }
+                />
+                <Route
+                  path="/audit"
+                  element={
+                    user.actions.includes("audit.read") ? (
+                      <Activity audit />
+                    ) : (
+                      <Navigate to="/" replace />
+                    )
+                  }
+                />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </Suspense>
+          </RouteBoundary>
         </main>
       </div>
     </div>
