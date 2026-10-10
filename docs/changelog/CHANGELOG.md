@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-10 — Restore previous documents; retain focused conflict improvement
+
+- Owner withdrew the large enterprise-document/reader requirement. Restored the approved document catalogue, compact Document Details and Source Inspector, original corpus and backend/ingestion/citation contracts. Removed the new A4/full-screen reader, PDF raster renderer, richer corpus and their artifacts from the current PR tree.
+- Kept authorized conflict groups, inspectable original occurrences, exact timestamps and mobile comparison improvements. No history deletion, latest-30 contract change or permission weakening.
+- Local8008preview now uses an isolated copy of the original ten-document dataset; baseline and production data remain unchanged. Verified the restored compact source in the real browser. Tests and fresh conflict captures: [focused review](../design/premium-refinement/conflicts/README.md).
+- PR #8 stays draft. Rollback uses a normal commit; no merge, force push, production deploy or live Origin change.
+
 ## 2026-10-10 — Full-product production release verified
 
 - Owner explicitly approved push and production publication. PR #6 merged atfc8444f; final application3834cda is pushed to main and live on Vercel READY/production and Render Live (dep-db4mvjp7lnhs7397f87g,69seconds). No identities, permissions, exact Origins or hosted read-only boundaries weakened.

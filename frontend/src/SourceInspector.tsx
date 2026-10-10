@@ -13,18 +13,25 @@ export function SourceInspector({
   busy,
   conflict = false,
   context,
+  formatDate = (date) => date,
+  askFolio,
 }: {
   citation: Citation | null;
   source: Source | null;
   busy: boolean;
   conflict?: boolean;
   context?: { date: string; population: string };
+  formatDate?: (date: string) => string;
+  askFolio?: number;
 }) {
   const [expanded, setExpanded] = useState(false);
   if (!citation) return null;
   return (
-    <div className="fb-document">
-      <p className="fb-label">Source evidence</p>
+    <div className={"fb-document" + (askFolio ? " fb-ask-document" : "")}>
+      <p className="fb-label">
+        {askFolio && <span className="fb-folio-number">{askFolio}</span>}Source
+        evidence
+      </p>
       <h2>{citation.title}</h2>
       {context && (
         <p className="source-query-context">
@@ -34,7 +41,7 @@ export function SourceInspector({
             : context.population === "india_contractor"
               ? "India contractors"
               : context.population.replaceAll("_", " ")}{" "}
-          · as of {context.date}
+          · as of {formatDate(context.date)}
         </p>
       )}
       {busy ? (
@@ -61,8 +68,8 @@ export function SourceInspector({
             <div className="source-summary">
               <span>{source.locator}</span>
               <span>
-                Effective {source.valid_from} →{" "}
-                {source.valid_to || "open-ended"}
+                Effective {formatDate(source.valid_from)} →{" "}
+                {source.valid_to ? formatDate(source.valid_to) : "open-ended"}
                 {source.valid_to ? " (end exclusive)" : ""}
               </span>
             </div>

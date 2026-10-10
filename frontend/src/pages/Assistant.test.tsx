@@ -1,10 +1,14 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render as renderUI, screen, waitFor } from "@testing-library/react";
+import type { ReactNode } from "react";
+import { AskDraftProvider } from "../AskDraft";
 import userEvent from "@testing-library/user-event";
 import { vi, test, expect } from "vitest";
 import Assistant from "./Assistant";
 import { HighlightedSource } from "../SourcePassage";
 import { ApiError, api } from "../api";
 import type { Answer, Source } from "../types";
+const render = (element: ReactNode) =>
+  renderUI(<AskDraftProvider>{element}</AskDraftProvider>);
 vi.mock("../api", async () => {
   const actual = await vi.importActual<typeof import("../api")>("../api");
   return { ...actual, api: vi.fn() };
@@ -189,4 +193,189 @@ test("a follow-up draft typed during loading survives the response", async () =>
   expect(screen.getByLabelText("Ask about a company policy")).toHaveValue(
     "What is my notice period?",
   );
+});
+
+test("a completed query releases the composer while its source is still checking", async () => {
+  let release: (value: Source) => void = () => {};
+  vi.mocked(api)
+    .mockResolvedValueOnce(result)
+    .mockImplementationOnce(
+      () =>
+        new Promise<Source>((resolve) => {
+          release = resolve;
+        }),
+    );
+  render(<Assistant />);
+  await userEvent.click(
+    screen.getByText("How many annual leave days do I have?"),
+  );
+  await screen.findByText(result.answer);
+  expect(
+    screen.queryByText("Checking policy access, dates and authority…"),
+  ).not.toBeInTheDocument();
+  expect(screen.getByText("Checking source access…")).toBeInTheDocument();
+  expect(screen.getByRole("region", { name: "Policy answer" })).toHaveAttribute(
+    "aria-busy",
+    "false",
+  );
+  await userEvent.type(
+    screen.getByLabelText("Ask about a company policy"),
+    "What is my notice period?",
+  );
+  expect(screen.getByRole("button", { name: /^Ask Cortex$/ })).toBeEnabled();
+  release(source);
+  await screen.findByText(quote);
+});
+
+test("an invalidated query cannot finish a newer query's processing state", async () => {
+  let first: (value: Answer) => void = () => {};
+  let second: (value: Answer) => void = () => {};
+  vi.mocked(api)
+    .mockImplementationOnce(
+      () =>
+        new Promise<Answer>((resolve) => {
+          first = resolve;
+        }),
+    )
+    .mockImplementationOnce(
+      () =>
+        new Promise<Answer>((resolve) => {
+          second = resolve;
+        }),
+    );
+  render(<Assistant />);
+  await userEvent.click(
+    screen.getByText("How many annual leave days do I have?"),
+  );
+  await userEvent.selectOptions(
+    screen.getByLabelText("Policy scope"),
+    "india_contractor",
+  );
+  await userEvent.type(
+    screen.getByLabelText("Ask about a company policy"),
+    "What is my notice period?",
+  );
+  await userEvent.click(screen.getByRole("button", { name: /^Ask Cortex$/ }));
+  first(result);
+  await waitFor(() =>
+    expect(
+      screen.getByRole("region", { name: "Policy answer" }),
+    ).toHaveAttribute("aria-busy", "true"),
+  );
+  expect(screen.queryByText(result.answer)).not.toBeInTheDocument();
+  second({
+    ...result,
+    scope: { ...result.scope, population: "india_contractor" },
+    answer: "No applicable evidence.",
+    citations: [],
+    status: "abstained",
+  });
+  await screen.findByText("No applicable evidence.");
+  expect(screen.getByRole("region", { name: "Policy answer" })).toHaveAttribute(
+    "aria-busy",
+    "false",
+  );
+});
+
+const alternative: Source = {
+  ...source,
+  id: "cite-b",
+  title: "Alternative policy",
+  quote: "Employees receive 25 working days.",
+  text: "Title\n\nEmployees receive 25 working days.\n",
+  end_char: 7 + "Employees receive 25 working days.".length,
+  authority_rank: 100,
+};
+const conflicting: Answer = {
+  ...result,
+  status: "abstained",
+  reason_code: "UNRESOLVED_CONFLICT",
+  answer:
+    "Equally authoritative policies disagree. I cannot choose between them.",
+  citations: [{ ...source, authority_rank: 100 }, alternative],
+};
+
+test("conflict comparison reads every source and renders authorized exact spans", async () => {
+  vi.mocked(api)
+    .mockResolvedValueOnce(conflicting)
+    .mockResolvedValueOnce(source)
+    .mockResolvedValueOnce(alternative);
+  render(<Assistant />);
+  await userEvent.click(
+    screen.getByText("How many annual leave days do I have?"),
+  );
+  await screen.findByText(alternative.quote);
+  expect(screen.getByText(quote)).toBeInTheDocument();
+  expect(api).toHaveBeenNthCalledWith(2, "/queries/query/citations/cite");
+  expect(api).toHaveBeenNthCalledWith(3, "/queries/query/citations/cite-b");
+  expect(screen.getByText(conflicting.answer)).toBeInTheDocument();
+  expect(screen.queryByText("Approved · valid")).not.toBeInTheDocument();
+});
+
+test("a pending conflict source keeps both excerpts hidden and releases query loading", async () => {
+  let release: (value: Source) => void = () => {};
+  vi.mocked(api)
+    .mockResolvedValueOnce(conflicting)
+    .mockResolvedValueOnce(source)
+    .mockImplementationOnce(
+      () =>
+        new Promise<Source>((resolve) => {
+          release = resolve;
+        }),
+    );
+  render(<Assistant />);
+  await userEvent.click(
+    screen.getByText("How many annual leave days do I have?"),
+  );
+  await screen.findByText("Checking source access for both policies…");
+  expect(screen.queryByText(quote)).not.toBeInTheDocument();
+  expect(screen.queryByText(alternative.quote)).not.toBeInTheDocument();
+  expect(screen.getByRole("region", { name: "Policy answer" })).toHaveAttribute(
+    "aria-busy",
+    "false",
+  );
+  release(alternative);
+  await screen.findByText(alternative.quote);
+});
+
+test("one denied conflict source clears the whole comparison and abstention", async () => {
+  vi.mocked(api)
+    .mockResolvedValueOnce(conflicting)
+    .mockResolvedValueOnce(source)
+    .mockRejectedValueOnce(new ApiError(404, "Resource unavailable"));
+  render(<Assistant />);
+  await userEvent.click(
+    screen.getByText("How many annual leave days do I have?"),
+  );
+  await screen.findByRole("alert");
+  expect(screen.queryByText(quote)).not.toBeInTheDocument();
+  expect(screen.queryByText(alternative.quote)).not.toBeInTheDocument();
+  expect(screen.queryByText(conflicting.answer)).not.toBeInTheDocument();
+});
+
+test("an invalidated comparison cannot restore excerpts after scope changes", async () => {
+  let release: (value: Source) => void = () => {};
+  vi.mocked(api)
+    .mockResolvedValueOnce(conflicting)
+    .mockResolvedValueOnce(source)
+    .mockImplementationOnce(
+      () =>
+        new Promise<Source>((resolve) => {
+          release = resolve;
+        }),
+    );
+  render(<Assistant />);
+  await userEvent.click(
+    screen.getByText("How many annual leave days do I have?"),
+  );
+  await screen.findByText("Checking source access for both policies…");
+  await userEvent.selectOptions(
+    screen.getByLabelText("Policy scope"),
+    "india_contractor",
+  );
+  release(alternative);
+  await waitFor(() =>
+    expect(screen.queryByText(alternative.quote)).not.toBeInTheDocument(),
+  );
+  expect(screen.queryByText(conflicting.answer)).not.toBeInTheDocument();
 });

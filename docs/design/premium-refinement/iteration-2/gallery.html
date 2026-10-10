@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask Cortex · second visual iteration</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f6ef;color:#173d30;font:16px/1.5 system-ui,sans-serif}
+header{padding:24px 32px;background:#173d30;color:#fffef9}h1{margin:0;font:32px Georgia,serif}
+header p{margin:8px 0 0;max-width:100ch}a{color:inherit}main{padding:24px 32px}
+.controls{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:24px}label{display:grid;gap:6px}
+select{font:inherit;padding:10px;background:#fffef9;color:#173d30;border:1px solid #7b8b7c;border-radius:6px;min-height:44px}
+button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #173d30;outline-offset:4px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}figure{margin:0;min-width:0}
+figcaption{margin:0 0 12px}img{display:block;width:100%;height:auto;border:1px solid #d4dacf}
+.mobile img{max-width:390px;margin:auto}section{margin-bottom:40px}h2{font:24px Georgia,serif}.notice{max-width:110ch;color:#58675d;margin-top:24px}
+@media(max-width:600px){header,main{padding:20px 16px}.pair{grid-template-columns:1fr}}
+</style>
+<header><h1>Ask Cortex · second visual iteration</h1><p>Actual local application screenshots. Previous PR pilot versus the new Ask composition. Same backend, profile, questions, date and scope. Production remains unchanged.</p></header>
+<main><div class="controls">
+<label>Viewport<select id="width"><option value="all">All review widths</option><option>1440</option><option>390</option><option>320</option><option>1280</option><option>768</option></select></label>
+<label>Theme<select id="theme"><option value="both">Both themes</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
+<label>State<select id="state"><option value="conflict">Conflict comparison</option><option value="answer">Supported answer</option><option value="empty">Start a question</option><option value="evidence">Mobile evidence view</option></select></label>
+</div><p id="selection-status" role="status"></p><div id="pairs"></div>
+<p class="notice">72 unmodified PNGs / 36 pairs: empty, answer and conflict at 1440, 1280, 768, 390 and 320px in both themes; evidence at 768, 390 and 320px. Click a capture for its original file. These screenshots use actual backend responses, not mocked API data. Long-answer, denial, loading and text-scaling regressions use separately identified UI fixtures.</p>
+<p><a href="README.md">Design choices, critique and verification</a> · <a href="captures.json">Original dimensions and SHA-256 manifest</a> · <a href="http://127.0.0.1:5173/assistant">Open local Ask Cortex</a></p></main>
+<script>
+const width=document.getElementById('width'),theme=document.getElementById('theme'),state=document.getElementById('state');
+function update(){
+  if(state.value==='evidence'&&Number(width.value)>=1100)width.value='390';
+  const widths=width.value==='all'?(state.value==='evidence'?[390,320]:[1440,390,320]):[Number(width.value)];
+  const themes=theme.value==='both'?['light','dark']:[theme.value],container=document.getElementById('pairs');
+  container.replaceChildren();
+  for(const t of themes)for(const w of widths){
+    const section=document.createElement('section'),heading=document.createElement('h2'),pair=document.createElement('div');
+    heading.textContent=w+'px · '+t+' · '+state.options[state.selectedIndex].text;section.append(heading);pair.className='pair'+(w<1100?' mobile':'');
+    for(const phase of ['before','after']){
+      const path=phase+'/'+t+'-'+state.value+'-'+w+'.png',figure=document.createElement('figure'),caption=document.createElement('figcaption'),link=document.createElement('a'),img=document.createElement('img');
+      caption.textContent=phase==='before'?'Before · PR #8 first pilot':'After · second iteration for approval';link.href=path;link.target='_blank';link.rel='noopener';img.src=path;img.loading='lazy';img.alt=phase+' '+t+' '+state.value+' at '+w+' pixels';link.append(img);figure.append(caption,link);pair.append(figure);
+    }
+    section.append(pair);container.append(section);
+  }
+  document.getElementById('selection-status').textContent=(widths.length*themes.length)+' actual before/after pairs shown.';
+}
+for(const control of [width,theme,state])control.addEventListener('change',update);update();
+</script></html>

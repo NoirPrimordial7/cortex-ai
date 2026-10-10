@@ -131,6 +131,20 @@ for (const width of [320, 390, 768, 1024, 1280, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await setup(page);
     await noOverflow(page);
+    if (width < 600) {
+      for (const label of ["As of", "Policy scope"]) {
+        expect(
+          await page
+            .getByLabel(label, { exact: true })
+            .evaluate((el) => parseFloat(getComputedStyle(el).fontSize)),
+        ).toBeGreaterThanOrEqual(16);
+      }
+    }
+    if (width === 320) {
+      expect(
+        (await page.getByLabel("Policy scope").boundingBox())!.width,
+      ).toBeGreaterThanOrEqual(190);
+    }
     await ask(page);
     await noOverflow(page);
     const citation = page.getByRole("button", {
@@ -285,6 +299,25 @@ test("conflict sources remain distinct and do not claim approval", async ({
   await expect(
     page.getByText("Policy conflict", { exact: true }),
   ).toBeVisible();
+  const comparison = page.getByRole("region", {
+    name: "Compare conflicting policy evidence",
+  });
+  await expect(comparison.locator("blockquote")).toHaveText([
+    quote,
+    second.quote,
+  ]);
+  await page
+    .getByRole("link", { name: "Jump to comparison", exact: true })
+    .click();
+  await expect(comparison).toBeFocused();
+  await page
+    .getByRole("link", { name: "Ask a follow-up", exact: true })
+    .click();
+  await expect(page.getByLabel("Ask about a company policy")).toBeFocused();
+  const claims = comparison.locator(".fb-claim");
+  const firstBox = await claims.nth(0).boundingBox();
+  const secondBox = await claims.nth(1).boundingBox();
+  expect(secondBox!.y).toBeGreaterThanOrEqual(firstBox!.y + firstBox!.height);
   await page
     .getByRole("button", {
       name: "View evidence: Alternative annual leave policy",
@@ -308,6 +341,116 @@ test("conflict sources remain distinct and do not claim approval", async ({
     path: "../outputs/fieldbook/conflict-390.png",
     fullPage: true,
   });
+});
+
+test("desktop conflict claims share a row, remain unobscured and reauthorize on inspection", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  const second = {
+    ...source,
+    id: "cite-b",
+    title: "Other policy",
+    text: "Title\n\n25 working days.",
+    quote: "25 working days.",
+    start_char: 7,
+    end_char: 23,
+  };
+  await setup(page, {
+    ...answer,
+    status: "abstained",
+    reason_code: "UNRESOLVED_CONFLICT",
+    answer: "Two policies disagree. I cannot choose between them.",
+    citations: [source, second],
+  });
+  await page
+    .getByRole("button", {
+      name: "How many annual leave days do I have?",
+      exact: true,
+    })
+    .click();
+  await expect(page.locator(".fb-claim blockquote")).toHaveText([
+    quote,
+    second.quote,
+  ]);
+  const claims = page.locator(".fb-claim");
+  expect((await claims.nth(0).boundingBox())!.y).toBe(
+    (await claims.nth(1).boundingBox())!.y,
+  );
+  expect(
+    await page
+      .locator(".fb-composer")
+      .evaluate((el) => getComputedStyle(el).position),
+  ).toBe("static");
+  await page.route("**/api/v1/queries/*/citations/cite-b", (route) =>
+    route.fulfill({
+      status: 404,
+      json: { error: { message: "Resource unavailable" } },
+    }),
+  );
+  await page
+    .getByRole("button", { name: "View evidence: Other policy" })
+    .click();
+  await expect(page.getByRole("alert")).toHaveText("Resource unavailable");
+  await expect(page.locator(".fb-claim")).toHaveCount(0);
+  await expect(page.getByText(quote, { exact: true })).toHaveCount(0);
+});
+
+test("conflict comparison supports 200 percent text, both themes and evidence focus at 320", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  const second = {
+    ...source,
+    id: "cite-b",
+    title: "Other policy",
+    text: "Title\n\n25 working days.",
+    quote: "25 working days.",
+    start_char: 7,
+    end_char: 23,
+  };
+  await setup(page, {
+    ...answer,
+    status: "abstained",
+    reason_code: "UNRESOLVED_CONFLICT",
+    answer: "Two policies disagree. I cannot choose between them.",
+    citations: [source, second],
+  });
+  await page
+    .getByRole("button", {
+      name: "How many annual leave days do I have?",
+      exact: true,
+    })
+    .click();
+  await expect(page.locator(".fb-claim blockquote")).toHaveText([
+    quote,
+    second.quote,
+  ]);
+  await page.evaluate(() => {
+    const nodes = document.querySelectorAll<HTMLElement>(
+      ".fb-claim h3,.fb-claim blockquote,.fb-claim dt,.fb-claim dd,.fb-applies,.fb-abstention,.fb-comparison-note,.question-bubble",
+    );
+    const sizes = Array.from(nodes, (node) =>
+      parseFloat(getComputedStyle(node).fontSize),
+    );
+    nodes.forEach((node, i) => {
+      node.style.fontSize = `${sizes[i] * 2}px`;
+    });
+  });
+  for (const dark of [false, true]) {
+    if (dark)
+      await page.getByRole("button", { name: "Switch to dark theme" }).click();
+    await noOverflow(page);
+    const citation = page.getByRole("button", {
+      name: "View evidence: Other policy",
+    });
+    await citation.click();
+    await expect(
+      page.getByRole("button", { name: "Back to answer" }),
+    ).toBeFocused();
+    await page.keyboard.press("Escape");
+    await expect(citation).toBeFocused();
+  }
 });
 test("source denial clears the derived answer", async ({ page }) => {
   await setup(page, answer, true);

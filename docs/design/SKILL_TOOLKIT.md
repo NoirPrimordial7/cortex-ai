@@ -1,5 +1,7 @@
 # Cortex AI — curated agent design toolkit
 
+**PR #8 rollout, 10 October 2026:** Ask iteration 2 is owner-approved for extension. All remaining routes are redesigned on the draft feature branch and await complete release approval. Production is unchanged by this refinement. [Current rollout evidence](premium-refinement/rollout/README.md). Historical publication statements below refer to the earlier release.
+
 **Latest status,10October2026:** The shared full-product design is owner-approved and published; [current production verification](production-release/README.md). Earlier implementation statements below are preserved history.
 
 **Current update, 2026-10-10:** Fieldbook is selected and Ask Cortex is implemented on the review branch. Playwright 1.64.0 is installed and its 13 browser scenarios pass; [implementation record](evidence-desk/selected/README.md). Historical status statements below describe the earlier preparation checkpoint.

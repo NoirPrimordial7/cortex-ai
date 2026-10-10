@@ -151,9 +151,8 @@ export default function Login() {
             <section className="demo-accounts" aria-label="Demo account picker">
               <strong>Try a demo account</strong>
               <p>
-                Choose an Auronix team demo profile, then sign in below. Roles
-                are examples; each profile sees its permitted documents and
-                shares demo history.
+                Choose a fictional profile to explore its role and permitted
+                documents.
               </p>
               <div>
                 {profiles.map((profile) => (

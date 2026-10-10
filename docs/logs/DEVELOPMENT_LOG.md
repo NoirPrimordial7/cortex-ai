@@ -1,5 +1,21 @@
 # Development log
 
+## 2026-10-10 — Owner-requested document rollback
+
+- Owner rejected the new large enterprise documents/reader and requested the previous document experience. Restored document/source/Ask UI and backend code from approved2085747; removed the corpus, full reader/PDF support and new ingestion/citation APIs. Retained the requested conflict grouping and mobile hierarchy.
+- Rebuilt frontend and verified28unit tests,39backend tests and35Chromium fixtures. Actual restored source/focus/editions/theme checks and ten fresh conflict captures are recorded in [focused conflict review](../design/premium-refinement/conflicts/README.md). Source and document code match the approved baseline. Existing functional fixes remain.
+- Restarted only the local8008preview using a SQLite backup and original files from the unchanged local baseline; original ten documents/history are visible through normal in-app demo sign-in. The previous rich-corpus preview is no longer served. No source database, production or permissions modified.
+- Removed rejected reader/corpus evidence from the current tree; updated PR scope and release documentation. Earlier pushed commits remain recoverable through normal Git history. Final rollback SHA confirmed after normal push to draft PR #8. No release approval, merge/deploy, force push or live Origin change.
+
+## 2026-10-10 — PR #8 approved Ask direction extended; release review pending
+
+- Read the owner's 00:12:32 UTC review on PR #8 and extended the approved forest/ivory direction to Library, Document Details, Conflicts, Activity, Permissions (including document grants), Audit, Upload, Dashboard and Login. This feature-branch review supersedes no previous production release; main remains a3c3a314e4fe5f93813c85591108195acf197c21 and no deployment or Origin change was made.
+- Introduced a catalogue/category index, joined edition reading room with native mobile edition selection, permission-checked conflict source jumps, filtered/paged registers, searchable people directory, grant rail, task-focused upload/dashboard and joined login surface. Kept backend behavior, review/revision guards, source authorization, immutable citations, answer-loading separation, session drafts and keyboard behavior.
+- Reviewed 200 actual unmodified Chromium captures across ten views, five widths and both themes. Gallery includes all 60 required before/after pairs at 1440/390/320, plus 768/1280. Same profiles/documents; evolving local history/audit data is disclosed. Capture review corrected 14px inherited search fields, narrow select labels and a dark disabled-action specificity issue.
+- Final checks: 39 backend tests, 27 frontend tests, Ruff, strict TypeScript/Vite build, changed-file formatting, 34 Chromium fixture scenarios, nine actual role/reflow/loading flows, three actual source/focus/contrast checks, capture/gallery checks and one isolated editable upload/review/hash/denial workflow. Firefox and Windows WebKit each passed 28 targeted scenarios. Sampled text contrast minimum 5.18:1; no horizontal overflow in the captured matrix.
+- Entry JS 96.39 kB gzip and shared CSS 9.94 kB gzip are asset sizes, not timing or Core Web Vitals. Physical phones, native Safari and screen-reader speech remain unverified. Activity/Audit pagination covers existing API limits (30 requests/100 events), without new retention or server pagination.
+- See [design decisions, original screenshots and limitations](../design/premium-refinement/rollout/README.md). PR #8 stays draft; complete visual/release approval is required before merge or deployment.
+
 ## 2026-10-10 — Full-product production release verified
 
 - Owner explicitly approved push and production publication. PR #6 merged atfc8444f; final application3834cda is pushed to main and live on Vercel READY/production and Render Live (dep-db4mvjp7lnhs7397f87g,69seconds). No identities, permissions, exact Origins or hosted read-only boundaries weakened.

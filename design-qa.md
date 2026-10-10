@@ -1,5 +1,7 @@
 # Cortex full-product UI/UX verification
 
+**Current draft work, 10 October 2026:** PR #8's second Ask visual iteration is awaiting owner approval. [Actual comparison gallery and scoped verification](docs/design/premium-refinement/iteration-2/README.md). This does not change the approved production release recorded below and does not authorize wider rollout.
+
 10 October 2026 · `codex/full-product-ux` · Issue #4
 
 **Local and production gates: PASS for the bounded checks.** Owner-approved PR #6 is merged; final application3834cda is live on Vercel and Render. [Production proof](docs/design/production-release/README.md):62 API assertions, six public browser tests,145 genuine screenshots at all six widths/both themes and18 exact served asset hashes.

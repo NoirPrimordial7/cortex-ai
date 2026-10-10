@@ -41,56 +41,76 @@ export default function Upload() {
         title="Upload a document"
         description="New files stay private and outside answers until reviewed and approved."
       />
-      <form className="upload-form" onSubmit={(e) => void submit(e)}>
-        <fieldset
-          disabled={busy || user?.read_only_demo}
-          className="upload-fields"
-        >
-          <div className="upload-intro">
-            <UploadSimpleIcon size={24} />
-            <h2>Start with the source</h2>
-            <p>
-              UTF-8 TXT, text-bearing PDF or DOCX · up to 10 MiB.
-              <br />
-              Scanned and encrypted PDFs are unsupported.
+      <div className="upload-workbench">
+        <form className="upload-form" onSubmit={(e) => void submit(e)}>
+          <fieldset
+            disabled={busy || user?.read_only_demo}
+            className="upload-fields"
+          >
+            <div className="upload-intro">
+              <UploadSimpleIcon size={24} />
+              <h2>Start with the source</h2>
+              <p>Choose a file, then give the document a clear name.</p>
+            </div>
+            <FilePicker disabled={busy || user?.read_only_demo} />
+            <div className="form-grid">
+              <FormField label="Document title">
+                <input
+                  name="title"
+                  maxLength={200}
+                  placeholder="A clear policy title"
+                  required
+                />
+              </FormField>
+              <FormField label="Category">
+                <select name="category">
+                  <option value="policy">Policy</option>
+                  <option value="SOP">SOP</option>
+                  <option value="project">Project</option>
+                </select>
+              </FormField>
+            </div>
+          </fieldset>
+          {error && (
+            <p role="alert" className="form-error">
+              {error}
             </p>
-          </div>
-          <FilePicker disabled={busy || user?.read_only_demo} />
-          <div className="form-grid">
-            <FormField label="Document title">
-              <input
-                name="title"
-                maxLength={200}
-                placeholder="A clear policy title"
-                required
-              />
-            </FormField>
-            <FormField label="Category">
-              <select name="category">
-                <option value="policy">Policy</option>
-                <option value="SOP">SOP</option>
-                <option value="project">Project</option>
-              </select>
-            </FormField>
-          </div>
-        </fieldset>
-        {error && (
-          <p role="alert" className="form-error">
-            {error}
+          )}
+          <button
+            className="button primary"
+            disabled={busy || user?.read_only_demo}
+          >
+            {busy ? "Extracting document…" : "Upload for review"}
+          </button>
+          <p className="subtle">
+            {user?.read_only_demo
+              ? "This shared demo is view-only. Uploads are disabled."
+              : "Next: review the extracted version before publishing."}
           </p>
-        )}
-        <button
-          className="button primary"
-          disabled={busy || user?.read_only_demo}
-        >
-          {busy ? "Extracting document…" : "Upload for review"}
-        </button>
-        <p className="subtle">
-          {user?.read_only_demo
-            ? "This shared demo is view-only. Uploads are disabled."
-            : "After extraction, review effective dates, the exact passage, source authority and access before publishing. Uploading alone does not make a policy eligible for answers."}
-        </p>
-      </form>
+        </form>
+        <aside className="upload-journey">
+          <h2>From file to evidence</h2>
+          <ol>
+            <li>
+              <strong>Extract the source</strong>
+              <p>The immutable text and its hash become a version record.</p>
+            </li>
+            <li>
+              <strong>Review its context</strong>
+              <p>
+                Verify the exact passage, authority, scope and effective dates.
+              </p>
+            </li>
+            <li>
+              <strong>Approve with access</strong>
+              <p>
+                Only approved, effective evidence with a current grant can
+                support an answer.
+              </p>
+            </li>
+          </ol>
+        </aside>
+      </div>
     </>
   );
 }

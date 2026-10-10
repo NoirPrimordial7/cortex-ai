@@ -41,7 +41,11 @@ export default function Dashboard() {
       <section className="overview-start">
         <div>
           <p className="eyebrow">Your evidence desk</p>
-          <h2>What would you like to know?</h2>
+          <h2>
+            {canAsk
+              ? "Begin with a question.\nStay close to the source."
+              : "A clear view of your workspace."}
+          </h2>
           <p>
             Policy answers depend on the date, your scope and the documents you
             can read.
@@ -163,6 +167,12 @@ export default function Dashboard() {
                     </Link>
                   )}
                 </>
+              )}
+              {canAsk && recent.length > 0 && (
+                <p className="section-note">
+                  Repeated answers are grouped here. Activity retains every
+                  request.
+                </p>
               )}
             </section>
           </div>
