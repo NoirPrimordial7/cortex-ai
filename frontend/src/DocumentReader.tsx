@@ -122,75 +122,78 @@ export default function DocumentReader({
             Next page
           </button>
         </nav>
-        {sections.length > 0 && (
-          <label>
-            Section
-            <select
-              aria-label="Document section"
-              value=""
-              onChange={(e) => {
-                if (e.target.value) go(Number(e.target.value));
-              }}
-            >
-              <option value="">Jump to a section</option>
-              {sections.map((s) => (
-                <option key={s.start} value={s.page}>
-                  {s.label}
-                </option>
-              ))}
-            </select>
-          </label>
+        <details className="reader-navigation">
+          <summary>Sections & text search</summary>
+          {sections.length > 0 && (
+            <label>
+              Section
+              <select
+                aria-label="Document section"
+                value=""
+                onChange={(e) => {
+                  if (e.target.value) go(Number(e.target.value));
+                }}
+              >
+                <option value="">Jump to a section</option>
+                {sections.map((s) => (
+                  <option key={s.start} value={s.page}>
+                    {s.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+          <div className="reader-find">
+            <label>
+              Find exact text
+              <input
+                type="search"
+                name="source-search"
+                autoComplete="off"
+                value={find}
+                onChange={(e) => {
+                  setFind(e.target.value);
+                  setMatch(0);
+                }}
+              />
+            </label>
+            {find && (
+              <>
+                <span role="status">
+                  {matches.length
+                    ? `${match + 1} of ${matches.length}${matches.length === 1000 ? " (first 1000)" : ""}`
+                    : "No matches"}
+                </span>
+                <button
+                  className="button"
+                  disabled={!matches.length || match === 0}
+                  onClick={() => moveMatch(match - 1)}
+                >
+                  Previous match
+                </button>
+                <button
+                  className="button"
+                  disabled={!matches.length || match === matches.length - 1}
+                  onClick={() => moveMatch(match + 1)}
+                >
+                  Next match
+                </button>
+                <button
+                  className="button"
+                  disabled={!matches.length}
+                  onClick={() => moveMatch(match)}
+                >
+                  Go to match
+                </button>
+              </>
+            )}
+          </div>
+        </details>
+        {evidence && (
+          <button className="button" onClick={supportingPassage}>
+            Supporting passage
+          </button>
         )}
-        <div className="reader-find">
-          <label>
-            Find exact text
-            <input
-              type="search"
-              name="source-search"
-              autoComplete="off"
-              value={find}
-              onChange={(e) => {
-                setFind(e.target.value);
-                setMatch(0);
-              }}
-            />
-          </label>
-          {find && (
-            <>
-              <span role="status">
-                {matches.length
-                  ? `${match + 1} of ${matches.length}${matches.length === 1000 ? " (first 1000)" : ""}`
-                  : "No matches"}
-              </span>
-              <button
-                className="button"
-                disabled={!matches.length || match === 0}
-                onClick={() => moveMatch(match - 1)}
-              >
-                Previous match
-              </button>
-              <button
-                className="button"
-                disabled={!matches.length || match === matches.length - 1}
-                onClick={() => moveMatch(match + 1)}
-              >
-                Next match
-              </button>
-              <button
-                className="button"
-                disabled={!matches.length}
-                onClick={() => moveMatch(match)}
-              >
-                Go to match
-              </button>
-            </>
-          )}
-          {evidence && (
-            <button className="button" onClick={supportingPassage}>
-              Supporting passage
-            </button>
-          )}
-        </div>
       </div>
       {evidence && (
         <p className="reader-evidence-note">

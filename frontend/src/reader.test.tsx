@@ -56,6 +56,7 @@ test("reader opens the cited reading page and exact match navigation preserves t
   ).toBe(quote);
   const selected = screen.getByLabelText("Reading page") as HTMLSelectElement;
   expect(Number(selected.value)).toBeGreaterThan(0);
+  await userEvent.click(screen.getByText("Sections & text search"));
   await userEvent.type(screen.getByLabelText("Find exact text"), quote);
   await userEvent.click(screen.getByRole("button", { name: "Next match" }));
   expect(screen.getByText("2 of 2")).toBeInTheDocument();

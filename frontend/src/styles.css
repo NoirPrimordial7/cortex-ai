@@ -3816,6 +3816,29 @@ strong {
     serif;
   margin-bottom: 18px;
 }
+.reader-navigation {
+  margin: 16px 0;
+}
+.reader-navigation > summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: 600;
+}
+.reader-navigation > summary::after {
+  content: "+";
+  margin-left: auto;
+}
+.reader-navigation[open] > summary::after {
+  content: "−";
+}
+.reader-navigation > label {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0;
+}
 .conflict-abstention {
   margin: 24px 0 0;
   max-width: 76ch;
