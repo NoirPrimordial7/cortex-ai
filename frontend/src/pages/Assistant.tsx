@@ -17,7 +17,7 @@ import {
   XIcon,
   IconContext,
 } from "@phosphor-icons/react";
-import { api } from "../api";
+import { api, ApiError } from "../api";
 import { useAskDraft } from "../AskDraft";
 import type { Answer, Citation, Source } from "../types";
 import { SourceInspector } from "../SourceInspector";
@@ -96,6 +96,9 @@ export default function Assistant() {
   const [busy, setBusy] = useState(false),
     [sourceBusy, setSourceBusy] = useState(false),
     [error, setError] = useState("");
+  const [comparison, setComparison] = useState<Source[]>([]),
+    [comparisonBusy, setComparisonBusy] = useState(false),
+    [denied, setDenied] = useState(false);
   const [narrow, setNarrow] = useState(
     () =>
       typeof matchMedia === "function" &&
@@ -117,6 +120,9 @@ export default function Assistant() {
     sourceEpoch.current++;
     setBusy(false);
     setSourceBusy(false);
+    setComparisonBusy(false);
+    setComparison([]);
+    setDenied(false);
     setAnswer(null);
     setSource(null);
     setSelected(null);
@@ -185,9 +191,31 @@ export default function Assistant() {
       if (epoch.current === stamp && sourceEpoch.current === sourceStamp) {
         clear();
         setError((e as Error).message);
+        setDenied(e instanceof ApiError && [403, 404, 409].includes(e.status));
       }
     } finally {
       if (sourceEpoch.current === sourceStamp) setSourceBusy(false);
+    }
+  }
+  async function compare(q: Answer) {
+    const stamp = epoch.current;
+    setComparisonBusy(true);
+    try {
+      // Do not expose either excerpt until ALL citation reads are authorized.
+      const sources = await Promise.all(
+        q.citations.map((c) =>
+          api<Source>(`/queries/${q.query_id}/citations/${c.id}`),
+        ),
+      );
+      if (epoch.current === stamp) setComparison(sources);
+    } catch (e) {
+      if (epoch.current === stamp) {
+        clear();
+        setError((e as Error).message);
+        setDenied(e instanceof ApiError && [403, 404, 409].includes(e.status));
+      }
+    } finally {
+      if (epoch.current === stamp) setComparisonBusy(false);
     }
   }
   async function send(e?: FormEvent, example?: string) {
@@ -215,7 +243,9 @@ export default function Assistant() {
       // The query has completed. Source authorization has its own loading state
       // and failure handling; it must not block the next question's composer.
       setBusy(false);
-      if (result.citations[0]) {
+      if (result.reason_code === "UNRESOLVED_CONFLICT") {
+        void compare(result);
+      } else if (result.citations[0]) {
         if (!narrow) setInspector(true);
         void inspect(result.citations[0], result);
       }
@@ -237,6 +267,11 @@ export default function Assistant() {
       busy={sourceBusy}
       conflict={conflict}
       formatDate={policyDate}
+      askFolio={
+        selected && answer
+          ? answer.citations.findIndex((c) => c.id === selected.id) + 1
+          : undefined
+      }
       context={
         answer
           ? { date: answer.as_of, population: answer.scope.population }
@@ -248,15 +283,65 @@ export default function Assistant() {
     <IconContext.Provider value={{ "aria-hidden": true }}>
       <div
         className={
-          "fieldbook" + (!answer && !busy && !error ? " is-empty" : "")
+          "fieldbook" +
+          (!answer && !busy && !error ? " is-empty" : "") +
+          (conflict ? " is-comparing" : "")
         }
       >
         <div className="fb-intro">
+          <p className="fb-title">Ask Cortex</p>
           <div>
             <BookOpenTextIcon size={20} />
             <span>Offline evidence answers</span>
           </div>
-          <span>Policy knowledge at your fingertips</span>
+        </div>
+        <div className="fb-controls">
+          <label>
+            <span className="fb-label">As of</span>
+            <span className="fb-control">
+              <CalendarBlankIcon size={18} />
+              <input
+                aria-label="As of"
+                name="as_of"
+                autoComplete="off"
+                type="date"
+                value={date}
+                onChange={(e) => {
+                  setDate(e.target.value);
+                  clear();
+                }}
+                required
+              />
+            </span>
+          </label>
+          <label>
+            <span className="fb-label">Policy scope</span>
+            <select
+              aria-label="Policy scope"
+              name="population"
+              autoComplete="off"
+              value={population}
+              onChange={(e) => {
+                setPopulation(e.target.value);
+                clear();
+              }}
+            >
+              <option value="india_full_time">India full-time</option>
+              <option value="india_contractor">India contractor</option>
+            </select>
+          </label>
+          {!narrow && selected && (
+            <button
+              className="fb-inspector-toggle"
+              ref={inspectorToggle}
+              aria-expanded={inspector}
+              aria-controls="document-inspector"
+              onClick={() => setInspector(!inspector)}
+            >
+              <SidebarSimpleIcon size={19} />
+              {inspector ? "Hide evidence" : "Show evidence"}
+            </button>
+          )}
         </div>
         <div
           className={
@@ -264,54 +349,6 @@ export default function Assistant() {
           }
         >
           <section className="fb-reading" aria-label="Ask Cortex">
-            <div className="fb-controls">
-              <label>
-                <span className="fb-label">As of</span>
-                <span className="fb-control">
-                  <CalendarBlankIcon size={18} />
-                  <input
-                    aria-label="As of"
-                    name="as_of"
-                    autoComplete="off"
-                    type="date"
-                    value={date}
-                    onChange={(e) => {
-                      setDate(e.target.value);
-                      clear();
-                    }}
-                    required
-                  />
-                </span>
-              </label>
-              <label>
-                <span className="fb-label">Policy scope</span>
-                <select
-                  aria-label="Policy scope"
-                  name="population"
-                  autoComplete="off"
-                  value={population}
-                  onChange={(e) => {
-                    setPopulation(e.target.value);
-                    clear();
-                  }}
-                >
-                  <option value="india_full_time">India full-time</option>
-                  <option value="india_contractor">India contractor</option>
-                </select>
-              </label>
-              {!narrow && selected && (
-                <button
-                  className="fb-inspector-toggle"
-                  ref={inspectorToggle}
-                  aria-expanded={inspector}
-                  aria-controls="document-inspector"
-                  onClick={() => setInspector(!inspector)}
-                >
-                  <SidebarSimpleIcon size={19} />
-                  {inspector ? "Hide evidence" : "Show evidence"}
-                </button>
-              )}
-            </div>
             <div
               className="fb-result"
               ref={reading}
@@ -328,10 +365,17 @@ export default function Assistant() {
                     <br />A source you can trust.
                   </h1>
                   <p>
-                    Explore the policy that applies to your date and scope.
-                    <br className="fb-desktop-break" /> Every supported answer
-                    brings its evidence.
+                    Start with a question. Read the answer alongside the exact
+                    policy behind it.
                   </p>
+                  <div className="fb-empty-proof">
+                    <BookOpenTextIcon size={28} />
+                    <span>
+                      Grounded in your accessible policies.
+                      <br />
+                      Checked for date, scope and authority.
+                    </span>
+                  </div>
                 </div>
               )}
               {busy && (
@@ -343,9 +387,21 @@ export default function Assistant() {
                 </div>
               )}
               {error && (
-                <div role="alert" className="fb-error">
-                  <WarningCircleIcon size={22} />
-                  <p>{error}</p>
+                <div className="fb-failure">
+                  <h1>
+                    {denied
+                      ? "Source unavailable"
+                      : "The check could not complete"}
+                  </h1>
+                  <div role="alert" className="fb-error">
+                    <WarningCircleIcon size={22} />
+                    <p>{error}</p>
+                  </div>
+                  <p>
+                    {denied
+                      ? "The answer and evidence have been cleared. Ask again to check the policies you can currently access."
+                      : "Your unfinished question is still below. Try again when the connection is available."}
+                  </p>
                 </div>
               )}
               {answer && (
@@ -375,7 +431,14 @@ export default function Assistant() {
                             : "Unable to answer"}
                     </span>
                   </div>
-                  <h2>{answer.answer}</h2>
+                  <h2>
+                    {conflict
+                      ? answer.citations.length === 2
+                        ? "Two policies. No single answer."
+                        : "Conflicting policies. No single answer."
+                      : answer.answer}
+                  </h2>
+                  {conflict && <p className="fb-abstention">{answer.answer}</p>}
                   <p className="fb-applies">
                     Applies to{" "}
                     {answer.scope.population === "india_full_time"
@@ -384,18 +447,81 @@ export default function Assistant() {
                     · as of {policyDate(answer.as_of)}
                   </p>
                   {conflict && (
-                    <p className="fb-conflict-note">
-                      Both cited policies have the same authority and apply
-                      simultaneously. Review both sources before deciding.
-                    </p>
-                  )}
-                  {answer.citations.length > 0 && (
-                    <div className="fb-citations">
-                      <p className="fb-label">
-                        {conflict
-                          ? "Policies to review"
-                          : "Supporting evidence"}
+                    <section
+                      className="fb-comparison"
+                      aria-label="Compare conflicting policy evidence"
+                    >
+                      <div className="fb-comparison-heading">
+                        <h3>Compare the policy claims</h3>
+                        <span>Equal authority · overlapping validity</span>
+                      </div>
+                      {comparisonBusy && (
+                        <p role="status" className="fb-source-loading">
+                          {answer.citations.length === 2
+                            ? "Checking source access for both policies…"
+                            : "Checking source access for all policies…"}
+                        </p>
+                      )}
+                      {comparison.length > 0 && (
+                        <div className="fb-comparison-grid">
+                          {comparison.map((s, i) => (
+                            <article key={s.id} className="fb-claim">
+                              <div className="fb-claim-heading">
+                                <span className="fb-citation-number">
+                                  {i + 1}
+                                </span>
+                                <h3>{s.title}</h3>
+                              </div>
+                              <blockquote>
+                                {s.text.slice(s.start_char, s.end_char)}
+                              </blockquote>
+                              <dl>
+                                <div>
+                                  <dt>Authority</dt>
+                                  <dd>
+                                    {s.source_kind.replaceAll("_", " ")}
+                                    {s.authority_rank !== undefined
+                                      ? ` · rank ${s.authority_rank}`
+                                      : ""}
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt>Effective</dt>
+                                  <dd>
+                                    {policyDate(s.valid_from)} to{" "}
+                                    {s.valid_to
+                                      ? policyDate(s.valid_to) + " (exclusive)"
+                                      : "open-ended"}
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt>Passage</dt>
+                                  <dd>{s.locator}</dd>
+                                </div>
+                              </dl>
+                              <button
+                                className="fb-claim-open"
+                                aria-label={`View evidence: ${s.title}`}
+                                onClick={(e) => {
+                                  evidenceReturn.current = e.currentTarget;
+                                  void inspect(s, answer, true);
+                                }}
+                              >
+                                Read full source
+                                <ArrowRightIcon size={18} />
+                              </button>
+                            </article>
+                          ))}
+                        </div>
+                      )}
+                      <p className="fb-comparison-note">
+                        Ask a policy owner to resolve this disagreement.
                       </p>
+                    </section>
+                  )}
+                  {answer.citations.length > 0 && !conflict && (
+                    <div className="fb-citations">
+                      <p className="fb-label">Supporting evidence</p>
                       <div className="fb-citation-list">
                         {answer.citations.map((c, i) => (
                           <button
@@ -469,12 +595,18 @@ export default function Assistant() {
                     "How many annual leave days do I have?",
                     "How many remote days per week?",
                     "What is my notice period?",
-                  ].map((text) => (
+                  ].map((text, i) => (
                     <button
                       key={text}
+                      aria-label={text}
                       onClick={() => void send(undefined, text)}
                     >
-                      {text}
+                      <span>
+                        <strong>
+                          {["Annual leave", "Remote work", "Notice period"][i]}
+                        </strong>
+                        <span>{text}</span>
+                      </span>
                       <ArrowRightIcon size={18} />
                     </button>
                   ))}

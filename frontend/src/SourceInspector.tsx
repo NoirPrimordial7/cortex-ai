@@ -14,6 +14,7 @@ export function SourceInspector({
   conflict = false,
   context,
   formatDate = (date) => date,
+  askFolio,
 }: {
   citation: Citation | null;
   source: Source | null;
@@ -21,12 +22,16 @@ export function SourceInspector({
   conflict?: boolean;
   context?: { date: string; population: string };
   formatDate?: (date: string) => string;
+  askFolio?: number;
 }) {
   const [expanded, setExpanded] = useState(false);
   if (!citation) return null;
   return (
-    <div className="fb-document">
-      <p className="fb-label">Source evidence</p>
+    <div className={"fb-document" + (askFolio ? " fb-ask-document" : "")}>
+      <p className="fb-label">
+        {askFolio && <span className="fb-folio-number">{askFolio}</span>}Source
+        evidence
+      </p>
       <h2>{citation.title}</h2>
       {context && (
         <p className="source-query-context">

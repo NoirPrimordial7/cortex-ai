@@ -125,7 +125,13 @@ export default function App() {
     );
   }
   return (
-    <div className={"app " + (dark ? "dark" : "")}>
+    <div
+      className={
+        "app " +
+        (dark ? "dark " : "") +
+        (location.pathname === "/assistant" ? "ask-workspace" : "")
+      }
+    >
       <a className="skip-link" href="#workspace">
         Skip to workspace
       </a>

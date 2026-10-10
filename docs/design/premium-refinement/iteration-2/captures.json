@@ -1,0 +1,614 @@
+[
+  {
+    "theme": "dark",
+    "state": "answer",
+    "viewport": 1280,
+    "before": {
+      "path": "before/dark-answer-1280.png",
+      "width": 1280,
+      "height": 1027,
+      "sha256": "8eef10e5db47eae649468cbad158b03e1e0e66b6806dde22f7a7aea9446b1bc4"
+    },
+    "after": {
+      "path": "after/dark-answer-1280.png",
+      "width": 1280,
+      "height": 1109,
+      "sha256": "d6448de1f07d78114218728031968d9762ef78850f1b592d5bfdd048d8a38bf8"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "answer",
+    "viewport": 1440,
+    "before": {
+      "path": "before/dark-answer-1440.png",
+      "width": 1440,
+      "height": 1027,
+      "sha256": "ebca1601fc7a3259cabe2710942b87bcf4f3e41e4e82f81d576e3620ec586be3"
+    },
+    "after": {
+      "path": "after/dark-answer-1440.png",
+      "width": 1440,
+      "height": 1063,
+      "sha256": "61beaaabb372e6b103d7772ddd813e0b82e5c4c275dd724cd9ce886f076ad66a"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "answer",
+    "viewport": 320,
+    "before": {
+      "path": "before/dark-answer-320.png",
+      "width": 320,
+      "height": 1061,
+      "sha256": "d49bde9c6edec7f9b775f9966a3cd24ba4bd9bfe204d7bf7359dd1bf7e8c5808"
+    },
+    "after": {
+      "path": "after/dark-answer-320.png",
+      "width": 320,
+      "height": 1178,
+      "sha256": "bd05443cfd1172a61e26502a22516efc0926c120c4e0061bd9c06b1c9debdba3"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "answer",
+    "viewport": 390,
+    "before": {
+      "path": "before/dark-answer-390.png",
+      "width": 390,
+      "height": 1012,
+      "sha256": "c239ab2c3fc43daf297d00cfee866cc3d16238e21eb68d2004e00bebb69e1975"
+    },
+    "after": {
+      "path": "after/dark-answer-390.png",
+      "width": 390,
+      "height": 1034,
+      "sha256": "d201b10ed87384af7e82a61077c00a6d5a1264bd721a961be33eb55f5e1aaaed"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "answer",
+    "viewport": 768,
+    "before": {
+      "path": "before/dark-answer-768.png",
+      "width": 768,
+      "height": 1191,
+      "sha256": "caba4d455faf50ff5523d872f52bd03154607496baf2ffa00e58c3e1af36a30f"
+    },
+    "after": {
+      "path": "after/dark-answer-768.png",
+      "width": 768,
+      "height": 1049,
+      "sha256": "e8ffc0c7d706ce6e4fc2f5a04650da3092ed07b10039c76213adf3825a6e48a0"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "conflict",
+    "viewport": 1280,
+    "before": {
+      "path": "before/dark-conflict-1280.png",
+      "width": 1280,
+      "height": 1105,
+      "sha256": "39ae1d3925ca22960233fa8cc72310b21eb7138bcf15dfe50deb99dd4b7691d7"
+    },
+    "after": {
+      "path": "after/dark-conflict-1280.png",
+      "width": 1280,
+      "height": 1424,
+      "sha256": "69c7e497d48722a0a27ca00b5085ae16148b6cf865df6a00891418cdd93c1ecc"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "conflict",
+    "viewport": 1440,
+    "before": {
+      "path": "before/dark-conflict-1440.png",
+      "width": 1440,
+      "height": 1105,
+      "sha256": "364fe5d6c7c15369ad459859e00554c3c41e984972822f9206091973c23b6cca"
+    },
+    "after": {
+      "path": "after/dark-conflict-1440.png",
+      "width": 1440,
+      "height": 1424,
+      "sha256": "646a56b9fd7969a30e74a7f5ea59d671822f94d8bd1de5ddaa23b7daaa701243"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "conflict",
+    "viewport": 320,
+    "before": {
+      "path": "before/dark-conflict-320.png",
+      "width": 320,
+      "height": 1324,
+      "sha256": "d1485b2fb61fe847bc907270807031f348bf3d5ba57021d3e87f737e6340f2e4"
+    },
+    "after": {
+      "path": "after/dark-conflict-320.png",
+      "width": 320,
+      "height": 2207,
+      "sha256": "a48dfe2c21de337076f19e0251897eeccb25f1c019807e9706f242cdffea20c2"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "conflict",
+    "viewport": 390,
+    "before": {
+      "path": "before/dark-conflict-390.png",
+      "width": 390,
+      "height": 1258,
+      "sha256": "17ce1e4e4030f03ab63191d8088ceee6c08bba834e86f430f29325d0ec664eb7"
+    },
+    "after": {
+      "path": "after/dark-conflict-390.png",
+      "width": 390,
+      "height": 1910,
+      "sha256": "838e24c854de0973b2bd42ab5704e977b62fda75dc0d94e3a88e2e79c1c6fb20"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "conflict",
+    "viewport": 768,
+    "before": {
+      "path": "before/dark-conflict-768.png",
+      "width": 768,
+      "height": 1039,
+      "sha256": "a873f5430352a2e5bb74f6acda70ba9809ba1d6d776d04a8e6ee019270934f62"
+    },
+    "after": {
+      "path": "after/dark-conflict-768.png",
+      "width": 768,
+      "height": 1513,
+      "sha256": "def909bf6efdd2e6f5314044664720273bc6d35ea84c9fae3e5682e815dcefcb"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "empty",
+    "viewport": 1280,
+    "before": {
+      "path": "before/dark-empty-1280.png",
+      "width": 1280,
+      "height": 1028,
+      "sha256": "f7828983d477c031c0e5cb99b4db13f144d6aa202fc32345deeadea4903bb21b"
+    },
+    "after": {
+      "path": "after/dark-empty-1280.png",
+      "width": 1280,
+      "height": 938,
+      "sha256": "fc9b74df78513acaf7308dc347b179b47249f18d9075e88d10bd813af3bcc66b"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "empty",
+    "viewport": 1440,
+    "before": {
+      "path": "before/dark-empty-1440.png",
+      "width": 1440,
+      "height": 1028,
+      "sha256": "80856e997a6d8ad6304fc550d5f1ea432e49f408c3d45b88d0e21e1fe55f1c7f"
+    },
+    "after": {
+      "path": "after/dark-empty-1440.png",
+      "width": 1440,
+      "height": 938,
+      "sha256": "b684f9f66c7a5338afb74d19ea04414fbb694807cdc4ddba4b59e12a7048217a"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "empty",
+    "viewport": 320,
+    "before": {
+      "path": "before/dark-empty-320.png",
+      "width": 320,
+      "height": 1043,
+      "sha256": "a6d6b282d07bc91fbc92f72657f2d5f91305bfa0973038b277c24c02d9963f82"
+    },
+    "after": {
+      "path": "after/dark-empty-320.png",
+      "width": 320,
+      "height": 1247,
+      "sha256": "2ff8ac81044e9e070be9076a01242d42b585700ceef788508680e24f1710e780"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "empty",
+    "viewport": 390,
+    "before": {
+      "path": "before/dark-empty-390.png",
+      "width": 390,
+      "height": 956,
+      "sha256": "f651f851b9cb11aabdca9dd600d331c0d385446884bfb2da6cf1df5970ec811b"
+    },
+    "after": {
+      "path": "after/dark-empty-390.png",
+      "width": 390,
+      "height": 1117,
+      "sha256": "9e4949473d0d36e3062c0cc53097df4d413967c9b7ac95e81d2b279c3f7db7d9"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "empty",
+    "viewport": 768,
+    "before": {
+      "path": "before/dark-empty-768.png",
+      "width": 768,
+      "height": 940,
+      "sha256": "4973856d1f2db9c1873ae7e8750a99b49ca31fe6eb6e12be957e6a509ec03952"
+    },
+    "after": {
+      "path": "after/dark-empty-768.png",
+      "width": 768,
+      "height": 926,
+      "sha256": "dcfa9b17075c427d499e0a88f6df8cf6c02f8218a3ae25349cd19ea0505453e3"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "evidence",
+    "viewport": 320,
+    "before": {
+      "path": "before/dark-evidence-320.png",
+      "width": 320,
+      "height": 1061,
+      "sha256": "06cf9a9069037f644bfb8c6025fc0e5b4e2091a6c61561e4ab45113e5e72fa8f"
+    },
+    "after": {
+      "path": "after/dark-evidence-320.png",
+      "width": 320,
+      "height": 1178,
+      "sha256": "140904b59b98281043456370857e680fb76d30f3edbaa1157ca896d90d60c95c"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "evidence",
+    "viewport": 390,
+    "before": {
+      "path": "before/dark-evidence-390.png",
+      "width": 390,
+      "height": 1012,
+      "sha256": "b19bdbb2b97562cd16e17b615683c3ff7e14d3d2030aba47c363c28d2ce2afaf"
+    },
+    "after": {
+      "path": "after/dark-evidence-390.png",
+      "width": 390,
+      "height": 1034,
+      "sha256": "baa3f596f8fce9f6a253b639452799e29bff97c24f4c0c987d388b939dfb1b27"
+    }
+  },
+  {
+    "theme": "dark",
+    "state": "evidence",
+    "viewport": 768,
+    "before": {
+      "path": "before/dark-evidence-768.png",
+      "width": 768,
+      "height": 939,
+      "sha256": "1f7ef6593b677f71ac4d3e83d0b6c38d5cf09a671163ee5fb5b61a01327723b1"
+    },
+    "after": {
+      "path": "after/dark-evidence-768.png",
+      "width": 768,
+      "height": 1049,
+      "sha256": "d4a4cd9872704cbd439f377203566402ef6c44ddcfe7c84ffe2d51f45558e498"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "answer",
+    "viewport": 1280,
+    "before": {
+      "path": "before/light-answer-1280.png",
+      "width": 1280,
+      "height": 1027,
+      "sha256": "9e012f1512b2c34422baa7c537f8dc51bcd3443a5567b10e5afb5b623b05ecbb"
+    },
+    "after": {
+      "path": "after/light-answer-1280.png",
+      "width": 1280,
+      "height": 1109,
+      "sha256": "993e82e0ff3fa1f161bf6d10de3e434e188413d809ffb2f2d82f0b2c8345fb35"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "answer",
+    "viewport": 1440,
+    "before": {
+      "path": "before/light-answer-1440.png",
+      "width": 1440,
+      "height": 1027,
+      "sha256": "699f63e1e4e2bce16fbcc452a76e57004d7a677eec112a567063ceaca493a70c"
+    },
+    "after": {
+      "path": "after/light-answer-1440.png",
+      "width": 1440,
+      "height": 1063,
+      "sha256": "98216b27a4e44f92e2ebb465605d92403045139fa1884919f793c925e0410f8d"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "answer",
+    "viewport": 320,
+    "before": {
+      "path": "before/light-answer-320.png",
+      "width": 320,
+      "height": 1061,
+      "sha256": "8576f41832126ea74edc39ab58f9c40e1e92b3834cbc49746538315f66a5106e"
+    },
+    "after": {
+      "path": "after/light-answer-320.png",
+      "width": 320,
+      "height": 1178,
+      "sha256": "a248e12e831f9bec1ee455e20e16da4292e1646d9507284e4d5b16d5f15144b5"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "answer",
+    "viewport": 390,
+    "before": {
+      "path": "before/light-answer-390.png",
+      "width": 390,
+      "height": 1012,
+      "sha256": "0b20d4bbe64798ddcf61f17f28c4357b5c27fa4fb19f0d24dcbae0bb70b4ae78"
+    },
+    "after": {
+      "path": "after/light-answer-390.png",
+      "width": 390,
+      "height": 1034,
+      "sha256": "2c05a6fc33e91f0517434d4cdb3c17b8371d293ecb77fa69567cdc8e16723d22"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "answer",
+    "viewport": 768,
+    "before": {
+      "path": "before/light-answer-768.png",
+      "width": 768,
+      "height": 1191,
+      "sha256": "8d6a930543ef07794b36bcaa6d69a2b9e551a0d10793d8835e155da9a1767af2"
+    },
+    "after": {
+      "path": "after/light-answer-768.png",
+      "width": 768,
+      "height": 1049,
+      "sha256": "79dcc5a96c465fa92451024f7c7151779626d8a6d5353751756b4549e46ce3b1"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "conflict",
+    "viewport": 1280,
+    "before": {
+      "path": "before/light-conflict-1280.png",
+      "width": 1280,
+      "height": 1105,
+      "sha256": "86aacf2209bec0788a9c9d5270ef5d8a27c4409d2884593c8d68953b86ba272e"
+    },
+    "after": {
+      "path": "after/light-conflict-1280.png",
+      "width": 1280,
+      "height": 1424,
+      "sha256": "61132eea930b818c22f8be7b425c9d5b9bdbe2e1c38b4d3e6a6de67bb96740cb"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "conflict",
+    "viewport": 1440,
+    "before": {
+      "path": "before/light-conflict-1440.png",
+      "width": 1440,
+      "height": 1105,
+      "sha256": "715dcad500524f477c6c1502fb4c1a26393eef633336fd6b944b8bed697f6db8"
+    },
+    "after": {
+      "path": "after/light-conflict-1440.png",
+      "width": 1440,
+      "height": 1424,
+      "sha256": "fa20414b8a06598698ffececbbbbf30b5fa0caab174a0800695bf155897bc7bf"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "conflict",
+    "viewport": 320,
+    "before": {
+      "path": "before/light-conflict-320.png",
+      "width": 320,
+      "height": 1324,
+      "sha256": "82b6302fd68f35b31cec1db3fd7fe7ae2742255f0b7f1623ed42610e58ca23be"
+    },
+    "after": {
+      "path": "after/light-conflict-320.png",
+      "width": 320,
+      "height": 2207,
+      "sha256": "039200083b47dd1842188a4861d6da05c64a25c3bb0db75bc6fa351de84b955f"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "conflict",
+    "viewport": 390,
+    "before": {
+      "path": "before/light-conflict-390.png",
+      "width": 390,
+      "height": 1258,
+      "sha256": "9af95c31b15924d71041f13706949b81ee2d4b10f4ff97ce24aa5c29be76e257"
+    },
+    "after": {
+      "path": "after/light-conflict-390.png",
+      "width": 390,
+      "height": 1910,
+      "sha256": "635c5c948d33334ff41f9f95d9373ede46791fb91289fef60d926ef68de4ad36"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "conflict",
+    "viewport": 768,
+    "before": {
+      "path": "before/light-conflict-768.png",
+      "width": 768,
+      "height": 1039,
+      "sha256": "b683c731f1cf8420f69066815128273e6678392dc35aca552fa9262b6d09a506"
+    },
+    "after": {
+      "path": "after/light-conflict-768.png",
+      "width": 768,
+      "height": 1513,
+      "sha256": "6f1cd0099fce53b9b570ef95a74ddfd27e2861da2bd94e428b2ee31371e11e69"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "empty",
+    "viewport": 1280,
+    "before": {
+      "path": "before/light-empty-1280.png",
+      "width": 1280,
+      "height": 1028,
+      "sha256": "7a8488b5ddc6fc651371d972c5c8ac11ec3772e8fb88624c15df78f1fb0feb39"
+    },
+    "after": {
+      "path": "after/light-empty-1280.png",
+      "width": 1280,
+      "height": 938,
+      "sha256": "305e99695d42769e3f03f85a27d732700ef2a6cc7db302cca992e248aeeb710d"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "empty",
+    "viewport": 1440,
+    "before": {
+      "path": "before/light-empty-1440.png",
+      "width": 1440,
+      "height": 1028,
+      "sha256": "109407452e3881c54f33e62440be872dabca76f9fe851cb844b802abee2e2fd8"
+    },
+    "after": {
+      "path": "after/light-empty-1440.png",
+      "width": 1440,
+      "height": 938,
+      "sha256": "dabe772913417d15456876e32cb4193da7ab60964812de8cc8432be280fe0aad"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "empty",
+    "viewport": 320,
+    "before": {
+      "path": "before/light-empty-320.png",
+      "width": 320,
+      "height": 1043,
+      "sha256": "d29e6a26f9b98c849c0e0c4d472921b117ad30138d8cc8c88518a4c8242e6ad3"
+    },
+    "after": {
+      "path": "after/light-empty-320.png",
+      "width": 320,
+      "height": 1247,
+      "sha256": "460e23b0ab1d2ccff2e65f9e0cf7b0d53275c340384ebe01f20cbc51613924f8"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "empty",
+    "viewport": 390,
+    "before": {
+      "path": "before/light-empty-390.png",
+      "width": 390,
+      "height": 956,
+      "sha256": "18b303afaba46df72044f3da834a949eded5f24c637105d5aada22491a7c5e92"
+    },
+    "after": {
+      "path": "after/light-empty-390.png",
+      "width": 390,
+      "height": 1117,
+      "sha256": "d440338b34b3e17768639d75efb81eede35d298e7be775b25af494409e466af5"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "empty",
+    "viewport": 768,
+    "before": {
+      "path": "before/light-empty-768.png",
+      "width": 768,
+      "height": 940,
+      "sha256": "668cc3a9d828f8678641bc2a652b69cc37ca26129e153540286d7b8c7396b590"
+    },
+    "after": {
+      "path": "after/light-empty-768.png",
+      "width": 768,
+      "height": 926,
+      "sha256": "441ab6bbfbcb17a31f95595863242914b89c1a37ac8127b216418c991bedbc91"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "evidence",
+    "viewport": 320,
+    "before": {
+      "path": "before/light-evidence-320.png",
+      "width": 320,
+      "height": 1061,
+      "sha256": "966c8094f847dc6060390bc0e89fc2b88e50be3ba1dc175f1f460a761d8ec5a6"
+    },
+    "after": {
+      "path": "after/light-evidence-320.png",
+      "width": 320,
+      "height": 1178,
+      "sha256": "d8c6c4f658a800e11df1a888c3adf53c982c0fe7c4fea4a436c55911e6c759ee"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "evidence",
+    "viewport": 390,
+    "before": {
+      "path": "before/light-evidence-390.png",
+      "width": 390,
+      "height": 1012,
+      "sha256": "5c06acca81c3edbd4108461f83db062d27c40ee4bf233695d92cf328829da2f9"
+    },
+    "after": {
+      "path": "after/light-evidence-390.png",
+      "width": 390,
+      "height": 1034,
+      "sha256": "8700afa1a0c97450a6c2c9e16097ebbdaf5c85b5b3f168f123b3ae5af007b9e3"
+    }
+  },
+  {
+    "theme": "light",
+    "state": "evidence",
+    "viewport": 768,
+    "before": {
+      "path": "before/light-evidence-768.png",
+      "width": 768,
+      "height": 939,
+      "sha256": "10b92e3aae3e06ad28f80deca1fc3cc46713f26a1ef6bd5c9e2c9e857e7bdc16"
+    },
+    "after": {
+      "path": "after/light-evidence-768.png",
+      "width": 768,
+      "height": 1049,
+      "sha256": "55f687d5ba2d9fea3ac3f809a3f7a3cf9604b87e05669bd58bd6374c88ff1aa5"
+    }
+  }
+]

@@ -1,5 +1,7 @@
 # Ask Cortex premium pilot — review checkpoint
 
+**Latest, 10 October 2026:** The owner accepted the functional fixes and requested a stronger Ask-only visual iteration. [Second iteration, actual screenshots and approval checkpoint](iteration-2/README.md) · [new before/after gallery](iteration-2/gallery.html). The first-pilot report below remains historical. Production and main remain untouched.
+
 10 October 2026. Dedicated Issue [#7](https://github.com/NoirPrimordial7/cortex-ai/issues/7) sprint, feature branch `codex/premium-ask-refinement`. Baseline/main: `a3c3a314`. **Production is unchanged.** Remaining page refinements require the owner's review of this Ask pilot, as requested in the sprint brief.
 
 Open [the before/after gallery](gallery.html), [complete route audit](AUDIT.md), and [Awwwards research and reviewed skills](REFERENCES.md). The application continues running at `http://127.0.0.1:5173/assistant`. The gallery contains **44 comparison pairs / 88 unmodified actual screenshots**, across six widths, both themes, empty/answered/conflict states and the four narrow-screen evidence views.
