@@ -1,5 +1,12 @@
 # Development log
 
+## 2026-10-10 — Approved PR #8 published with restored documents
+
+- Owner explicitly approved production publication of the latest restored version. PR #8 merged atb87a5de. Final application22cbeef is Vercel READY/production and Render Live; original document/citation/backend implementation matches approved2085747. The withdrawn large corpus/reader is not released.
+- Real production screenshot review caught conflict metadata encoding; corrected four display separators, added hosted grouping/offset/hash/occurrence/focus regression coverage, then repeated final checks. Fixed the screenshot-test theme-readiness race and recaptured both actual themes.
+- Final checks:28frontend tests,39backend tests, Ruff/build/Prettier and conflict regression pass;62public API assertions and six unique browser scenarios pass.155real PNGs/154geometry observations, zero overflow/clipped visible controls;19served JS/CSS assets match the tested build.18PNG representatives, provider proof and sanitized full records are in [release evidence](../design/pr8-production-release/README.md).
+- No permissions, exact Origins, protection or hosting plans changed. Existing Free/read-only/disposable hosting and physical-device/assistive-technology/field-performance limits remain. Evidence/test-only follow-up uses[skip render] to preserve the verified backend; no force push.
+
 ## 2026-10-10 — Owner-requested document rollback
 
 - Owner rejected the new large enterprise documents/reader and requested the previous document experience. Restored document/source/Ask UI and backend code from approved2085747; removed the corpus, full reader/PDF support and new ingestion/citation APIs. Retained the requested conflict grouping and mobile hierarchy.

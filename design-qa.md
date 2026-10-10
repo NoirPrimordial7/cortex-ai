@@ -1,6 +1,8 @@
 # Cortex full-product UI/UX verification
 
-**Current draft work, 10 October 2026:** PR #8's second Ask visual iteration is awaiting owner approval. [Actual comparison gallery and scoped verification](docs/design/premium-refinement/iteration-2/README.md). This does not change the approved production release recorded below and does not authorize wider rollout.
+**Current production,10October2026:** Owner-approved PR #8 is merged and live. Previous compact documents and the original corpus are restored; approved forest/ivory layouts and grouped conflicts remain. [Final production QA](docs/design/pr8-production-release/README.md) records62API assertions, six unique browser scenarios,155captures and19exact asset hashes.
+
+**Preserved draft history, 10 October 2026:** PR #8's second Ask visual iteration is awaiting owner approval. [Actual comparison gallery and scoped verification](docs/design/premium-refinement/iteration-2/README.md). This does not change the approved production release recorded below and does not authorize wider rollout.
 
 10 October 2026 · `codex/full-product-ux` · Issue #4
 

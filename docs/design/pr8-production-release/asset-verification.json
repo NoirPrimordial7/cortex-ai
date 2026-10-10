@@ -1,0 +1,147 @@
+{
+  "checked_at": "2026-10-10T03:55:42.267423+00:00",
+  "base_url": "https://cortex-ai-three-kappa.vercel.app",
+  "application_source_sha": "22cbeef46ae6c78112993c1e0fa6f4e33bdbcb11",
+  "assets": [
+    {
+      "asset": "ArrowLeft.es-BZq3mGDH.js",
+      "bytes": 1522,
+      "gzip_bytes": 589,
+      "sha256": "2e177cf8ef5afd0bbb8c26c81d9f214a1436409a64a016dd3c88a87174775ade",
+      "matched": true
+    },
+    {
+      "asset": "Assistant-BErsXuTV.js",
+      "bytes": 15908,
+      "gzip_bytes": 5127,
+      "sha256": "0b50fd5d640daffb7a16e967ea566fe1e2e4acb362b54802c98ba4b74ec7f790",
+      "matched": true
+    },
+    {
+      "asset": "Audit-DZc6Hfes.js",
+      "bytes": 2553,
+      "gzip_bytes": 1074,
+      "sha256": "fd6707f78b9968c9893b88e5661f7205ab8841a0bf81bd732b91f4e7878ceb06",
+      "matched": true
+    },
+    {
+      "asset": "Conflicts-Cq8HzT9B.js",
+      "bytes": 6390,
+      "gzip_bytes": 2546,
+      "sha256": "0d2e62d3781faa5d09690e43d1e1caf31779c6fa7a3d5f19255e59e9d327a3e1",
+      "matched": true
+    },
+    {
+      "asset": "Dashboard-DUCMVCIT.js",
+      "bytes": 3572,
+      "gzip_bytes": 1410,
+      "sha256": "783e1748fdf213c338f88a90f0ca06f3dec2980cd79554f75843cbacf220fe90",
+      "matched": true
+    },
+    {
+      "asset": "DocumentDetail-CdCpQsRM.js",
+      "bytes": 14551,
+      "gzip_bytes": 4795,
+      "sha256": "fb1c91d0f0c33b4cd83ca6754609c6d9361016615cbfdb0457e719767cacd6d8",
+      "matched": true
+    },
+    {
+      "asset": "FilePicker-SXNUc05p.js",
+      "bytes": 938,
+      "gzip_bytes": 591,
+      "sha256": "7f02725abe4f37cda211a4936ab2ba0a2919939320594112ec657f9f2615a719",
+      "matched": true
+    },
+    {
+      "asset": "FileText.es-CosGnzHE.js",
+      "bytes": 2596,
+      "gzip_bytes": 781,
+      "sha256": "0b56c640b881175dfe7bd2bccd60f8de15e6bd32877079b963c1b4b26b52c515",
+      "matched": true
+    },
+    {
+      "asset": "FormPrimitives-Be7X07tL.js",
+      "bytes": 433,
+      "gzip_bytes": 255,
+      "sha256": "8ff666a9553f2a5299bcbd7670aa39ba873c4d4e2a67f09ed5f7d2f3e4ee1da3",
+      "matched": true
+    },
+    {
+      "asset": "History-BMz3jy-d.js",
+      "bytes": 3194,
+      "gzip_bytes": 1394,
+      "sha256": "ae1ee4028146a15da24e15983af547503ad71b11d5122c0c21988d37f53c3337",
+      "matched": true
+    },
+    {
+      "asset": "index-BAP4LEOw.css",
+      "bytes": 52666,
+      "gzip_bytes": 10068,
+      "sha256": "a29173161d784e460bad463d1c93412a79998de577aed04d2e1eb35298540beb",
+      "matched": true
+    },
+    {
+      "asset": "index-CFsdH_QL.js",
+      "bytes": 309595,
+      "gzip_bytes": 95874,
+      "sha256": "610994c9a17b83f747f49fe74a16ee7b933a0688250154bc7ec77dd6a1a4481c",
+      "matched": true
+    },
+    {
+      "asset": "Library-DTJ4zaso.js",
+      "bytes": 6598,
+      "gzip_bytes": 2232,
+      "sha256": "75be4bf50b686f092beaf3d0188143a42e78c647c94d6382a2b16174059d088a",
+      "matched": true
+    },
+    {
+      "asset": "MagnifyingGlass.es-DRp1pNzH.js",
+      "bytes": 1611,
+      "gzip_bytes": 648,
+      "sha256": "59ab6f3f9f436ef04d4e52e7b96f453b28b3aaf92abae13508e774aa068441e4",
+      "matched": true
+    },
+    {
+      "asset": "Permissions-BrihXY4_.js",
+      "bytes": 10186,
+      "gzip_bytes": 3329,
+      "sha256": "92582436e93773461233a21cc3c56d1fb96223cddff3a8a05eeb54f167442397",
+      "matched": true
+    },
+    {
+      "asset": "RecordPager-DNFcqIQC.js",
+      "bytes": 539,
+      "gzip_bytes": 341,
+      "sha256": "4a401b2ce163e5a1babdd4a6bac9c20eccc06effac944891fd4823ba990576ee",
+      "matched": true
+    },
+    {
+      "asset": "SourceInspector-DXZL8DQy.js",
+      "bytes": 2872,
+      "gzip_bytes": 1096,
+      "sha256": "918068c6cd5b0d6aa0c3399f5328d34fe8165f41d22d1064972c5bac079d84df",
+      "matched": true
+    },
+    {
+      "asset": "Upload-5lOaj3FK.js",
+      "bytes": 4653,
+      "gzip_bytes": 1785,
+      "sha256": "34b7690bfa4f2e4c309fd795b11b2b24e50de5e5fd708ed678ca2ac3cdb0ebac",
+      "matched": true
+    },
+    {
+      "asset": "useCitationAccess-DVK3576h.js",
+      "bytes": 1375,
+      "gzip_bytes": 749,
+      "sha256": "ec501758fde104fcbc58f50f0cd62b8a11c54783252d4bff6738c5f72a4f6d26",
+      "matched": true
+    }
+  ],
+  "all_matched": true,
+  "api_health": {
+    "status": "ok",
+    "mode": "offline_evidence"
+  },
+  "api_cache_control": "no-store",
+  "size_scope": "Per-asset gzip payload bytes; not API/CDN timing or Core Web Vitals."
+}

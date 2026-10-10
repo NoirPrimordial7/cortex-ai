@@ -1,5 +1,7 @@
 # Focused conflict refinement; previous documents restored
 
+**Released after owner approval,10October2026:** PR #8 merged; final application22cbeef is live on Vercel and Render. Previous documents and corpus remain restored. [Actual production verification and screenshots](../../pr8-production-release/README.md). Statements below record the earlier review checkpoint.
+
 The owner approved the complete forest/ivory workspace and requested repeated-conflict/mobile polish. They subsequently rejected the new large enterprise documents and reader, requesting the previous document experience. The latest PR removes the new corpus, A4/full-screen reader, PDF renderer, ingestion/citation extensions and their review artifacts. Backend and Document Details/Source Inspector/Ask return to the approved `2085747` implementation. Existing authentication, permissions, citations, history, loading separation, drafts and keyboard behavior are preserved.
 
 The local preview at http://127.0.0.1:8008 uses an isolated snapshot of the original ten-document dataset and historical records. The original local baseline database and production are unchanged. The catalogue and compact source/edition presentation are restored in the real in-app browser.

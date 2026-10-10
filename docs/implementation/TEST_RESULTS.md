@@ -1,5 +1,9 @@
 # Current production verification
 
+**Latest PR #8 release:** application22cbeef is published by both hosts after owner approval.28frontend/39backend tests,62public API assertions, six unique production browser scenarios,155fresh PNGs/154geometry observations and19exact served asset hashes pass. [Final evidence](../design/pr8-production-release/README.md).
+
+## Previous release verification
+
 10 October2026: owner-approved main/application3834cda is published. Final public checks:62 API assertions, six Chromium browser tests,145 captures/144 geometry observations with zero overflow or clipped controls,18 exact JavaScript/CSS asset SHA256 matches. Four active team identities authenticate normally; the disabled profile fails. [Release evidence and bounded limitations](../design/production-release/README.md).
 
 ## Preserved pre-release full-product audit verification

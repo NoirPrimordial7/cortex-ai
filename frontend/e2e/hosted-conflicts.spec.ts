@@ -72,14 +72,19 @@ test("production conflict groups preserve occurrences and exact authorized evide
     for (const width of [1440, 1280, 768, 390, 320]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto("/conflicts");
-      const toggle = page.getByRole("button", {
-        name: `Switch to ${theme} theme`,
-      });
-      if (await toggle.count()) await toggle.click();
       const group = page
         .locator(".conflict-record")
         .filter({ hasText: "As of 2026-10-10" });
       await expect(group).toHaveCount(1);
+      const toggle = page.getByRole("button", {
+        name: `Switch to ${theme} theme`,
+      });
+      if (await toggle.count()) await toggle.click();
+      await expect(
+        page.getByRole("button", {
+          name: `Switch to ${theme === "dark" ? "light" : "dark"} theme`,
+        }),
+      ).toBeVisible();
       expect(await group.innerText()).not.toMatch(/[ÂÃ]/);
       const compare = group.getByRole("button", {
         name: "Compare policy evidence",

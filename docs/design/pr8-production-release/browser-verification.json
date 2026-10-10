@@ -1,0 +1,1387 @@
+{
+  "checked_at": "2026-10-10T03:59:30.362338+00:00",
+  "base_url": "https://cortex-ai-three-kappa.vercel.app",
+  "application_source_sha": "22cbeef46ae6c78112993c1e0fa6f4e33bdbcb11",
+  "browser": "Chromium",
+  "unique_browser_scenarios": 6,
+  "screenshots": 155,
+  "tracked_pngs": 18,
+  "geometry_observations": 154,
+  "horizontal_overflows": 0,
+  "clipped_visible_controls": 0,
+  "widths": [
+    320,
+    390,
+    768,
+    1024,
+    1280,
+    1440
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "comparison_recaptured_after_theme_readiness_assertion": true,
+  "captures": [
+    {
+      "file": "conflicts-light-1440.png",
+      "sha256": "49c1ca1ba83c3a8d43588c14a2502ca4699716f38b31439bd31712a765cadf95",
+      "original": "comparison/conflicts-light-1440.png",
+      "width": 1440,
+      "height": 1306
+    },
+    {
+      "file": "conflicts-light-390.png",
+      "sha256": "f189cba708eda3ab41e3c20083cd76c1bc800fca4ed6f8ac8e9857b4121b6e8e",
+      "original": "comparison/conflicts-light-390.png",
+      "width": 390,
+      "height": 1861
+    },
+    {
+      "file": "conflicts-light-320.png",
+      "sha256": "7c3904e88e6b8eec1bdd6a80bc176704c9c78937570f6f9631358beaa78d0a57",
+      "original": "comparison/conflicts-light-320.png",
+      "width": 320,
+      "height": 2012
+    },
+    {
+      "file": "conflicts-dark-1440.png",
+      "sha256": "1f56c6dbef1bdaa9a38d682b32531e5a002915203ffe92e13135e5131fb43d5a",
+      "original": "comparison/conflicts-dark-1440.png",
+      "width": 1440,
+      "height": 1306
+    },
+    {
+      "file": "conflicts-dark-390.png",
+      "sha256": "b9fbaa1245f000c48ff133cbb5541858b550f0023ebed4213b34a7e76d70e200",
+      "original": "comparison/conflicts-dark-390.png",
+      "width": 390,
+      "height": 1861
+    },
+    {
+      "file": "conflicts-dark-320.png",
+      "sha256": "50c9c3b81f24bf15e30527e1cb7a34a553d51ebaad5926a5c1426bca69353941",
+      "original": "comparison/conflicts-dark-320.png",
+      "width": 320,
+      "height": 2012
+    },
+    {
+      "file": "document-light-1440.png",
+      "sha256": "653a039631f40280932749a06d0bad69c757bc045b46411ad9146db37d0e30d0",
+      "original": "ravi/document-light-1440.png",
+      "width": 1440,
+      "height": 1182
+    },
+    {
+      "file": "document-light-390.png",
+      "sha256": "5572a6c690973eea85c641f413a9d69f9a4e031994e87cb39fe8e3142c6d04ab",
+      "original": "ravi/document-light-390.png",
+      "width": 390,
+      "height": 1231
+    },
+    {
+      "file": "document-light-320.png",
+      "sha256": "fc6d8b4e9347782b76362df409b059f16dfa3328df724f547d5549abbe81fb6a",
+      "original": "ravi/document-light-320.png",
+      "width": 320,
+      "height": 1323
+    },
+    {
+      "file": "document-dark-1440.png",
+      "sha256": "1bc49c0db283678ccc541c2dc06209c1aaad9b4f24fce03a564adbee3d49dc28",
+      "original": "ravi/document-dark-1440.png",
+      "width": 1440,
+      "height": 1182
+    },
+    {
+      "file": "document-dark-390.png",
+      "sha256": "6c5dd81280c24b044988baad1863c58a8b3e256c82f905f34ff0e1f6fab9c8f5",
+      "original": "ravi/document-dark-390.png",
+      "width": 390,
+      "height": 1231
+    },
+    {
+      "file": "document-dark-320.png",
+      "sha256": "674d10803615461aa2ee68481e4be9ae790d3be848f52e4799503c7c3548de8f",
+      "original": "ravi/document-dark-320.png",
+      "width": 320,
+      "height": 1323
+    },
+    {
+      "file": "ask-answer-light-1440.png",
+      "sha256": "b648963b891d41422852f99408efb5571fbc8ffd13cf7890753e8dba4de6b204",
+      "original": "maya/ask-answer-light-1440.png",
+      "width": 1440,
+      "height": 1122
+    },
+    {
+      "file": "ask-answer-dark-390.png",
+      "sha256": "36b7d18a7fd1b3c21e32d7be157a0659942bf9cbbb2fa11d8ad9c4d7b144099f",
+      "original": "maya/ask-answer-dark-390.png",
+      "width": 390,
+      "height": 1119
+    },
+    {
+      "file": "login-light-320.png",
+      "sha256": "e66762bc0b0496eb4b2ef27dfeac5a3303b9550ecc8dee328550f48a06fe5656",
+      "original": "maya/login-light-320.png",
+      "width": 320,
+      "height": 1082
+    },
+    {
+      "file": "library-light-390.png",
+      "sha256": "01b97de329b7950353fbd6a55153b747a9292467d17f7cbfc7fc9a53210cba7e",
+      "original": "ravi/library-light-390.png",
+      "width": 390,
+      "height": 2084
+    },
+    {
+      "file": "library-dark-390.png",
+      "sha256": "9e1eaa244fd80cc5d262f974e580ae84a9d113cf0c8d4366adee1dddf5eb3741",
+      "original": "ravi/library-dark-390.png",
+      "width": 390,
+      "height": 2084
+    },
+    {
+      "file": "evidence-390.png",
+      "sha256": "1476ac11aaa8003dd68b78035484bde23489102748d331db3463f64259d0c1d3",
+      "original": "maya/evidence-390.png",
+      "width": 390,
+      "height": 900
+    }
+  ],
+  "observations": [
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "login",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-answer",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "maya",
+      "state": "ask-conflict",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "overview",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "library",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "ask-empty",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "history",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "conflicts",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "upload",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "people",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "ravi",
+      "state": "document",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "light",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "dark",
+      "width": 1024,
+      "scrollWidth": 1024,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "clipped": []
+    },
+    {
+      "profile": "isha",
+      "state": "audit",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "clipped": []
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 1306,
+      "preservedOccurrences": 4,
+      "sourceHashesVerified": 2
+    },
+    {
+      "theme": "light",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "height": 1336,
+      "preservedOccurrences": 4,
+      "sourceHashesVerified": 2
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "scrollWidth": 768,
+      "height": 1604,
+      "preservedOccurrences": 4,
+      "sourceHashesVerified": 2
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "scrollWidth": 390,
+      "height": 1861,
+      "preservedOccurrences": 4,
+      "sourceHashesVerified": 2
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "scrollWidth": 320,
+      "height": 2012,
+      "preservedOccurrences": 4,
+      "sourceHashesVerified": 2
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "height": 1306,
+      "preservedOccurrences": 4,
+      "sourceHashesVerified": 2
+    },
+    {
+      "theme": "dark",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "height": 1336,
+      "preservedOccurrences": 4,
+      "sourceHashesVerified": 2
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "scrollWidth": 768,
+      "height": 1604,
+      "preservedOccurrences": 4,
+      "sourceHashesVerified": 2
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "scrollWidth": 390,
+      "height": 1861,
+      "preservedOccurrences": 4,
+      "sourceHashesVerified": 2
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "scrollWidth": 320,
+      "height": 2012,
+      "preservedOccurrences": 4,
+      "sourceHashesVerified": 2
+    }
+  ]
+}

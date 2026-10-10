@@ -22,9 +22,9 @@ Use workspace `NORTHSTAR` and employee `maya@example.test`; generated passwords 
 
 ## Genuine running UI
 
-**Full-product forest/ivory refinement:** one shell, typography and responsive controls across every route, with compact citations and dedicated mobile evidence. Owner-approved production release includes the Auronix team profiles. [Current production screenshots and verification](docs/design/production-release/README.md); historical visuals remain preserved.
+**Full-product forest/ivory refinement:** one shell, typography and responsive controls across every route, with compact citations and dedicated mobile evidence. Owner-approved production release includes the Auronix team profiles. [Current PR #8 production screenshots and verification](docs/design/pr8-production-release/README.md); historical visuals remain preserved.
 
-![Actual production assistant browser capture](docs/design/production-release/ask-answer-light-1440.png)
+![Actual production assistant browser capture](docs/design/pr8-production-release/ask-answer-light-1440.png)
 
 Real browser screenshot of the published React/FastAPI system using fictional data. Current leave evidence is20 days; historical2025 evidence is18; equally authoritative remote-work policies produce an abstention with both citations. These values come from the provided fixture and API, not hardcoded frontend answers.
 
@@ -53,9 +53,9 @@ One backend application worker serializes protected requests and access changes 
 | Check | Result / scope |
 |---|---|
 | Backend |39 tests pass, including ingestion/review, direct-resource denial, historical validity and concurrent revocation; one compatibility deprecation warning |
-| Frontend |21 tests pass; TypeScript/Vite build succeeds; real responsive screen checks |
+| Frontend |28 tests pass; TypeScript/Vite build succeeds; real responsive screen checks |
 | Crafted fixture |12/12 outcomes,15/15 authorized peers,10/10 exact citation spans/hashes; **same development fixture, not held-out accuracy** |
-| Public release |62 API assertions, six browser tests,145 production captures across six widths/both themes,18 exact served asset hashes; [evidence](docs/design/production-release/README.md) |
+| Public release |62 API assertions, six unique browser scenarios,155 production captures across six widths/both themes,19 exact served asset hashes; [evidence](docs/design/pr8-production-release/README.md) |
 | Quality |Ruff/pip consistency pass; npm audit zero findings at this checkpoint; sampled contrast and reflow checked |
 
 No arbitrary40% completion or general accuracy claim is made. Future priorities are a held-out adjudicated corpus, richer clauses/lineage and permitted rejection explanations, parser isolation/denial audit/retention, and measured optional local semantic enhancements. Chunk ACLs, general amendments/exceptions, NLI, vector retrieval, LLM generation, agents, user creation and multiworker/durable production deployment remain unimplemented.

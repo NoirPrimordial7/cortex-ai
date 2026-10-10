@@ -1,0 +1,22 @@
+{
+  "application_source_sha": "22cbeef46ae6c78112993c1e0fa6f4e33bdbcb11",
+  "merge_sha": "b87a5deb75cd77692409952c13c2687b4ad7d09e",
+  "pull_request": "https://github.com/NoirPrimordial7/cortex-ai/pull/8",
+  "frontend": {
+    "project": "prj_fMVYoealLocAtxdAeg0mTFAy1N4F",
+    "team": "noir-s-projects2",
+    "id": "dpl_9AbnjHRnRYgkbiDDQtNJueVB7rJF",
+    "status": "READY",
+    "target": "production",
+    "public_url": "https://cortex-ai-three-kappa.vercel.app",
+    "source_sha": "22cbeef46ae6c78112993c1e0fa6f4e33bdbcb11"
+  },
+  "backend": {
+    "service": "srv-db4h9q1srm7s73b4b5g0",
+    "id": "dep-db4rdh740ujc73bsivi0",
+    "status": "Live",
+    "source_sha": "22cbeef46ae6c78112993c1e0fa6f4e33bdbcb11",
+    "dashboard_duration_seconds": 79,
+    "proof": "render-live.jpg"
+  }
+}

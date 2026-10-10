@@ -1,8 +1,10 @@
 # Cortex AI design gallery
 
-**Current draft PR #8:** complete visual direction approved; [focused conflict refinement](premium-refinement/conflicts/README.md) keeps every occurrence and improves mobile comparison. The owner requested removal of the new large documents/reader; previous document UI and corpus are restored. [Actual conflict comparisons](premium-refinement/conflicts/gallery.html). Production stays unchanged pending release approval.
+**Current production release:** Owner-approved PR #8 is merged and published, with previous documents restored and compact authorized conflicts. [Final live screenshots, deployment and verification](pr8-production-release/README.md).
 
-**Current full-product review:** [Issue #4 report and pass/pending matrix](product-audit/README.md), [652 real before/after screenshots](product-audit/gallery.html), [verification checkpoints](product-audit/verification.md). The owner locked forest/ivory Fieldbook with editorial refinement. All routes are unified on the review branch; main and production remain unchanged pending approval.
+**Preserved PR #8 review history:** complete visual direction approved; [focused conflict refinement](premium-refinement/conflicts/README.md) keeps every occurrence and improves mobile comparison. The owner requested removal of the new large documents/reader; previous document UI and corpus are restored. [Actual conflict comparisons](premium-refinement/conflicts/gallery.html). Production stays unchanged pending release approval.
+
+**Historical full-product review:** [Issue #4 report and pass/pending matrix](product-audit/README.md), [652 real before/after screenshots](product-audit/gallery.html), [verification checkpoints](product-audit/verification.md). The owner locked forest/ivory Fieldbook with editorial refinement. All routes are unified on the review branch; main and production remain unchanged pending approval.
 
 ## Historical explorations and earlier implementations
 

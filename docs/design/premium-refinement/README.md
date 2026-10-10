@@ -1,5 +1,7 @@
 # Ask Cortex premium pilot — review checkpoint
 
+**Released after owner approval,10October2026:** PR #8 merged; final application22cbeef is live on Vercel and Render. Previous documents and corpus remain restored. [Actual production verification and screenshots](../pr8-production-release/README.md). Statements below record the earlier review checkpoint.
+
 **Latest, 10 October 2026:** The owner accepted the functional fixes and requested a stronger Ask-only visual iteration. [Second iteration, actual screenshots and approval checkpoint](iteration-2/README.md) · [new before/after gallery](iteration-2/gallery.html). The first-pilot report below remains historical. Production and main remain untouched.
 
 10 October 2026. Dedicated Issue [#7](https://github.com/NoirPrimordial7/cortex-ai/issues/7) sprint, feature branch `codex/premium-ask-refinement`. Baseline/main: `a3c3a314`. **Production is unchanged.** Remaining page refinements require the owner's review of this Ask pilot, as requested in the sprint brief.

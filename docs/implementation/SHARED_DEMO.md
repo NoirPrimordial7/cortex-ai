@@ -1,5 +1,7 @@
 # Shared fictional demonstration
 
+**Latest release,10October2026:** Owner-approved PR #8 is merged and the restored-document/forest-ivory workspace is live on both providers at application22cbeef. Normal public authentication, API proxy, citations, tenant boundaries and hosted read-only behavior pass. [Current deployment proof and screenshots](../design/pr8-production-release/README.md). Exact Origins and this hosting contract remain unchanged; earlier release records below are historical.
+
 Prepared2026-10-09. Owner authorized free Vercel frontend and free Render backend. Successful static build does not establish backend connectivity; publication verification follows service creation.
 
 ## Hosting contract
