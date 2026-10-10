@@ -315,7 +315,7 @@ export default function Assistant() {
             </span>
           </label>
           <label>
-            <span className="fb-label">Policy scope</span>
+            <span className="fb-label">Scope</span>
             <select
               aria-label="Policy scope"
               name="population"
@@ -439,6 +439,27 @@ export default function Assistant() {
                       : answer.answer}
                   </h2>
                   {conflict && <p className="fb-abstention">{answer.answer}</p>}
+                  {conflict && (
+                    <nav
+                      className="comparison-jumps"
+                      aria-label="Conflict shortcuts"
+                    >
+                      <a
+                        href="#policy-comparison"
+                        onClick={() =>
+                          document.getElementById("policy-comparison")?.focus()
+                        }
+                      >
+                        Jump to comparison
+                      </a>
+                      <a
+                        href="#question"
+                        onClick={() => input.current?.focus()}
+                      >
+                        Ask a follow-up
+                      </a>
+                    </nav>
+                  )}
                   <p className="fb-applies">
                     Applies to{" "}
                     {answer.scope.population === "india_full_time"
@@ -449,6 +470,8 @@ export default function Assistant() {
                   {conflict && (
                     <section
                       className="fb-comparison"
+                      id="policy-comparison"
+                      tabIndex={-1}
                       aria-label="Compare conflicting policy evidence"
                     >
                       <div className="fb-comparison-heading">

@@ -4,8 +4,10 @@ import { SourceInspector } from "./SourceInspector";
 import { useCitationAccess } from "./useCitationAccess";
 export function CitationDialog({
   access,
+  returnLabel = "Back to activity",
 }: {
   access: ReturnType<typeof useCitationAccess>;
+  returnLabel?: string;
 }) {
   return access.citation ? (
     <SourceDialog
@@ -15,7 +17,7 @@ export function CitationDialog({
     >
       <button className="back-link" onClick={access.close}>
         <ArrowLeftIcon size={18} />
-        Back to activity
+        {returnLabel}
       </button>
       <SourceInspector
         citation={access.citation}

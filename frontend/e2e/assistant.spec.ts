@@ -306,6 +306,14 @@ test("conflict sources remain distinct and do not claim approval", async ({
     quote,
     second.quote,
   ]);
+  await page
+    .getByRole("link", { name: "Jump to comparison", exact: true })
+    .click();
+  await expect(comparison).toBeFocused();
+  await page
+    .getByRole("link", { name: "Ask a follow-up", exact: true })
+    .click();
+  await expect(page.getByLabel("Ask about a company policy")).toBeFocused();
   const claims = comparison.locator(".fb-claim");
   const firstBox = await claims.nth(0).boundingBox();
   const secondBox = await claims.nth(1).boundingBox();

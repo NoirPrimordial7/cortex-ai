@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { RecordPager } from "../RecordPager";
+import { populationName } from "../labels";
 import { Link } from "react-router-dom";
 import { api } from "../api";
 import { Badge, PageHeading, State, useResource } from "../components";
@@ -42,38 +44,65 @@ function Comparison({
   return (
     <State loading={!sources && !error} error={error}>
       {sources && (
-        <div className="conflict-comparison">
-          {sources.map((s, i) => (
-            <section className="conflict-evidence" key={s.id}>
-              <div className="section-heading">
-                <span className="source-number">Source {i + 1}</span>
-                <Badge state="Conflict" />
-              </div>
-              <h3>{s.title}</h3>
-              <blockquote>{s.text.slice(s.start_char, s.end_char)}</blockquote>
-              <dl>
-                <div>
-                  <dt>Validity</dt>
-                  <dd>
-                    {s.valid_from} → {s.valid_to || "open-ended"}
-                    {s.valid_to ? " (end exclusive)" : ""}
-                  </dd>
+        <div>
+          <nav className="comparison-jumps" aria-label="Comparison sources">
+            {sources.map((s, i) => (
+              <a
+                key={s.id}
+                href={`#conflict-source-${s.id}`}
+                onClick={() =>
+                  document.getElementById(`conflict-source-${s.id}`)?.focus()
+                }
+              >
+                Jump to source {i + 1}
+              </a>
+            ))}
+            <Link to="/assistant">Ask a follow-up</Link>
+          </nav>
+          <div className="conflict-comparison">
+            {sources.map((s, i) => (
+              <section
+                className="conflict-evidence"
+                key={s.id}
+                id={`conflict-source-${s.id}`}
+                tabIndex={-1}
+              >
+                <div className="section-heading">
+                  <span className="source-number">Source {i + 1}</span>
+                  <Badge state="Conflict" />
                 </div>
-                <div>
-                  <dt>Authority</dt>
-                  <dd>
-                    {s.source_kind.replaceAll("_", " ")}
-                    {s.authority_rank !== undefined
-                      ? ` · rank ${s.authority_rank}`
-                      : ""}
-                  </dd>
-                </div>
-              </dl>
-              <button className="button" onClick={() => onInspect(s)}>
-                Inspect source context
-              </button>
-            </section>
-          ))}
+                <h3>{s.title}</h3>
+                <blockquote>
+                  {s.text.slice(s.start_char, s.end_char)}
+                </blockquote>
+                <dl>
+                  <div>
+                    <dt>Passage</dt>
+                    <dd>{s.locator}</dd>
+                  </div>
+                  <div>
+                    <dt>Validity</dt>
+                    <dd>
+                      {s.valid_from} → {s.valid_to || "open-ended"}
+                      {s.valid_to ? " (end exclusive)" : ""}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Authority</dt>
+                    <dd>
+                      {s.source_kind.replaceAll("_", " ")}
+                      {s.authority_rank !== undefined
+                        ? ` · rank ${s.authority_rank}`
+                        : ""}
+                    </dd>
+                  </div>
+                </dl>
+                <button className="button" onClick={() => onInspect(s)}>
+                  Inspect source context
+                </button>
+              </section>
+            ))}
+          </div>
         </div>
       )}
     </State>
@@ -84,6 +113,12 @@ export default function Conflicts() {
   const access = useCitationAccess(resource.reload);
   const [open, setOpen] = useState<string | null>(null);
   const [comparisonError, setComparisonError] = useState("");
+  const [page, setPage] = useState(0);
+  const items = resource.data?.items || [];
+  const currentPage = Math.min(
+    page,
+    Math.max(0, Math.ceil(items.length / 6) - 1),
+  );
   useEffect(() => {
     const clear = () => setOpen(null);
     window.addEventListener("cortex:evidence-changed", clear);
@@ -101,6 +136,10 @@ export default function Conflicts() {
           </Link>
         }
       />
+      <p className="section-note">
+        Unresolved conflicts within your latest 30 permitted requests. Expand a
+        record to compare its current sources.
+      </p>
       {(access.error || comparisonError) && (
         <p role="alert" className="form-error">
           {access.error || comparisonError}
@@ -109,17 +148,27 @@ export default function Conflicts() {
       <State error={resource.error} loading={resource.loading}>
         {resource.data?.items.length ? (
           <div className="history-list">
-            {resource.data.items.map((q) => (
+            {items.slice(currentPage * 6, (currentPage + 1) * 6).map((q) => (
               <article className="panel conflict-record" key={q.query_id}>
                 <div className="section-heading">
-                  <h2>Policy disagreement</h2>
+                  <h2>{q.citations[0]?.title || "Policy disagreement"}</h2>
                   <Badge state="Conflict" />
                 </div>
-                <p>{q.answer}</p>
                 <p className="section-note">
-                  As of {q.as_of} · {q.scope.population.replaceAll("_", " ")} ·{" "}
+                  As of {q.as_of} · {populationName(q.scope.population)} ·{" "}
                   {q.citations.length} competing sources
                 </p>
+                {q.created_at && (
+                  <time className="record-date" dateTime={q.created_at}>
+                    Recorded{" "}
+                    {new Intl.DateTimeFormat("en-GB", {
+                      dateStyle: "medium",
+                      timeStyle: "short",
+                      timeZone: "UTC",
+                    }).format(new Date(q.created_at))}{" "}
+                    UTC
+                  </time>
+                )}
                 <button
                   className="button"
                   aria-expanded={open === q.query_id}
@@ -133,18 +182,30 @@ export default function Conflicts() {
                     : "Compare policy evidence"}
                 </button>
                 {open === q.query_id && (
-                  <Comparison
-                    query={q}
-                    onInspect={(c) => void access.inspect(q, c)}
-                    onDenied={(message) => {
-                      setComparisonError(message);
-                      setOpen(null);
-                      resource.reload();
-                    }}
-                  />
+                  <div>
+                    <p className="conflict-abstention">{q.answer}</p>
+                    <Comparison
+                      query={q}
+                      onInspect={(c) => void access.inspect(q, c)}
+                      onDenied={(message) => {
+                        setComparisonError(message);
+                        setOpen(null);
+                        resource.reload();
+                      }}
+                    />
+                  </div>
                 )}
               </article>
             ))}
+            <RecordPager
+              page={currentPage}
+              total={items.length}
+              size={6}
+              onPage={(p) => {
+                setOpen(null);
+                setPage(p);
+              }}
+            />
           </div>
         ) : (
           <div className="empty-state">
@@ -156,7 +217,7 @@ export default function Conflicts() {
           </div>
         )}
       </State>
-      <CitationDialog access={access} />
+      <CitationDialog access={access} returnLabel="Back to conflicts" />
     </>
   );
 }
