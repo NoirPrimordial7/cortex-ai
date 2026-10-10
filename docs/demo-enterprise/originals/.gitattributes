@@ -1,4 +1,0 @@
-# Immutable uploaded fixtures must retain exact manifest bytes on every platform.
-* -text
-*.pdf binary
-*.docx binary

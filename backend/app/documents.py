@@ -137,7 +137,7 @@ def ingest(
             ingested_at=at,
             published_at=None,
             extraction_state="failed" if failed else "pending_review",
-            parser_version="bounded-v2-document-order",
+            parser_version="bounded-v1",
             metadata_revision=0,
             current_metadata_revision_id=None,
             index_generation=0,

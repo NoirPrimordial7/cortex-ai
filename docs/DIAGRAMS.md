@@ -1,7 +1,5 @@
 # Visual architecture gallery
 
-The approved redesign adds an [authorized document-reader sequence](diagrams/12-authorized-document-reader.mmd): focused source reads, lazy complete text, exact offsets, optional original PDF raster pages and revocation. This is editable Mermaid source, not an exported browser screenshot. The original architecture exports below remain historical.
-
 **Diagrams01–10 preserve the approved Phase2 plan. Diagram11 describes the implemented Phase3 local core.** Assessment: 2026-10-09. SVG provides scalable GitHub viewing; PNG supports presentations; `.mmd` is editable Mermaid source and `.dot` is a paired editable Graphviz layout. [Manifest](diagrams/MANIFEST.json) records actual export tooling; no fake screenshots or proprietary internals are depicted.
 
 | Diagram | View / editable source | Explanation and example |

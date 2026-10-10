@@ -65,7 +65,7 @@ test("mobile edition control reads every authorized immutable version", async ({
     expect(response.status()).toBe(200);
     const source = await response.json();
     await page.getByLabel("Source edition").selectOption(version.id);
-    await expect(page.locator(".reader-body")).toHaveText(source.text);
+    await expect(page.locator("pre.source-text")).toHaveText(source.text);
     await expect(page.locator(".document-reading h2")).toHaveText(
       version.version_label,
     );

@@ -90,14 +90,6 @@
       "png": "11-implemented-core.png",
       "status": "implemented Phase3 bounded core",
       "checked_at": "2026-10-09T21:21:45+05:30"
-    },
-    {
-      "name": "12-authorized-document-reader",
-      "title": "Authorized document reader and exact source navigation",
-      "mermaid": "12-authorized-document-reader.mmd",
-      "method": "Editable Mermaid sequence only; no DOT/SVG/PNG export",
-      "status": "implemented draft PR8; production release pending",
-      "checked_at": "2026-10-10"
     }
   ]
 }

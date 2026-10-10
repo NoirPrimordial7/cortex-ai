@@ -43,10 +43,7 @@ const result: Answer = {
   citations: [source],
 };
 test("question uses backend result and opens the authorized exact source", async () => {
-  vi.mocked(api)
-    .mockResolvedValueOnce(result)
-    .mockResolvedValueOnce(source)
-    .mockResolvedValueOnce(source);
+  vi.mocked(api).mockResolvedValueOnce(result).mockResolvedValueOnce(source);
   render(<Assistant />);
   await userEvent.type(
     screen.getByLabelText("Ask about a company policy"),
@@ -55,10 +52,7 @@ test("question uses backend result and opens the authorized exact source", async
   await userEvent.click(screen.getByRole("button", { name: "Ask Cortex" }));
   expect(await screen.findByText(result.answer)).toBeInTheDocument();
   expect((await screen.findAllByText(quote))[0]).toBeInTheDocument();
-  expect(api).toHaveBeenNthCalledWith(
-    2,
-    "/queries/query/citations/cite?view=passage",
-  );
+  expect(api).toHaveBeenNthCalledWith(2, "/queries/query/citations/cite");
   expect(screen.getAllByText(quote)).toHaveLength(1);
   await userEvent.click(
     screen.getByRole("button", { name: "View source context" }),
@@ -156,7 +150,6 @@ test("a slow previous citation cannot overwrite the currently selected source", 
           release = r;
         }),
     )
-    .mockResolvedValueOnce(second)
     .mockResolvedValueOnce(second);
   render(<Assistant />);
   await userEvent.click(
@@ -313,14 +306,8 @@ test("conflict comparison reads every source and renders authorized exact spans"
   );
   await screen.findByText(alternative.quote);
   expect(screen.getByText(quote)).toBeInTheDocument();
-  expect(api).toHaveBeenNthCalledWith(
-    2,
-    "/queries/query/citations/cite?view=passage",
-  );
-  expect(api).toHaveBeenNthCalledWith(
-    3,
-    "/queries/query/citations/cite-b?view=passage",
-  );
+  expect(api).toHaveBeenNthCalledWith(2, "/queries/query/citations/cite");
+  expect(api).toHaveBeenNthCalledWith(3, "/queries/query/citations/cite-b");
   expect(screen.getByText(conflicting.answer)).toBeInTheDocument();
   expect(screen.queryByText("Approved · valid")).not.toBeInTheDocument();
 });

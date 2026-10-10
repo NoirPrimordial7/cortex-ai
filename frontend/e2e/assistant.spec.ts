@@ -382,7 +382,7 @@ test("desktop conflict claims share a row, remain unobscured and reauthorize on 
       .locator(".fb-composer")
       .evaluate((el) => getComputedStyle(el).position),
   ).toBe("static");
-  await page.route("**/api/v1/queries/*/citations/cite-b*", (route) =>
+  await page.route("**/api/v1/queries/*/citations/cite-b", (route) =>
     route.fulfill({
       status: 404,
       json: { error: { message: "Resource unavailable" } },
@@ -596,7 +596,7 @@ test("reading contrast, control boundaries and focused citations remain visible"
         ".fb-document .fb-label",
         ".fb-document h2",
         ".fb-status",
-        ".fb-passage .focused-passage",
+        ".fb-passage blockquote",
         ".source-summary",
         ".source-details summary",
         ".fb-context-toggle",

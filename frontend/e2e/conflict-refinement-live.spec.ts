@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { mkdirSync, writeFileSync } from "node:fs";
 test.skip(
-  !process.env.CORTEX_READER,
+  !process.env.CORTEX_CONFLICT_REFINEMENT,
   "Opt-in same local baseline conflict data.",
 );
 test.use({ trace: "off", video: "off" });
@@ -20,7 +20,7 @@ test("same baseline conflicts are compact in light and dark at all required widt
   const items = (await (await page.request.get("/api/v1/conflicts")).json())
     .items;
   expect(items.length).toBeGreaterThan(1);
-  const root = "../docs/design/premium-refinement/reader";
+  const root = "../docs/design/premium-refinement/conflicts";
   mkdirSync(root, { recursive: true });
   const observations: unknown[] = [];
   for (const theme of ["light", "dark"]) {
@@ -56,7 +56,7 @@ test("same baseline conflicts are compact in light and dark at all required widt
         ),
       });
       await page.screenshot({
-        path: `${root}/${theme}-baseline-conflicts-${width}.png`,
+        path: `${root}/${theme}-conflicts-${width}.png`,
         fullPage: true,
       });
       await page.getByText(/Recorded occurrences/).click();
@@ -72,7 +72,7 @@ test("same baseline conflicts are compact in light and dark at all required widt
     }
   }
   writeFileSync(
-    `${root}/conflict-observations.json`,
+    `${root}/observations.json`,
     JSON.stringify(observations, null, 2),
   );
 });

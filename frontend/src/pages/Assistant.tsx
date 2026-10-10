@@ -21,7 +21,6 @@ import { api, ApiError } from "../api";
 import { useAskDraft } from "../AskDraft";
 import type { Answer, Citation, Source } from "../types";
 import { SourceInspector } from "../SourceInspector";
-import { sourceSlice } from "../sourceText";
 
 // A native modal makes the rest of the app inert, traps focus, and handles Escape.
 function EvidenceView({
@@ -184,7 +183,7 @@ export default function Assistant() {
     }
     try {
       const detail = await api<Source>(
-        `/queries/${q.query_id}/citations/${c.id}?view=passage`,
+        `/queries/${q.query_id}/citations/${c.id}`,
       );
       if (epoch.current === stamp && sourceEpoch.current === sourceStamp)
         setSource(detail);
@@ -205,7 +204,7 @@ export default function Assistant() {
       // Do not expose either excerpt until ALL citation reads are authorized.
       const sources = await Promise.all(
         q.citations.map((c) =>
-          api<Source>(`/queries/${q.query_id}/citations/${c.id}?view=passage`),
+          api<Source>(`/queries/${q.query_id}/citations/${c.id}`),
         ),
       );
       if (epoch.current === stamp) setComparison(sources);
@@ -273,21 +272,6 @@ export default function Assistant() {
           ? answer.citations.findIndex((c) => c.id === selected.id) + 1
           : undefined
       }
-      onReturn={() => {
-        setEvidenceView(false);
-        setInspector(false);
-        requestAnimationFrame(() => {
-          const target = evidenceReturn.current?.isConnected
-            ? evidenceReturn.current
-            : inspectorToggle.current;
-          target?.focus({ preventScroll: true });
-        });
-      }}
-      onDeniedReader={(message) => {
-        clear();
-        setError(message);
-        setDenied(true);
-      }}
       context={
         answer
           ? { date: answer.as_of, population: answer.scope.population }
@@ -512,11 +496,7 @@ export default function Assistant() {
                                 <h3>{s.title}</h3>
                               </div>
                               <blockquote>
-                                {sourceSlice(
-                                  s.text,
-                                  s.start_char - (s.text_start_char || 0),
-                                  s.end_char - (s.text_start_char || 0),
-                                )}
+                                {s.text.slice(s.start_char, s.end_char)}
                               </blockquote>
                               <dl>
                                 <div>

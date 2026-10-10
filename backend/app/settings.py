@@ -18,7 +18,6 @@ class Settings:
     allowed_hosts: tuple[str, ...] = ("127.0.0.1", "localhost", "testserver")
     demo_accounts_enabled: bool = False
     shared_demo_read_only: bool = False
-    pdf_renderer: str | None = None
 
     @property
     def db_path(self):
@@ -41,5 +40,4 @@ class Settings:
             demo_accounts_enabled=os.environ.get("CORTEX_DEMO_ACCOUNTS") == "1"
             or (data_dir / "demo-autofill.enabled").is_file(),
             shared_demo_read_only=os.environ.get("CORTEX_SHARED_DEMO_READ_ONLY") == "1",
-            pdf_renderer=os.environ.get("CORTEX_PDF_RENDERER") or None,
         )

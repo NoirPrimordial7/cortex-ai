@@ -1,12 +1,5 @@
 import { populationName } from "../labels";
-import {
-  lazy,
-  Suspense,
-  useEffect,
-  useRef,
-  useState,
-  type FormEvent,
-} from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   ArrowLeftIcon,
@@ -27,9 +20,6 @@ import {
 import { FilePicker } from "../FilePicker";
 import { useSession } from "../session";
 import type { Content, Detail, Version } from "../types";
-import { sourceSlice } from "../sourceText";
-const DocumentReader = lazy(() => import("../DocumentReader"));
-const OriginalPdf = lazy(() => import("../OriginalPdf"));
 function ReviewForm({
   v,
   content,
@@ -59,11 +49,7 @@ function ReviewForm({
     };
     setBusy(true);
     setError("");
-    const end =
-      segment.end -
-      (sourceSlice(content.text, segment.end - 1, segment.end) === "\n"
-        ? 1
-        : 0);
+    const end = segment.end - (content.text[segment.end - 1] === "\n" ? 1 : 0);
     try {
       await api(`/versions/${v.id}/review`, {
         method: "POST",
@@ -125,14 +111,13 @@ function ReviewForm({
           >
             {content.segments.map((s) => (
               <option key={s.start} value={s.start}>
-                {s.locator} ·{" "}
-                {sourceSlice(content.text, s.start, s.end).slice(0, 65)}
+                {s.locator} · {content.text.slice(s.start, s.end).slice(0, 65)}
               </option>
             ))}
           </select>
         </label>
         <blockquote>
-          {sourceSlice(content.text, segment.start, segment.end)}
+          {content.text.slice(segment.start, segment.end)}
         </blockquote>
         <div className="form-grid">
           <label>
@@ -240,16 +225,12 @@ export default function DocumentDetail() {
     [busy, setBusy] = useState(false),
     [uploading, setUploading] = useState(false),
     [reviewing, setReviewing] = useState(false);
-  const [fullscreen, setFullscreen] = useState(false);
-  const [original, setOriginal] = useState(false);
   useEffect(() => {
     const clear = () => {
       epoch.current++;
       setSelected(null);
       setContent(null);
       setReviewing(false);
-      setFullscreen(false);
-      setOriginal(false);
       setError("");
       setBusy(false);
     };
@@ -267,7 +248,6 @@ export default function DocumentDetail() {
     setContent(null);
     setSelected(v);
     setReviewing(false);
-    setOriginal(false);
     try {
       const source = await api<Content>(`/versions/${v.id}/content`);
       if (epoch.current === current) setContent(source);
@@ -430,113 +410,7 @@ export default function DocumentDetail() {
                       </span>
                     </div>
                     <p className="reading-label">Immutable source text</p>
-                    {content.review && (
-                      <details className="source-details">
-                        <summary>Approval & authority</summary>
-                        <p>
-                          {content.review.approval_state} · reviewed by{" "}
-                          {content.review.reviewer_name} on{" "}
-                          {content.review.reviewed_at} ·{" "}
-                          {content.review.source_kind.replaceAll("_", " ")} ·
-                          authority rank{" "}
-                          {content.review.authority_rank ?? "not configured"}
-                        </p>
-                      </details>
-                    )}
-                    {content.original_format && (
-                      <p className="section-note">
-                        {content.original_format.toUpperCase()} extracted text.
-                        Original typography, images, headers and footers are not
-                        reproduced.
-                      </p>
-                    )}
-                    {content.original_preview_available && (
-                      <button
-                        className="button"
-                        onClick={() => setOriginal(!original)}
-                      >
-                        {original
-                          ? "Read extracted text"
-                          : "View original PDF pages"}
-                      </button>
-                    )}
-                    <button
-                      className="button"
-                      onClick={async () => {
-                        const stamp = ++epoch.current;
-                        try {
-                          const checked = await api<Content>(
-                            `/versions/${selected.id}/content`,
-                          );
-                          if (epoch.current === stamp) {
-                            setContent(checked);
-                            setFullscreen(true);
-                          }
-                        } catch (e) {
-                          if (epoch.current === stamp) {
-                            window.dispatchEvent(
-                              new Event("cortex:evidence-changed"),
-                            );
-                            setError((e as Error).message);
-                          }
-                        }
-                      }}
-                    >
-                      Read full screen
-                    </button>
-                    {!fullscreen && (
-                      <Suspense
-                        fallback={<p role="status">Opening document reader…</p>}
-                      >
-                        {original ? (
-                          <OriginalPdf
-                            versionId={selected.id}
-                            onDenied={() => {
-                              setContent(null);
-                              resource.reload();
-                            }}
-                          />
-                        ) : (
-                          <DocumentReader
-                            key={selected.id}
-                            text={content.text}
-                            title={content.title}
-                          />
-                        )}
-                      </Suspense>
-                    )}
-                    {fullscreen && (
-                      <SourceDialog
-                        label="Complete authorized document"
-                        className="full-document-dialog"
-                        onClose={() => setFullscreen(false)}
-                      >
-                        <button
-                          className="button back-link"
-                          onClick={() => setFullscreen(false)}
-                        >
-                          Back to document
-                        </button>
-                        <h2>{content.title}</h2>
-                        <p className="section-note">
-                          {selected.version_label} · {versionState(selected)} ·{" "}
-                          {selected.source_kind?.replaceAll("_", " ")} ·
-                          effective {selected.valid_from} →{" "}
-                          {selected.valid_to || "open-ended"}
-                          {selected.valid_to ? " (end exclusive)" : ""}
-                        </p>
-                        <Suspense
-                          fallback={
-                            <p role="status">Opening document reader…</p>
-                          }
-                        >
-                          <DocumentReader
-                            text={content.text}
-                            title={content.title}
-                          />
-                        </Suspense>
-                      </SourceDialog>
-                    )}
+                    <pre className="source-text">{content.text}</pre>
                     <details className="hash-details">
                       <summary>Source integrity</summary>
                       <p>

@@ -34,12 +34,7 @@ export type Answer = {
   citations: Citation[];
   created_at?: string;
 };
-export type Source = Citation & {
-  text: string;
-  query_id: string;
-  text_start_char?: number;
-  text_total_chars?: number;
-};
+export type Source = Citation & { text: string; query_id: string };
 export type DocumentItem = {
   id: string;
   title: string;
@@ -64,18 +59,6 @@ export type Version = {
 };
 export type Detail = { document: DocumentItem; versions: Version[] };
 export type Content = {
-  review?: {
-    approval_state: string;
-    valid_from: string;
-    valid_to: string | null;
-    population: string;
-    source_kind: string;
-    reviewed_at: string;
-    reviewer_name: string;
-    authority_rank: number | null;
-  } | null;
-  original_format?: string;
-  original_preview_available?: boolean;
   version_id: string;
   document_id: string;
   title: string;

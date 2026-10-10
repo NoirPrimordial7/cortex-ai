@@ -28,12 +28,9 @@ function Comparison({
     setError("");
     Promise.all(
       query.citations.map((c) =>
-        api<Source>(
-          `/queries/${query.query_id}/citations/${c.id}?view=passage`,
-          {
-            signal: abort.signal,
-          },
-        ),
+        api<Source>(`/queries/${query.query_id}/citations/${c.id}`, {
+          signal: abort.signal,
+        }),
       ),
     )
       .then((items) => {
@@ -82,11 +79,7 @@ function Comparison({
                 </div>
                 <h3>{s.title}</h3>
                 <blockquote>
-                  {sourceSlice(
-                    s.text,
-                    s.start_char - (s.text_start_char || 0),
-                    s.end_char - (s.text_start_char || 0),
-                  )}
+                  {sourceSlice(s.text, s.start_char, s.end_char)}
                 </blockquote>
                 <p className="section-note">{s.locator}</p>
                 <details className="comparison-metadata">
@@ -99,7 +92,7 @@ function Comparison({
                     <div>
                       <dt>Validity</dt>
                       <dd>
-                        {s.valid_from} → {s.valid_to || "open-ended"}
+                        {s.valid_from} â†’ {s.valid_to || "open-ended"}
                         {s.valid_to ? " (end exclusive)" : ""}
                       </dd>
                     </div>
@@ -108,7 +101,7 @@ function Comparison({
                       <dd>
                         {s.source_kind.replaceAll("_", " ")}
                         {s.authority_rank !== undefined
-                          ? ` · rank ${s.authority_rank}`
+                          ? ` Â· rank ${s.authority_rank}`
                           : ""}
                       </dd>
                     </div>
@@ -197,7 +190,7 @@ export default function Conflicts() {
                       <Badge state="Conflict" />
                     </div>
                     <p className="section-note">
-                      As of {q.as_of} · {populationName(q.scope.population)} ·{" "}
+                      As of {q.as_of} Â· {populationName(q.scope.population)} Â·{" "}
                       {q.citations.length} competing sources
                     </p>
                     <p className="record-date">
@@ -208,7 +201,7 @@ export default function Conflicts() {
                       {group.occurrences[0].created_at && (
                         <>
                           {" "}
-                          · Last seen{" "}
+                          Â· Last seen{" "}
                           <time dateTime={group.occurrences[0].created_at}>
                             {new Intl.DateTimeFormat("en-GB", {
                               dateStyle: "medium",

@@ -1,12 +1,11 @@
 # Changelog
 
-## 2026-10-10 — Draft PR #8 conflict refinement and enterprise reader
+## 2026-10-10 — Restore previous documents; retain focused conflict improvement
 
-- Retained the approved forest/ivory workspace. Repeated conflicts group by complete authorized claim identity, scope and date; individual queries, timestamps and source inspections remain accessible. Mobile comparisons put exact policies first, with focusable jumps and return actions.
-- Added a lazy, paginated document reader with A4-style desktop composition, comfortable full-screen mobile reading, section/edition navigation, literal match navigation, exact Unicode citation highlights and nearby unchanged context. Fresh permission checks gate focused sources, complete documents and unchanged original downloads.
-- Added optional protected original PDF page raster rendering with actual page counts; default unconfigured deployments retain extracted text/downloads. Production isolation of the renderer is a separate deployment prerequisite. Reflowed text never claims original pagination or Word/PDF visual fidelity.
-- Added a substantial opt-in fictional enterprise corpus, immutable originals and manifest. Normal ingestion/review preserves source hashes; DOCX body tables retain their position. Pending SOP/legal/procurement references do not become unsupported answer evidence.
-- Verification and 70 genuine browser captures are recorded in [reader review](../design/premium-refinement/reader/README.md). PR stays draft; production, database and exact allowed Origins remain unchanged. Release approval is required before merge/deployment.
+- Owner withdrew the large enterprise-document/reader requirement. Restored the approved document catalogue, compact Document Details and Source Inspector, original corpus and backend/ingestion/citation contracts. Removed the new A4/full-screen reader, PDF raster renderer, richer corpus and their artifacts from the current PR tree.
+- Kept authorized conflict groups, inspectable original occurrences, exact timestamps and mobile comparison improvements. No history deletion, latest-30 contract change or permission weakening.
+- Local8008preview now uses an isolated copy of the original ten-document dataset; baseline and production data remain unchanged. Verified the restored compact source in the real browser. Tests and fresh conflict captures: [focused review](../design/premium-refinement/conflicts/README.md).
+- PR #8 stays draft. Rollback uses a normal commit; no merge, force push, production deploy or live Origin change.
 
 ## 2026-10-10 — Full-product production release verified
 

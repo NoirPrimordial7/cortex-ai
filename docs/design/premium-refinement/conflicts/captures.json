@@ -1,0 +1,62 @@
+[
+  {
+    "file": "dark-conflicts-1280.png",
+    "width": 1280,
+    "height": 1277,
+    "sha256": "6541956d59534980533b43f084b1a54a4a103be2d4ef98282481fbb4fddf36cc"
+  },
+  {
+    "file": "dark-conflicts-1440.png",
+    "width": 1440,
+    "height": 1247,
+    "sha256": "7914d5d2b8999a3079a522c9153f343774d37e392839c17e3eb3df618af9ff75"
+  },
+  {
+    "file": "dark-conflicts-320.png",
+    "width": 320,
+    "height": 1919,
+    "sha256": "d9a68869b42fc1b7084f7f98261603099ecdcf936144099f17beee3fb6111574"
+  },
+  {
+    "file": "dark-conflicts-390.png",
+    "width": 390,
+    "height": 1768,
+    "sha256": "0f8194e0e8aa6d88251cd3789e6d8f405d26f2b06c31a0ccc0b754c982e47146"
+  },
+  {
+    "file": "dark-conflicts-768.png",
+    "width": 768,
+    "height": 1526,
+    "sha256": "61f1d5ab9cc2c72ec97bc96201a61fb9c4a46185d0e82944108b610e6ed68d79"
+  },
+  {
+    "file": "light-conflicts-1280.png",
+    "width": 1280,
+    "height": 1277,
+    "sha256": "81d1a78f48cb7cce0b7f69b7ee3357672dc1107f3c67aaa58597af728be74639"
+  },
+  {
+    "file": "light-conflicts-1440.png",
+    "width": 1440,
+    "height": 1247,
+    "sha256": "891c290c0af5f716be436c37f2b0c517fcf78c229bdff78bba5507124e16511a"
+  },
+  {
+    "file": "light-conflicts-320.png",
+    "width": 320,
+    "height": 1919,
+    "sha256": "6b4c255e6c3a2331b735edf18ad30a777974622fa5c9a811eb1dbcf716d569a6"
+  },
+  {
+    "file": "light-conflicts-390.png",
+    "width": 390,
+    "height": 1768,
+    "sha256": "5396014ec39e090f46c9d4f4308520080e57178c3b3695eeeaacb55b20425289"
+  },
+  {
+    "file": "light-conflicts-768.png",
+    "width": 768,
+    "height": 1526,
+    "sha256": "6907f23bcf49ae3091b2097ff006d6d5d1d6d98d78afa58076fcaf2a21b57618"
+  }
+]

@@ -49,7 +49,6 @@ def extract(path):
             add((page.extract_text() or "") + "\n", f"PDF page {i}")
     elif suffix == ".docx":
         from docx import Document
-        from docx.text.paragraph import Paragraph
 
         try:
             with ZipFile(path) as archive:
@@ -65,18 +64,11 @@ def extract(path):
         except BadZipFile:
             raise ValueError("FORMAT_MISMATCH") from None
         doc = Document(path)
-        paragraph_no = table_no = 0
-        for block in doc.iter_inner_content():
-            if isinstance(block, Paragraph):
-                paragraph_no += 1
-                add(block.text + "\n", f"DOCX paragraph {paragraph_no}")
-            else:
-                table_no += 1
-                for j, row in enumerate(block.rows, 1):
-                    add(
-                        " | ".join(cell.text for cell in row.cells) + "\n",
-                        f"DOCX table {table_no} row {j}",
-                    )
+        for i, paragraph in enumerate(doc.paragraphs, 1):
+            add(paragraph.text + "\n", f"DOCX paragraph {i}")
+        for i, table in enumerate(doc.tables, 1):
+            for j, row in enumerate(table.rows, 1):
+                add(" | ".join(cell.text for cell in row.cells) + "\n", f"DOCX table {i} row {j}")
     else:
         raise ValueError("UNSUPPORTED_FORMAT")
     content = "".join(parts)
