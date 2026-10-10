@@ -1,0 +1,10 @@
+{
+  "pr_changed_files": 558,
+  "pr_png_files": 440,
+  "pr_new_reader_pngs": 70,
+  "original_hashes": "7 staged originals match manifest and working bytes",
+  "docx_archives": "no macros or executables",
+  "unexpected_runtime_artifacts": 0,
+  "high_confidence_secret_patterns": 0,
+  "bundle_assets": 22
+}

@@ -1,5 +1,7 @@
 # Cortex AI design gallery
 
+**Current draft PR #8:** the complete forest/ivory visual direction is approved. [Enterprise reader and focused conflict review](premium-refinement/reader/README.md) includes 70 new genuine captures, exact-source reading, same-record conflict comparisons and final release gates. [Open review gallery](premium-refinement/reader/gallery.html). Production is unchanged by this draft; merge/deployment await separate release approval.
+
 **Current full-product review:** [Issue #4 report and pass/pending matrix](product-audit/README.md), [652 real before/after screenshots](product-audit/gallery.html), [verification checkpoints](product-audit/verification.md). The owner locked forest/ivory Fieldbook with editorial refinement. All routes are unified on the review branch; main and production remain unchanged pending approval.
 
 ## Historical explorations and earlier implementations

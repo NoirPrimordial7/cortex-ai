@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-10 — Draft PR #8 conflict refinement and enterprise reader
+
+- Retained the approved forest/ivory workspace. Repeated conflicts group by complete authorized claim identity, scope and date; individual queries, timestamps and source inspections remain accessible. Mobile comparisons put exact policies first, with focusable jumps and return actions.
+- Added a lazy, paginated document reader with A4-style desktop composition, comfortable full-screen mobile reading, section/edition navigation, literal match navigation, exact Unicode citation highlights and nearby unchanged context. Fresh permission checks gate focused sources, complete documents and unchanged original downloads.
+- Added optional protected original PDF page raster rendering with actual page counts; default unconfigured deployments retain extracted text/downloads. Production isolation of the renderer is a separate deployment prerequisite. Reflowed text never claims original pagination or Word/PDF visual fidelity.
+- Added a substantial opt-in fictional enterprise corpus, immutable originals and manifest. Normal ingestion/review preserves source hashes; DOCX body tables retain their position. Pending SOP/legal/procurement references do not become unsupported answer evidence.
+- Verification and 70 genuine browser captures are recorded in [reader review](../design/premium-refinement/reader/README.md). PR stays draft; production, database and exact allowed Origins remain unchanged. Release approval is required before merge/deployment.
+
 ## 2026-10-10 — Full-product production release verified
 
 - Owner explicitly approved push and production publication. PR #6 merged atfc8444f; final application3834cda is pushed to main and live on Vercel READY/production and Render Live (dep-db4mvjp7lnhs7397f87g,69seconds). No identities, permissions, exact Origins or hosted read-only boundaries weakened.

@@ -1,0 +1,137 @@
+{
+  "method": "Python gzip level 9, decimal bytes; Vite displayed rounded figures reported separately",
+  "assets": [
+    {
+      "file": "Assistant-BP8bMc6Z.js",
+      "bytes": 16181,
+      "gzip_bytes": 5215,
+      "sha256": "0ddd0e64da6b658050b23ee5bbf7598a9eb281b09635aa10a6482234121f662e"
+    },
+    {
+      "file": "Audit-c-ZyNbJJ.js",
+      "bytes": 2553,
+      "gzip_bytes": 1072,
+      "sha256": "c21983eab786b042acb478b5dbcf06d35c21acabc825caf70f5c1cfd61412738"
+    },
+    {
+      "file": "Conflicts-DsKsARUv.js",
+      "bytes": 6435,
+      "gzip_bytes": 2555,
+      "sha256": "c9158c16fb4c432bcb3ec12b4963e09d7da41945a08370459691613ca68e936c"
+    },
+    {
+      "file": "Dashboard-RpXt_UjL.js",
+      "bytes": 3572,
+      "gzip_bytes": 1410,
+      "sha256": "f0783ddc923398ff9cf93e4b3660714e9e1759edc91da41e53e48b8f43e4c14f"
+    },
+    {
+      "file": "DocumentDetail-DcIRmqOo.js",
+      "bytes": 16804,
+      "gzip_bytes": 5472,
+      "sha256": "b8362dc237b34360548413e5fc3bdcd88dbddb57250005e4a9da6a1de4bd4ef6"
+    },
+    {
+      "file": "DocumentReader-BKN6CSaK.js",
+      "bytes": 4261,
+      "gzip_bytes": 1642,
+      "sha256": "29a779f25d903dcf8a60e5ccd8918e6677424b7c246c101b17911110dde2e1d4"
+    },
+    {
+      "file": "FilePicker-VssfjdVO.js",
+      "bytes": 938,
+      "gzip_bytes": 591,
+      "sha256": "d350e6054f1f2a36c470f8b0183b45b4e1349803a2f56fb108adc1008e380955"
+    },
+    {
+      "file": "FileText.es-CGL_h93f.js",
+      "bytes": 2596,
+      "gzip_bytes": 780,
+      "sha256": "5322baeea578a41210a1e52bdaee45364342abc2d2a0468ad818b0cc3b82727e"
+    },
+    {
+      "file": "FormPrimitives-D5_y0k40.js",
+      "bytes": 433,
+      "gzip_bytes": 253,
+      "sha256": "c5b8d9abb645af52cba425123815b5aa795b1c970142a8bc531a0eedaf64f330"
+    },
+    {
+      "file": "History-CZlPta4Z.js",
+      "bytes": 3227,
+      "gzip_bytes": 1404,
+      "sha256": "31bb1bfbc1ed7887a1c6637ca3243dd4a13e44323d9a2bb19636ebade1b80e11"
+    },
+    {
+      "file": "index-BQpBr0eR.js",
+      "bytes": 309642,
+      "gzip_bytes": 95894,
+      "sha256": "1b3f684304d62344df8ca0c927a873108c419554798c7b5a60c616b11ec2ef85"
+    },
+    {
+      "file": "index-C2ZvU4Sn.css",
+      "bytes": 56233,
+      "gzip_bytes": 10754,
+      "sha256": "3576695b85620da1dd8b73bdba4b842d37b205f828a5888328cd8b57289991eb"
+    },
+    {
+      "file": "Library-D2KIGLWI.js",
+      "bytes": 6598,
+      "gzip_bytes": 2230,
+      "sha256": "cd9b21ec3e70d3199a4cbd23a42d175390359c5c52afb00b18b7f8f4fe6e1c3d"
+    },
+    {
+      "file": "MagnifyingGlass.es-CgC86gyY.js",
+      "bytes": 1611,
+      "gzip_bytes": 646,
+      "sha256": "619f7b6d7f47c1d79e2c505a87d609533fbb6ce39b60b966334616bb6870972f"
+    },
+    {
+      "file": "OriginalPdf-3nV1B2BG.js",
+      "bytes": 1871,
+      "gzip_bytes": 943,
+      "sha256": "5a1777ac97f81ff8575dae48df4da6988d39f98925f7a63b3a94fa3425f54129"
+    },
+    {
+      "file": "Permissions-RFQYoS77.js",
+      "bytes": 10186,
+      "gzip_bytes": 3329,
+      "sha256": "2a52d79ebbe1f32f001a95a16788e12d54776a6c8933e522e4fdceb6340b453c"
+    },
+    {
+      "file": "RecordPager-BWey2ijT.js",
+      "bytes": 539,
+      "gzip_bytes": 338,
+      "sha256": "73841fafbb6de8e162240d00f9de931a3ce517360d41252ac10d786b6fc5a555"
+    },
+    {
+      "file": "SourceInspector-B_bBFEuo.js",
+      "bytes": 6750,
+      "gzip_bytes": 2514,
+      "sha256": "8a81f1889c33d50bde2c5513555b55bde5b05b6bd53679259aa10c0f2f996d06"
+    },
+    {
+      "file": "SourceMarkup-BsEeteK1.js",
+      "bytes": 589,
+      "gzip_bytes": 403,
+      "sha256": "a3c5e835d7fe04758ff2f5be7179237849c0a163951149bd842e9891bc976539"
+    },
+    {
+      "file": "sourceText-DFDytNOt.js",
+      "bytes": 2361,
+      "gzip_bytes": 1044,
+      "sha256": "85d084527b21e25161b04423f4a51a0b424ee994e8ccd83f57d3df42f0fec9b9"
+    },
+    {
+      "file": "Upload-_Mg2g2-_.js",
+      "bytes": 4653,
+      "gzip_bytes": 1784,
+      "sha256": "00e78733b55e5de46e2bd1301c82b0aeeb3f171fa4fe96e1e0ed0ee9d84e83f7"
+    },
+    {
+      "file": "useCitationAccess-Biuamx_5.js",
+      "bytes": 1483,
+      "gzip_bytes": 783,
+      "sha256": "e7e9acd1bf8c21bc91824ddc2b013ab1a443810b79104a9e8ca755f56e7c82d1"
+    }
+  ]
+}

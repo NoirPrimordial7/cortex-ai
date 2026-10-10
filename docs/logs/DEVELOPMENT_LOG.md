@@ -1,5 +1,15 @@
 # Development log
 
+## 2026-10-10 — Draft PR #8 authorized reading and conflict release refinement
+
+- Read the owner's latest full-workspace review at2085747; complete visual direction is approved. Retained forest/ivory, typography and all routes. Production/main remainsa3c3a314; draft status and release approval boundary remain.
+- Implemented stable authorized conflict groups with inspectable original occurrences, exact timestamps, current source reads and compact mobile comparison. Same-five-record heights:390px3109→1768;320px3348→1919, in both themes. No historical deletion or latest-30 API change.
+- Inspected existing detail/source/ingestion/citation APIs before adding a lazy complete reader, focused context reads, Unicode offsets, full-screen mobile reading, edition/section/page/search navigation and optional protected original-PDF raster. Metadata/approval derives from authorized APIs; download bytes are unchanged. Source/dialog/answer clear on denied reads or existing revision invalidation.
+- Added opt-in six-document/seven-edition synthetic corpus with5743words, actual TXT/DOCX/PDF originals and hashes. DOCX extraction preserves paragraph/table order for new ingestions. Four entitlement editions use normal exact-clause review; SOP/legal/procurement stay pending evidence review under existing bounded answer contracts. Legal is explicitly restricted. No production seeding/migration or installation.
+- Final applicationf354ee76eb822cd1c2dea2859027b9bc6db08bf9; reader code3271d9c, byte-preserving attributesbbf6b19, compact navigationf354ee7. Final31frontend/42backend/35Chromium fixtures pass; actual reader, revocation, upload integrity, role/reflow/draft and cross-engine checks recorded in [reader review](../design/premium-refinement/reader/README.md). Vite entry96.42kBgzip versus96.39; sharedCSS10.82 versus9.94. No latency/Core Web Vitals claim.
+- Added70unmodified browser captures, dimensions/hash gallery, bundle/artifact reconciliation and reader sequence diagram. Checked original bytes, intended binaries, secrets and ignored runtime data. The source-backed complete-reader views and same-record conflict pairs are distinct scenarios.
+- Remaining release gates: owner approval, exact approved Origin/normal protected-preview sign-in and hosted smoke after approval; production PDF renderer needs OS/resource isolation before untrusted input. Native Safari/phones/soft keyboard/safe areas/assistive technology remain manual limits. No live configuration, protection bypass, merge or production deploy performed. Evidence commit subject: Document verified enterprise reader and focused conflict release review.
+
 ## 2026-10-10 — PR #8 approved Ask direction extended; release review pending
 
 - Read the owner's 00:12:32 UTC review on PR #8 and extended the approved forest/ivory direction to Library, Document Details, Conflicts, Activity, Permissions (including document grants), Audit, Upload, Dashboard and Login. This feature-branch review supersedes no previous production release; main remains a3c3a314e4fe5f93813c85591108195acf197c21 and no deployment or Origin change was made.

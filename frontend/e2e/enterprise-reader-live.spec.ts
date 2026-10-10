@@ -158,7 +158,7 @@ test("real corpus full documents, focused evidence, comparison and originals in 
         conflictHeight: await page.evaluate(
           () => document.documentElement.scrollHeight,
         ),
-        occurrences: queryIds.length,
+        newOccurrencesCreated: queryIds.length,
         readingPages: pages.length,
       });
       await page.getByText(/Recorded occurrences/).click();

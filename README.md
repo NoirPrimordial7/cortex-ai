@@ -22,6 +22,8 @@ Use workspace `NORTHSTAR` and employee `maya@example.test`; generated passwords 
 
 ## Genuine running UI
 
+**Draft PR #8 adds the approved workspace refinement, compact conflict groups and an authorized enterprise document reader.** [Review the reader, tests and 70 genuine captures](docs/design/premium-refinement/reader/README.md); [inspect the opt-in synthetic corpus](docs/demo-enterprise/README.md). These changes are local/draft and are not yet on the production demo linked above. Release approval is still required.
+
 **Full-product forest/ivory refinement:** one shell, typography and responsive controls across every route, with compact citations and dedicated mobile evidence. Owner-approved production release includes the Auronix team profiles. [Current production screenshots and verification](docs/design/production-release/README.md); historical visuals remain preserved.
 
 ![Actual production assistant browser capture](docs/design/production-release/ask-answer-light-1440.png)

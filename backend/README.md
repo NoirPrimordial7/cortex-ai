@@ -4,6 +4,8 @@ Python 3.12, FastAPI, SQLite/FTS5, SQLAlchemy Core and Alembic. This is an offli
 
 Shared demonstration extension: [ADR0006](../docs/decisions/0006-disposable-shared-demo.md) and [hosting guide](../docs/implementation/SHARED_DEMO.md) add a disposable HTTPS Render deployment and explicit fictional picker. The local instructions below still apply. Hosted uploads/governance are read-only.
 
+Draft PR #8 adds [authorized document reading and the opt-in enterprise corpus](../docs/design/premium-refinement/reader/README.md). Its final backend regression is42tests; production has not adopted these draft changes. `seed-enterprise-demo` is an alternative seed for an empty disposable data directory, not an update to an existing database. The default hosted seed remains unchanged.
+
 ## First-time setup (PowerShell, repository root)
 
 ```powershell
@@ -51,6 +53,7 @@ All routes use `/api/v1`. Mutation requests require an allowed Origin; authentic
 | `GET /documents`; `GET /documents/{id}` | Current READ-filtered list/detail/version metadata |
 | `POST /documents`; `POST /documents/{id}/versions` | Bounded multipart upload; upload action and explicit document access for a new version |
 | `GET /versions/{id}/content`; `GET /versions/{id}/download`; `GET /ingestion-jobs/{id}` | Current READ and tenant enforcement, including failed/pending input |
+| `GET /versions/{id}/pages/{page}` (draft reader) | Fresh version READ; optional original PDF PNG with actual `X-PDF-Page-Count`, no-store;501 when no renderer configured |
 | `POST /versions/{id}/review` | Reviewer action + READ; atomic approval/metadata/claim/FTS update with expected revision |
 | `POST /queries`; `GET /queries`; `GET /queries/{id}`; `GET /queries/{id}/citations/{id}` | Grounded answer/abstention, own current history, exact authorized source |
 | `GET /dashboard`; `GET /conflicts` | Visible document counts and current owner-derived activity |
@@ -59,6 +62,10 @@ All routes use `/api/v1`. Mutation requests require an allowed Origin; authentic
 | `GET /audit-events` | Auditor action; event identifiers/outcomes without document text or raw prompts |
 
 `401` requires sign-in; `403` denies an action or CSRF/Origin; `404` conceals an inaccessible resource; `409` signals stale revision/constraint; `413/415/422` reject bounded/unsupported input. API errors exclude parser content, filesystem paths and supplied credentials. Upload returns `202` with a completed bounded extraction job state; it is synchronous, not a background queue.
+
+Draft citation reads support optional `?view=passage`, returning an unchanged nearby source slice plus `text_start_char`/`text_total_chars`. Citation offsets stay global Unicode code points and `source_hash` refers to full canonical text. Default `view=full` preserves the existing contract. Content responses additionally expose authorized current review metadata and original-format/preview capability; prose approval is never authoritative.
+
+Optional PDF raster rendering requires an operator-configured absolute `CORTEX_PDF_RENDERER` path to `pdftoppm`. It is disabled by default. Bounds:200pages,1400px raster dimension,4MiBPNG,10-second renderer/15-second parent timeout. This child is not an OS sandbox or hard memory quota; isolate/resource-limit it before enabling untrusted enterprise PDFs. Rendering occupies the existing single-process gate. Exact citation highlights remain in extracted text; no PDF coordinate overlay or inferred original pagination is produced.
 
 ## Integrated frontend and fixture evaluation
 
