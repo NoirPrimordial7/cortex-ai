@@ -59,7 +59,8 @@ export default function Permissions() {
     [editing, setEditing] = useState<Person | null>(null),
     [pending, setPending] = useState<Pending | null>(null),
     [active, setActive] = useState(true),
-    [roles, setRoles] = useState<string[]>([]);
+    [roles, setRoles] = useState<string[]>([]),
+    [search, setSearch] = useState("");
   const directory = useResource<Directory>("/admin/users"),
     documents = useResource<{ items: DocumentItem[] }>("/documents");
   const readOnly = Boolean(user?.read_only_demo);
@@ -227,11 +228,21 @@ export default function Permissions() {
           (tab === "people" ? (
             <section className="library">
               <div className="people-intro">
-                <h2>Workspace people</h2>
+                <h2>Action roles & accounts</h2>
                 <p className="section-note">
-                  Review a person’s roles or account status before confirming a
-                  change. Your own account is protected from editing.
+                  Changes are reviewed before saving. Your own account is
+                  protected from editing.
                 </p>
+                <label>
+                  Find a person
+                  <input
+                    name="person-search"
+                    autoComplete="off"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Name or email"
+                  />
+                </label>
               </div>
               <ResponsiveTable
                 className="people-table"
@@ -248,51 +259,80 @@ export default function Permissions() {
                   </tr>
                 </thead>
                 <tbody>
-                  {directory.data.items.map((p) => (
-                    <tr key={p.id}>
-                      <td>
-                        <strong>{p.display_name}</strong>
-                        <small className="person-email">
-                          {p.email_normalized}
-                        </small>
-                      </td>
-                      <td data-label="Roles">
-                        {p.role_ids
-                          .map((id) =>
-                            directory.data!.roles.find((r) => r.id === id)?.name
-                              ? readableName(
-                                  directory.data!.roles.find(
-                                    (r) => r.id === id,
-                                  )!.name,
-                                )
-                              : readableName(id),
-                          )
-                          .join(", ") || "No action roles"}
-                      </td>
-                      <td data-label="Account">
-                        <Badge state={p.active ? "Active" : "Disabled"} />
-                      </td>
-                      <td>
-                        <button
-                          className="button"
-                          aria-label={
-                            (readOnly ? "View roles for " : "Edit ") +
-                            p.display_name
-                          }
-                          disabled={p.id === user?.id}
-                          onClick={() => edit(p)}
-                        >
-                          {p.id === user?.id
-                            ? "Your account"
-                            : readOnly
-                              ? "View roles"
-                              : "Edit access"}
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                  {directory.data.items
+                    .filter((p) =>
+                      (p.display_name + " " + p.email_normalized)
+                        .toLowerCase()
+                        .includes(search.toLowerCase()),
+                    )
+                    .map((p) => (
+                      <tr key={p.id}>
+                        <td>
+                          <span className="person-initials" aria-hidden="true">
+                            {p.display_name
+                              .split(" ")
+                              .map((s) => s[0])
+                              .slice(0, 2)
+                              .join("")}
+                          </span>
+                          <strong>{p.display_name}</strong>
+                          <small className="person-email">
+                            {p.email_normalized}
+                          </small>
+                        </td>
+                        <td data-label="Roles">
+                          {p.role_ids
+                            .map((id) =>
+                              directory.data!.roles.find((r) => r.id === id)
+                                ?.name
+                                ? readableName(
+                                    directory.data!.roles.find(
+                                      (r) => r.id === id,
+                                    )!.name,
+                                  )
+                                : readableName(id),
+                            )
+                            .join(", ") || "No action roles"}
+                        </td>
+                        <td data-label="Account">
+                          <Badge state={p.active ? "Active" : "Disabled"} />
+                        </td>
+                        <td>
+                          <button
+                            className="button"
+                            aria-label={
+                              (readOnly ? "View roles for " : "Edit ") +
+                              p.display_name
+                            }
+                            disabled={p.id === user?.id}
+                            onClick={() => edit(p)}
+                          >
+                            {p.id === user?.id
+                              ? "Your account"
+                              : readOnly
+                                ? "View roles"
+                                : "Edit access"}
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </ResponsiveTable>
+              <footer className="table-footer">
+                {
+                  directory.data.items.filter((p) =>
+                    (p.display_name + " " + p.email_normalized)
+                      .toLowerCase()
+                      .includes(search.toLowerCase()),
+                  ).length
+                }{" "}
+                of {directory.data.items.length} people
+                {search && (
+                  <button className="button" onClick={() => setSearch("")}>
+                    Clear search
+                  </button>
+                )}
+              </footer>
             </section>
           ) : (
             <section className="panel grants-panel">
