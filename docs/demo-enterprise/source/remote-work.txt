@@ -1,0 +1,37 @@
+Northstar Works - Distributed Work Operating Standard A
+Document OPS-DW-A | Edition 1.0 | Internal synthetic demonstration
+Owner: Workplace Operations | Fictional approver: Operations Council
+Published: 15 December 2025 | Effective: 1 January 2026, open-ended
+This fictional standard deliberately has an equally authoritative conflicting peer.
+
+1. Objective and scope
+1.1 This standard supports predictable distributed work for India full-time employees whose tasks can be performed from an approved remote location. It balances team coordination, customer coverage, information handling and individual working arrangements. It does not apply an employee entitlement to contractor agreements.
+1.2 The operational calendar distinguishes an approved remote day from leave, travel or an on-site customer assignment. A remote day remains a working day with the employee's usual responsibilities. Teams must not treat the location indicator as a substitute for a work or absence record.
+
+2. Weekly allocation
+2.1 India full-time employees may work remotely 2 days per week.
+2.2 The team publishes a coordination plan before the working week. Employees propose days against that plan and the manager records coverage. A change in location should be visible to colleagues who need it for collaboration, without exposing the employee's private address or personal circumstances.
+2.3 A manager cannot resolve a conflict between this standard and another equally authoritative effective standard by applying their preferred number. The owner must investigate the source editions and review a correction. Until then, the assistant abstains from choosing an allocation and presents the exact competing clauses.
+
+3. Daily operating practice
+3.1 At the start of the day, confirm availability and any planned appointment in the team calendar. Keep a realistic task plan and raise a delivery risk early. A status indicator is not a timekeeping record and must not be used to infer that someone was absent throughout a period.
+3.2 Use the company-managed device and approved connection. Do not move restricted material to a personal account to work around an unavailable system. If access fails, notify the service desk with the application and symptom; exclude credentials, customer records and restricted screenshots from the ticket.
+3.3 Meetings have an owner, purpose and expected decision. The owner records the outcome and action owner in the shared work system. Colleagues who cannot attend receive the decision record rather than an informal summary that could change the scope of an instruction.
+
+4. Coordination matrix
+Situation | Employee action | Manager action
+Planned remote day | Propose day and check shared coverage | Record coverage decision
+Connection failure | Report symptom and protect restricted data | Arrange a safe alternative task
+Customer visit | Update location and customer coverage | Confirm contact and duty owner
+Conflicting policy text | Raise the two source editions | Escalate to Operations Council
+
+4.1 A temporary arrangement has a documented start, end and review owner. It does not become a permanent change through repeated calendar entries. A manager checks any employment accommodation through the responsible people team; this document does not disclose the person's underlying private information.
+
+5. Safety, facilities and equipment
+5.1 Employees choose a work setting that supports confidential conversations and reasonable concentration. When confidential discussion cannot be protected, move to an approved room or reschedule with the meeting owner. Headphones do not make a public location appropriate for every type of information.
+5.2 Equipment loss, unexpected access prompts and suspected account compromise follow the incident SOP. Report the event rather than silently replacing or wiping a device. The incident owner decides how to preserve evidence and provides a safe continuation plan through the service desk.
+
+6. Review and exception handling
+6.1 Workplace Operations checks team coverage feedback and recurring service issues before changing this standard. Changes are published as a new reviewed edition, with an explicit effective interval and affected population. Publication, ingestion and effectiveness are distinct dates.
+6.2 Edition 1.0 introduced the baseline distributed-work process. The fictional Operations Council approved this source in the synthetic scenario; application approval and authority are separately reviewed by the seed workflow. A peer standard with a different allocation is intentionally retained to test honest conflict abstention.
+6.3 The owner keeps both original files and the interpretation log during reconciliation. Historical questions remain tied to their original records, source hashes and exact offsets. A future decision must not silently replace what an earlier employee saw as authorized evidence.

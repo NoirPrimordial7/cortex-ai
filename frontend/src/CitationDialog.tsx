@@ -25,6 +25,9 @@ export function CitationDialog({
         busy={access.busy}
         conflict={access.conflict}
         context={access.context}
+        onReturn={access.close}
+        returnLabel={returnLabel}
+        onDeniedReader={access.fail}
       />
     </SourceDialog>
   ) : null;

@@ -15,7 +15,8 @@ test.skip(
   "Explicit production release verification.",
 );
 const widths = [320, 390, 768, 1024, 1280, 1440];
-const folder = process.env.CORTEX_RELEASE_OUTPUT || "../outputs/production-release";
+const folder =
+  process.env.CORTEX_RELEASE_OUTPUT || "../outputs/production-release";
 const names: Record<string, string> = {
   maya: "Arya Dhumal",
   ravi: "Aditya Gholar",
@@ -149,7 +150,7 @@ for (const profile of ["maya", "ravi", "isha", "orbit", "noor"]) {
     if (profile === "ravi") {
       const docs = await (await page.request.get("/api/v1/documents")).json();
       await page.goto(`/documents/${docs.items[0].id}`);
-      await expect(page.locator("pre.source-text")).toBeVisible();
+      await expect(page.locator(".reader-body")).toBeVisible();
       await capture(page, profile, "document", measurements);
     }
     if (profile === "maya") {

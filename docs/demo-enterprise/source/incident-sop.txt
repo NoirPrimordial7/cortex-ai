@@ -1,0 +1,34 @@
+Northstar Works - Service Incident Response SOP
+Document SOP-IR-04 | Edition 3.1 | Internal synthetic demonstration
+Owner: Service Reliability | Fictional approver: Technology Operations Council
+Published: 12 September 2026 | Planned annual review: September 2027
+Controlled reference. Not reviewed as an entitlement answer source in Cortex.
+
+1. Purpose and activation
+1.1 This SOP gives the service team a common method for assessing, containing and recovering from an interruption. It applies to the fictional internal order service, employee directory and document portal. It is a working reference, not a promise of availability or a replacement for the security incident process.
+1.2 Activate an incident record when users cannot complete an expected task, data appears inconsistent or a monitoring signal indicates a credible service risk. The first responder records what was observed, which service is affected and the time of observation. Avoid declaring a root cause before evidence supports it.
+1.3 The incident commander owns coordination, not every technical action. A technical lead owns diagnosis, a communications lead owns updates and a scribe preserves the timeline. A responder may hold more than one role in a small incident, but records each responsibility explicitly.
+
+2. Initial assessment
+2.1 Check whether the symptom is reproducible, whether it affects one tenant or several, and whether the available evidence contains sensitive information. Record the request reference and safe error class. Do not paste full customer payloads, authentication tokens or document passages into the incident channel.
+2.2 Separate user-visible symptoms from hypotheses. A failed login may result from an unavailable service, rejected origin or disabled account; guessing a password problem can lead to unsafe retries. Ask the service owner for sanitized traces with the original event time and request ID.
+2.3 If information exposure is suspected, involve the security responder before attempting a broad repair. Restrict evidence access to the incident team. Customer identifiers must be minimized in general updates even when the technical team has lawful operational access to the underlying record.
+
+3. Severity and ownership matrix
+Class | Example symptom | Coordination owner | Update audience
+Critical | Widespread service interruption or suspected exposure | Incident commander | Leadership and affected service owners
+Major | Core task unavailable to a bounded group | Service lead | Affected team and support desk
+Minor | Workaround available with limited disruption | Duty responder | Support desk and task owner
+
+3.1 The severity can change when the affected scope or recovery options become clearer. Preserve the original assessment and explain the change. A smaller observed scope does not prove that an information incident was harmless; the security responder owns that assessment.
+3.2 Communications describe the symptom, impact currently known, actions underway and the next update trigger. Do not publish a recovery time that has not been agreed by the technical lead. If the expected update cannot be produced, explain the uncertainty rather than repeating an unsupported estimate.
+
+4. Containment and recovery
+4.1 Prefer a reversible, narrowly scoped action. Before a restart, rollback or feature disablement, identify the affected service, the expected result and the way to verify it. Record who approved and who executed the action. Production changes continue to follow the release gate; an incident does not remove authorization checks.
+4.2 Preserve diagnostic evidence before overwriting temporary state. Capture sanitized configuration identifiers and release hashes rather than secret values. If a restore is needed, confirm the backup's scope and recovery point with the data owner before replacing any records.
+4.3 Verify the task end to end after recovery: authenticated browser, API authorization, data read and returned result. A healthy process indicator is not proof that a user can complete the task. Use an approved test identity and avoid creating misleading customer activity in shared production records.
+
+5. Closure and learning
+5.1 Close the incident when the agreed user task is restored and monitoring supports stability. The commander records residual risk, follow-up owner and the basis for closure. A workaround with a remaining defect can support downgrade, but should not be described as a complete repair.
+5.2 The review reconstructs the timeline using original event times. Distinguish detection, acknowledgement, containment and recovery. Identify where controls worked and where a specific change can improve the process. Assign an owner and verification condition to each action; avoid generic training actions without a defined need.
+5.3 Edition 3.0 introduced the role matrix; edition 3.1 added explicit origin-error triage and end-to-end recovery checks. These are fictional business approvals. In Cortex this document remains a reference pending evidence review, because the current answer contract supports only four reviewed entitlement topics.

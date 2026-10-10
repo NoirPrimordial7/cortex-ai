@@ -3,18 +3,20 @@ export function RecordPager({
   total,
   size,
   onPage,
+  noun = "records",
 }: {
   page: number;
   total: number;
   size: number;
   onPage: (page: number) => void;
+  noun?: string;
 }) {
   const pages = Math.max(1, Math.ceil(total / size));
   return (
     <nav className="record-pager" aria-label="Record pages">
       <p role="status">
         {total ? page * size + 1 : 0}–{Math.min((page + 1) * size, total)} of{" "}
-        {total} records
+        {total} {noun}
       </p>
       <div>
         <button

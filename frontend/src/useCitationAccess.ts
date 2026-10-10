@@ -42,7 +42,7 @@ export function useCitationAccess(onDenied?: () => void) {
     setContext({ date: q.as_of, population: q.scope.population });
     try {
       const fresh = await api<Source>(
-        `/queries/${q.query_id}/citations/${c.id}`,
+        `/queries/${q.query_id}/citations/${c.id}?view=passage`,
       );
       if (epoch.current === stamp) setSource(fresh);
     } catch (e) {
@@ -55,5 +55,20 @@ export function useCitationAccess(onDenied?: () => void) {
       if (epoch.current === stamp) setBusy(false);
     }
   }
-  return { source, citation, busy, error, conflict, context, inspect, close };
+  function fail(message: string) {
+    close();
+    setError(message);
+    denied.current?.();
+  }
+  return {
+    source,
+    citation,
+    busy,
+    error,
+    conflict,
+    context,
+    inspect,
+    close,
+    fail,
+  };
 }

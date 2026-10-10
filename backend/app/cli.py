@@ -200,13 +200,17 @@ def seed(engine, settings):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["migrate", "seed-demo"])
+    parser.add_argument("command", choices=["migrate", "seed-demo", "seed-enterprise-demo"])
     args = parser.parse_args()
     settings = Settings.from_env()
     engine = models.engine_for(settings.db_path)
     migrate(engine)
-    if args.command == "seed-demo":
+    if args.command in {"seed-demo", "seed-enterprise-demo"}:
         credentials = seed(engine, settings)
+        if args.command == "seed-enterprise-demo":
+            from .enterprise_demo import add_enterprise
+
+            add_enterprise(engine, settings)
         target = settings.data_dir / "credentials.json"
         target.write_text(json.dumps(credentials, indent=2), encoding="utf-8")
         print(

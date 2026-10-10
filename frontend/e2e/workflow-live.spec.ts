@@ -40,7 +40,7 @@ test("real private upload, review, download integrity and denied employee read",
   await expect(
     page.getByRole("heading", { name: title, exact: true }),
   ).toBeVisible();
-  await expect(page.locator("pre.source-text")).toHaveText(passage);
+  await expect(page.locator(".reader-body")).toHaveText(passage);
   const documentPath = new URL(page.url()).pathname;
   await page
     .getByRole("button", { name: "Review metadata", exact: true })
@@ -60,7 +60,7 @@ test("real private upload, review, download integrity and denied employee read",
   await expect(page.locator(".document-validity")).toContainText(
     "Future effective",
   );
-  await expect(page.locator("pre.source-text")).toHaveText(passage);
+  await expect(page.locator(".reader-body")).toHaveText(passage);
   const detail = await (
     await page.request.get("/api/v1" + documentPath)
   ).json();
@@ -95,7 +95,7 @@ test("real private upload, review, download integrity and denied employee read",
   await page.goto(documentPath);
   await expect(page.getByRole("alert")).toBeVisible();
   await expect(page.getByText(title, { exact: true })).toHaveCount(0);
-  await expect(page.locator("pre.source-text")).toHaveCount(0);
+  await expect(page.locator(".reader-body")).toHaveCount(0);
   await page.screenshot({
     path: "../outputs/product-audit/workflow/denied-private-policy-390.png",
     fullPage: true,

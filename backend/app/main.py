@@ -1,4 +1,8 @@
 import json
+import base64
+import subprocess
+import sys
+from pathlib import Path
 import secrets
 import threading
 import time
@@ -120,7 +124,7 @@ def create_app(settings=None):
         result.headers["X-Content-Type-Options"] = "nosniff"
         result.headers["Referrer-Policy"] = "no-referrer"
         result.headers["Content-Security-Policy"] = (
-            "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+            "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
         )
         result.headers["X-Request-ID"] = request.state.request_id
         return result
@@ -243,7 +247,8 @@ def create_app(settings=None):
         return {
             "id": ctx.user["id"],
             "display_name": demo_display_name(ctx.user)
-            if settings.demo_accounts_enabled else ctx.user["display_name"],
+            if settings.demo_accounts_enabled
+            else ctx.user["display_name"],
             "workspace": ctx.tenant,
             "roles": ctx.roles,
             "actions": sorted(ctx.actions),
@@ -406,6 +411,17 @@ def create_app(settings=None):
     @app.get("/api/v1/versions/{vid}/content")
     def content(vid: str, ctx: Ctx):
         v = version(ctx, vid)
+        metadata = one(
+            ctx.db,
+            """SELECT m.approval_state,m.valid_from,m.valid_to,m.population,
+          m.source_kind,m.reviewed_at,u.display_name reviewer_name,a.rank authority_rank
+          FROM metadata_revisions m JOIN users u ON u.id=m.reviewer_id AND u.tenant_id=m.tenant_id
+          LEFT JOIN authority_rules a ON a.tenant_id=m.tenant_id AND a.topic=m.topic
+          AND a.jurisdiction=m.jurisdiction AND a.source_kind=m.source_kind AND a.active=1
+          WHERE m.tenant_id=:tenant AND m.id=:mid""",
+            tenant=ctx.tenant,
+            mid=v["current_metadata_revision_id"],
+        )
         return {
             "version_id": vid,
             "document_id": v["document_id"],
@@ -414,7 +430,58 @@ def create_app(settings=None):
             "source_hash": v["extracted_sha256"],
             "segments": json.loads(v["segments_json"]),
             "metadata_revision": v["metadata_revision"],
+            "review": metadata,
+            "original_format": Path(v["object_key"]).suffix.lstrip("."),
+            "original_preview_available": bool(
+                Path(v["object_key"]).suffix == ".pdf"
+                and settings.pdf_renderer
+                and Path(settings.pdf_renderer).is_absolute()
+                and Path(settings.pdf_renderer).is_file()
+            ),
         }
+
+    @app.get("/api/v1/versions/{vid}/pages/{page}")
+    def original_page(vid: str, page: int, ctx: Ctx):
+        v = version(ctx, vid)  # READ/tenant rechecked before format or renderer metadata.
+        private = (settings.data_dir / "uploads").resolve()
+        target = (private / v["object_key"]).resolve()
+        if (
+            target.parent != private
+            or target.suffix != ".pdf"
+            or not target.is_file()
+            or not 1 <= page <= 200
+        ):
+            raise HTTPException(404, "Resource unavailable")
+        renderer = settings.pdf_renderer
+        if not renderer or not Path(renderer).is_absolute() or not Path(renderer).is_file():
+            raise HTTPException(
+                501, "Original PDF preview is unavailable; use extracted text or download"
+            )
+        try:
+            output = subprocess.run(
+                [
+                    sys.executable,
+                    "-I",
+                    str(Path(__file__).with_name("pdf_worker.py")),
+                    str(target),
+                    renderer,
+                    str(page),
+                ],
+                capture_output=True,
+                timeout=15,
+                check=True,
+            )
+            result = json.loads(output.stdout)
+            if "error" in result:
+                raise ValueError("Unavailable")
+            image = base64.b64decode(result["image"], validate=True)
+            if len(image) > 4 * 1024 * 1024 or not image.startswith(b"\x89PNG\r\n\x1a\n"):
+                raise ValueError("Invalid raster")
+        except (subprocess.SubprocessError, ValueError, KeyError):
+            raise HTTPException(422, "Original PDF page could not be rendered") from None
+        return Response(
+            image, media_type="image/png", headers={"X-PDF-Page-Count": str(result["page_count"])}
+        )
 
     @app.get("/api/v1/versions/{vid}/download")
     def download(vid: str, ctx: Ctx):
@@ -456,7 +523,7 @@ def create_app(settings=None):
         return saved(ctx, qid)
 
     @app.get("/api/v1/queries/{qid}/citations/{cid}")
-    def citation(qid: str, cid: str, ctx: Ctx):
+    def citation(qid: str, cid: str, ctx: Ctx, view: str = "full"):
         q = saved(ctx, qid)
         c = next((c for c in q["citations"] if c["id"] == cid), None)
         if not c:
@@ -464,7 +531,39 @@ def create_app(settings=None):
         v = version(ctx, c["version_id"])
         if v["extracted_text"][c["start_char"] : c["end_char"]] != c["quote"]:
             raise HTTPException(409, "Evidence changed; ask again")
-        return {**c, "text": v["extracted_text"], "query_id": qid}
+        text = v["extracted_text"]
+        if view == "passage":
+            # Exact unchanged source slice; all offsets/hash still refer to the full canonical text.
+            start, end = c["start_char"], c["end_char"]
+            start = text.rfind("\n", 0, start) + 1
+            line_end = text.find("\n", end)
+            end = len(text) if line_end < 0 else line_end
+            left, right = start, end
+            for _ in range(3):
+                if left == 0:
+                    break
+                prior = text.rfind("\n", 0, left - 1) + 1
+                if start - prior > 700:
+                    break
+                left = prior
+            for _ in range(3):
+                if right == len(text):
+                    break
+                following = text.find("\n", right + 1)
+                following = len(text) if following < 0 else following
+                if following - end > 700:
+                    break
+                right = following
+            return {
+                **c,
+                "text": text[left:right],
+                "text_start_char": left,
+                "text_total_chars": len(text),
+                "query_id": qid,
+            }
+        if view != "full":
+            raise HTTPException(422, "Unsupported source view")
+        return {**c, "text": text, "query_id": qid}
 
     def history(ctx):
         result = []

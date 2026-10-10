@@ -1,0 +1,183 @@
+%PDF-1.3
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+/Title (Northstar information handling \055 fictional)
+/Author (Northstar Works synthetic demonstration)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 2
+/Kids [ 6 0 R 8 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Times-Roman
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica-Bold
+>>
+endobj
+6 0 obj
+<<
+/Type /Page
+/Resources <<
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+>>
+>>
+/MediaBox [ 0.0 0.0 595.28 841.89 ]
+/Parent 2 0 R
+/Contents 7 0 R
+>>
+endobj
+7 0 obj
+<<
+/Length 4670
+>>
+stream
+0.09 0.24 0.19 rg
+BT /F2 12 Tf 48 760 Td (Northstar Works - Information Handling and Supplier Confidentiality Policy) Tj ET
+BT /F1 11 Tf 48 745 Td (Document LEG-DATA-07 | Edition 2.2 | Restricted synthetic demonstration) Tj ET
+BT /F1 11 Tf 48 730 Td (Owner: Legal Operations | Fictional approver: Information Governance Committee) Tj ET
+BT /F1 11 Tf 48 715 Td (Published: 1 August 2026 | Next review: August 2027) Tj ET
+BT /F1 11 Tf 48 700 Td (Fictional internal policy, not legal advice or a statement of applicable law.) Tj ET
+BT /F1 11 Tf 48 685 Td () Tj ET
+BT /F2 12 Tf 48 670 Td (1. Purpose and interpretation) Tj ET
+BT /F1 11 Tf 48 655 Td (1.1 This policy describes Northstar's fictional internal handling commitments for business) Tj ET
+BT /F1 11 Tf 48 640 Td (records received from employees, customers and suppliers. Its controls support contract) Tj ET
+BT /F1 11 Tf 48 625 Td (administration and information governance. Questions about applicable law or a specific) Tj ET
+BT /F1 11 Tf 48 610 Td (agreement must be referred to the legal owner; a general policy extract must not be presented) Tj ET
+BT /F1 11 Tf 48 595 Td (as legal advice.) Tj ET
+BT /F1 11 Tf 48 580 Td (1.2 Apply the more specific reviewed contract instruction when the information owner has) Tj ET
+BT /F1 11 Tf 48 565 Td (confirmed that it governs the record. Do not infer an exception from an informal email. An) Tj ET
+BT /F1 11 Tf 48 550 Td (unresolved conflict between instructions is recorded and escalated without discarding either) Tj ET
+BT /F1 11 Tf 48 535 Td (source or selecting a convenient interpretation.) Tj ET
+BT /F1 11 Tf 48 520 Td (1.3 The classification owner is accountable for deciding the business need, access population) Tj ET
+BT /F1 11 Tf 48 505 Td (and permitted handling location. A system administrator's ability to maintain a service does) Tj ET
+BT /F1 11 Tf 48 490 Td (not grant automatic access to every business document stored in that service.) Tj ET
+BT /F1 11 Tf 48 475 Td () Tj ET
+BT /F2 12 Tf 48 460 Td (2. Classification and minimum access) Tj ET
+BT /F1 11 Tf 48 445 Td (Class | Example | Approved sharing pattern) Tj ET
+BT /F1 11 Tf 48 430 Td (Public | Released product brochure | Published approved copy) Tj ET
+BT /F1 11 Tf 48 415 Td (Internal | Team procedure without personal records | Company task-based access) Tj ET
+BT /F1 11 Tf 48 400 Td (Confidential | Supplier negotiation or employee case | Named team or explicit individuals) Tj ET
+BT /F1 11 Tf 48 385 Td (Restricted | Counsel correspondence or investigation material | Named matter team only) Tj ET
+BT /F1 11 Tf 48 370 Td () Tj ET
+BT /F1 11 Tf 48 355 Td (2.1 Classification is assigned at creation and reviewed when the content or audience changes.) Tj ET
+BT /F1 11 Tf 48 340 Td (A document's title can itself reveal sensitive context, so restricted titles and metadata must) Tj ET
+BT /F1 11 Tf 48 325 Td (not appear in a general catalogue. A request for access does not authorize displaying the) Tj ET
+BT /F1 11 Tf 48 310 Td (restricted content while approval is pending.) Tj ET
+BT /F1 11 Tf 48 295 Td (2.2 Grant access for a defined purpose and population. Individual exceptions identify the) Tj ET
+BT /F1 11 Tf 48 280 Td (owner and review trigger. Removing a team member requires reviewing their direct grants as) Tj ET
+BT /F1 11 Tf 48 265 Td (well as role membership. Historical source inspection and downloads must use current) Tj ET
+BT /F1 11 Tf 48 250 Td (permissions, not a snapshot from the day an answer was created.) Tj ET
+BT /F1 11 Tf 48 235 Td (2.3 Copies made for a task carry the same handling obligation. Sending a link is preferred to) Tj ET
+BT /F1 11 Tf 48 220 Td (sending a new attachment because the link can apply current access. A source hash demonstrates) Tj ET
+BT /F1 11 Tf 48 205 Td (content identity; it does not establish a right to access the source or make its contents) Tj ET
+BT /F1 11 Tf 48 190 Td (public.) Tj ET
+BT /F1 11 Tf 48 175 Td () Tj ET
+BT /F2 12 Tf 48 160 Td (3. Supplier material and controlled disclosure) Tj ET
+BT /F1 11 Tf 48 145 Td (3.1 Record the agreement or matter reference before accepting restricted supplier material.) Tj ET
+BT /F1 11 Tf 48 130 Td (The business owner confirms the intended audience and the handling location. The legal team) Tj ET
+BT /F1 11 Tf 48 115 Td (checks obligations that differ from the standard process and records an approved instruction) Tj ET
+BT /F1 11 Tf 48 100 Td (for the specific matter.) Tj ET
+BT /F1 11 Tf 48 85 Td (3.2 Before a disclosure, confirm the recipient, purpose, minimum content and approval. Do not) Tj ET
+BT /F1 9 Tf 48 38 Td (Northstar Works - Restricted synthetic document | Page 1 of 2) Tj ET
+endstream
+endobj
+8 0 obj
+<<
+/Type /Page
+/Resources <<
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+>>
+>>
+/MediaBox [ 0.0 0.0 595.28 841.89 ]
+/Parent 2 0 R
+/Contents 9 0 R
+>>
+endobj
+9 0 obj
+<<
+/Length 3635
+>>
+stream
+0.09 0.24 0.19 rg
+BT /F1 11 Tf 48 760 Td (rely on an address copied from an old conversation when the recipient has changed) Tj ET
+BT /F1 11 Tf 48 745 Td (organizations. Use an approved transfer channel and preserve the disclosure record with the) Tj ET
+BT /F1 11 Tf 48 730 Td (matter reference.) Tj ET
+BT /F1 11 Tf 48 715 Td (3.3 If a supplier asks for a deletion, preservation or export action, pause routine handling) Tj ET
+BT /F1 11 Tf 48 700 Td (and route the request to the legal owner. The team reconciles the request with relevant) Tj ET
+BT /F1 11 Tf 48 685 Td (retention and preservation instructions. A support operator should not improvise a retention) Tj ET
+BT /F1 11 Tf 48 670 Td (period from a number found in unrelated policy text.) Tj ET
+BT /F1 11 Tf 48 655 Td () Tj ET
+BT /F2 12 Tf 48 640 Td (4. Retention, preservation and corrections) Tj ET
+BT /F1 11 Tf 48 625 Td (4.1 The record owner assigns the approved record category and the applicable disposition rule) Tj ET
+BT /F1 11 Tf 48 610 Td (from the controlled schedule. This document does not invent a universal duration. A matter) Tj ET
+BT /F1 11 Tf 48 595 Td (preservation notice suspends routine disposal for its defined scope; release of that notice is) Tj ET
+BT /F1 11 Tf 48 580 Td (a separately recorded decision.) Tj ET
+BT /F1 11 Tf 48 565 Td (4.2 Corrections preserve provenance. If a record contains inaccurate information, retain the) Tj ET
+BT /F1 11 Tf 48 550 Td (correction reason and distinguish a corrected working copy from the original received) Tj ET
+BT /F1 11 Tf 48 535 Td (evidence. Do not overwrite an uploaded source to make an earlier citation look correct; issue) Tj ET
+BT /F1 11 Tf 48 520 Td (a new version and review its exact supporting span.) Tj ET
+BT /F1 11 Tf 48 505 Td (4.3 A disposition event records the scope, authorizer, execution result and exceptions. Failed) Tj ET
+BT /F1 11 Tf 48 490 Td (deletion is not reported as complete. Backups and derived copies are considered through the) Tj ET
+BT /F1 11 Tf 48 475 Td (approved schedule, with the information owner deciding any residual handling obligation.) Tj ET
+BT /F1 11 Tf 48 460 Td () Tj ET
+BT /F2 12 Tf 48 445 Td (5. Assurance and incidents) Tj ET
+BT /F1 11 Tf 48 430 Td (5.1 Owners review access after a team change, matter closure or reported handling concern. The) Tj ET
+BT /F1 11 Tf 48 415 Td (review checks both role and named grants. Audit extracts contain the safe action, outcome,) Tj ET
+BT /F1 11 Tf 48 400 Td (event time and request reference; they should not contain raw legal documents, passwords or) Tj ET
+BT /F1 11 Tf 48 385 Td (personal case narratives.) Tj ET
+BT /F1 11 Tf 48 370 Td (5.2 Suspected misdelivery or unauthorized access follows the incident SOP and the legal) Tj ET
+BT /F1 11 Tf 48 355 Td (escalation path. Preserve the original event evidence without broadening access.) Tj ET
+BT /F1 11 Tf 48 340 Td (Communications use verified scope and clearly label what is not yet known. A lack of observed) Tj ET
+BT /F1 11 Tf 48 325 Td (downloads is not proof that no disclosure occurred.) Tj ET
+BT /F1 11 Tf 48 310 Td (5.3 Edition 2.0 introduced classification; 2.1 clarified supplier transfers; 2.2 added) Tj ET
+BT /F1 11 Tf 48 295 Td (metadata confidentiality and current-permission checks for historical citations. The source) Tj ET
+BT /F1 11 Tf 48 280 Td (remains restricted to the fictional reviewer and auditor. Cortex can display it to authorized) Tj ET
+BT /F1 11 Tf 48 265 Td (readers but does not answer arbitrary legal questions from unreviewed prose.) Tj ET
+BT /F1 9 Tf 48 38 Td (Northstar Works - Restricted synthetic document | Page 2 of 2) Tj ET
+endstream
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000015 00000 n 
+0000000159 00000 n 
+0000000224 00000 n 
+0000000273 00000 n 
+0000000345 00000 n 
+0000000420 00000 n 
+0000000568 00000 n 
+0000005290 00000 n 
+0000005438 00000 n 
+trailer
+<<
+/Size 10
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+9125
+%%EOF

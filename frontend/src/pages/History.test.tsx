@@ -56,7 +56,7 @@ test("history fetches the current authorized source before showing any passage",
     screen.getByRole("button", { name: "View evidence: Leave policy" }),
   );
   expect(await screen.findByText("Fresh authorized passage")).toBeVisible();
-  expect(api).toHaveBeenCalledWith("/queries/q/citations/cite");
+  expect(api).toHaveBeenCalledWith("/queries/q/citations/cite?view=passage");
 });
 test("a denied history citation closes its source view and refreshes the permitted history", async () => {
   let reads = 0;
