@@ -1,5 +1,7 @@
 # Cortex AI — mobile-first design direction and quality gate
 
+**PR #8 rollout, 10 October 2026:** The owner approved Ask iteration 2 and authorized the remaining page rollout. Library, Document Details, Conflicts, Activity, Permissions, Audit, Upload, Dashboard and Login now have dedicated layouts on the draft branch. [Current design and browser comparisons](premium-refinement/rollout/README.md). Complete release review is pending; this task has not merged or deployed production. Earlier publication statements below are historical.
+
 **Latest status,10October2026:** The shared full-product design is owner-approved and published; [current production verification](production-release/README.md). Earlier implementation statements below are preserved history.
 
 **Current update, 2026-10-10:** Ask Cortex now uses the selected Fieldbook identity, with an independent reading area, persistent composer and dedicated mobile evidence view. Verified at 320/390/768/1280/1440 in both themes. [Selected direction and checks](evidence-desk/selected/README.md). The owner explicitly prioritized Ask before extending the design to other routes; production deployment remains a separate step.
