@@ -1,4 +1,3 @@
-import { ResponsiveTable } from "../FormPrimitives";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -44,119 +43,136 @@ export default function Library() {
           ) : undefined
         }
       />
-      <section className="library">
-        <div className="library-toolbar">
-          <label className="search-field">
-            <MagnifyingGlassIcon size={18} />
-            <span className="sr-only">Search documents</span>
-            <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Find a document…"
-            />
-          </label>
-          <label>
-            <span className="sr-only">Category</span>
-            <select
-              aria-label="Category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="all">All categories</option>
-              {[...new Set(data?.items.map((d) => d.category))].map((c) => (
-                <option key={c}>{c}</option>
-              ))}
-            </select>
-          </label>
-          <label>
-            <span className="sr-only">Sort documents</span>
-            <select
-              aria-label="Sort documents"
-              value={sort}
-              onChange={(e) => setSort(e.target.value)}
-            >
-              <option value="title">Title A–Z</option>
-              <option value="recent">Latest upload</option>
-            </select>
-          </label>
-        </div>
-        <State error={error} loading={loading}>
-          {!items.length ? (
-            <div className="empty-state">
-              <FileTextIcon size={32} />
-              <h2>
-                {search || category !== "all"
-                  ? "No matching documents"
-                  : "No documents available"}
-              </h2>
-              <p>
-                {search || category !== "all"
-                  ? "Try another title or category."
-                  : "Ask your administrator about document access."}
-              </p>
-            </div>
-          ) : (
-            <ResponsiveTable
-              className="document-table"
-              caption="Documents available under your current access grants"
-            >
-              <thead>
-                <tr>
-                  <th>Document</th>
-                  <th>Category</th>
-                  <th>Versions</th>
-                  <th>Latest upload</th>
-                  <th>
-                    <span className="sr-only">Open document</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((d) => (
-                  <tr key={d.id}>
-                    <td>
-                      <Link className="document-link" to={"/documents/" + d.id}>
-                        <FileTextIcon size={24} />
-                        <strong>{d.title}</strong>
-                      </Link>
-                    </td>
-                    <td data-label="Category">
-                      {d.category === "policy"
-                        ? "Policy"
-                        : d.category === "project"
-                          ? "Project"
-                          : d.category}
-                    </td>
-                    <td data-label="Versions">
-                      {d.version_count}
-                      <span className="mobile-only">
-                        {" "}
-                        {d.version_count === 1 ? "version" : "versions"}
-                      </span>
-                    </td>
-                    <td data-label="Uploaded">
-                      {d.latest_ingested_at?.slice(0, 10) || "Unavailable"}
-                    </td>
-                    <td>
-                      <Link
-                        className="icon-button"
-                        to={"/documents/" + d.id}
-                        aria-label={"Open " + d.title}
-                      >
-                        <ArrowUpRightIcon size={18} />
-                      </Link>
-                    </td>
-                  </tr>
+      <section className="catalogue">
+        <aside className="catalogue-index">
+          <h2>Your collection</h2>
+          <p className="catalogue-total">
+            {data?.items.length ?? "—"}
+            <span>permitted documents</span>
+          </p>
+          <p className="section-note">
+            An upload is a source record. Approval and effective dates are
+            reviewed inside each edition.
+          </p>
+          <nav aria-label="Document categories">
+            {["all", ...new Set(data?.items.map((d) => d.category))].map(
+              (c) => (
+                <button
+                  key={c}
+                  className={category === c ? "selected" : ""}
+                  aria-pressed={category === c}
+                  onClick={() => setCategory(c)}
+                >
+                  {c === "all" ? "All documents" : c}
+                  <span>
+                    {
+                      data?.items.filter((d) => c === "all" || d.category === c)
+                        .length
+                    }
+                  </span>
+                </button>
+              ),
+            )}
+          </nav>
+        </aside>
+        <div className="catalogue-content">
+          <div className="library-toolbar">
+            <label className="search-field">
+              <MagnifyingGlassIcon size={18} />
+              <span className="sr-only">Search documents</span>
+              <input
+                name="document-search"
+                autoComplete="off"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Find a document…"
+              />
+            </label>
+            <label>
+              <span className="sr-only">Category</span>
+              <select
+                name="category"
+                aria-label="Category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="all">All types</option>
+                {[...new Set(data?.items.map((d) => d.category))].map((c) => (
+                  <option key={c}>{c}</option>
                 ))}
-              </tbody>
-            </ResponsiveTable>
-          )}
-        </State>
-        <footer className="table-footer">
-          {items.length} {items.length === 1 ? "document" : "documents"} ·
-          Upload dates describe file arrival; reviewed validity is shown inside
-          each document.
-        </footer>
+              </select>
+            </label>
+            <label>
+              <span className="sr-only">Sort documents</span>
+              <select
+                name="sort"
+                aria-label="Sort documents"
+                value={sort}
+                onChange={(e) => setSort(e.target.value)}
+              >
+                <option value="title">Title A–Z</option>
+                <option value="recent">Latest upload</option>
+              </select>
+            </label>
+          </div>
+          <State error={error} loading={loading}>
+            {!items.length ? (
+              <div className="empty-state">
+                <FileTextIcon size={32} />
+                <h2>
+                  {search || category !== "all"
+                    ? "No matching documents"
+                    : "No documents available"}
+                </h2>
+                <p>
+                  {search || category !== "all"
+                    ? "Try another title or category."
+                    : "Ask your administrator about document access."}
+                </p>
+              </div>
+            ) : (
+              <div className="catalogue-records">
+                {items.map((d) => (
+                  <Link
+                    key={d.id}
+                    className="catalogue-record"
+                    to={"/documents/" + d.id}
+                    aria-label={"Open " + d.title}
+                  >
+                    <FileTextIcon size={25} />
+                    <div>
+                      <span className="record-category">{d.category}</span>
+                      <h2>{d.title}</h2>
+                      <p>
+                        {d.version_count}{" "}
+                        {d.version_count === 1 ? "version" : "versions"}
+                        <span>
+                          Latest upload{" "}
+                          {d.latest_ingested_at?.slice(0, 10) || "unavailable"}
+                        </span>
+                      </p>
+                    </div>
+                    <ArrowUpRightIcon size={22} />
+                  </Link>
+                ))}
+              </div>
+            )}
+          </State>
+          <footer className="table-footer">
+            Showing {items.length} of {data?.items.length ?? 0} documents{" "}
+            {(search || category !== "all") && (
+              <button
+                className="button"
+                onClick={() => {
+                  setSearch("");
+                  setCategory("all");
+                }}
+              >
+                Clear filters
+              </button>
+            )}
+          </footer>
+        </div>
       </section>
     </>
   );

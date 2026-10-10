@@ -295,7 +295,7 @@ export default function DocumentDetail() {
         Document library
       </Link>
       <PageHeading
-        eyebrow="DOCUMENT RECORD"
+        eyebrow="Document record"
         title={resource.data?.document.title || "Document detail"}
         description="Inspect immutable source versions and their reviewed effective dates."
         action={
@@ -311,7 +311,25 @@ export default function DocumentDetail() {
         {resource.data && (
           <div className="detail-grid">
             <section className="version-panel">
-              <details className="panel version-history">
+              <label className="edition-picker">
+                Source edition
+                <select
+                  value={selected?.id || ""}
+                  onChange={(e) => {
+                    const v = resource.data?.versions.find(
+                      (v) => v.id === e.target.value,
+                    );
+                    if (v) void inspect(v);
+                  }}
+                >
+                  {resource.data.versions.map((v) => (
+                    <option key={v.id} value={v.id}>
+                      {v.version_label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <details className="panel version-history" open>
                 <summary>
                   Version history · {resource.data.versions.length}
                 </summary>
@@ -321,6 +339,7 @@ export default function DocumentDetail() {
                       "version-row " + (selected?.id === v.id ? "selected" : "")
                     }
                     key={v.id}
+                    aria-pressed={selected?.id === v.id}
                     onClick={() => void inspect(v)}
                   >
                     <div>
@@ -328,9 +347,10 @@ export default function DocumentDetail() {
                       <Badge state={versionState(v)} />
                     </div>
                     <span>
-                      Effective {v.valid_from || "Not reviewed"} —{" "}
+                      Effective {v.valid_from || "Not reviewed"} →{" "}
                       {v.valid_to ||
                         (v.valid_from ? "Open-ended" : "Not reviewed")}
+                      {v.valid_to ? " (end exclusive)" : ""}
                     </span>
                     <small>
                       Published {v.published_at || "Not reviewed"} · uploaded{" "}
@@ -389,9 +409,15 @@ export default function DocumentDetail() {
                           : null) || "Scope not reviewed"}
                       </span>
                     </div>
+                    <p className="reading-label">Immutable source text</p>
                     <pre className="source-text">{content.text}</pre>
                     <details className="hash-details">
                       <summary>Source integrity</summary>
+                      <p>
+                        Published {selected.published_at || "not reviewed"} ·
+                        uploaded {selected.ingested_at.slice(0, 10)} · metadata
+                        revision {selected.metadata_revision}
+                      </p>
                       <p>SHA-256 of extracted text</p>
                       <code>{content.source_hash}</code>
                     </details>
