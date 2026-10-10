@@ -92,7 +92,7 @@ function Comparison({
                     <div>
                       <dt>Validity</dt>
                       <dd>
-                        {s.valid_from} â†’ {s.valid_to || "open-ended"}
+                        {s.valid_from} → {s.valid_to || "open-ended"}
                         {s.valid_to ? " (end exclusive)" : ""}
                       </dd>
                     </div>
@@ -101,7 +101,7 @@ function Comparison({
                       <dd>
                         {s.source_kind.replaceAll("_", " ")}
                         {s.authority_rank !== undefined
-                          ? ` Â· rank ${s.authority_rank}`
+                          ? ` · rank ${s.authority_rank}`
                           : ""}
                       </dd>
                     </div>
@@ -190,7 +190,7 @@ export default function Conflicts() {
                       <Badge state="Conflict" />
                     </div>
                     <p className="section-note">
-                      As of {q.as_of} Â· {populationName(q.scope.population)} Â·{" "}
+                      As of {q.as_of} · {populationName(q.scope.population)} ·{" "}
                       {q.citations.length} competing sources
                     </p>
                     <p className="record-date">
@@ -201,7 +201,7 @@ export default function Conflicts() {
                       {group.occurrences[0].created_at && (
                         <>
                           {" "}
-                          Â· Last seen{" "}
+                          · Last seen{" "}
                           <time dateTime={group.occurrences[0].created_at}>
                             {new Intl.DateTimeFormat("en-GB", {
                               dateStyle: "medium",
