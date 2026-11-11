@@ -3600,3 +3600,34 @@ strong {
   max-width: 76ch;
   color: var(--warning);
 }
+.leave-panel {
+  margin-block: 24px;
+}
+
+.leave-panel input[type="date"] {
+  max-width: 100%;
+}
+
+.leave-balances {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.leave-balances > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 16px;
+}
+
+.leave-balances dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.leave-team-table .button {
+  min-height: 44px;
+  white-space: normal;
+  text-align: left;
+}

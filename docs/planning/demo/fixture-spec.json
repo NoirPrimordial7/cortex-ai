@@ -2,6 +2,40 @@
   "status": "Phase 2 fictional fixture specification; not ingested or executed",
   "timezone": "Asia/Kolkata",
   "anchor_date": "2026-10-09",
+  "leave": {
+    "types": [
+      {
+        "id": "annual-leave",
+        "code": "annual",
+        "name": "Annual leave",
+        "annual_entitlement_days": 20,
+        "active": true
+      }
+    ],
+    "entries": [
+      {
+        "user_id": "maya",
+        "leave_type_id": "annual-leave",
+        "entry_type": "grant",
+        "days": 20,
+        "effective_date": "2026-01-01"
+      },
+      {
+        "user_id": "maya",
+        "leave_type_id": "annual-leave",
+        "entry_type": "usage",
+        "days": -3,
+        "effective_date": "2026-09-01"
+      }
+    ],
+    "reporting_relationships": [
+      {
+        "employee_user_id": "maya",
+        "manager_user_id": "ravi",
+        "valid_from": "2026-01-01"
+      }
+    ]
+  },
   "documents": [
     {
       "tenant_id": "NORTHSTAR",

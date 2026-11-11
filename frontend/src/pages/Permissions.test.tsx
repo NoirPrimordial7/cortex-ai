@@ -114,3 +114,14 @@ test("shared demo permits inspecting roles while preventing role and account mut
     screen.queryByRole("button", { name: "Review account changes" }),
   ).toBeNull();
 });
+
+test("a governance revision change discards a pending account edit", async () => {
+  show();
+  await userEvent.click(await screen.findByRole("button", { name: "Edit Maya Shah" }));
+  await userEvent.click(screen.getByLabelText("Account is active"));
+  await userEvent.click(screen.getByRole("button", { name: "Review account changes" }));
+  expect(screen.getByRole("dialog")).toBeVisible();
+  window.dispatchEvent(new Event("cortex:evidence-changed"));
+  await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+  expect(api).not.toHaveBeenCalledWith("/admin/users/maya", expect.anything());
+});

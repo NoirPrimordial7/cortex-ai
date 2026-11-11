@@ -1,5 +1,31 @@
 # Phase 3 implementation checkpoint
 
+## 2026-11-12 personal leave checkpoint
+
+| Module / source | Implemented behavior | Boundary |
+|---|---|---|
+| Leave tables and migration `0002` | Tenant-scoped leave types, append-only signed ledger, temporal reporting intervals | Same SQLite file and transaction gate; existing databases receive schema and action grants |
+| `backend/app/leave.py`, `main.py` | Own balances, current direct reports, audited posting and manager changes | Current manager access applies to historical balances; separate from policy evidence |
+| Dashboard and Team | My leave, manager-gated direct-report list and dated detail | Management writes are API-only |
+
+See [ADR 0008](../decisions/0008-leave-ledger-and-direct-reports.md) and
+[current CI status](CI.md#activation-and-remaining-limits). The October
+checkpoints below describe earlier snapshots.
+
+## 2026-10-29 overhaul checkpoint
+
+CI is now defined in `.github/workflows/ci.yml`: locked dependency installs,
+Ruff, pytest, Vitest, TypeScript/Vite build and all-severity frontend npm audit.
+The workflow has not run on GitHub and branch protection has not been configured;
+this downloaded snapshot has no Git metadata. See [CI activation and local verification](CI.md).
+
+The application remains the deterministic, single-process offline core. No new
+model, agent, lineage, governance or deployment capability is claimed. Every
+overhaul workstream, its current implementation and the reason for deferral to
+a subsequent increment are recorded in the [source-backed overhaul review](OVERHAUL_REVIEW.md).
+The original checkpoint below is preserved history; its test counts and manual
+browser-automation notes are not current verification results.
+
 Hosted-demo extension: [shared demo](SHARED_DEMO.md) is now verified over HTTPS on Vercel/Render, using the existing one-process core. Hosted uploads/governance are read-only; data is ephemeral. Latest local suites38 backend/11 frontend pass. The earlier checkpoint details below describe the original implementation.
 
 Assessment: 2026-10-09, Asia/Calcutta. Phase 2 and Evidence Studio were owner-approved; this is real local application code. Research/planning documents remain preserved baselines; [ADR 0005](../decisions/0005-local-execution-boundary.md) records implementation deviations. No project completion percentage is asserted: the college 40% rubric is still unknown.

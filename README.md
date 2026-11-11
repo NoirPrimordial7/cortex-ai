@@ -2,6 +2,10 @@
 
 Conflict-aware, permission-safe enterprise knowledge intelligence for a final-year BTech Computer Science project.
 
+**2026-11-12 leave ledger:** Dashboard shows personal leave balances, and Team shows balances for current direct reports. The dated ledger shares the SQLite database with the policy system and has its own access rules. [API contracts](backend/README.md#implemented-api-summary) · [ADR 0008](docs/decisions/0008-leave-ledger-and-direct-reports.md).
+
+**2026-10-29 overhaul increment:** Prepared [CI for backend lint/tests, frontend tests/build and npm audit](docs/implementation/CI.md). [Source review and remaining work](docs/implementation/OVERHAUL_REVIEW.md) reconcile the overhaul brief with the existing code. Runtime behavior remains deterministic offline evidence mode.
+
 **Phase 3: evidence core and full-product UI, production demo verified 2026-10-10.** Phase 1 research and Phase 2 architecture/design are owner-approved and preserved. This checkpoint is a bounded offline policy answerer: reviewed numeric claims for annual leave, remote work, notice period and executive bonus. It is not yet a general-purpose LLM chatbot or a production enterprise deployment. No paid API is required or enabled.
 
 Company knowledge can be relevant but outdated, conflicting or inaccessible. Cortex checks current identity and explicit document grants, approval, effective date and scope before reading evidence for reasoning. It then compares source authority and either produces an exact cited evidence answer or abstains. Newest upload does not imply currently effective policy.

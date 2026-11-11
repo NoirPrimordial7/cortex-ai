@@ -54,11 +54,25 @@ All routes use `/api/v1`. Mutation requests require an allowed Origin; authentic
 | `POST /versions/{id}/review` | Reviewer action + READ; atomic approval/metadata/claim/FTS update with expected revision |
 | `POST /queries`; `GET /queries`; `GET /queries/{id}`; `GET /queries/{id}/citations/{id}` | Grounded answer/abstention, own current history, exact authorized source |
 | `GET /dashboard`; `GET /conflicts` | Visible document counts and current owner-derived activity |
+| `GET /leave/balance?as_of=YYYY-MM-DD` | Own balances for any active session; date defaults to today in the tenant's policy timezone |
+| `GET /leave/employees/{id}/balance?as_of=YYYY-MM-DD` | Current direct report for a manager, or same-tenant active employee for a non-manager leave administrator; inaccessible targets return 404 |
+| `GET /leave/team` | Manager action only; current active direct reports and today's balances |
+| `POST /leave/ledger-entries` | Leave administrator appends signed whole days, receives 201 and today's balance; future-effective entries appear on or after their effective date |
+| `PUT /admin/users/{id}/manager` | User administrator sets a same-tenant active manager effective today; ends any previous assignment today |
 | `GET /admin/users`; `PATCH /admin/users/{id}` | Action-controlled existing users/roles/enable-disable; own admin modification blocked |
 | `GET/PUT /admin/documents/{id}/acl` | ACL action + READ, same-tenant subjects and optimistic revision |
 | `GET /audit-events` | Auditor action; event identifiers/outcomes without document text or raw prompts |
 
 `401` requires sign-in; `403` denies an action or CSRF/Origin; `404` conceals an inaccessible resource; `409` signals stale revision/constraint; `413/415/422` reject bounded/unsupported input. API errors exclude parser content, filesystem paths and supplied credentials. Upload returns `202` with a completed bounded extraction job state; it is synchronous, not a background queue.
+
+Leave entry input accepts `user_id`, `leave_type_id`, `entry_type`
+(`grant`, `accrual`, `usage`, `adjustment`, `carry_forward`), a nonzero signed
+integer `days` within ±10,000, `effective_date` and optional `reference`.
+Manager assignment takes `manager_user_id`. Successful leave calls audit user IDs
+without balance or reference values. Run `app.cli migrate` on existing databases
+before serving the new routes. A fresh fictional seed gives Maya 17 days and
+places her on Ravi's team. Existing databases receive no fictional leave data.
+[ADR 0008](../docs/decisions/0008-leave-ledger-and-direct-reports.md) records the access rules and date semantics.
 
 ## Integrated frontend and fixture evaluation
 
