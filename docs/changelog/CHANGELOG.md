@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-11-12T00:52:12+05:30 — Employee leave ledger
+
+- Added personal leave balances, current-direct-report access, and audited ledger-entry and manager-assignment endpoints. Migration `0002` uses the central SQLite database and preserves existing tenants and evidence.
+- Added My leave on Dashboard and a manager-only Team list and dated detail. Fictional seeding gives Maya 17 remaining days and assigns Ravi as her manager.
+- Added focused regressions for Conflicts source denial, Permissions revision invalidation, Audit filtering, Team and the leave API. See [ADR 0008](../decisions/0008-leave-ledger-and-direct-reports.md) and [CI verification](../implementation/CI.md).
+- Pinned Python's `tzdata` fallback so default tenant dates work on Windows installations without an IANA zone database.
+- Storage review found the SQLite file, private uploads, credentials and a demo flag under `local-data/`. Repository JSON contains seed inputs, configuration, research or verification artifacts. Reviewed policy numbers still resolve from `policy_claims`. No duplicate runtime store or policy numbers required removal.
+
+## 2026-10-29T20:42:00+05:30 — Overhaul CI and source review
+
+- Phase/module: overhaul first increment / automated verification. Added `.github/workflows/ci.yml` with independent backend lint/tests, frontend tests/build and all-severity npm audit jobs; read-only token, pinned official actions, finite timeouts and no deployment steps. Created test-output parent before pytest after finding the fresh-checkout failure.
+- Added `docs/implementation/CI.md` and `OVERHAUL_REVIEW.md`; updated README, implementation status/results, roadmap and backlog to distinguish current code, historical plans and every deferred workstream. Runtime code, tests and lockfiles unchanged.
+- Verification: 39 backend tests, 28 frontend tests, Ruff, pip consistency, TypeScript/Vite build and zero-finding npm audit pass locally. One existing Starlette/httpx deprecation warning. Workflow YAML parsed/formatted and action release hashes verified; sandbox failures and successful reruns documented in CI.md.
+- Outstanding: no Git metadata in this downloaded snapshot, hence no feature branch/commit/PR/push or hosted workflow verification. Branch protection still needs activation in the real repository. Clause lineage is the brief's next checkpoint; independent labels, semantic/generation/agent contracts, security/infrastructure, governance and full accessibility remain explicitly deferred with reasons. No deployment or production change. Commit reference unavailable in this snapshot.
+
 ## 2026-10-10 — Approved PR #8 published with restored documents
 
 - Owner explicitly approved production publication of the latest restored version. PR #8 merged atb87a5de. Final application22cbeef is Vercel READY/production and Render Live; original document/citation/backend implementation matches approved2085747. The withdrawn large corpus/reader is not released.

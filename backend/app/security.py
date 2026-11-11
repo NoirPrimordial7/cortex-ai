@@ -103,7 +103,7 @@ def revisions(ctx):
     )
 
 
-def audit(ctx, action, outcome="success", target=None):
+def audit(ctx, action, outcome="success", target=None, *, target_type="document"):
     execute(
         ctx.db,
         """INSERT INTO audit_events
@@ -114,7 +114,7 @@ def audit(ctx, action, outcome="success", target=None):
         action=action,
         outcome=outcome,
         request_id=ctx.request_id,
-        target_type="document" if target else None,
+        target_type=target_type if target else None,
         target=target,
         revision=revisions(ctx)["policy_revision"],
         at=now(),

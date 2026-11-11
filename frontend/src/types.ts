@@ -67,3 +67,37 @@ export type Content = {
   segments: { start: number; end: number; locator: string }[];
   metadata_revision: number;
 };
+export type LeaveBalanceItem = {
+  leave_type_id: string;
+  code: string;
+  name: string;
+  annual_entitlement_days: number;
+  balance_days: number;
+};
+
+export type LeaveBalance = {
+  user_id: string;
+  as_of: string;
+  balances: LeaveBalanceItem[];
+};
+
+export type ReportBalance = LeaveBalance & { display_name: string };
+export type LeaveTeam = { as_of: string; items: ReportBalance[] };
+
+export type LeaveEntryInput = {
+  user_id: string;
+  leave_type_id: string;
+  entry_type: "grant" | "accrual" | "usage" | "adjustment" | "carry_forward";
+  days: number;
+  effective_date: string;
+  reference?: string | null;
+};
+
+export type ReportingRelationship = {
+  id: string;
+  employee_user_id: string;
+  manager_user_id: string;
+  valid_from: string;
+  valid_to: string | null;
+  open_ended: boolean;
+};

@@ -3,7 +3,7 @@ import secrets
 import threading
 import time
 from collections import defaultdict, deque
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from typing import Annotated
 from argon2 import PasswordHasher
 from argon2.exceptions import VerificationError
@@ -14,6 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.exc import IntegrityError
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from . import db as models
+from . import leave
 from .db import engine_for
 from .documents import Review, ingest, library, review
 from .pipeline import Question, answer, saved
@@ -501,6 +502,26 @@ def create_app(settings=None):
             ),
             "documents": items[:5],
         }
+
+    @app.get("/api/v1/leave/balance")
+    def own_leave(ctx: Ctx, as_of: date | None = None):
+        return leave.own_balance(ctx, as_of)
+
+    @app.get("/api/v1/leave/employees/{user_id}/balance")
+    def employee_leave(user_id: str, ctx: Ctx, as_of: date | None = None):
+        return leave.employee_balance(ctx, user_id, as_of)
+
+    @app.get("/api/v1/leave/team")
+    def leave_team(ctx: Ctx):
+        return leave.team(ctx)
+
+    @app.post("/api/v1/leave/ledger-entries", status_code=201)
+    def create_leave_entry(body: leave.LedgerEntry, ctx: Ctx):
+        return leave.append_entry(ctx, body)
+
+    @app.put("/api/v1/admin/users/{user_id}/manager")
+    def change_manager(user_id: str, body: leave.ManagerUpdate, ctx: Ctx):
+        return leave.set_manager(ctx, user_id, body)
 
     @app.get("/api/v1/admin/users")
     def users(ctx: Ctx):

@@ -10,7 +10,12 @@ depends_on = None
 
 
 def upgrade():
-    metadata.create_all(op.get_bind())
+    tables = (
+        "tenants users roles permissions user_roles role_permissions sessions documents "
+        "document_acl document_versions metadata_revisions authority_rules clauses policy_claims "
+        "supersession_edges ingestion_jobs queries citations conflicts conflict_evidence audit_events"
+    ).split()
+    metadata.create_all(op.get_bind(), tables=[metadata.tables[name] for name in tables])
     op.execute("CREATE VIRTUAL TABLE clause_fts USING fts5(clause_id UNINDEXED, text)")
 
 

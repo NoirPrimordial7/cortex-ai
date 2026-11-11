@@ -45,6 +45,10 @@ exercise all three jobs before any merge. Branch settings were left as found.
 See the [branch metadata](https://api.github.com/repos/NoirPrimordial7/cortex-ai/branches/main)
 and [effective rules](https://api.github.com/repos/NoirPrimordial7/cortex-ai/rules/branches/main).
 
+The first hosted run on [draft PR #9](https://github.com/NoirPrimordial7/cortex-ai/pull/9)
+passed all three jobs on the CI-only commit.
+[GitHub Actions run #1](https://github.com/NoirPrimordial7/cortex-ai/actions/runs/43086973036).
+
 ### Original October snapshot
 
 This downloaded directory has no `.git` metadata. Files are prepared locally;

@@ -15,8 +15,9 @@ from .demo import TEAM_NAMES
 
 ACTIONS = {
     "employee": ["query.execute"],
+    "manager": ["query.execute", "leave.view_reports"],
     "knowledge_manager": ["query.execute", "document.upload", "document.review"],
-    "admin": ["user.manage", "acl.manage", "authority.manage"],
+    "admin": ["user.manage", "acl.manage", "authority.manage", "leave.manage"],
     "auditor": ["audit.read"],
 }
 
@@ -70,7 +71,8 @@ def seed(engine, settings):
                 "email": f"{key}@example.test",
                 "password": password,
             }
-        for action in {a for values in ACTIONS.values() for a in values}:
+        existing_actions = set(conn.execute(models.permissions.select()).scalars())
+        for action in {a for values in ACTIONS.values() for a in values} - existing_actions:
             conn.execute(models.permissions.insert().values(action_key=action))
         for tid in ["NORTHSTAR", "ORBIT"]:
             for name, actions in ACTIONS.items():
@@ -84,7 +86,7 @@ def seed(engine, settings):
                     )
         for who, names in [
             ("maya", ["employee"]),
-            ("ravi", ["employee", "knowledge_manager", "admin"]),
+            ("ravi", ["employee", "knowledge_manager", "admin", "manager"]),
             ("isha", ["auditor"]),
             ("noor", ["employee"]),
         ]:
@@ -103,6 +105,21 @@ def seed(engine, settings):
         ctx = Context(
             conn, reviewer, [], set(a for values in ACTIONS.values() for a in values), uid()
         )
+        leave = fixture["leave"]
+        for leave_type in leave["types"]:
+            conn.execute(models.leave_types.insert().values(tenant_id=ctx.tenant, **leave_type))
+        for entry in leave["entries"]:
+            conn.execute(
+                models.leave_ledger_entries.insert().values(
+                    id=uid(), tenant_id=ctx.tenant, created_by="ravi", created_at=now(), **entry
+                )
+            )
+        for relationship in leave["reporting_relationships"]:
+            conn.execute(
+                models.reporting_relationships.insert().values(
+                    id=uid(), tenant_id=ctx.tenant, open_ended=True, **relationship
+                )
+            )
         for r in fixture["authority_rules"]:
             conn.execute(
                 models.authority_rules.insert().values(

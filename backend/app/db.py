@@ -7,6 +7,7 @@ from sqlalchemy import (
     Column,
     ForeignKey,
     ForeignKeyConstraint,
+    Index,
     Integer,
     MetaData,
     String,
@@ -315,6 +316,51 @@ audit_events = model(
         col("created_at"),
     ],
     same("users", "actor_user_id"),
+)
+
+leave_types = model(
+    "leave_types",
+    [col("code"), col("name"), col("annual_entitlement_days", Integer), col("active", Boolean)],
+    UniqueConstraint("tenant_id", "code"),
+    CheckConstraint("annual_entitlement_days >= 0"),
+)
+leave_ledger_entries = model(
+    "leave_ledger_entries",
+    [
+        col("user_id"),
+        col("leave_type_id"),
+        col("entry_type"),
+        col("days", Integer),
+        col("effective_date"),
+        col("reference", nullable=True),
+        col("created_by"),
+        col("created_at"),
+    ],
+    same("users", "user_id"),
+    same("leave_types", "leave_type_id"),
+    same("users", "created_by"),
+    CheckConstraint("entry_type IN ('grant','accrual','usage','adjustment','carry_forward')"),
+    CheckConstraint("typeof(days) = 'integer' AND days != 0"),
+    Index("ix_leave_balance", "tenant_id", "user_id", "leave_type_id", "effective_date"),
+)
+reporting_relationships = model(
+    "reporting_relationships",
+    [
+        col("employee_user_id"),
+        col("manager_user_id"),
+        col("valid_from"),
+        col("valid_to", nullable=True),
+        col("open_ended", Boolean),
+    ],
+    same("users", "employee_user_id"),
+    same("users", "manager_user_id"),
+    CheckConstraint("employee_user_id != manager_user_id"),
+    CheckConstraint("valid_to IS NULL OR valid_to >= valid_from"),
+    CheckConstraint(
+        "(valid_to IS NULL AND open_ended = 1) OR (valid_to IS NOT NULL AND open_ended = 0)"
+    ),
+    Index("ix_reports_employee", "tenant_id", "employee_user_id", "valid_from", "valid_to"),
+    Index("ix_reports_manager", "tenant_id", "manager_user_id", "valid_from", "valid_to"),
 )
 
 

@@ -24,3 +24,7 @@ Repository was created private in Phase1; current GitHub metadata reports public
 Every record includes an ISO8601 timestamp/timezone, status, phase/module, context/options/evidence, rationale, consequences, security/evaluation effects, files, verification, outstanding questions and commit reference. Do not mark owner review complete before it occurs.
 
 Preserve previous accepted records when a decision changes; add a superseding ADR and link both directions. Decision records explain why; Git records exactly what changed. Update the changelog and relevant activity/research logs for meaningful decisions.
+
+## Personal leave ledger
+
+[ADR 0008](0008-leave-ledger-and-direct-reports.md) records the dated ledger and current-direct-report access rules.

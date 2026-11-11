@@ -1,5 +1,23 @@
 # Development log
 
+## 2026-11-12T00:52:12+05:30 — Personal leave and manager visibility
+
+- Added `leave.py`, a shared-schema migration and fictional seed records; extended the action map, protected API and user-targeted audit. Use dated sums for balances and current reporting intervals for access. The existing evidence pipeline, source hashes and process-lock boundary remain intact.
+- Extended Dashboard and navigation with the existing panel and table styles. Added Team list/detail, typed clients and focused backend and frontend regression coverage.
+- Reviewed local storage and repository JSON/CSV by purpose. The fictional specification is a seed input, private uploads preserve document source bytes, and ignored outputs are test evidence. No files were removed.
+- Local verification: 45 pytest tests (one existing Starlette warning), 34 Vitest tests, 28 Playwright regression scenarios, Ruff, pip consistency and TypeScript/Vite build passed. The npm audit reported zero findings.
+- Real Chrome against disposable SQLite verified sign-in, personal balances, Team navigation, dated detail, and concealed non-report access. Forty screenshots cover Overview before and after, Team and detail at 320/390/768/1280/1440 in both themes. Reflow checks found zero horizontal page overflow in those views. Existing browser fixtures covered date/scope, focus return, exact citation excerpts, answers, conflicts, clarification and abstention. The new browser run exposed missing Windows timezone data, resolved by the locked `tzdata` package and a UTC rollover regression.
+- Verification and review reference: [CI](../implementation/CI.md) and commit subject `feat: add employee leave ledger and manager visibility`. Known limits include whole-day balances, API-only writes and fictional data only on fresh seeds.
+
+## 2026-10-29T20:42:00+05:30 — Overhaul first increment
+
+- Request: review the supplied overhaul brief against this project and edit accordingly. Read the existing implementation, ADRs, roadmap/backlog and design history before changes. Confirmed the FastAPI/SQLite/FTS5/React offline core, eligibility before text hydration, current READ/tenant gates, conflict abstention and immutable-span/hash checks. Identified already-built conflict and existing-user screens; did not rebuild them.
+- Files added: `.github/workflows/ci.yml`, `docs/implementation/CI.md`, `docs/implementation/OVERHAUL_REVIEW.md`. Files changed: README, implementation status/test results, project roadmap, implementation backlog, changelog and this log. No files removed and no application/test/lockfile changes.
+- Reason/outcome: follow the brief's CI-first sequence with reproducible locked installs, independent backend/frontend/audit jobs and explicit remote-activation limits. Use official pinned action commits verified against release tags, read-only checkout credentials, no secrets, no deploy command and bounded jobs. Record every remaining workstream with its safety/evaluation dependency rather than claiming the overhaul is complete.
+- Local verification: Python 3.12.10, Node 22.16.0/npm 10.9.2; 39 pytest regressions pass (25.80 seconds, one existing Starlette/httpx warning), 28 Vitest tests pass across eight files, Ruff/pip consistency/TypeScript/Vite build pass, npm audit reports zero vulnerabilities. Prettier parses/formats workflow YAML. Initial dependency/sandbox failures and the fixed missing output-directory issue are recorded in CI.md; no tests were weakened.
+- Outstanding: ZIP-style source tree has no `.git`; no commit/diff/push/remote-run evidence exists. New workflow plus listed documentation are the intended changes; project-local environments/builds/test data remain ignored. Hosted check execution and required-check rules need the actual repository. No browser/accessibility or public-host claims added. Next checkpoint is multi-clause lineage; source verification currently cannot validate arbitrary generated claims. No model, paid API, database migration, hosting mutation or wide redesign performed.
+- Commit reference: unavailable until this increment is applied to a real feature branch. Preserve separate review increments; no fabricated PR or completion/accuracy percentage.
+
 ## 2026-10-10 — Approved PR #8 published with restored documents
 
 - Owner explicitly approved production publication of the latest restored version. PR #8 merged atb87a5de. Final application22cbeef is Vercel READY/production and Render Live; original document/citation/backend implementation matches approved2085747. The withdrawn large corpus/reader is not released.
