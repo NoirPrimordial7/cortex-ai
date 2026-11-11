@@ -1,3 +1,9 @@
+import type {
+  LeaveBalance,
+  LeaveEntryInput,
+  ReportingRelationship,
+} from "./types";
+
 let csrf = "";
 export function setCsrf(value: string) {
   csrf = value;
@@ -37,4 +43,32 @@ export async function api<T>(
     );
   }
   return response.status === 204 ? (undefined as T) : response.json();
+}
+
+export const leavePaths = {
+  team: "/leave/team",
+  ownBalance: (asOf: string) => "/leave/balance" + asOfQuery(asOf),
+  employeeBalance: (userId: string, asOf: string) =>
+    `/leave/employees/${encodeURIComponent(userId)}/balance` + asOfQuery(asOf),
+};
+
+function asOfQuery(asOf: string) {
+  return asOf ? "?" + new URLSearchParams({ as_of: asOf }) : "";
+}
+
+export function createLeaveEntry(entry: LeaveEntryInput) {
+  return api<LeaveBalance & { entry_id: string }>("/leave/ledger-entries", {
+    method: "POST",
+    body: JSON.stringify(entry),
+  });
+}
+
+export function setEmployeeManager(userId: string, managerUserId: string) {
+  return api<ReportingRelationship>(
+    `/admin/users/${encodeURIComponent(userId)}/manager`,
+    {
+      method: "PUT",
+      body: JSON.stringify({ manager_user_id: managerUserId }),
+    },
+  );
 }

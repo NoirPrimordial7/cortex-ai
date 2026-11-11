@@ -7,7 +7,9 @@ import {
 } from "@phosphor-icons/react";
 import { Badge, PageHeading, State, useResource } from "../components";
 import { useSession } from "../session";
-import type { Answer, DocumentItem } from "../types";
+import { leavePaths } from "../api";
+import { LeaveBalances } from "../LeaveBalances";
+import type { Answer, DocumentItem, LeaveBalance } from "../types";
 type DashboardData = {
   readable_documents: number;
   unresolved_queries: number;
@@ -17,6 +19,7 @@ type DashboardData = {
 export default function Dashboard() {
   const { user } = useSession();
   const { data, error, loading } = useResource<DashboardData>("/dashboard");
+  const leave = useResource<LeaveBalance>(leavePaths.ownBalance(""));
   const canAsk = user?.actions.includes("query.execute");
   const recent =
     data?.recent
@@ -76,6 +79,20 @@ export default function Dashboard() {
             </Link>
           )}
         </aside>
+      </section>
+      <section className="panel leave-panel" aria-labelledby="my-leave">
+        <h2 id="my-leave">My leave</h2>
+        <State error={leave.error} loading={leave.loading}>
+          {leave.data && (
+            <>
+              <p className="section-note">
+                Balance as of{" "}
+                <time dateTime={leave.data.as_of}>{leave.data.as_of}</time>
+              </p>
+              <LeaveBalances balances={leave.data.balances} />
+            </>
+          )}
+        </State>
       </section>
       <State error={error} loading={loading}>
         {data && (

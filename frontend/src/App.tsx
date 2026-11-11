@@ -28,6 +28,7 @@ const History = lazy(() => import("./pages/History"));
 const Conflicts = lazy(() => import("./pages/Conflicts"));
 const Audit = lazy(() => import("./pages/Audit"));
 const Permissions = lazy(() => import("./pages/Permissions"));
+const Team = lazy(() => import("./pages/Team"));
 const navigation = [
   { to: "/", label: "Overview", name: "Overview" },
   {
@@ -48,6 +49,12 @@ const navigation = [
     label: "Activity",
     name: "My activity",
     action: "query.execute",
+  },
+  {
+    to: "/team",
+    label: "Team",
+    name: "Team leave",
+    action: "leave.view_reports",
   },
   {
     to: "/permissions",
@@ -246,6 +253,14 @@ export default function App() {
                   element={gate("user.manage", <Permissions />)}
                 />
                 <Route path="/audit" element={gate("audit.read", <Audit />)} />
+                <Route
+                  path="/team"
+                  element={gate("leave.view_reports", <Team />)}
+                />
+                <Route
+                  path="/team/:userId"
+                  element={gate("leave.view_reports", <Team />)}
+                />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </Suspense>
