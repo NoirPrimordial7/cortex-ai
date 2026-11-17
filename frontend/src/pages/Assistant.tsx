@@ -117,7 +117,8 @@ export default function Assistant() {
     evidenceReturn = useRef<HTMLElement | null>(null),
     focusInspector = useRef(false),
     epoch = useRef(0),
-    sourceEpoch = useRef(0);
+    sourceEpoch = useRef(0),
+    conversation = useRef<string | undefined>(undefined);
   function clear() {
     if (reading.current) reading.current.scrollTop = 0;
     epoch.current++;
@@ -151,7 +152,10 @@ export default function Assistant() {
     return () => media.removeEventListener("change", changed);
   }, []);
   useEffect(() => {
-    const reset = () => clear();
+    const reset = () => {
+      conversation.current = undefined;
+      clear();
+    };
     const shortcut = (e: KeyboardEvent) => {
       if (
         (e.ctrlKey || e.metaKey) &&
@@ -233,6 +237,7 @@ export default function Assistant() {
     setAskedQuery(prompt);
     setQuery("");
     try {
+      conversation.current ??= globalThis.crypto?.randomUUID?.();
       const result = await api<Answer>("/queries", {
         method: "POST",
         body: JSON.stringify({
@@ -240,6 +245,7 @@ export default function Assistant() {
           as_of: date,
           population,
           jurisdiction: "IN",
+          conversation_id: conversation.current,
         }),
       });
       if (epoch.current !== stamp) return;
@@ -420,6 +426,11 @@ export default function Assistant() {
                 >
                   <p className="fb-label">Your question</p>
                   <h1 className="question-bubble">{askedQuery}</h1>
+                  {answer.follow_up && (
+                    <p className="fb-applies">
+                      Uses context from your previous question.
+                    </p>
+                  )}
                   <div className="fb-answer-label">
                     {answer.status === "answered" ? (
                       <CheckCircleIcon size={17} />

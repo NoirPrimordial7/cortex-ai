@@ -372,6 +372,21 @@ clause_embeddings = model(
 )
 
 
+conversation_turns = model(
+    "conversation_turns",
+    [
+        col("user_id"), col("conversation_id"), col("query_id"), col("kind"),
+        col("topic", nullable=True), col("resolved_entity", nullable=True), col("created_at"),
+    ],
+    same("users", "user_id"),
+    same("queries", "query_id"),
+    same("users", "resolved_entity"),
+    UniqueConstraint("tenant_id", "query_id"),
+    CheckConstraint("kind IN ('policy_fact','policy_search','employee_leave','unknown')"),
+    Index("ix_conversation_turn_owner", "tenant_id", "user_id", "conversation_id", "created_at"),
+)
+
+
 def engine_for(path: Path):
     path.parent.mkdir(parents=True, exist_ok=True)
     engine = create_engine(

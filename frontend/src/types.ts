@@ -28,6 +28,7 @@ export type Answer = {
   balances?: LeaveBalanceItem[];
   display_name?: string | null;
   related_results?: RelatedPassage[];
+  follow_up?: boolean;
   query_id: string;
   status: "answered" | "abstained" | "clarification_required";
   reason_code: string | null;

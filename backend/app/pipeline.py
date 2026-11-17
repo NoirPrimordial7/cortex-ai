@@ -9,10 +9,13 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 from fastapi import HTTPException
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import UUID4, BaseModel, ConfigDict, Field
 from . import db as models, leave
+from .conversations import FOLLOW_UP, previous_turn, remember
 from .embeddings import MODEL, cosine_rank, fuse_rankings
-from .query_routing import SELF, classify_query, employee_mention, intent, resolve_employee_mention
+from .query_routing import (
+    SELF, TOPICS, classify_query, employee_mention, intent, resolve_employee_mention,
+)
 from .security import READ, audit, now, one, readable, revisions, rows, uid, version
 
 
@@ -25,6 +28,7 @@ class Question(BaseModel):
     )
     jurisdiction: str = Field(default="IN", pattern="^IN$")
     condition_key: str = Field(default="default", max_length=80)
+    conversation_id: UUID4 | None = None
 
 
 @dataclass(frozen=True)
@@ -371,25 +375,49 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
     ctx.require("query.execute")
     captured = revisions(ctx)
     kind = classify_query(question.query)
+    topic = intent(question.query)
+    search_text = question.query
+    target = None
+    follow_up = False
+    if question.conversation_id and kind != "employee_leave" and not topic and FOLLOW_UP.match(search_text):
+        previous = previous_turn(ctx, question.conversation_id)
+        if previous and (previous["topic"] or previous["resolved_entity"]):
+            kind, topic, target = previous["kind"], previous["topic"], previous["resolved_entity"]
+            follow_up = True
+            if kind != "employee_leave":
+                search_text = f"{TOPICS[topic][0]} {search_text}"
+                updates = {"query": search_text}
+                if re.search(r"\bcontractors?\b", search_text, re.I):
+                    updates["population"] = "india_contractor"
+                elif re.search(r"\bfull[- ]time\b", search_text, re.I):
+                    updates["population"] = "india_full_time"
+                elif re.search(r"\b(?:apply|applies) to (?!me\b|those\b|everyone\b)", search_text, re.I):
+                    updates["condition_key"] = "unreviewed_population"
+                retrieval_question = question.model_copy(update=updates)
+            else:
+                retrieval_question = question
+        else:
+            retrieval_question = question
+    else:
+        retrieval_question = question
     personal = kind == "employee_leave"
     date_of_answer = question.as_of or (
         leave.today(ctx) if personal else datetime.now(ZoneInfo("Asia/Kolkata")).date()
     )
     asof = date_of_answer.isoformat()
-    topic = intent(question.query) if kind == "policy_fact" else None
-    ledger = personal_leave(ctx, question, date_of_answer) if personal else None
+    ledger = personal_leave(ctx, question, date_of_answer, target) if personal else None
     evidence = []
     if personal:
         status, reason, selected = (
             ("answered", None, []) if ledger else ("abstained", "NO_ELIGIBLE_EVIDENCE", [])
         )
-    elif question.condition_key != "default":
+    elif retrieval_question.condition_key != "default":
         status, reason, selected = "clarification_required", "UNCERTAIN_METADATA", []
-    elif topic is None:
+    elif kind != "policy_fact" or topic is None:
         status, reason, selected = "abstained", "NO_ELIGIBLE_EVIDENCE", []
     else:
         try:
-            evidence = retrieve(ctx, question, topic, asof)
+            evidence = retrieve(ctx, retrieval_question, topic, asof)
             if observe:
                 observe("reasoning", evidence)
             status, reason, selected = decide(evidence, topic)
@@ -448,7 +476,7 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
         "EQUAL_AUTHORITY_CONFLICT" if reason == "UNRESOLVED_CONFLICT" else "APPROVED_VALID_SOURCE"
     )
     related = [] if reason == "CONTEXT_CHANGED" else search_relevant(
-        ctx, question, asof, "leave" if personal else question.query,
+        ctx, retrieval_question, asof, "leave" if personal else search_text,
         {e.clause_id for e in selected}, encoder,
     )
     payload = {
@@ -457,7 +485,7 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
         "reason_code": reason,
         "mode": "evidence",
         "as_of": asof,
-        "scope": {"population": question.population, "jurisdiction": question.jurisdiction},
+        "scope": {"population": retrieval_question.population, "jurisdiction": question.jurisdiction},
         "answer": sentence,
         "citations": cite,
         "related_results": related,
@@ -468,6 +496,8 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
         if cite
         else [],
     }
+    if follow_up:
+        payload["follow_up"] = True
     ctx.db.execute(
         models.queries.insert().values(
             id=qid,
@@ -487,6 +517,11 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
             expires_at=(datetime.now(timezone.utc) + timedelta(days=7)).isoformat(),
         )
     )
+    if question.conversation_id:
+        remember(
+            ctx, question.conversation_id, qid, kind, None if personal else topic,
+            ledger["user_id"] if ledger else None,
+        )
     for c in cite:
         ctx.db.execute(
             models.citations.insert().values(
