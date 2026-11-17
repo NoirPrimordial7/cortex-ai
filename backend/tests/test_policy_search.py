@@ -48,6 +48,7 @@ def test_ledger_chat_reuses_authorization_and_never_creates_citations(system):
     employee = client_for(system)
     own = ask(employee, "my leave")
     report = ask(manager, "How many leave days does Arya Dhumal have?")
+    assert ask(manager, "Days left for Arya")["balances"][0]["balance_days"] == 17
     for result in (own, report):
         assert result["source"] == "leave_ledger"
         assert result["balances"][0]["balance_days"] == 17

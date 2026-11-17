@@ -10,7 +10,7 @@ deployed environments were outside this run.
 
 | Check | Result |
 |---|---|
-| Backend pytest | **80 passed**, zero failures or skips, including real CPU MiniLM. One existing Starlette TestClient compatibility deprecation warning. |
+| Backend pytest | **82 passed**, zero failures or skips, including real CPU MiniLM. One existing Starlette TestClient compatibility deprecation warning. |
 | Frontend Vitest | **36 passed** across 11 test files, zero failures or skips. |
 | Playwright in real Chrome | **41 passed** across six specifications. Six drove the live local server and the remaining 35 used controlled response fixtures. |
 | Original strict evidence evaluation | **12/12** scenarios, **15/15** eligible peers, **5/5** temporal scenarios, **10/10** exact citation span/hash checks, **4/4** intended abstentions, zero restricted-canary violations in checked outputs and reasoning inputs. One equal-authority conflict fixture passed. |
@@ -29,7 +29,7 @@ deployed environments were outside this run.
 | Strict policy answers and conflict abstention | **Pass.** Twelve backend evidence cases plus the original authored evaluator exercised effective-window boundaries, population, authority, equal-authority disagreement, unsupported condition, restricted canaries, source tampering, hash and exact excerpt. The browser covered answered, abstained, clarification and conflict states plus citation focus return. |
 | Broad related passages | **Pass.** A broad leave prompt found annual, sick, maternity and carry-forward passages. Browser and API checks confirmed titles, locator and highlighted text. Related passages exclude cited clauses and follow current tenant, READ, date, scope and approval. A revoked related document removes access to the saved result. Tampered sources did not appear. |
 | Personal leave and manager access | **Pass.** Six existing leave cases covered balance dates, tenant isolation, append-only entries, audit, reporting changes and timezone rollover. Chat tests covered 17-day self and direct-report balances, generic abstention for non-reports and unresolved/ambiguous names, and redacted saved history. The manager browser rendered the dedicated ledger card without a document citation. |
-| Classification and employee resolution | **Pass.** Fourteen classification cases covered all routing classes. Ten resolver cases covered exact, partial and multi-token prefix names, ambiguity, inactive users, missing names and the other tenant. Resolution still requires the ledger service to authorize any disclosure. |
+| Classification and employee resolution | **Pass.** Sixteen classification cases covered all routing classes, including “days left” phrasing. Ten resolver cases covered exact, partial and multi-token prefix names, ambiguity, inactive users, missing names and the other tenant. Resolution still requires the ledger service to authorize any disclosure. |
 | Autocomplete | **Pass.** Endpoint tests covered a maximum of eight items, empty input, scoped titles, permitted and unavailable report names, and sanitized access audit. UI tests covered active option, Up/Down, Enter to fill, Escape, focus retention and accessible list semantics. A real manager selected a direct-report suggestion in both themes at every required width. |
 | Semantic retrieval | **Pass on the local model and the authored examples.** Verified 384-dimensional unit vectors, cosine ranking, reciprocal rank fusion, approval-only persistence and rejection cleanup. A real MiniLM test and a live employee browser recovered the sick-leave passage for “I am unwell and need some time away”. The lexical-only path did not retrieve that passage for the same wording. Stubbed vector results confirmed that unauthorized, wrong-tenant, and not-yet-effective vectors could not surface. |
 | Conversation context | **Pass.** Four backend tests verified one-turn topic reuse, recognized contractor scope, unsupported HR scope, owner and tenant isolation, expiry, and reauthorization after a manager reassignment. The real browser showed 20 working days for the full-time annual policy, 8 for the contractor follow-up, and clarification for HR. |
@@ -73,3 +73,4 @@ Firefox or Safari behavior, physical devices, assistive technology, or any
 deployed environment. Previously approved versions still contain one
 reviewed span per version. An existing workspace retains its policy data
 and can backfill embeddings independently of the fictional demo seed.
+Historical release-capture and hosted performance scripts were outside this run.

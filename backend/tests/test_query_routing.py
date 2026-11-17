@@ -19,6 +19,8 @@ from app.query_routing import classify_query
         ("How many leave days does Arya have?", "employee_leave"),
         ("Leave remaining for Arya Dhumal", "employee_leave"),
         ("What is Arya's leave balance?", "employee_leave"),
+        ("How many days left do I have?", "employee_leave"),
+        ("Days left for Arya", "employee_leave"),
         ("???", "unknown"),
     ],
 )

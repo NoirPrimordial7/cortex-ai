@@ -2,12 +2,19 @@
 
 import re
 import unicodedata
+from enum import StrEnum
 from typing import Literal
 
 from .security import rows
 
 QueryKind = Literal["policy_fact", "policy_search", "employee_leave", "unknown"]
-AMBIGUOUS = object()
+
+
+class MatchStatus(StrEnum):
+    AMBIGUOUS = "ambiguous"
+
+
+AMBIGUOUS = MatchStatus.AMBIGUOUS
 
 TOPICS = {
     "leave": ("leave", "vacation", "time off", "pto"),
@@ -18,7 +25,8 @@ TOPICS = {
 BALANCE = re.compile(
     r"\bleave\s+(?:balances?|remaining|days?\s+(?:left|remaining|available))\b"
     r"|\b(?:remaining|unused|available)\s+(?:\w+\s+){0,2}leave\b|\bmy\s+(?:\w+\s+)?leave\b"
-    r"|\b(?:how many|days left)\b.*\b(?:leave|pto|vacation)\b",
+    r"|\b(?:how many|days left)\b.*\b(?:leave|pto|vacation)\b"
+    r"|\bdays?\s+(?:left|remaining)\b|\bhow many days\b.*\bhave (?:left|remaining)\b",
     re.I,
 )
 SELF = re.compile(r"\b(?:i|my|me|mine)\b", re.I)
@@ -46,12 +54,13 @@ def employee_mention(text):
 
 
 def classify_query(text: str) -> QueryKind:
-    if BALANCE.search(text) and (
+    topic = intent(text)
+    if topic in (None, "leave") and BALANCE.search(text) and (
         SELF.search(text) or employee_mention(text)
         or re.search(r"\bbalance\b|\bleave (?:remaining|days left)\b", text, re.I)
     ):
         return "employee_leave"
-    if intent(text) and not re.search(
+    if topic and not re.search(
         r"\b(?:sick|maternity|paternity|parental)\s+leave\b|\bcarry[ -]forward\b", text, re.I
     ) and not re.match(
         r"^\s*(?:show|find|list|search|all|everything)\b", text, re.I
@@ -64,7 +73,7 @@ def name_tokens(text):
     return re.findall(r"[^\W_]+", unicodedata.normalize("NFKC", text).casefold())
 
 
-def resolve_employee_mention(ctx, text):
+def resolve_employee_mention(ctx, text: str) -> str | None:
     """Return the unique exact or contiguous partial name, or an ambiguity marker."""
     wanted = name_tokens(text)
     if not wanted:

@@ -14,7 +14,7 @@ from . import db as models, leave
 from .conversations import FOLLOW_UP, previous_turn, remember
 from .embeddings import MODEL, cosine_rank, fuse_rankings
 from .query_routing import (
-    SELF, TOPICS, classify_query, employee_mention, intent, resolve_employee_mention,
+    AMBIGUOUS, SELF, TOPICS, classify_query, employee_mention, intent, resolve_employee_mention,
 )
 from .security import READ, audit, now, one, readable, revisions, rows, uid, version
 
@@ -357,7 +357,7 @@ def personal_leave(ctx, question, as_of, target=None):
             resolve_employee_mention(ctx, mention) if mention
             else ctx.user["id"] if SELF.search(question.query) else None
         )
-    if not isinstance(target, str):
+    if target is None or target is AMBIGUOUS:
         return None
     try:
         result = (
