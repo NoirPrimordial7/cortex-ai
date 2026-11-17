@@ -73,10 +73,14 @@ async function setup(page: Page, result: Answer = answer, denied = false) {
     page.getByRole("heading", { name: /A clear answer/ }),
   ).toBeVisible();
 }
-async function ask(page: Page) {
+async function submitPolicyQuestion(page: Page) {
   await page
-    .getByRole("button", { name: "How many annual leave days do I have?" })
-    .click();
+    .getByLabel("Ask about a company policy")
+    .fill("What is the annual leave entitlement?");
+  await page.getByRole("button", { name: "Ask Cortex", exact: true }).click();
+}
+async function ask(page: Page) {
+  await submitPolicyQuestion(page);
   await expect(
     page.getByRole("heading", { name: answer.answer }),
   ).toBeVisible();
@@ -105,12 +109,7 @@ test("desktop keyboard citation remains above the follow-up composer", async ({
     ],
   });
   await page.goto("/assistant");
-  await page
-    .getByRole("button", {
-      name: "How many annual leave days do I have?",
-      exact: true,
-    })
-    .click();
+  await submitPolicyQuestion(page);
   await expect(
     page.getByText("Policy conflict", { exact: true }),
   ).toBeVisible();
@@ -230,9 +229,7 @@ test("long answers keep the follow-up composer reachable and preserve original q
     answer: Array(12).fill(answer.answer).join("\n\n"),
   };
   await setup(page, long);
-  await page
-    .getByRole("button", { name: "How many annual leave days do I have?" })
-    .click();
+  await submitPolicyQuestion(page);
   await expect(page.getByText(long.answer)).toBeVisible();
   await noOverflow(page);
   expect(
@@ -252,7 +249,7 @@ test("long answers keep the follow-up composer reachable and preserve original q
   expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(640);
   await composer.fill("What is my notice period?");
   await expect(page.locator(".question-bubble")).toHaveText(
-    "How many annual leave days do I have?",
+    "What is the annual leave entitlement?",
   );
   await page.getByRole("button", { name: "Ask Cortex", exact: true }).click();
   await expect(page.locator(".question-bubble")).toHaveText(
@@ -293,9 +290,7 @@ test("conflict sources remain distinct and do not claim approval", async ({
       "Two approved policies disagree on annual leave. I cannot select one.",
     citations: [source, second],
   });
-  await page
-    .getByRole("button", { name: "How many annual leave days do I have?" })
-    .click();
+  await submitPolicyQuestion(page);
   await expect(
     page.getByText("Policy conflict", { exact: true }),
   ).toBeVisible();
@@ -363,12 +358,7 @@ test("desktop conflict claims share a row, remain unobscured and reauthorize on 
     answer: "Two policies disagree. I cannot choose between them.",
     citations: [source, second],
   });
-  await page
-    .getByRole("button", {
-      name: "How many annual leave days do I have?",
-      exact: true,
-    })
-    .click();
+  await submitPolicyQuestion(page);
   await expect(page.locator(".fb-claim blockquote")).toHaveText([
     quote,
     second.quote,
@@ -416,12 +406,7 @@ test("conflict comparison supports 200 percent text, both themes and evidence fo
     answer: "Two policies disagree. I cannot choose between them.",
     citations: [source, second],
   });
-  await page
-    .getByRole("button", {
-      name: "How many annual leave days do I have?",
-      exact: true,
-    })
-    .click();
+  await submitPolicyQuestion(page);
   await expect(page.locator(".fb-claim blockquote")).toHaveText([
     quote,
     second.quote,
@@ -454,9 +439,7 @@ test("conflict comparison supports 200 percent text, both themes and evidence fo
 });
 test("source denial clears the derived answer", async ({ page }) => {
   await setup(page, answer, true);
-  await page
-    .getByRole("button", { name: "How many annual leave days do I have?" })
-    .click();
+  await submitPolicyQuestion(page);
   await expect(page.getByRole("alert")).toHaveText("Resource unavailable");
   await expect(page.getByText(answer.answer)).toHaveCount(0);
   await page.screenshot({
@@ -473,9 +456,7 @@ test("clarification works without citations and scope changes reset the answer",
     answer: "Which leave policy do you mean?",
     citations: [],
   });
-  await page
-    .getByRole("button", { name: "How many annual leave days do I have?" })
-    .click();
+  await submitPolicyQuestion(page);
   await expect(
     page.getByText("More context needed", { exact: true }),
   ).toBeVisible();
@@ -493,9 +474,7 @@ test("unsupported answers do not fabricate citations", async ({ page }) => {
     answer: "No permitted evidence supports this question.",
     citations: [],
   });
-  await page
-    .getByRole("button", { name: "How many annual leave days do I have?" })
-    .click();
+  await submitPolicyQuestion(page);
   await expect(
     page.getByText("Unable to answer", { exact: true }),
   ).toBeVisible();

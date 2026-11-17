@@ -7,7 +7,7 @@ from datetime import date, datetime, timedelta, timezone
 from typing import Annotated
 from argon2 import PasswordHasher
 from argon2.exceptions import VerificationError
-from fastapi import Depends, FastAPI, File, Form, HTTPException, Request, Response, UploadFile
+from fastapi import Depends, FastAPI, File, Form, HTTPException, Query, Request, Response, UploadFile
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
@@ -17,7 +17,7 @@ from . import db as models
 from . import leave
 from .db import engine_for
 from .documents import Review, ingest, library, review
-from .pipeline import Question, answer, saved
+from .pipeline import Question, answer, saved, suggestions
 from .security import (
     Context,
     audit,
@@ -451,6 +451,17 @@ def create_app(settings=None):
     @app.post("/api/v1/queries")
     def query(body: Question, ctx: Ctx):
         return answer(ctx, body, app.state.observe)
+
+    @app.get("/api/v1/queries/suggestions")
+    def query_suggestions(
+        ctx: Ctx,
+        q: Annotated[str, Query(max_length=160)] = "",
+        as_of: date | None = None,
+        population: Annotated[str, Query(pattern="^(india_full_time|india_contractor)$")] =
+        "india_full_time",
+    ):
+        question = Question(query="suggestions", as_of=as_of, population=population)
+        return {"items": suggestions(ctx, q, question)}
 
     @app.get("/api/v1/queries/{qid}")
     def query_detail(qid: str, ctx: Ctx):

@@ -177,7 +177,7 @@ def seed(engine, settings):
                 published_at=d["published_at"][:10],
                 start_char=d["start_char"],
                 end_char=d["end_char"],
-                claim=d["claim"],
+                claim=d.get("claim"),
                 access_scope="uniform",
                 reason="Fictional reviewed fixture",
             )

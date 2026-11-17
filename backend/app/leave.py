@@ -104,10 +104,10 @@ def employee_balance(ctx, user_id, as_of):
     return {**result, "display_name": person["display_name"]}
 
 
-def team(ctx):
+def current_reports(ctx):
     ctx.require("leave.view_reports")
     current_date = today(ctx)
-    people = rows(
+    return current_date, rows(
         ctx.db,
         f"""SELECT u.id,u.display_name FROM reporting_relationships r
         JOIN users u ON u.tenant_id=r.tenant_id AND u.id=r.employee_user_id
@@ -115,6 +115,10 @@ def team(ctx):
         **ctx.parameters(),
         today=current_date.isoformat(),
     )
+
+
+def team(ctx):
+    current_date, people = current_reports(ctx)
     result = [
         {**balance(ctx, person["id"], current_date), "display_name": person["display_name"]}
         for person in people

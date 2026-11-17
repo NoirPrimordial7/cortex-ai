@@ -3631,3 +3631,66 @@ strong {
   white-space: normal;
   text-align: left;
 }
+.fb-query-suggestions {
+  list-style: none;
+  margin: 4px 0;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  max-block-size: min(180px, 24dvh);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.fb-query-suggestions [role="option"] {
+  display: flex;
+  align-items: center;
+  min-block-size: 44px;
+  padding: 6px 10px;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.fb-query-suggestions [role="option"]:is(:hover, [aria-selected="true"]) {
+  background: var(--tint);
+  outline: 1px solid currentColor;
+  outline-offset: -1px;
+  border-radius: 4px;
+}
+
+.fb-ledger, .fb-related {
+  margin-block: 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.fb-related ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fb-related li {
+  padding-block: 12px;
+  border-bottom: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+
+.fb-related li:last-child {
+  border-bottom: 0;
+}
+
+.fb-related small {
+  display: block;
+}
+
+.fb-related a {
+  text-decoration: underline;
+}
+
+.fb-related mark {
+  background: var(--tint);
+  color: inherit;
+  font-weight: 700;
+}

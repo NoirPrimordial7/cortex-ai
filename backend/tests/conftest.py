@@ -40,7 +40,7 @@ def client_for(system, user="maya"):
     return client
 
 
-def ask(client, query="How many annual leave days do I have?", as_of="2026-10-09", **scope):
+def ask(client, query="What is the annual leave entitlement?", as_of="2026-10-09", **scope):
     result = client.post("/api/v1/queries", json={"query": query, "as_of": as_of, **scope})
     assert result.status_code == 200, result.text
     return result.json()

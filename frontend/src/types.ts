@@ -24,6 +24,10 @@ export type Citation = {
   reviewed_value: number;
 };
 export type Answer = {
+  source?: "leave_ledger";
+  balances?: LeaveBalanceItem[];
+  display_name?: string | null;
+  related_results?: RelatedPassage[];
   query_id: string;
   status: "answered" | "abstained" | "clarification_required";
   reason_code: string | null;
@@ -33,6 +37,13 @@ export type Answer = {
   answer: string;
   citations: Citation[];
   created_at?: string;
+};
+export type RelatedPassage = {
+  clause_id: string;
+  document_id: string;
+  title: string;
+  locator: string;
+  excerpt: { text: string; matched: boolean }[];
 };
 export type Source = Citation & { text: string; query_id: string };
 export type DocumentItem = {

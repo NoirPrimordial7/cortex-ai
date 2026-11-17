@@ -34,6 +34,7 @@ function ReviewForm({
       content.segments[1] || content.segments[0],
     ),
     [topic, setTopic] = useState(v.topic || "leave"),
+    [searchOnly, setSearchOnly] = useState(false),
     [open, setOpen] = useState(Boolean(v.valid_from && !v.valid_to)),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
@@ -66,14 +67,16 @@ function ReviewForm({
           published_at: values.published_at,
           start_char: segment.start,
           end_char: end,
-          claim: {
-            subject: values.population,
-            predicate: mapping[topic][0],
-            unit: mapping[topic][1],
-            value: Number(values.value),
-            modality: "entitlement",
-            condition_key: "default",
-          },
+          claim: searchOnly
+            ? null
+            : {
+                subject: values.population,
+                predicate: mapping[topic][0],
+                unit: mapping[topic][1],
+                value: Number(values.value),
+                modality: "entitlement",
+                condition_key: "default",
+              },
           access_scope: "uniform",
           reason: values.reason,
         }),
@@ -123,7 +126,7 @@ function ReviewForm({
           <label>
             Policy topic
             <select value={topic} onChange={(e) => setTopic(e.target.value)}>
-              <option value="leave">Annual leave</option>
+              <option value="leave">Leave</option>
               <option value="remote_work">Remote work</option>
               <option value="notice">Notice period</option>
               <option value="bonus">Executive bonus</option>
@@ -140,10 +143,26 @@ function ReviewForm({
               <option value="informal_note">Informal note</option>
             </select>
           </label>
-          <label>
-            Reviewed numeric value
-            <input name="value" type="number" min="0" max="1000000" required />
+          <label className="check-label">
+            <input
+              type="checkbox"
+              checked={searchOnly}
+              onChange={(e) => setSearchOnly(e.target.checked)}
+            />
+            Publish this passage for search only
           </label>
+          {!searchOnly && (
+            <label>
+              Reviewed numeric value
+              <input
+                name="value"
+                type="number"
+                min="0"
+                max="1000000"
+                required
+              />
+            </label>
+          )}
           <label>
             Population
             <select

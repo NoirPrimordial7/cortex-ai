@@ -1,4 +1,10 @@
-import { render as renderUI, screen, waitFor } from "@testing-library/react";
+import {
+  render as renderUI,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import type { ReactNode } from "react";
 import { AskDraftProvider } from "../AskDraft";
 import userEvent from "@testing-library/user-event";
@@ -8,11 +14,51 @@ import { HighlightedSource } from "../SourcePassage";
 import { ApiError, api } from "../api";
 import type { Answer, Source } from "../types";
 const render = (element: ReactNode) =>
-  renderUI(<AskDraftProvider>{element}</AskDraftProvider>);
+  renderUI(
+    <MemoryRouter>
+      <AskDraftProvider>{element}</AskDraftProvider>
+    </MemoryRouter>,
+  );
 vi.mock("../api", async () => {
   const actual = await vi.importActual<typeof import("../api")>("../api");
   return { ...actual, api: vi.fn() };
 });
+
+test("autocomplete is empty at rest and supports keyboard selection and Escape", async () => {
+  vi.mocked(api).mockResolvedValue({
+    items: ["Show leave policies", "Show sick leave policy"],
+  });
+  render(<Assistant />);
+  const input = screen.getByRole("combobox", {
+    name: "Ask about a company policy",
+  });
+  expect(input).toHaveAttribute("aria-expanded", "false");
+  await userEvent.type(input, "show");
+  await screen.findByRole("listbox");
+  await userEvent.keyboard("{ArrowDown}{ArrowDown}{ArrowUp}{ArrowDown}");
+  const option = within(screen.getByRole("listbox")).getByRole("option", {
+    selected: true,
+  });
+  expect(option).toHaveTextContent("Show sick leave policy");
+  expect(input).toHaveAttribute("aria-activedescendant", option.id);
+  await userEvent.keyboard("{Enter}");
+  expect(input).toHaveValue("Show sick leave policy");
+  expect(screen.queryByRole("listbox")).toBeNull();
+  await userEvent.clear(input);
+  await userEvent.type(input, "show");
+  await screen.findByRole("listbox");
+  await userEvent.keyboard("{Escape}");
+  expect(screen.queryByRole("listbox")).toBeNull();
+  expect(input).toHaveFocus();
+  vi.mocked(api).mockReset();
+});
+async function submitQuestion() {
+  await userEvent.type(
+    screen.getByLabelText("Ask about a company policy"),
+    "What is the annual leave entitlement?",
+  );
+  await userEvent.click(screen.getByRole("button", { name: /^Ask Cortex$/ }));
+}
 const quote = "Employees receive 20 working days.";
 const source: Source = {
   id: "cite",
@@ -42,6 +88,46 @@ const result: Answer = {
   answer: "The entitlement is 20 working days per year.",
   citations: [source],
 };
+
+test("ledger results and related snippets render with distinct source treatment", async () => {
+  vi.mocked(api).mockResolvedValueOnce({
+    ...result,
+    source: "leave_ledger",
+    answer: "Personal leave balance",
+    display_name: "Arya Dhumal",
+    citations: [],
+    balances: [
+      { leave_type_id: "annual", name: "Annual leave", balance_days: 17 },
+    ],
+    related_results: [
+      {
+        clause_id: "sick",
+        document_id: "sick-doc",
+        title: "Sick leave policy",
+        locator: "TXT line 2",
+        excerpt: [
+          { text: "leave", matched: true },
+          { text: " <b>policy</b>", matched: false },
+        ],
+      },
+    ],
+  });
+  render(<Assistant />);
+  await submitQuestion();
+  expect(
+    await screen.findByRole("heading", {
+      name: "Leave balance for Arya Dhumal",
+    }),
+  ).toBeVisible();
+  expect(screen.getByText(/Source: Leave ledger/)).toBeVisible();
+  expect(screen.getByText("17 days")).toBeVisible();
+  expect(
+    screen.getByRole("link", { name: "Sick leave policy" }),
+  ).toHaveAttribute("href", "/documents/sick-doc");
+  expect(document.querySelector(".fb-related mark")).toHaveTextContent("leave");
+  expect(document.querySelector(".fb-related b")).toBeNull();
+  expect(screen.queryByText("Supporting evidence")).toBeNull();
+});
 test("question uses backend result and opens the authorized exact source", async () => {
   vi.mocked(api).mockResolvedValueOnce(result).mockResolvedValueOnce(source);
   render(<Assistant />);
@@ -62,9 +148,7 @@ test("question uses backend result and opens the authorized exact source", async
 test("changing the as-of date removes stale answer and source", async () => {
   vi.mocked(api).mockResolvedValueOnce(result).mockResolvedValueOnce(source);
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   await screen.findByText(result.answer);
   await userEvent.clear(screen.getByLabelText("As of"));
   await waitFor(() =>
@@ -75,9 +159,7 @@ test("changing the as-of date removes stale answer and source", async () => {
 test("permission change notification clears all visible derived evidence", async () => {
   vi.mocked(api).mockResolvedValueOnce(result).mockResolvedValueOnce(source);
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   await screen.findAllByText(quote);
   window.dispatchEvent(new Event("cortex:evidence-changed"));
   await waitFor(() =>
@@ -89,9 +171,7 @@ test("denied citation hides existing answer rather than keeping an unsupported s
     .mockResolvedValueOnce(result)
     .mockRejectedValueOnce(new ApiError(404, "Resource unavailable"));
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   expect(await screen.findByRole("alert")).toHaveTextContent(
     "Resource unavailable",
   );
@@ -117,9 +197,7 @@ test("source text is escaped rather than rendered as HTML", () => {
 test("editing a new question does not relabel the previous answer", async () => {
   vi.mocked(api).mockResolvedValueOnce(result).mockResolvedValueOnce(source);
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   await screen.findByText(result.answer);
   await userEvent.clear(screen.getByLabelText("Ask about a company policy"));
   await userEvent.type(
@@ -127,7 +205,7 @@ test("editing a new question does not relabel the previous answer", async () => 
     "What is my notice period?",
   );
   expect(document.querySelector(".question-bubble")?.textContent).toBe(
-    "How many annual leave days do I have?",
+    "What is the annual leave entitlement?",
   );
 });
 
@@ -152,9 +230,7 @@ test("a slow previous citation cannot overwrite the currently selected source", 
     )
     .mockResolvedValueOnce(second);
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   await screen.findByText(result.answer);
   await userEvent.click(screen.getByRole("button", { name: /Second source/ }));
   await screen.findByRole("heading", { name: "Second source" });
@@ -181,9 +257,7 @@ test("a follow-up draft typed during loading survives the response", async () =>
     )
     .mockResolvedValueOnce(source);
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   await userEvent.type(
     screen.getByLabelText("Ask about a company policy"),
     "What is my notice period?",
@@ -206,9 +280,7 @@ test("a completed query releases the composer while its source is still checking
         }),
     );
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   await screen.findByText(result.answer);
   expect(
     screen.queryByText("Checking policy access, dates and authority…"),
@@ -244,9 +316,7 @@ test("an invalidated query cannot finish a newer query's processing state", asyn
         }),
     );
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   await userEvent.selectOptions(
     screen.getByLabelText("Policy scope"),
     "india_contractor",
@@ -301,9 +371,7 @@ test("conflict comparison reads every source and renders authorized exact spans"
     .mockResolvedValueOnce(source)
     .mockResolvedValueOnce(alternative);
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   await screen.findByText(alternative.quote);
   expect(screen.getByText(quote)).toBeInTheDocument();
   expect(api).toHaveBeenNthCalledWith(2, "/queries/query/citations/cite");
@@ -324,9 +392,7 @@ test("a pending conflict source keeps both excerpts hidden and releases query lo
         }),
     );
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   await screen.findByText("Checking source access for both policies…");
   expect(screen.queryByText(quote)).not.toBeInTheDocument();
   expect(screen.queryByText(alternative.quote)).not.toBeInTheDocument();
@@ -344,9 +410,7 @@ test("one denied conflict source clears the whole comparison and abstention", as
     .mockResolvedValueOnce(source)
     .mockRejectedValueOnce(new ApiError(404, "Resource unavailable"));
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   await screen.findByRole("alert");
   expect(screen.queryByText(quote)).not.toBeInTheDocument();
   expect(screen.queryByText(alternative.quote)).not.toBeInTheDocument();
@@ -365,9 +429,7 @@ test("an invalidated comparison cannot restore excerpts after scope changes", as
         }),
     );
   render(<Assistant />);
-  await userEvent.click(
-    screen.getByText("How many annual leave days do I have?"),
-  );
+  await submitQuestion();
   await screen.findByText("Checking source access for both policies…");
   await userEvent.selectOptions(
     screen.getByLabelText("Policy scope"),

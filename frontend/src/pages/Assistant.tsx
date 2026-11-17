@@ -21,6 +21,9 @@ import { api, ApiError } from "../api";
 import { useAskDraft } from "../AskDraft";
 import type { Answer, Citation, Source } from "../types";
 import { SourceInspector } from "../SourceInspector";
+import { LeaveBalances } from "../LeaveBalances";
+import { suggestionsId, useQuerySuggestions } from "../QuerySuggestions";
+import { Link } from "react-router-dom";
 
 // A native modal makes the rest of the app inert, traps focus, and handles Escape.
 function EvidenceView({
@@ -89,6 +92,7 @@ function EvidenceView({
 export default function Assistant() {
   const { query, setQuery, date, setDate, population, setPopulation } =
     useAskDraft();
+  const suggestions = useQuerySuggestions(query, date, population);
   const [askedQuery, setAskedQuery] = useState("");
   const [answer, setAnswer] = useState<Answer | null>(null),
     [source, setSource] = useState<Source | null>(null),
@@ -218,10 +222,10 @@ export default function Assistant() {
       if (epoch.current === stamp) setComparisonBusy(false);
     }
   }
-  async function send(e?: FormEvent, example?: string) {
+  async function send(e: FormEvent) {
     e?.preventDefault();
     if (busy) return;
-    const prompt = (example || query).trim();
+    const prompt = query.trim();
     if (!prompt || !date) return;
     clear();
     const stamp = epoch.current;
@@ -259,6 +263,7 @@ export default function Assistant() {
     }
   }
   const conflict = answer?.reason_code === "UNRESOLVED_CONFLICT";
+  const ledger = answer?.source === "leave_ledger";
   const inspectorContent = (
     <SourceInspector
       key={selected?.id || "empty"}
@@ -422,13 +427,15 @@ export default function Assistant() {
                       <WarningCircleIcon size={17} />
                     )}
                     <span>
-                      {answer.status === "answered"
-                        ? "Supported answer"
-                        : conflict
-                          ? "Policy conflict"
-                          : answer.status === "clarification_required"
-                            ? "More context needed"
-                            : "Unable to answer"}
+                      {ledger
+                        ? "Leave balance"
+                        : answer.status === "answered"
+                          ? "Supported answer"
+                          : conflict
+                            ? "Policy conflict"
+                            : answer.status === "clarification_required"
+                              ? "More context needed"
+                              : "Unable to answer"}
                     </span>
                   </div>
                   <h2>
@@ -436,7 +443,9 @@ export default function Assistant() {
                       ? answer.citations.length === 2
                         ? "Two policies. No single answer."
                         : "Conflicting policies. No single answer."
-                      : answer.answer}
+                      : ledger && answer.display_name
+                        ? `Leave balance for ${answer.display_name}`
+                        : answer.answer}
                   </h2>
                   {conflict && <p className="fb-abstention">{answer.answer}</p>}
                   {conflict && (
@@ -460,13 +469,25 @@ export default function Assistant() {
                       </a>
                     </nav>
                   )}
-                  <p className="fb-applies">
-                    Applies to{" "}
-                    {answer.scope.population === "india_full_time"
-                      ? "India full-time employees"
-                      : "India contractors"}{" "}
-                    · as of {policyDate(answer.as_of)}
-                  </p>
+                  {ledger ? (
+                    <section
+                      className="fb-ledger"
+                      aria-label="Personal leave ledger"
+                    >
+                      <p className="fb-applies">
+                        Source: Leave ledger, as of {policyDate(answer.as_of)}
+                      </p>
+                      <LeaveBalances balances={answer.balances ?? []} />
+                    </section>
+                  ) : (
+                    <p className="fb-applies">
+                      Applies to{" "}
+                      {answer.scope.population === "india_full_time"
+                        ? "India full-time employees"
+                        : "India contractors"}{" "}
+                      · as of {policyDate(answer.as_of)}
+                    </p>
+                  )}
                   {conflict && (
                     <section
                       className="fb-comparison"
@@ -575,6 +596,35 @@ export default function Assistant() {
                       </div>
                     </div>
                   )}
+                  {Boolean(answer.related_results?.length) && (
+                    <section
+                      className="fb-related"
+                      aria-label="Related policy passages"
+                    >
+                      <h3>Related policy passages</h3>
+                      <ul>
+                        {answer.related_results?.map((passage) => (
+                          <li key={passage.clause_id}>
+                            <Link
+                              to={`/documents/${encodeURIComponent(passage.document_id)}`}
+                            >
+                              {passage.title}
+                            </Link>
+                            <small>{passage.locator}</small>
+                            <p>
+                              {passage.excerpt.map((part, i) =>
+                                part.matched ? (
+                                  <mark key={i}>{part.text}</mark>
+                                ) : (
+                                  part.text
+                                ),
+                              )}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
                 </article>
               )}
             </div>
@@ -585,13 +635,30 @@ export default function Assistant() {
               <div className="fb-compose-input">
                 <textarea
                   id="question"
+                  role="combobox"
+                  aria-autocomplete="list"
+                  aria-expanded={suggestions.items.length > 0}
+                  aria-controls={
+                    suggestions.items.length ? suggestionsId : undefined
+                  }
+                  aria-activedescendant={
+                    suggestions.selected >= 0
+                      ? `${suggestionsId}-${suggestions.selected}`
+                      : undefined
+                  }
                   aria-label="Ask about a company policy"
                   name="query"
                   autoComplete="off"
                   ref={input}
                   maxLength={1000}
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  onChange={(e) => {
+                    suggestions.onInput();
+                    setQuery(e.target.value);
+                  }}
+                  onFocus={() => suggestions.setFocused(true)}
+                  onBlur={() => suggestions.setFocused(false)}
+                  onKeyDown={(e) => suggestions.onKeyDown(e, setQuery)}
                   placeholder={
                     answer
                       ? "Ask another policy question…"
@@ -605,37 +672,32 @@ export default function Assistant() {
                   <ArrowRightIcon size={20} />
                 </button>
               </div>
+              {suggestions.items.length > 0 && (
+                <ul
+                  id={suggestionsId}
+                  role="listbox"
+                  aria-label="Suggested questions"
+                  className="fb-query-suggestions"
+                >
+                  {suggestions.items.map((text, i) => (
+                    <li
+                      id={`${suggestionsId}-${i}`}
+                      key={text}
+                      role="option"
+                      aria-selected={suggestions.selected === i}
+                      onMouseDown={(e) => e.preventDefault()}
+                      onClick={() => suggestions.choose(text, setQuery)}
+                    >
+                      {text}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <p>
                 Each question checks the selected date and scope.
                 <kbd>Ctrl / ⌘ K</kbd>
               </p>
             </form>
-            {!answer && !busy && !error && (
-              <div className="fb-examples">
-                <p>Try a policy question</p>
-                <div className="fb-suggestions">
-                  {[
-                    "How many annual leave days do I have?",
-                    "How many remote days per week?",
-                    "What is my notice period?",
-                  ].map((text, i) => (
-                    <button
-                      key={text}
-                      aria-label={text}
-                      onClick={() => void send(undefined, text)}
-                    >
-                      <span>
-                        <strong>
-                          {["Annual leave", "Remote work", "Notice period"][i]}
-                        </strong>
-                        <span>{text}</span>
-                      </span>
-                      <ArrowRightIcon size={18} />
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
           </section>
           {!narrow && inspector && (
             <aside

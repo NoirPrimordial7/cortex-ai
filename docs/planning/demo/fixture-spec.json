@@ -39,6 +39,111 @@
   "documents": [
     {
       "tenant_id": "NORTHSTAR",
+      "document_id": "HR-SICK",
+      "title": "Sick leave policy",
+      "version_id": "LEAVE-SICK",
+      "clause_id": "SICK-C1",
+      "file": "policies/LEAVE-SICK.txt",
+      "sha256": "ac1a03c49abc9d83c0c8415f03a4bf0872903ae51e86595ae500fe2fbd60f2dd",
+      "published_at": "2025-12-15T09:00:00+05:30",
+      "ingested_at": "2026-10-08T10:00:00+05:30",
+      "valid_from": "2026-01-01",
+      "valid_to": null,
+      "open_ended": true,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "hr_policy",
+      "topic": "leave",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "role_id": "manager"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "locator": "TXT line 2",
+      "quote": "Sick leave can be requested when illness prevents an employee from working. Notify your manager as soon as you can.",
+      "start_char": 18,
+      "end_char": 133
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "HR-MATERNITY",
+      "title": "Maternity leave policy",
+      "version_id": "LEAVE-MATERNITY",
+      "clause_id": "MATERNITY-C1",
+      "file": "policies/LEAVE-MATERNITY.txt",
+      "sha256": "3a5ff547f010695e07aa01c75dfeed32af0846eb85561dba481a98366cf11f27",
+      "published_at": "2025-12-15T09:00:00+05:30",
+      "ingested_at": "2026-10-08T10:00:00+05:30",
+      "valid_from": "2026-01-01",
+      "valid_to": null,
+      "open_ended": true,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "hr_policy",
+      "topic": "leave",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "role_id": "manager"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "locator": "TXT line 2",
+      "quote": "To arrange maternity leave, contact HR to confirm eligibility, dates, and required documentation.",
+      "start_char": 23,
+      "end_char": 120
+    },
+    {
+      "tenant_id": "NORTHSTAR",
+      "document_id": "HR-CARRY",
+      "title": "Leave carry-forward policy",
+      "version_id": "LEAVE-CARRY",
+      "clause_id": "CARRY-C1",
+      "file": "policies/LEAVE-CARRY.txt",
+      "sha256": "f4e98c6dddfd405e3d29bd058f1efa7644529e1863a6a9361fd87c2352b75f04",
+      "published_at": "2025-12-15T09:00:00+05:30",
+      "ingested_at": "2026-10-08T10:00:00+05:30",
+      "valid_from": "2026-01-01",
+      "valid_to": null,
+      "open_ended": true,
+      "approval_state": "approved",
+      "reviewer": "ravi",
+      "source_kind": "hr_policy",
+      "topic": "leave",
+      "population": "india_full_time",
+      "jurisdiction": "IN",
+      "read_grants": [
+        {
+          "role_id": "employee"
+        },
+        {
+          "role_id": "manager"
+        },
+        {
+          "user_id": "ravi"
+        }
+      ],
+      "locator": "TXT line 2",
+      "quote": "HR reviews requests to carry forward unused annual leave at the end of the leave year. Submit the request before the year closes.",
+      "start_char": 27,
+      "end_char": 156
+    },
+    {
+      "tenant_id": "NORTHSTAR",
       "document_id": "HR-LEAVE",
       "title": "Annual leave policy",
       "version_id": "LEAVE-2025",

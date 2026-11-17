@@ -35,7 +35,7 @@ class Review(BaseModel):
     published_at: date
     start_char: int = Field(ge=0)
     end_char: int = Field(gt=0)
-    claim: Claim
+    claim: Claim | None = None
     access_scope: str = Field(pattern="^uniform$")
     reason: str = Field(min_length=3, max_length=500)
 
@@ -48,7 +48,7 @@ class Review(BaseModel):
         if (
             self.start_char >= self.end_char
             or self.end_char - self.start_char > 8000
-            or self.claim.subject != self.population
+            or (self.claim and self.claim.subject != self.population)
         ):
             raise ValueError("Invalid span or claim scope")
         return self
@@ -176,7 +176,7 @@ def review(ctx, vid, body: Review, *, clause_id=None):
     if body.end_char > len(value):
         raise HTTPException(422, "Evidence span exceeds source")
     quote = value[body.start_char : body.end_char]
-    if not re.search(rf"(?<!\d){body.claim.value}(?!\d)", quote):
+    if body.claim and not re.search(rf"(?<!\d){body.claim.value}(?!\d)", quote):
         raise HTTPException(422, "Reviewed numeric claim must occur in the selected source span")
     mapping = {
         "leave": ("annual_leave_days", "working_days_per_year"),
@@ -185,9 +185,9 @@ def review(ctx, vid, body: Review, *, clause_id=None):
         "bonus": ("executive_bonus", "INR"),
     }
     if (
-        (body.claim.predicate, body.claim.unit) != mapping[body.topic]
+        body.claim and ((body.claim.predicate, body.claim.unit) != mapping[body.topic]
         or body.claim.modality != "entitlement"
-        or body.claim.condition_key != "default"
+        or body.claim.condition_key != "default")
     ):
         raise HTTPException(422, "This MVP supports reviewed standard entitlement claims only")
     rule = one(
@@ -267,22 +267,23 @@ def review(ctx, vid, body: Review, *, clause_id=None):
                 **projection,
             )
         )
-    ctx.db.execute(
-        models.policy_claims.insert().values(
-            id=uid(),
-            tenant_id=ctx.tenant,
-            clause_id=cid,
-            metadata_revision=revision,
-            subject=body.claim.subject,
-            predicate=body.claim.predicate,
-            value_json=json.dumps(body.claim.value),
-            unit=body.claim.unit,
-            modality=body.claim.modality,
-            condition_key=body.claim.condition_key,
-            exception_of_claim_id=None,
-            reviewer_id=ctx.user["id"],
+    if body.claim:
+        ctx.db.execute(
+            models.policy_claims.insert().values(
+                id=uid(),
+                tenant_id=ctx.tenant,
+                clause_id=cid,
+                metadata_revision=revision,
+                subject=body.claim.subject,
+                predicate=body.claim.predicate,
+                value_json=json.dumps(body.claim.value),
+                unit=body.claim.unit,
+                modality=body.claim.modality,
+                condition_key=body.claim.condition_key,
+                exception_of_claim_id=None,
+                reviewer_id=ctx.user["id"],
+            )
         )
-    )
     execute(ctx.db, "DELETE FROM clause_fts WHERE clause_id=:cid", cid=cid)
     approved = body.approval_state == "approved"
     if approved:
