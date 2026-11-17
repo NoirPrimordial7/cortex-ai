@@ -37,8 +37,9 @@ def intent(prompt):
 
 
 def employee_mention(text):
+    cleaned = re.sub(r"^\s*(?:what is|show me|show|tell me|check)\s+", "", text, flags=re.I)
     for pattern in PERSON:
-        match = pattern.search(text.strip().rstrip("?.!"))
+        match = pattern.search(cleaned.strip().rstrip("?.!"))
         if match:
             return match[1]
     return None
@@ -56,9 +57,7 @@ def classify_query(text: str) -> QueryKind:
         r"^\s*(?:show|find|list|search|all|everything)\b", text, re.I
     ):
         return "policy_fact"
-    if len(re.findall(r"[^\W_]+", text)) > 0:
-        return "policy_search" if len(text.strip()) > 1 else "unknown"
-    return "unknown"
+    return "policy_search" if any(len(word) > 1 for word in name_tokens(text)) else "unknown"
 
 
 def name_tokens(text):
