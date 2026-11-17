@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-10-09T15:31:42.762806+00:00",
+  "timestamp": "2026-11-17T04:13:55.337846+00:00",
   "protocol": "Crafted Phase 2 fixture sanity checks; same development fixture; no held-out data or ablation; no generalization claim",
-  "fixture_sha256": "549af023c196a0491612cecde4b02ba47161208cdc62dac26d4431835897dd7f",
+  "fixture_sha256": "ddda4e511a2e27dc84d7f3951a723bfc94f058f60a54a61ef6a0f31cad173e2a",
   "environment": {
     "python": "3.12.10",
     "platform": "Windows-11-10.0.26300-SP0",
@@ -32,8 +32,8 @@
     "restricted_canary_violations_in_checked_stages_and_payloads": 0,
     "warm_query_latency_ms": {
       "n": 50,
-      "median": 9.422,
-      "p95_nearest_rank": 10.502
+      "median": 23.121,
+      "p95_nearest_rank": 26.844
     }
   },
   "scenarios": [
@@ -50,7 +50,7 @@
       ],
       "peer_recall_numerator": 2,
       "peer_recall_denominator": 2,
-      "query_latency_ms": 11.102
+      "query_latency_ms": 22.0
     },
     {
       "id": "D02 restricted",
@@ -61,7 +61,7 @@
       "gold_selected": [],
       "peer_recall_numerator": 0,
       "peer_recall_denominator": 0,
-      "query_latency_ms": 9.25
+      "query_latency_ms": 12.142
     },
     {
       "id": "D03 future upload",
@@ -76,7 +76,7 @@
       ],
       "peer_recall_numerator": 2,
       "peer_recall_denominator": 2,
-      "query_latency_ms": 9.252
+      "query_latency_ms": 22.025
     },
     {
       "id": "D03 future effective",
@@ -91,7 +91,7 @@
       ],
       "peer_recall_numerator": 2,
       "peer_recall_denominator": 2,
-      "query_latency_ms": 9.356
+      "query_latency_ms": 17.781
     },
     {
       "id": "D04 historical",
@@ -106,7 +106,7 @@
       ],
       "peer_recall_numerator": 1,
       "peer_recall_denominator": 1,
-      "query_latency_ms": 9.659
+      "query_latency_ms": 14.125
     },
     {
       "id": "D05 authority",
@@ -121,7 +121,7 @@
       ],
       "peer_recall_numerator": 2,
       "peer_recall_denominator": 2,
-      "query_latency_ms": 9.512
+      "query_latency_ms": 14.511
     },
     {
       "id": "D06 conflict",
@@ -138,7 +138,7 @@
       ],
       "peer_recall_numerator": 2,
       "peer_recall_denominator": 2,
-      "query_latency_ms": 9.741
+      "query_latency_ms": 17.836
     },
     {
       "id": "D07 missing",
@@ -149,7 +149,7 @@
       "gold_selected": [],
       "peer_recall_numerator": 0,
       "peer_recall_denominator": 0,
-      "query_latency_ms": 8.826
+      "query_latency_ms": 11.675
     },
     {
       "id": "D09 notice citation",
@@ -164,7 +164,7 @@
       ],
       "peer_recall_numerator": 1,
       "peer_recall_denominator": 1,
-      "query_latency_ms": 9.224
+      "query_latency_ms": 12.714
     },
     {
       "id": "D10 scope",
@@ -179,7 +179,7 @@
       ],
       "peer_recall_numerator": 1,
       "peer_recall_denominator": 1,
-      "query_latency_ms": 9.212
+      "query_latency_ms": 16.741
     },
     {
       "id": "D11 boundary",
@@ -194,7 +194,7 @@
       ],
       "peer_recall_numerator": 2,
       "peer_recall_denominator": 2,
-      "query_latency_ms": 9.665
+      "query_latency_ms": 17.692
     },
     {
       "id": "D11 no valid interval",
@@ -205,7 +205,7 @@
       "gold_selected": [],
       "peer_recall_numerator": 0,
       "peer_recall_denominator": 0,
-      "query_latency_ms": 8.863
+      "query_latency_ms": 14.161
     }
   ],
   "limitations": [

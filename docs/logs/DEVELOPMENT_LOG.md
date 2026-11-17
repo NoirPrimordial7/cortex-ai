@@ -1,5 +1,11 @@
 # Development log
 
+## 2026-11-17 — Local search, leave chat and conversational context
+
+- Extended approved policy review and Ask Cortex in the existing SQLite application. Lexical results share authorization and temporal filters with strict evidence. Personal lookups reuse leave authorization and store a generic history record.
+- Added CPU-only MiniLM and one-turn, owner-scoped context with separate migrations. Intent and name matching use tested deterministic rules. See [decisions 0009–0013](../decisions/README.md).
+- Verified in a dedicated fictional demo database. Build, model, browser and per-module evidence are in the [test report](../implementation/POLICY_SEARCH_TEST_REPORT.md).
+
 ## 2026-11-12T00:52:12+05:30 — Personal leave and manager visibility
 
 - Added `leave.py`, a shared-schema migration and fictional seed records; extended the action map, protected API and user-targeted audit. Use dated sums for balances and current reporting intervals for access. The existing evidence pipeline, source hashes and process-lock boundary remain intact.

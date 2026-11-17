@@ -73,3 +73,36 @@ The backend serves the ignored `frontend/dist/` build at http://127.0.0.1:8000 w
 ```
 
 Evaluation seeds its own database under ignored `outputs/`; it does not reset or modify the running demo. See [actual results](TEST_RESULTS.md), [backend contracts](../../backend/README.md) and [current limits](IMPLEMENTATION_STATUS.md).
+
+## Run the search and leave demo with MiniLM
+
+From the repository root in PowerShell, install the locked Python packages
+and build the frontend. The model setup uses a one-time download and checks
+the pinned artifact hashes. Inference runs locally on CPU once installed.
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r backend\requirements.lock -r backend\requirements-embeddings.lock
+npm.cmd --prefix frontend ci
+npm.cmd --prefix frontend run build
+$env:CORTEX_EMBEDDING_MODEL_DIR = & .\tools\setup-minilm.ps1
+$env:CORTEX_DATA_DIR = Join-Path (Get-Location) 'outputs\policy-search-demo'
+$env:CORTEX_DEMO_ACCOUNTS = '1'
+Set-Location backend
+if (-not (Test-Path (Join-Path $env:CORTEX_DATA_DIR 'credentials.json'))) {
+    ..\.venv\Scripts\python.exe -m app.cli seed-demo
+}
+..\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --no-proxy-headers --no-access-log
+```
+
+Open [Cortex AI](http://127.0.0.1:8000). Pick the employee profile
+`maya@example.test` to try **My leave**, **Show everything relevant to leave**,
+or **I am unwell and need some time away**. The manager profile
+`ravi@example.test` can type **arya** to find the direct-report suggestion.
+For a policy follow-up, ask **What is the annual leave entitlement?** then
+**What about contractors?**.
+
+To upgrade existing data, stop the server, point `CORTEX_DATA_DIR` at that
+database, and run `python -m app.cli migrate` followed by
+`python -m app.cli reindex-embeddings` from `backend/`. The backfill adds
+vectors for already-approved passages. Fresh demo seeding adds the three
+fictional search policies; migrations on existing workspaces preserve their data.

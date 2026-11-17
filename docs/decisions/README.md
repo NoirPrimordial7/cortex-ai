@@ -28,3 +28,11 @@ Preserve previous accepted records when a decision changes; add a superseding AD
 ## Personal leave ledger
 
 [ADR 0008](0008-leave-ledger-and-direct-reports.md) records the dated ledger and current-direct-report access rules.
+
+## Search and conversation
+
+- [0009 Related policy search and personal leave in Ask Cortex](0009-related-search-and-ledger-chat.md)
+- [0010 Local MiniLM hybrid retrieval](0010-local-minilm-hybrid-retrieval.md)
+- [0011 Rule-based query intent](0011-rule-based-query-intent.md)
+- [0012 Deterministic employee resolution](0012-deterministic-employee-resolution.md)
+- [0013 One-turn conversation context](0013-one-turn-conversation-context.md)

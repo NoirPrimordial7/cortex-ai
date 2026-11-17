@@ -53,6 +53,7 @@ All routes use `/api/v1`. Mutation requests require an allowed Origin; authentic
 | `GET /versions/{id}/content`; `GET /versions/{id}/download`; `GET /ingestion-jobs/{id}` | Current READ and tenant enforcement, including failed/pending input |
 | `POST /versions/{id}/review` | Reviewer action + READ; atomic approval/metadata/claim/FTS update with expected revision |
 | `POST /queries`; `GET /queries`; `GET /queries/{id}`; `GET /queries/{id}/citations/{id}` | Grounded answer/abstention, own current history, exact authorized source |
+| `GET /queries/suggestions?q=...` | Query-authorized autocomplete with up to eight phrases, eligible titles and permitted current direct reports; accepts `as_of` and `population` |
 | `GET /dashboard`; `GET /conflicts` | Visible document counts and current owner-derived activity |
 | `GET /leave/balance?as_of=YYYY-MM-DD` | Own balances for any active session; date defaults to today in the tenant's policy timezone |
 | `GET /leave/employees/{id}/balance?as_of=YYYY-MM-DD` | Current direct report for a manager, or same-tenant active employee for a non-manager leave administrator; inaccessible targets return 404 |
@@ -73,6 +74,13 @@ without balance or reference values. Run `app.cli migrate` on existing databases
 before serving the new routes. A fresh fictional seed gives Maya 17 days and
 places her on Ravi's team. Existing databases receive no fictional leave data.
 [ADR 0008](../docs/decisions/0008-leave-ledger-and-direct-reports.md) records the access rules and date semantics.
+
+`POST /queries` returns `related_results` independently of strict citations.
+An authorized personal lookup returns `source: "leave_ledger"` and a dated
+balance list. Saved history redacts personal details. Use an optional UUID v4
+`conversation_id` for one-turn context. `GET /health` reports whether the local
+semantic model is enabled. A review with `claim: null` publishes its approved
+passage for search without creating a strict numeric claim.
 
 ## Integrated frontend and fixture evaluation
 

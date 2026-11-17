@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-17 — Related policy search and conversation context
+
+- Added reviewed search-only passages, FTS5 relevance, source-checked excerpts, leave ledger answers and permission-scoped autocomplete. Seeded fictional sick leave, maternity and carry-forward policies.
+- Added opt-in CPU MiniLM hybrid retrieval and one-turn context in migrations 0003–0004. Added deterministic intent and same-tenant employee resolution tests.
+- Added local model setup, responsive browser coverage and a [detailed module test report](../implementation/POLICY_SEARCH_TEST_REPORT.md).
+
 ## 2026-11-12T00:52:12+05:30 — Employee leave ledger
 
 - Added personal leave balances, current-direct-report access, and audited ledger-entry and manager-assignment endpoints. Migration `0002` uses the central SQLite database and preserves existing tenants and evidence.

@@ -1,5 +1,17 @@
 # Phase 3 implementation checkpoint
 
+## 2026-11-17 search and conversation checkpoint
+
+| Module | Implementation | Limit |
+|---|---|---|
+| Related policy search | Eligibility-scoped FTS5 and BM25; reviewed text-only passages; source-verified snippets | One approved span per document version; related excerpts are search results |
+| Personal leave chat | Deterministic intent and tenant-local name matching; current ledger authorization and audit | No balances or person names in saved answers; exact and partial names only |
+| Assistant suggestions | Debounced and keyboard-operable; policy phrases, authorized titles and current direct reports | Eight items maximum; explicit text matching |
+| Semantic retrieval | Pinned MiniLM CPU embeddings, cosine Top-K and reciprocal-rank fusion in existing SQLite | Local opt-in; English-oriented small corpus |
+| Conversation context | Owner-scoped one-turn topic or employee hint with fresh authorization | Supported follow-up forms and India full-time/contractor scope only |
+
+See the [detailed test report](POLICY_SEARCH_TEST_REPORT.md) and [local startup instructions](RUN_LOCAL.md).
+
 ## 2026-11-12 personal leave checkpoint
 
 | Module / source | Implemented behavior | Boundary |

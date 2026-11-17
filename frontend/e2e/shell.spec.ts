@@ -15,6 +15,7 @@ for (const width of [320, 390, 768, 1024, 1280, 1440]) {
               roles: [{ id: "admin", name: "Admin" }],
               actions: [
                 "query.execute",
+                "leave.view_reports",
                 "document.upload",
                 "document.review",
                 "acl.manage",
@@ -33,9 +34,13 @@ for (const width of [320, 390, 768, 1024, 1280, 1440]) {
               recent: [],
               documents: [],
             }
-          : path.endsWith("/admin/users")
-            ? { items: [], roles: [], policy_revision: 1 }
-            : { items: [] };
+          : path.endsWith("/leave/balance")
+            ? { user_id: "test-admin", as_of: "2026-10-09", balances: [] }
+            : path.endsWith("/leave/team")
+              ? { as_of: "2026-10-09", items: [] }
+              : path.endsWith("/admin/users")
+                ? { items: [], roles: [], policy_revision: 1 }
+                : { items: [] };
       return route.fulfill({ json: result });
     });
     for (const route of [
@@ -45,6 +50,7 @@ for (const width of [320, 390, 768, 1024, 1280, 1440]) {
       "/upload",
       "/history",
       "/conflicts",
+      "/team",
       "/permissions",
       "/audit",
     ]) {

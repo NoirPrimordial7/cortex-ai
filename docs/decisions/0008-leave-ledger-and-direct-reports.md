@@ -47,3 +47,6 @@ Verification covers fresh and existing database migration, cutoff dates,
 tenant and direct-report access, audit targets, append-only storage and policy
 evidence separation. See [implementation status](../implementation/IMPLEMENTATION_STATUS.md)
 and [CI](../implementation/CI.md). Commit subject: `feat: add employee leave ledger and manager visibility`.
+
+[ADR 0009](0009-related-search-and-ledger-chat.md) adds a dedicated ledger
+result in Ask Cortex while preserving separation from document evidence.
