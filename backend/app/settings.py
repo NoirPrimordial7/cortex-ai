@@ -18,6 +18,7 @@ class Settings:
     allowed_hosts: tuple[str, ...] = ("127.0.0.1", "localhost", "testserver")
     demo_accounts_enabled: bool = False
     shared_demo_read_only: bool = False
+    embedding_model_dir: Path | None = None
 
     @property
     def db_path(self):
@@ -32,6 +33,7 @@ class Settings:
         hosts = tuple(
             x.strip() for x in os.environ.get("CORTEX_ALLOWED_HOSTS", "").split(",") if x.strip()
         )
+        model_dir = os.environ.get("CORTEX_EMBEDDING_MODEL_DIR")
         return cls(
             data_dir,
             origins=origins or cls.__dataclass_fields__["origins"].default,
@@ -40,4 +42,5 @@ class Settings:
             demo_accounts_enabled=os.environ.get("CORTEX_DEMO_ACCOUNTS") == "1"
             or (data_dir / "demo-autofill.enabled").is_file(),
             shared_demo_read_only=os.environ.get("CORTEX_SHARED_DEMO_READ_ONLY") == "1",
+            embedding_model_dir=Path(model_dir).resolve() if model_dir else None,
         )

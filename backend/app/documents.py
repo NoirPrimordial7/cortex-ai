@@ -8,6 +8,7 @@ from pathlib import Path
 from fastapi import HTTPException
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 from . import db as models
+from .embeddings import store_embedding
 from .security import audit, document, execute, now, one, rows, uid, version
 
 
@@ -165,7 +166,7 @@ def ingest(
     }
 
 
-def review(ctx, vid, body: Review, *, clause_id=None):
+def review(ctx, vid, body: Review, *, clause_id=None, encoder=None):
     ctx.require("document.review")
     v = version(ctx, vid)
     if v["extraction_state"] == "failed":
@@ -292,6 +293,15 @@ def review(ctx, vid, body: Review, *, clause_id=None):
             "INSERT INTO clause_fts(clause_id,text) VALUES (:cid,:text)",
             cid=cid,
             text=quote,
+        )
+        if encoder is not None:
+            store_embedding(ctx.db, ctx.tenant, cid, encoder, quote)
+    else:
+        execute(
+            ctx.db,
+            "DELETE FROM clause_embeddings WHERE tenant_id=:tenant AND clause_id=:id",
+            **ctx.parameters(),
+            id=cid,
         )
     execute(
         ctx.db,

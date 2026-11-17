@@ -17,6 +17,7 @@ from . import db as models
 from . import leave
 from .db import engine_for
 from .documents import Review, ingest, library, review
+from .embeddings import load_encoder
 from .pipeline import Question, answer, saved, suggestions
 from .security import (
     Context,
@@ -76,6 +77,7 @@ def create_app(settings=None):
     app.state.gate = threading.Lock()
     app.state.failures = defaultdict(deque)
     app.state.observe = None
+    app.state.encoder = load_encoder(settings)
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=list(settings.allowed_hosts))
 
     @app.middleware("http")
@@ -253,7 +255,10 @@ def create_app(settings=None):
 
     @app.get("/api/v1/health")
     def health():
-        return {"status": "ok", "mode": "offline_evidence"}
+        return {
+            "status": "ok", "mode": "offline_evidence",
+            "semantic_search": app.state.encoder is not None,
+        }
 
     @app.get("/api/v1/demo/accounts")
     def demo_profiles():
@@ -446,11 +451,11 @@ def create_app(settings=None):
 
     @app.post("/api/v1/versions/{vid}/review")
     def review_version(vid: str, body: Review, ctx: Ctx):
-        return review(ctx, vid, body)
+        return review(ctx, vid, body, encoder=app.state.encoder)
 
     @app.post("/api/v1/queries")
     def query(body: Question, ctx: Ctx):
-        return answer(ctx, body, app.state.observe)
+        return answer(ctx, body, app.state.observe, encoder=app.state.encoder)
 
     @app.get("/api/v1/queries/suggestions")
     def query_suggestions(

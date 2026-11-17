@@ -9,7 +9,8 @@ from alembic.config import Config
 from argon2 import PasswordHasher
 from . import db as models
 from .documents import Review, ingest, review
-from .security import Context, execute, now, one, uid
+from .embeddings import MODEL, load_encoder, store_embedding
+from .security import Context, execute, now, one, rows, uid
 from .settings import ROOT, Settings
 from .demo import TEAM_NAMES
 
@@ -34,6 +35,7 @@ def seed(engine, settings):
     fixture_root = ROOT / "docs" / "planning" / "demo"
     fixture = json.loads((fixture_root / "fixture-spec.json").read_text(encoding="utf-8"))
     credentials = {}
+    encoder = load_encoder(settings)
     with engine.begin() as conn:
         if one(conn, "SELECT id FROM tenants LIMIT 1"):
             raise RuntimeError("Database is not empty; seed refuses to overwrite existing work")
@@ -181,7 +183,7 @@ def seed(engine, settings):
                 access_scope="uniform",
                 reason="Fictional reviewed fixture",
             )
-            review(ctx, d["version_id"], body, clause_id=d["clause_id"])
+            review(ctx, d["version_id"], body, clause_id=d["clause_id"], encoder=encoder)
             execute(
                 conn,
                 "DELETE FROM document_acl WHERE tenant_id=:tenant AND document_id=:did",
@@ -215,9 +217,39 @@ def seed(engine, settings):
     return credentials
 
 
+def reindex_embeddings(engine, encoder):
+    # Offline maintenance: run with the application stopped, like migrations.
+    count = 0
+    with engine.begin() as db:
+        approved = rows(
+            db,
+            """SELECT c.id,c.tenant_id,c.text,c.start_char,c.end_char,v.extracted_text,
+                   v.extracted_sha256
+            FROM clauses c JOIN document_versions v
+              ON v.tenant_id=c.tenant_id AND v.id=c.version_id
+            JOIN metadata_revisions m
+              ON m.tenant_id=v.tenant_id AND m.id=v.current_metadata_revision_id
+            WHERE c.metadata_reviewed=1 AND v.extraction_state='indexed'
+              AND m.approval_state='approved' AND NOT EXISTS (
+                SELECT 1 FROM clause_embeddings e WHERE e.tenant_id=c.tenant_id
+                AND e.clause_id=c.id AND e.model_name=:model)""",
+            model=MODEL,
+        )
+        for clause in approved:
+            source = clause["extracted_text"]
+            if (
+                source[clause["start_char"]:clause["end_char"]] != clause["text"]
+                or hashlib.sha256(source.encode()).hexdigest() != clause["extracted_sha256"]
+            ):
+                continue
+            store_embedding(db, clause["tenant_id"], clause["id"], encoder, clause["text"])
+            count += 1
+    return count
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["migrate", "seed-demo"])
+    parser.add_argument("command", choices=["migrate", "seed-demo", "reindex-embeddings"])
     args = parser.parse_args()
     settings = Settings.from_env()
     engine = models.engine_for(settings.db_path)
@@ -229,6 +261,10 @@ def main():
         print(
             "Fictional demo seeded. Runtime credentials are in the ignored local-data/credentials.json file."
         )
+    elif args.command == "reindex-embeddings":
+        if (encoder := load_encoder(settings)) is None:
+            parser.error("Set CORTEX_EMBEDDING_MODEL_DIR before reindexing embeddings")
+        print(f"Embedded {reindex_embeddings(engine, encoder)} previously approved passages.")
     else:
         print("Migrations applied.")
 

@@ -364,6 +364,14 @@ reporting_relationships = model(
 )
 
 
+clause_embeddings = model(
+    "clause_embeddings",
+    [col("clause_id"), col("model_name"), col("vector_json"), col("created_at")],
+    same("clauses", "clause_id"),
+    UniqueConstraint("tenant_id", "clause_id", "model_name"),
+)
+
+
 def engine_for(path: Path):
     path.parent.mkdir(parents=True, exist_ok=True)
     engine = create_engine(

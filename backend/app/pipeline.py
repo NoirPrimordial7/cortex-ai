@@ -11,6 +11,7 @@ from zoneinfo import ZoneInfo
 from fastapi import HTTPException
 from pydantic import BaseModel, ConfigDict, Field
 from . import db as models, leave
+from .embeddings import MODEL, cosine_rank, fuse_rankings
 from .query_routing import SELF, classify_query, employee_mention, intent, resolve_employee_mention
 from .security import READ, audit, now, one, readable, revisions, rows, uid, version
 
@@ -138,12 +139,23 @@ def highlighted_excerpt(text, tokens):
     return pieces
 
 
-def search_relevant(ctx, question, asof, search_text, exclude=()):
+def search_relevant(ctx, question, asof, search_text, exclude=(), encoder=None):
     if question.condition_key != "default":
         return []
     params = search_parameters(ctx, question, asof)
     tokens = search_tokens(search_text)
     ranked = bm25(lexical_candidates(ctx, params, tokens), tokens)
+    if encoder is not None and tokens:
+        vectors = rows(
+            ctx.db,
+            f"""SELECT c.id,e.vector_json {PASSAGE_JOIN}
+            JOIN clause_embeddings e ON e.tenant_id=c.tenant_id AND e.clause_id=c.id
+            AND e.model_name=:model WHERE {ELIGIBLE} ORDER BY c.id""",
+            **params,
+            model=MODEL,
+        )
+        if vectors:
+            ranked = fuse_rankings(ranked, cosine_rank(vectors, encoder.encode(search_text)))
     result, sources = [], {}
     for ident in ranked:
         if ident in exclude:
@@ -355,7 +367,7 @@ def personal_leave(ctx, question, as_of, target=None):
     return {**result, "as_of": result["as_of"].isoformat()}
 
 
-def answer(ctx, question: Question, observe=None):
+def answer(ctx, question: Question, observe=None, *, encoder=None):
     ctx.require("query.execute")
     captured = revisions(ctx)
     kind = classify_query(question.query)
@@ -436,7 +448,8 @@ def answer(ctx, question: Question, observe=None):
         "EQUAL_AUTHORITY_CONFLICT" if reason == "UNRESOLVED_CONFLICT" else "APPROVED_VALID_SOURCE"
     )
     related = [] if reason == "CONTEXT_CHANGED" else search_relevant(
-        ctx, question, asof, "leave" if personal else question.query, {e.clause_id for e in selected}
+        ctx, question, asof, "leave" if personal else question.query,
+        {e.clause_id for e in selected}, encoder,
     )
     payload = {
         "query_id": qid,
