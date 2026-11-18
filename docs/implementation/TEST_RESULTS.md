@@ -1,5 +1,13 @@
 # Current production verification
 
+**2026-10-29 local overhaul CI increment:** 39 backend tests (one existing
+Starlette/httpx warning), 28 frontend tests, Ruff, pip consistency, TypeScript/Vite
+build and npm audit (zero reported vulnerabilities) pass. Workflow YAML parsed
+and formatted; official action release hashes verified. [Commands, failed-attempt
+context and limitations](CI.md#local-verification). These Windows checks do not
+reverify the public deployment or establish a GitHub Actions result; the release
+records below remain historical.
+
 **Latest PR #8 release:** application22cbeef is published by both hosts after owner approval.28frontend/39backend tests,62public API assertions, six unique production browser scenarios,155fresh PNGs/154geometry observations and19exact served asset hashes pass. [Final evidence](../design/pr8-production-release/README.md).
 
 ## Previous release verification
@@ -12,7 +20,7 @@
 
 39 backend pytest tests and21 frontend tests pass. Ruff, strict TypeScript/Vite build and npm audit pass (zero vulnerabilities). 56 unique selected Chromium browser checks passed:29 deterministic UI regressions,14 actual role/login/workflow/reflow/origin checks,10 real capture runs,2 performance checks and1 unchanged published-alias login smoke. Opt-in live suites intentionally skip unless their environment flags are set.
 
-[Full pass/pending matrix, commands and scope](../design/product-audit/README.md) · [actual gallery](../design/product-audit/gallery.html) · [measured performance](../design/product-audit/performance-results.json)
+[Full pass/pending matrix, commands and scope](../design/product-audit/README.md) · [actual gallery](../archive/design-history/product-audit.zip#docs/design/product-audit/gallery.html) · [measured performance](../archive/design-history/product-audit.zip#docs/design/product-audit/performance-results.json)
 
 The approved Render origin update is live on unchanged main source. Both current review origins pass actual backend login/session/query/citation200; wrong CSRF/unapproved origins remain403. Post-restart production checks:52 HTTP assertions and one fresh browser login passed. [Configuration and protected-preview browser limitation](../design/product-audit/preview-origin-change.md). No review code was merged or released. Physical devices/Safari/assistive technology/field INP/cold starts are not certified by these local tests.
 
@@ -62,7 +70,7 @@ Maya signed in, submitted leave/current/historical and remote conflict questions
 
 Source modal Escape/close and mobile navigation were inspected; focused controls and keyboard behavior also have unit coverage. Live light/dark assistant and selected computed colors were inspected. Browser locator/file-picker control was occasionally unreliable/slow; native browser accessibility controls were used where available. An initial development hot-reload context mismatch was fixed by moving the shared context into a stable module; it is not hidden as an always-error-free session. Screenshots show actual state at their capture time, not an automated full-browser regression suite.
 
-See [browser measurements](../design/browser-checks.json), [contrast pairs](../design/contrast-results.json), [design QA](../../design-qa.md), [screenshot gallery](../design/README.md). The selected sampled checks do not certify all pages/states for accessibility or security.
+See [browser measurements](../design/browser-checks.json), [contrast pairs](../design/contrast-results.json), [design QA](../design/design-qa.md), [screenshot gallery](../design/README.md). The selected sampled checks do not certify all pages/states for accessibility or security.
 
 Immediate-resize screenshot frames initially retained the previous rendering. Those affected tablet/mobile files were replaced with settled captures before publication. Filenames denote requested CSS viewport widths; native screenshot framing/raster size can differ. This capture issue was not counted as a successful final visual check.
 

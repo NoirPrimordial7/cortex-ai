@@ -1,5 +1,11 @@
 # Development log
 
+## 2026-11-18 — Repository structure cleanup
+
+- Posted the complete before inventory, reviewed design QA and capture/gallery references, then archived superseded design evidence and regrouped documentation. [The manifest](../implementation/CLEANUP_CHANGES.json) lists all 18 moves, 14 archives and generated deletion targets.
+- Preserved the approved release and active draft, checked archive bytes before removing originals, and restored every removed historical file to verify recovery. Moved the embedded local Git metadata out of outputs before deleting generated folders.
+- Rebuilt the environments from existing locks and documented regeneration commands. Protected source hashes, test/build evidence, exact repository-visible sizes and the existing dependency audit failure are recorded in the [cleanup report](../implementation/CLEANUP_REPORT.md).
+
 ## 2026-11-17 — Local search, leave chat and conversational context
 
 - Extended approved policy review and Ask Cortex in the existing SQLite application. Lexical results share authorization and temporal filters with strict evidence. Personal lookups reuse leave authorization and store a generic history record.
@@ -86,7 +92,7 @@
 - Replaced duplicated evidence with compact citations and one detailed inspector. Desktop collapse restores focus; mobile native modal makes background inert, wraps Tab/Shift+Tab, supports Escape/Back and restores citation focus without moving scroll.
 - Reserved a scrolling answer area above the persistent composer. Normal scrolling takes over in short keyboard-like viewports. Long answers use a smaller reading size; follow-up drafts survive in-flight responses. Original question remains bound to its response.
 - Existing endpoints, ACLs, source hashes, tenant isolation, date/population semantics, conflict abstention, session revision invalidation and conditional full hosted disclosure preserved. No backend source changes or credential persistence.
-- Checks: frontend13, Playwright13, backend38 pass; Ruff, strict build and npm audit pass. Chromium320/390/768/1280/1440 light/dark tested. Real local annual leave and remote-work conflict exercised through existing fictional session. QA comparison source/actual captured together at1536×1024; root design-qa.md passes the bounded local gate.
+- Checks: frontend13, Playwright13, backend38 pass; Ruff, strict build and npm audit pass. Chromium320/390/768/1280/1440 light/dark tested. Real local annual leave and remote-work conflict exercised through existing fictional session. QA comparison source/actual captured together at1536×1024; root docs/design/design-qa.md passes the bounded local gate.
 - Fixed focus escaping into browser chrome, composer covering citations, legacy label margins and paper background override, and source-loading synchronization in the contrast test. Sixteen sampled text pairs min5.38:1; control boundary min3.17:1.
 - Initial JS100.19kB gzip versus100.01kB before; assistant CSS3.77kB gzip; self-hosted fonts73,552bytes. These are build sizes, not network, API or Core Web Vitals claims.
 - Physical-device/Safari/assistive technology, measured web vitals and production deployment remain outstanding. Updated existing PR #2; remote reports it open and ready for review (not draft), and that existing state is preserved. No main merge or live deploy.
@@ -144,7 +150,7 @@
 
 ## 2026-10-09T21:21:45+05:30 — Phase3 live Evidence Studio and integration verification
 
-- Files added: frontend/ (real React screens, lockfile and tests), backend/evaluate.py, docs/implementation/, docs/design/screenshots/ and browser/contrast reports, diagram11 Mermaid/DOT/SVG/PNG and design-qa.md. Changed backend citation rank/assertion, README, roadmap/docs index, design/learning reports, diagram manifest, acceptance status and decision index; no Phase1 research or fixture bytes removed.
+- Files added: frontend/ (real React screens, lockfile and tests), backend/evaluate.py, docs/implementation/, docs/design/screenshots/ and browser/contrast reports, diagram11 Mermaid/DOT/SVG/PNG and docs/design/design-qa.md. Changed backend citation rank/assertion, README, roadmap/docs index, design/learning reports, diagram manifest, acceptance status and decision index; no Phase1 research or fixture bytes removed.
 - Reason: implement owner-approved Evidence Studio, expose a watchable localhost server, connect all screens to the permission-safe core, and document actual boundaries instead of claiming planned features.
 - Outcome: live5173 frontend/8000 backend with hot reload; nine main page families plus own history/audit; exact source/authority display, private upload/review/version UI, current grants/roles and fail-closed history. Browser TXT upload remains private pending review; no live grants changed.
 - Verification: final backend29 tests pass (7.42s; one TestClient deprecation warning), frontend8 tests pass and strict TypeScript/Vite build passes; Ruff/pip checks pass, npm audit zero at checkpoint. Fixture12/12 outcomes,15/15 authorized peers,10/10 span/hash checks; one conflict positive only.50 warm in-process repeats median9.422ms/P9510.502ms, not browser latency.46 real layout observations have no horizontal overflow;12 sampled contrast pairs≥4.5; approved concepts compared against actual captures after corrections.
@@ -187,7 +193,7 @@
 ## 2026-10-09T16:37:31+05:30 — Phase 2 architecture and evidence contracts
 
 - Authorization: owner approved Phase 1 and requested full Phase 2 planning; Phase 3 remains unapproved.
-- Files added: docs/planning/{REQUIREMENTS,TECH_STACK,SYSTEM_ARCHITECTURE,DATABASE_SCHEMA,SECURITY_MODEL,RAG_PIPELINE,API_DESIGN,DEMO_SCENARIOS,TEST_STRATEGY,MVP_ACCEPTANCE_CRITERIA}.md; demo/fixture-spec.json and 11 fictional policy TXT files; docs/learning/ six explanation documents; docs/DIAGRAMS.md; docs/diagrams/ ten .mmd/.dot/.svg/.png export sets plus MANIFEST.json; three numbered ADRs. Changed README and tracking files; no deletions. UI/backlog/sequence drafts remain unstaged for the next complete unit.
+- Files added: docs/planning/{REQUIREMENTS,TECH_STACK,SYSTEM_ARCHITECTURE,DATABASE_SCHEMA,SECURITY_MODEL,RAG_PIPELINE,API_DESIGN,DEMO_SCENARIOS,TEST_STRATEGY,MVP_ACCEPTANCE_CRITERIA}.md; demo/fixture-spec.json and 11 fictional policy TXT files; docs/learning/ six explanation documents; docs/implementation/tracking/DIAGRAMS.md; docs/diagrams/ ten .mmd/.dot/.svg/.png export sets plus MANIFEST.json; three numbered ADRs. Changed README and tracking files; no deletions. UI/backlog/sequence drafts remain unstaged for the next complete unit.
 - Reason/outcome: select an offline-capable local stack and define tenant/ACL, validity, authority/conflict, citation, API and test contracts before implementation. All behavior remains planned; fictional policy files are test specifications, not ingested application data.
 - Environment: authenticated account NoirPrimordial7; main local/remote matched 06334ae on inspection. GitHub API now reports PUBLIC; previous Phase 1 records reported PRIVATE. No visibility mutation performed; owner informed. Only non-sensitive fictional documentation is published.
 - Verification: local link checks, 11 policy hashes and exact quote offsets, 10 complete export sets, strict credential-pattern scan and Git whitespace passed; Phase 1 research/source artifacts compare byte-equivalent after newline normalization to 06334ae. Graphviz exports visually inspected; flow grouping adjusted for readability.
@@ -211,7 +217,7 @@ Historical Phase 1 entries below concern repository and research maintenance. Ph
 
 ## 2026-10-09T15:26:04+05:30 — Phase 1B–1G: research documentation and quality review
 
-- **Added:** docs/PROJECT_OVERVIEW.md, RESEARCH_SUMMARY.md, COMPETITOR_ANALYSIS.md, FEATURE_COMPARISON.md, LITERATURE_REVIEW.md, RESEARCH_GAPS.md, PROPOSED_IMPROVEMENTS.md, RESEARCH_SOURCES.md, PROJECT_ROADMAP.md, ARCHITECTURE_NOTES.md, QUALITY_REVIEW.md; docs/decisions/README.md; docs/logs/RESEARCH_LOG.md; research/papers/README.md, competitors/README.md, experiments/README.md; research/SOURCE_INVENTORY.json and SOURCE_CHECKS.json.
+- **Added:** docs/implementation/tracking/PROJECT_OVERVIEW.md, RESEARCH_SUMMARY.md, COMPETITOR_ANALYSIS.md, FEATURE_COMPARISON.md, LITERATURE_REVIEW.md, RESEARCH_GAPS.md, PROPOSED_IMPROVEMENTS.md, RESEARCH_SOURCES.md, PROJECT_ROADMAP.md, ARCHITECTURE_NOTES.md, QUALITY_REVIEW.md; docs/decisions/README.md; docs/logs/RESEARCH_LOG.md; docs/planning/research/sources/papers/README.md, competitors/README.md, experiments/README.md; docs/planning/research/sources/SOURCE_INVENTORY.json and SOURCE_CHECKS.json.
 - **Changed:** README.md, .gitignore, docs/changelog/CHANGELOG.md and this log. No removals or prior work overwritten.
 - **Reason/outcome:** produce a primary-source-backed research dossier, explicit unknowns and reproducible evaluation proposal while staying within research-only scope. All 13 candidate families and 15 academic works covered; 76 primary references registered.
 - **Verification:** authenticated remote/visibility check from initialization; live technical/bibliographic review; targeted recent-paper full-text limitations; 75 reachable HTTP references with one DOI publisher 403 and author-hosted alternative; repaired canonical Elastic link; relative Markdown links pass; required-structure/count/ignore/secret-pattern/staged-diff checks before push.

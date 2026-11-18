@@ -1,5 +1,14 @@
 # Implementation backlog
 
+**2026-10-29 reconciliation:** The “nothing implemented” statement below belongs
+to the preserved Phase 2 plan. The offline core and main UI now exist. CI is
+prepared locally; general partial lineage, independent evaluation, semantic/LLM
+adapters, agents and durable infrastructure remain future increments. Use the
+[overhaul review](../implementation/OVERHAUL_REVIEW.md) and
+[implementation status](../implementation/IMPLEMENTATION_STATUS.md) for current
+source-backed status, rather than interpreting this historical backlog as a
+current feature inventory.
+
 **Nothing below has been implemented.** Priority P0=must before safe demo, P1=complete A if capacity, P2=later. Effort S≈0.5–1h, M≈1–2h, L≈2–4h focused development; estimates exclude unanticipated failures and are relative, not promises. A total approximately13–26h with reuse/parallel team work; single-developer tomorrow completion at risk.
 
 ## Milestone A — tomorrow's working MVP

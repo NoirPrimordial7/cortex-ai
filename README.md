@@ -32,7 +32,7 @@ Use workspace `NORTHSTAR` and employee `maya@example.test`; generated passwords 
 
 Real browser screenshot of the published React/FastAPI system using fictional data. Current leave evidence is20 days; historical2025 evidence is18; equally authoritative remote-work policies produce an abstention with both citations. These values come from the provided fixture and API, not hardcoded frontend answers.
 
-[Running screenshot gallery](docs/design/README.md) includes desktop/tablet/mobile, dark theme, upload/review, version history, permissions, own history and redacted audit. Phase2 concept artwork remains separately labelled. [Design QA](design-qa.md) records actual checks and corrections.
+[Running screenshot gallery](docs/design/README.md) includes desktop/tablet/mobile, dark theme, upload/review, version history, permissions, own history and redacted audit. Phase2 concept artwork remains separately labelled. [Design QA](docs/design/design-qa.md) records actual checks and corrections.
 
 ## Implemented stack and modules
 
@@ -50,7 +50,7 @@ Backend and UI cover login/session, permitted knowledge dashboard, assistant/cit
 
 ![Implemented local architecture](docs/diagrams/11-implemented-core.svg)
 
-One backend application worker serializes protected requests and access changes with an exclusive process gate and one transaction. This is a conservative local deadline trade-off; synchronous parsing may hold the gate for30 seconds. [ADR0005](docs/decisions/0005-local-execution-boundary.md) explains changes from the approved design. [Earlier diagrams](docs/DIAGRAMS.md) remain planning references, not proof that optional AI is implemented.
+One backend application worker serializes protected requests and access changes with an exclusive process gate and one transaction. This is a conservative local deadline trade-off; synchronous parsing may hold the gate for30 seconds. [ADR0005](docs/decisions/0005-local-execution-boundary.md) explains changes from the approved design. [Earlier diagrams](docs/implementation/tracking/DIAGRAMS.md) remain planning references, not proof that optional AI is implemented.
 
 ## Verified progress and remaining work
 
@@ -66,17 +66,17 @@ No arbitrary40% completion or general accuracy claim is made. Future priorities 
 
 ## Preserved research and approved planning
 
-The Phase1 dossier covers13 competitor families,15 academic works and76 primary references, with documentation-based claims and explicit evidence limits. No world-first claim is made. [Documentation index](docs/README.md), [planning backlog](docs/planning/IMPLEMENTATION_BACKLOG.md), [draft future roadmap](docs/PROJECT_ROADMAP.md), [ADRs](docs/decisions/README.md) and [plain-English guides](docs/learning/SYSTEM_EXPLAINED.md) connect plans to current implementation.
+The Phase1 dossier covers13 competitor families,15 academic works and76 primary references, with documentation-based claims and explicit evidence limits. No world-first claim is made. [Documentation index](docs/README.md), [planning backlog](docs/planning/IMPLEMENTATION_BACKLOG.md), [draft future roadmap](docs/implementation/tracking/PROJECT_ROADMAP.md), [ADRs](docs/decisions/README.md) and [plain-English guides](docs/learning/SYSTEM_EXPLAINED.md) connect plans to current implementation.
 
 ## Research documents
 
-- [Research briefing](docs/RESEARCH_SUMMARY.md) and [project overview](docs/PROJECT_OVERVIEW.md)
-- [Competitor profiles](docs/COMPETITOR_ANALYSIS.md) and [cited feature matrix](docs/FEATURE_COMPARISON.md)
-- [Literature review](docs/LITERATURE_REVIEW.md) and [source register](docs/RESEARCH_SOURCES.md)
-- [Research gaps](docs/RESEARCH_GAPS.md) and [proposed improvements](docs/PROPOSED_IMPROVEMENTS.md)
-- [Draft roadmap and three scopes](docs/PROJECT_ROADMAP.md) and [observed/proposed architecture notes](docs/ARCHITECTURE_NOTES.md)
-- [Quality review](docs/QUALITY_REVIEW.md), [decision policy](docs/decisions/README.md), [changelog](docs/changelog/CHANGELOG.md), [development log](docs/logs/DEVELOPMENT_LOG.md) and [research log](docs/logs/RESEARCH_LOG.md)
-- [Paper registry](research/papers/README.md), [competitor registry](research/competitors/README.md), [proposed experiment protocol](research/experiments/README.md), [source inventory](research/SOURCE_INVENTORY.json) and [dated link checks](research/SOURCE_CHECKS.json)
+- [Research briefing](docs/planning/research/RESEARCH_SUMMARY.md) and [project overview](docs/implementation/tracking/PROJECT_OVERVIEW.md)
+- [Competitor profiles](docs/planning/research/COMPETITOR_ANALYSIS.md) and [cited feature matrix](docs/planning/research/FEATURE_COMPARISON.md)
+- [Literature review](docs/planning/research/LITERATURE_REVIEW.md) and [source register](docs/planning/research/RESEARCH_SOURCES.md)
+- [Research gaps](docs/planning/research/RESEARCH_GAPS.md) and [proposed improvements](docs/planning/research/PROPOSED_IMPROVEMENTS.md)
+- [Draft roadmap and three scopes](docs/implementation/tracking/PROJECT_ROADMAP.md) and [observed/proposed architecture notes](docs/planning/research/ARCHITECTURE_NOTES.md)
+- [Quality review](docs/planning/research/QUALITY_REVIEW.md), [decision policy](docs/decisions/README.md), [changelog](docs/changelog/CHANGELOG.md), [development log](docs/logs/DEVELOPMENT_LOG.md) and [research log](docs/logs/RESEARCH_LOG.md)
+- [Paper registry](docs/planning/research/sources/papers/README.md), [competitor registry](docs/planning/research/sources/competitors/README.md), [proposed experiment protocol](docs/planning/research/sources/experiments/README.md), [source inventory](docs/planning/research/sources/SOURCE_INVENTORY.json) and [dated link checks](docs/planning/research/sources/SOURCE_CHECKS.json)
 
 ## Long-term traceability
 

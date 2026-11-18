@@ -1,33 +1,13 @@
 # Cortex AI documentation
 
-**Current: Phase 3 approved and local core/UI implemented.** [Run it](implementation/RUN_LOCAL.md), [actual scope](implementation/IMPLEMENTATION_STATUS.md), [measured tests](implementation/TEST_RESULTS.md), [running screenshots](design/README.md) and [implemented architecture](diagrams/11-implemented-core.svg). The following Phase2 links remain approved planning baselines; their historical “not implemented” statements describe that phase. Current repository public visibility is unchanged.
+[Start here](learning/SYSTEM_EXPLAINED.md) for a plain-English explanation of how Cortex works.
 
----
-
-## Preserved Phase 2 baseline
-
-**Phase1 approved; Phase2 planning/design prepared for owner review; Phase3 has not begun.** All architecture, policies and UI demonstrations below describe intended behavior. Repository currently reports public; no visibility change performed here.
-
-## Start here
-
-- Understand the system: [plain-English explanation](learning/SYSTEM_EXPLAINED.md), [architecture explained](learning/ARCHITECTURE_EXPLAINED.md), [AI pipeline](learning/AI_PIPELINE_EXPLAINED.md), [security](learning/SECURITY_EXPLAINED.md), [database](learning/DATABASE_EXPLAINED.md), [glossary](learning/TECHNICAL_GLOSSARY.md).
-- Inspect visuals: [ten-diagram gallery](DIAGRAMS.md), [UI design gallery](design/README.md), [design research](design/DESIGN_RESEARCH.md), [static HTML/CSS sources](design/mockups/index.html).
-- Build after approval: [implementation backlog](planning/IMPLEMENTATION_BACKLOG.md), [exact development sequence](planning/DEVELOPMENT_SEQUENCE.md), [MVP acceptance gate](planning/MVP_ACCEPTANCE_CRITERIA.md).
-
-## Architecture and engineering contracts
-
-| Area | Documents |
-|---|---|
-| Scope / choices | [Requirements](planning/REQUIREMENTS.md), [selected stack](planning/TECH_STACK.md), [architecture](planning/SYSTEM_ARCHITECTURE.md) |
-| Data / protection | [Schema](planning/DATABASE_SCHEMA.md), [security and bounded threat model](planning/SECURITY_MODEL.md) |
-| Query contracts | [Retrieval/reasoning](planning/RAG_PIPELINE.md), [API](planning/API_DESIGN.md), [frontend](planning/UI_UX_PLAN.md) |
-| Demonstration / evaluation | [Fictional scenarios](planning/DEMO_SCENARIOS.md), [fixture specification](planning/demo/fixture-spec.json), [tests and metrics](planning/TEST_STRATEGY.md) |
-| Quality / provenance | [Phase2 review](planning/QUALITY_REVIEW.md), [planning sources](planning/PLANNING_SOURCES.md), [ADRs](decisions/README.md) |
-
-## Preserved approved research
-
-[Summary](RESEARCH_SUMMARY.md), [competitors](COMPETITOR_ANALYSIS.md), [cited comparison](FEATURE_COMPARISON.md), [literature](LITERATURE_REVIEW.md), [gaps](RESEARCH_GAPS.md), [proposed improvements](PROPOSED_IMPROVEMENTS.md), [source register](RESEARCH_SOURCES.md), [observed architecture](ARCHITECTURE_NOTES.md). These reports retain their Phase1 dates/status as historical research; current Phase2 choices live under planning/ADRs.
-
-## Review and tracking
-
-[Roadmap](PROJECT_ROADMAP.md), [changelog](changelog/CHANGELOG.md), [development log](logs/DEVELOPMENT_LOG.md), [research log](logs/RESEARCH_LOG.md). Commit history is the exact technical record. Planning selections await owner review before application implementation; no paid services or benchmark results.
+- [learning/](learning/) explains the system for students and new contributors.
+- [implementation/](implementation/) has setup instructions, API and test reports, and project tracking for developers.
+- [planning/](planning/) holds requirements, research, source registers and fictional fixtures for people studying the project choices.
+- [decisions/](decisions/) records architecture decisions for maintainers.
+- [design/](design/) holds design guidance, the approved release record and the active draft for reviewers.
+- [diagrams/](diagrams/) contains system diagrams for readers who prefer a visual explanation.
+- [archive/](archive/) stores compressed historical design evidence for reviewers revisiting old work.
+- [changelog/](changelog/) lists changes for anyone following releases.
+- [logs/](logs/) records development and research activity for project contributors.

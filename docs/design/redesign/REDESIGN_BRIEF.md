@@ -18,9 +18,9 @@ Source facts come from official pages and browser observations. Design lessons a
 
 The public demo was inspected through its actual login → Maya fictional account autofill → normal sign-in → annual leave question → cited source flow. All screenshots below are genuine captures from this redesign session, not generated concepts.
 
-- [Login](01-login-before.jpg): the demo picker is discoverable and retains normal sign-in. The large split hero occupies half the desktop width without helping the evidence task.
-- [Assistant empty state](02-assistant-empty-before.jpg): a top bar, full-width notice, eyebrow, page heading, subtitle, scope toolbar and empty-state heading accumulate before the composer. At the captured width the full page is taller than the browser viewport; initiating a custom question requires reaching the bottom of this hierarchy.
-- [Supported answer](03-assistant-answer-before.jpg): the answer and exact source are genuine and correctly aligned to the selected date. The compact source column wraps the passage heavily, metadata labels are small, and the oversized reserved conversation area separates the answer from follow-up input.
+- [Login](../../archive/design-history/redesign.zip#docs/design/redesign/01-login-before.jpg): the demo picker is discoverable and retains normal sign-in. The large split hero occupies half the desktop width without helping the evidence task.
+- [Assistant empty state](../../archive/design-history/redesign.zip#docs/design/redesign/02-assistant-empty-before.jpg): a top bar, full-width notice, eyebrow, page heading, subtitle, scope toolbar and empty-state heading accumulate before the composer. At the captured width the full page is taller than the browser viewport; initiating a custom question requires reaching the bottom of this hierarchy.
+- [Supported answer](../../archive/design-history/redesign.zip#docs/design/redesign/03-assistant-answer-before.jpg): the answer and exact source are genuine and correctly aligned to the selected date. The compact source column wraps the passage heavily, metadata labels are small, and the oversized reserved conversation area separates the answer from follow-up input.
 
 These are layout judgments from the captured desktop flow, not a complete accessibility audit. No current mobile usability or contrast certification is asserted. Preserve the useful existing features: explicit scope/date, citation selection, source inspection, current-user display, normal authentication and honest demo limits.
 
@@ -28,9 +28,9 @@ These are layout judgments from the captured desktop flow, not a complete access
 
 Three separate ImageGen concepts are prepared from actual Cortex and reference captures. They are **visual proposals**, not working pages. Visible selection numbers follow the order of displayed generated images.
 
-- **Displayed 1 — [Atlas Editorial](concepts/atlas-editorial.png):** luminous paper surface, forest accents, editorial typography, compact light navigation and a source annotation column.
-- **Displayed 2 — [Night Signal](concepts/night-signal.png):** charcoal workspace, electric lime accent, minimal navigation rail, focused conversation and a distinct evidence reading area.
-- **Displayed 3 — [Cobalt Workspace](concepts/cobalt-workspace.png):** white/cobalt system, horizontal navigation, integrated answer/document reading split and crisp compact controls.
+- **Displayed 1 — [Atlas Editorial](../../archive/design-history/redesign.zip#docs/design/redesign/concepts/atlas-editorial.png):** luminous paper surface, forest accents, editorial typography, compact light navigation and a source annotation column.
+- **Displayed 2 — [Night Signal](../../archive/design-history/redesign.zip#docs/design/redesign/concepts/night-signal.png):** charcoal workspace, electric lime accent, minimal navigation rail, focused conversation and a distinct evidence reading area.
+- **Displayed 3 — [Cobalt Workspace](../../archive/design-history/redesign.zip#docs/design/redesign/concepts/cobalt-workspace.png):** white/cobalt system, horizontal navigation, integrated answer/document reading split and crisp compact controls.
 
 Each image is a separate generated result, shown once in the main chat in this order and copied here without altering its original. The prompt requested 1440×1024; the tool returned approximately 1487×1058 artwork. These image dimensions are not browser viewport measurements. Generated typography/content and unsupported visual affordances are to be reconciled with real contracts when implementing the selected direction. Existing disclosures, exact citations and permission boundaries take precedence over artwork details.
 
@@ -38,7 +38,7 @@ All concepts use the same real demonstration: Northstar Works, Maya employee, In
 
 ## Performance baseline and implementation checks
 
-[Measured samples](performance-baseline.json) contain four serial GETs per route, including unsuccessful initial probes with a documented path correction. Correct API routes were confirmed in `backend/app/main.py`.
+[Measured samples](../../archive/design-history/redesign.zip#docs/design/redesign/performance-baseline.json) contain four serial GETs per route, including unsuccessful initial probes with a documented path correction. Correct API routes were confirmed in `backend/app/main.py`.
 
 | Measurement | Observed baseline | Interpretation |
 | --- | --- | --- |
@@ -58,6 +58,6 @@ Run existing meaningful frontend/backend regression checks and a production buil
 
 ## Owner selection and implemented refinement — 2026-10-09T23:17:29+05:30
 
-Displayed option 1 was selected. [Atlas Professional](concepts/atlas-professional.png) is the single revised concept generated from that feedback before build. Its restrained warm-white/forest treatment is now implemented across the real app. Native typography, readable exact evidence, real scope/date controls and truthful capability/demo disclosures take precedence over literal generated typography.
+Displayed option 1 was selected. [Atlas Professional](../../archive/design-history/redesign.zip#docs/design/redesign/concepts/atlas-professional.png) is the single revised concept generated from that feedback before build. Its restrained warm-white/forest treatment is now implemented across the real app. Native typography, readable exact evidence, real scope/date controls and truthful capability/demo disclosures take precedence over literal generated typography.
 
-[Actual capture gallery and validation](implemented/README.md), [final build sizes](performance-build-final.json), [root design QA](../../../design-qa.md) and [ADR0007](../../decisions/0007-atlas-professional.md) distinguish reference artwork, working screenshots and diagnostic comparison sheets. Implementation commit6c68994 reached existing main; Vercel READY, Render Live and fresh public browser checks are verified in the gallery/QA. The later documentation commit does not change application code.
+[Actual capture gallery and validation](implemented/README.md), [final build sizes](../../archive/design-history/redesign.zip#docs/design/redesign/performance-build-final.json), [root design QA](../design-qa.md) and [ADR0007](../../decisions/0007-atlas-professional.md) distinguish reference artwork, working screenshots and diagnostic comparison sheets. Implementation commit6c68994 reached existing main; Vercel READY, Render Live and fresh public browser checks are verified in the gallery/QA. The later documentation commit does not change application code.

@@ -2,13 +2,13 @@
 
 Reviewed 10 October 2026 on `codex/full-product-ux`. **The owner approved production publication; PR #6 is merged and the final UI is live. [Final production proof](../production-release/README.md) records62 API assertions, six public browser tests,145 fresh captures and18 exact asset hashes.** The owner explicitly approved the shared backend preview-origin update, which is now live and functionally verified; see [the applied change and limits](preview-origin-change.md).
 
-[Interactive before/after gallery](gallery.html) · [running gallery](http://127.0.0.1:8003/gallery.html) · [running application](http://127.0.0.1:5173/assistant) · [implementation checkpoints](verification.md)
+[Interactive before/after gallery](../../archive/design-history/product-audit.zip#docs/design/product-audit/gallery.html) · [running gallery](http://127.0.0.1:8003/gallery.html) · [running application](http://127.0.0.1:5173/assistant) · [implementation checkpoints](verification.md)
 
 ## Preserved pre-release reconciliation and published source
 
 PR #2 merged before the retained Fieldbook implementation. The review branch preserves the Fieldbook/toolkit head `a89ff66` and merges main `2919a6d` at `12ea705`; the tree was compared before editing. Main's PR #5 shared-shell proposal contained no file changes. No blind cherry-pick, checkout reset or replacement of working files was used.
 
-An isolated build of main was compared to the public production alias: all ten served JavaScript chunks match after normalizing only the eight-character hashes in imported asset filenames. [Recorded deployment/chunk hashes and method](deployment-verification.json). This establishes the published JavaScript's match to current main; it does not establish that this review branch is deployed, or attest to backend configuration. The protected Vercel build URL was not treated as a public application test.
+An isolated build of main was compared to the public production alias: all ten served JavaScript chunks match after normalizing only the eight-character hashes in imported asset filenames. [Recorded deployment/chunk hashes and method](../../archive/design-history/product-audit.zip#docs/design/product-audit/deployment-verification.json). This establishes the published JavaScript's match to current main; it does not establish that this review branch is deployed, or attest to backend configuration. The protected Vercel build URL was not treated as a public application test.
 
 ## Issue-by-issue result
 
@@ -43,11 +43,11 @@ All canonical policy files, grants and versions derive from the same isolated da
 
 | Demo profile | Existing identity / permission example | Representative after views |
 |---|---|---|
-| Arya Dhumal | `maya`, employee | [Ask 1440](screenshots/after/maya/ask-answer-1440.jpg), [Ask 390](screenshots/after/maya/ask-answer-390.jpg), [evidence 320](screenshots/after/maya/evidence-320.jpg) |
-| Aditya Gholar | `ravi`, reviewer/admin | [people 1440](screenshots/after/ravi/people-1440.jpg), [people 320](screenshots/after/ravi/people-320.jpg), [review 390](screenshots/after/ravi/review-390.jpg) |
-| Ashwin Gudur | `isha`, auditor | [audit 1440](screenshots/after/isha/audit-1440.jpg), [audit 320](screenshots/after/isha/audit-320.jpg) |
-| Yashraj Bansal | `orbit-user`, other tenant | [empty library 390](screenshots/after/orbit/library-390.jpg) |
-| Disabled test account | `noor`, disabled negative test | [actual denial 390](screenshots/after/noor/disabled-signin-390.jpg) |
+| Arya Dhumal | `maya`, employee | [Ask 1440](../../archive/design-history/product-audit.zip#docs/design/product-audit/screenshots/after/maya/ask-answer-1440.jpg), [Ask 390](../../archive/design-history/product-audit.zip#docs/design/product-audit/screenshots/after/maya/ask-answer-390.jpg), [evidence 320](../../archive/design-history/product-audit.zip#docs/design/product-audit/screenshots/after/maya/evidence-320.jpg) |
+| Aditya Gholar | `ravi`, reviewer/admin | [people 1440](../../archive/design-history/product-audit.zip#docs/design/product-audit/screenshots/after/ravi/people-1440.jpg), [people 320](../../archive/design-history/product-audit.zip#docs/design/product-audit/screenshots/after/ravi/people-320.jpg), [review 390](../../archive/design-history/product-audit.zip#docs/design/product-audit/screenshots/after/ravi/review-390.jpg) |
+| Ashwin Gudur | `isha`, auditor | [audit 1440](../../archive/design-history/product-audit.zip#docs/design/product-audit/screenshots/after/isha/audit-1440.jpg), [audit 320](../../archive/design-history/product-audit.zip#docs/design/product-audit/screenshots/after/isha/audit-320.jpg) |
+| Yashraj Bansal | `orbit-user`, other tenant | [empty library 390](../../archive/design-history/product-audit.zip#docs/design/product-audit/screenshots/after/orbit/library-390.jpg) |
+| Disabled test account | `noor`, disabled negative test | [actual denial 390](../../archive/design-history/product-audit.zip#docs/design/product-audit/screenshots/after/noor/disabled-signin-390.jpg) |
 
 The names change presentation and fresh fictional seeds only. Existing account IDs, tenant IDs, emails, passwords, roles, activity and database records are preserved. The demo adapter matches exact seed identities; it does not rename real users. Student IDs and the guide's phone number from the owner's screenshot are not copied.
 
@@ -61,11 +61,11 @@ Original PNGs remain in ignored `outputs/product-audit`; tracked JPEGs are quali
 | Frontend | 21 tests across seven suites pass; TypeScript/Vite production build passes; npm audit reports zero vulnerabilities. |
 | UI browser regression | 29 tests pass: 15 answer/status/accessibility scenarios, six shell checks across eight routes × six widths × two themes, eight governance/validation checks. Deterministic API fixtures are labeled separately from real backend tests. |
 | Actual sign-in/roles/workflows | 14 tests pass: four active/one disabled profile on the running preview; all eight routes and denied APIs for each profile; private upload/review/download/hash and employee denial; two real-data reflow checks; real origin denial at all six widths. |
-| Real gallery capture | Ten profile/theme tests pass. Each theme has 216 recorded geometry observations: zero page overflow, zero clipped visible controls and zero sampled visible interactive targets below 44 × 44 px. Evidence/dialog screenshots and the extra origin state are additional captures. [Measurements](after-observations.json), [dark measurements](after-dark-observations.json). |
+| Real gallery capture | Ten profile/theme tests pass. Each theme has 216 recorded geometry observations: zero page overflow, zero clipped visible controls and zero sampled visible interactive targets below 44 × 44 px. Evidence/dialog screenshots and the extra origin state are additional captures. [Measurements](../../archive/design-history/product-audit.zip#docs/design/product-audit/after-observations.json), [dark measurements](../../archive/design-history/product-audit.zip#docs/design/product-audit/after-dark-observations.json). |
 | Keyboard/accessibility | Native dialogs trap Tab/Shift+Tab, support Escape/Back and restore focus. Desktop citation focus remains above composer; 200% text scaling, 720 × 450 reflow emulation at DPR2, reduced motion and sampled contrast pass. |
-| Contrast | Sixteen sampled text pairs across both themes: minimum 5.919:1; sampled control boundary minimum 3.569:1. [Ratios](contrast.json). These samples are not whole-app WCAG certification. |
-| Performance/browser | Two tests pass: actual profile-loading CLS at all six widths and separate browser/API/hosted health sampling. [Measurements](performance-results.json), [six-width loading](login-loading.json). |
-| Published production alias | After the approved restart,52 HTTP functional assertions and one fresh Chromium login test pass. Initial unauthenticated session401 is expected. [Results](post-origin-hosted-smoke.json). This tests the unchanged published frontend, not the review UI. |
+| Contrast | Sixteen sampled text pairs across both themes: minimum 5.919:1; sampled control boundary minimum 3.569:1. [Ratios](../../archive/design-history/product-audit.zip#docs/design/product-audit/contrast.json). These samples are not whole-app WCAG certification. |
+| Performance/browser | Two tests pass: actual profile-loading CLS at all six widths and separate browser/API/hosted health sampling. [Measurements](../../archive/design-history/product-audit.zip#docs/design/product-audit/performance-results.json), [six-width loading](../../archive/design-history/product-audit.zip#docs/design/product-audit/login-loading.json). |
+| Published production alias | After the approved restart,52 HTTP functional assertions and one fresh Chromium login test pass. Initial unauthenticated session401 is expected. [Results](../../archive/design-history/product-audit.zip#docs/design/product-audit/post-origin-hosted-smoke.json). This tests the unchanged published frontend, not the review UI. |
 | Current review branch/build | Original403 Origin mismatch resolved by the explicitly approved exact-origin configuration update. Both current origins pass backend login/session/query/citation200; wrong CSRF/unapproved Origin still403. [Results and protected-browser limitation](preview-origin-change.md). |
 
 Total selected browser checks: **56 unique tests passed** across regression, real workflows, captures, performance and hosted login. Opt-in live tests are intentionally disabled in the default test run, preventing accidental public/demo mutations.

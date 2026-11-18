@@ -4,13 +4,13 @@
 
 Desktop224px rail, tablet/icon rail and mobile drawer;8px-derived spacing, restrained6px controls/separators, visible focus, reduced-motion rule, mobile44px controls. Current badges separate approval from validity; expired is neutral, future/pending amber, rejection/failure red. Date and source metadata are text, not color-only. Theme choice is in memory, not persisted.
 
-[12 sampled actual light/dark contrast pairs](contrast-results.json) all≥4.5 (minimum5.11); this is not certification of every state. [Screenshots](README.md) and [design QA](../../design-qa.md) replace deferred testing claims for inspected views. Historical proposed sizing/tokens follow for provenance.
+[12 sampled actual light/dark contrast pairs](contrast-results.json) all≥4.5 (minimum5.11); this is not certification of every state. [Screenshots](README.md) and [design QA](design-qa.md) replace deferred testing claims for inspected views. Historical proposed sizing/tokens follow for provenance.
 
 ---
 
 ## Preserved Phase 2 baseline
 
-**Original proposed tokens, implementation pending.** See [moodboard](previews/moodboard.png) and [three directions](previews/visual-directions.png).
+**Original proposed tokens, implementation pending.** See [moodboard](../archive/design-history/previews.zip#docs/design/previews/moodboard.png) and [three directions](../archive/design-history/previews.zip#docs/design/previews/visual-directions.png).
 
 | Token | Light value | Purpose |
 |---|---|---|

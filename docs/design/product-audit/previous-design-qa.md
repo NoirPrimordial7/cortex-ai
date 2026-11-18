@@ -2,19 +2,19 @@
 
 final result: passed
 
-2026-10-10, Asia/Calcutta. Bounded local implementation gate; no identified remaining P0/P1/P2 blocker in the inspected flow. This is not a production, pixel-identity or comprehensive accessibility certification. [Previous Atlas QA](docs/design/evidence-desk/selected/previous-design-qa.md) is preserved.
+2026-10-10, Asia/Calcutta. Bounded local implementation gate; no identified remaining P0/P1/P2 blocker in the inspected flow. This is not a production, pixel-identity or comprehensive accessibility certification. [Previous Atlas QA](../evidence-desk/selected/previous-design-qa.md) is preserved.
 
 The owner selected the exact attached Fieldbook image plus Reference House editorial refinement, then explicitly locked identity and requested compact citations, a smaller answer, persistent follow-up composer, collapsible inspector and independently tested mobile views. Those requested UX changes supersede duplicated quote blocks and oversized type in the generated reference. No further variation was generated after that instruction.
 
 ## Visual comparison
 
-[Combined reference and actual implementation](docs/design/evidence-desk/selected/implemented/comparison-final.jpg) was opened and inspected as one input. Both frames1536×1024; same annual-leave question, India full-time, date2026-10-10, approved20-day answer and LEAVE-2026 source. The generated frame includes a companion mobile strip; the actual desktop has a working inspector. Separate actual mobile frames establish responsive behavior. Local mode omits the hosted-only notice; deterministic UI captures include the complete conditional shared-demo disclosure.
+[Combined reference and actual implementation](../../archive/design-history/evidence-desk-selected.zip#docs/design/evidence-desk/selected/implemented/comparison-final.jpg) was opened and inspected as one input. Both frames1536×1024; same annual-leave question, India full-time, date2026-10-10, approved20-day answer and LEAVE-2026 source. The generated frame includes a companion mobile strip; the actual desktop has a working inspector. Separate actual mobile frames establish responsive behavior. Local mode omits the hosted-only notice; deterministic UI captures include the complete conditional shared-demo disclosure.
 
 | Surface | Result |
 |---|---|
 | Fonts/type | Loaded self-hosted Fraunces500/600 and DM Sans400–700 confirmed in the real DOM. Answer36px desktop,26–28px mobile; long answer24/21px with1.55/1.6 line height. Wordmark38/29–32px, source27/30px, passage20/21px. Character is retained with more comfortable reading density. |
 | Spacing/layout | Forty-pixel desktop and16–20px mobile gutters;8/16/24/32px rhythm. Controls precede original question/answer/citations. One compact source row per citation; detailed metadata appears only in inspector. Composer has reserved space, avoiding overlap. Independent reading/source scroll areas have visible native scrollbars. |
-| Color/tokens | Paper#fbfaf5, forest#153b2e, sage#edf0e5, limited lime#dce8b4. Dark forest variant and amber conflict states. [Sixteen sampled text ratios](docs/design/evidence-desk/selected/implemented/contrast.json) pass4.5:1, minimum5.38; control border samples pass3:1, minimum3.17. Sampling is not whole-app WCAG certification. |
+| Color/tokens | Paper#fbfaf5, forest#153b2e, sage#edf0e5, limited lime#dce8b4. Dark forest variant and amber conflict states. [Sixteen sampled text ratios](../../archive/design-history/evidence-desk-selected.zip#docs/design/evidence-desk/selected/implemented/contrast.json) pass4.5:1, minimum5.38; control border samples pass3:1, minimum3.17. Sampling is not whole-app WCAG certification. |
 | Assets/icons | Editable text wordmark and existing Phosphor icons; decorative assistant icons hidden from accessibility tree. No raster hero, logo illustration or generated art ships in the app. OFL font licenses bundled. |
 | Content | Real API answer, exact authorized passage, version, exclusive-end validity, locator, source type and authority rank. No invented reviewer identities. Conflicts say Unresolved conflict; unsupported/clarification states do not fabricate citations. Full hosted history/reset/read-only disclosure retained. |
 

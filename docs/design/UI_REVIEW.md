@@ -1,6 +1,6 @@
 # UI concept review
 
-**Phase3 actual review completed for bounded views.** [Design QA](../../design-qa.md) compares approved concepts against real browser captures; source16px, source-kind/rank, open-ended/expired states and hot-reload context were corrected and rechecked. [Browser metrics](browser-checks.json):46 observations, no measured horizontal overflow. [Computed contrast](contrast-results.json):12 selected light/dark pairs≥4.5. Login/query/source, versions/history/conflicts, private browser TXT upload, review controls, governance and sanitized audit inspected. API tests separately cover approval submission, PDF/DOCX, grants/revocation and races. No exhaustive screen-reader/usability/production-security claim. Historical Phase2-only limitations below remain dated provenance.
+**Phase3 actual review completed for bounded views.** [Design QA](design-qa.md) compares approved concepts against real browser captures; source16px, source-kind/rank, open-ended/expired states and hot-reload context were corrected and rechecked. [Browser metrics](browser-checks.json):46 observations, no measured horizontal overflow. [Computed contrast](contrast-results.json):12 selected light/dark pairs≥4.5. Login/query/source, versions/history/conflicts, private browser TXT upload, review controls, governance and sanitized audit inspected. API tests separately cover approval submission, PDF/DOCX, grants/revocation and races. No exhaustive screen-reader/usability/production-security claim. Historical Phase2-only limitations below remain dated provenance.
 
 ---
 

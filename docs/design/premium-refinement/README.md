@@ -6,7 +6,7 @@
 
 10 October 2026. Dedicated Issue [#7](https://github.com/NoirPrimordial7/cortex-ai/issues/7) sprint, feature branch `codex/premium-ask-refinement`. Baseline/main: `a3c3a314`. **Production is unchanged.** Remaining page refinements require the owner's review of this Ask pilot, as requested in the sprint brief.
 
-Open [the before/after gallery](gallery.html), [complete route audit](AUDIT.md), and [Awwwards research and reviewed skills](REFERENCES.md). The application continues running at `http://127.0.0.1:5173/assistant`. The gallery contains **44 comparison pairs / 88 unmodified actual screenshots**, across six widths, both themes, empty/answered/conflict states and the four narrow-screen evidence views.
+Open [the before/after gallery](../../archive/design-history/premium-refinement-overview.zip#docs/design/premium-refinement/gallery.html), [complete route audit](AUDIT.md), and [Awwwards research and reviewed skills](REFERENCES.md). The application continues running at `http://127.0.0.1:5173/assistant`. The gallery contains **44 comparison pairs / 88 unmodified actual screenshots**, across six widths, both themes, empty/answered/conflict states and the four narrow-screen evidence views.
 
 ## What changed and why
 
@@ -81,7 +81,7 @@ Run historical `CORTEX_REFINEMENT_PHASE='before'` probes only at the baseline au
 | Source inspector | 2.73 / 1.04 | 2.77 / 1.06 |
 | Shared CSS | 33.49 / 7.06 | 34.89 / 7.29 |
 
-The small increase supports a private draft provider and clearer interactions. No runtime dependency was added. Exact byte/gzip records: [baseline](before/performance.json), [pilot](after/performance.json).
+The small increase supports a private draft provider and clearer interactions. No runtime dependency was added. Exact byte/gzip records: [baseline](../../archive/design-history/premium-refinement-before.zip#docs/design/premium-refinement/before/performance.json), [pilot](../../archive/design-history/premium-refinement-after.zip#docs/design/premium-refinement/after/performance.json).
 
 | Single unthrottled Chromium development-server sample | Baseline | Pilot |
 |---|---|---|

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-18 — Repository structure cleanup
+
+- Moved nine research reports and five source-register/stub files into planning/research, three tracking documents into implementation/tracking, and design-qa.md into design. [Every source and destination](../implementation/CLEANUP_CHANGES.json) is recorded.
+- Archived 1,155 uncompressed historical files into 14 verified ZIPs while retaining current approved and active draft records. Preserved gallery inputs with an explicit restore command and repaired local documentation links.
+- Deleted the requested ignored environments, caches, builds, test output and fictional local database/uploads/credentials before rebuilding from documented commands. Preserved the existing local Git history at the workspace root.
+- Structure only. Application behavior, API contracts, schema, test expectations, UI and workflow steps were preserved. [Verification, measurements and audit finding](../implementation/CLEANUP_REPORT.md) include the complete deletion and move manifest.
+
 ## 2026-11-17 — Related policy search and conversation context
 
 - Added reviewed search-only passages, FTS5 relevance, source-checked excerpts, leave ledger answers and permission-scoped autocomplete. Seeded fictional sick leave, maternity and carry-forward policies.
@@ -108,7 +115,7 @@
 
 ## 2026-10-09T21:21:45+05:30 — Phase3 live Evidence Studio and integration verification
 
-- Files added: frontend/ (real React screens, lockfile and tests), backend/evaluate.py, docs/implementation/, docs/design/screenshots/ and browser/contrast reports, diagram11 Mermaid/DOT/SVG/PNG and design-qa.md. Changed backend citation rank/assertion, README, roadmap/docs index, design/learning reports, diagram manifest, acceptance status and decision index; no Phase1 research or fixture bytes removed.
+- Files added: frontend/ (real React screens, lockfile and tests), backend/evaluate.py, docs/implementation/, docs/design/screenshots/ and browser/contrast reports, diagram11 Mermaid/DOT/SVG/PNG and docs/design/design-qa.md. Changed backend citation rank/assertion, README, roadmap/docs index, design/learning reports, diagram manifest, acceptance status and decision index; no Phase1 research or fixture bytes removed.
 - Reason: implement owner-approved Evidence Studio, expose a watchable localhost server, connect all screens to the permission-safe core, and document actual boundaries instead of claiming planned features.
 - Outcome: live5173 frontend/8000 backend with hot reload; nine main page families plus own history/audit; exact source/authority display, private upload/review/version UI, current grants/roles and fail-closed history. Browser TXT upload remains private pending review; no live grants changed.
 - Verification: final backend29 tests pass (7.42s; one TestClient deprecation warning), frontend8 tests pass and strict TypeScript/Vite build passes; Ruff/pip checks pass, npm audit zero at checkpoint. Fixture12/12 outcomes,15/15 authorized peers,10/10 span/hash checks; one conflict positive only.50 warm in-process repeats median9.422ms/P9510.502ms, not browser latency.46 real layout observations have no horizontal overflow;12 sampled contrast pairs≥4.5; approved concepts compared against actual captures after corrections.

@@ -2,7 +2,7 @@
 
 ## Employee finds the current leave rule
 
-Login Maya → assistant → choose2026-10-09/full-time/IN → ask annual leave → evidence answer20workingdays → open citationL26-C1 → inspect exact quote and effective interval. Future L27 is readable but not used for this answer. [Assistant concept](previews/assistant.png) illustrates intended layout, not executed retrieval.
+Login Maya → assistant → choose2026-10-09/full-time/IN → ask annual leave → evidence answer20workingdays → open citationL26-C1 → inspect exact quote and effective interval. Future L27 is readable but not used for this answer. [Assistant concept](../archive/design-history/previews.zip#docs/design/previews/assistant.png) illustrates intended layout, not executed retrieval.
 
 ## Employee asks about inaccessible knowledge
 

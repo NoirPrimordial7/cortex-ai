@@ -2,29 +2,29 @@
 
 Captured 2026-10-09T23:17:29+05:30, through the Codex in-app browser, using fictional Northstar accounts. All standalone JPEGs are genuine browser captures. Comparison sheets combine the labelled generated reference and actual capture for diagnostic review; they are not screenshots of a single app. No headless browser was used.
 
-![Actual refined assistant](assistant-final-1487.jpg)
+[Actual refined assistant — archived image](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/assistant-final-1487.jpg)
 
 | Screen | Desktop | Narrow/mobile |
 |---|---|---|
-| Login | [1487](login-1487.jpg) | [320](login-320.jpg) |
-| Assistant / supported answer | [final1487](assistant-final-1487.jpg), [1024](assistant-1024.jpg) | [390 final answer](assistant-answer-final-390.jpg), [320 controls](assistant-final-320.jpg), [390 final](assistant-final-390.jpg) |
-| Dashboard | [1487](dashboard-1487.jpg) | [320](dashboard-320.jpg) |
-| Document library | [1487](library-1487.jpg) | [320](library-320.jpg) |
-| Conflicts | [1487](conflicts-1487.jpg) | [320](conflicts-320.jpg) |
-| Own activity | [1487](history-1487.jpg) | [320](history-320.jpg) |
-| Permissions | [1487](permissions-1487.jpg) | [320](permissions-320.jpg) |
-| Upload | [1487](upload-1487.jpg) | [320](upload-320.jpg) |
-| Version review | [1487](review-1487.jpg) | [320 viewport](review-320.jpg), [employee version view](detail-320.jpg) |
-| Sanitized audit | [1487](audit-1487.jpg) | [320](audit-320.jpg) |
+| Login | [1487](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/login-1487.jpg) | [320](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/login-320.jpg) |
+| Assistant / supported answer | [final1487](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/assistant-final-1487.jpg), [1024](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/assistant-1024.jpg) | [390 final answer](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/assistant-answer-final-390.jpg), [320 controls](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/assistant-final-320.jpg), [390 final](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/assistant-final-390.jpg) |
+| Dashboard | [1487](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/dashboard-1487.jpg) | [320](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/dashboard-320.jpg) |
+| Document library | [1487](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/library-1487.jpg) | [320](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/library-320.jpg) |
+| Conflicts | [1487](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/conflicts-1487.jpg) | [320](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/conflicts-320.jpg) |
+| Own activity | [1487](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/history-1487.jpg) | [320](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/history-320.jpg) |
+| Permissions | [1487](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/permissions-1487.jpg) | [320](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/permissions-320.jpg) |
+| Upload | [1487](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/upload-1487.jpg) | [320](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/upload-320.jpg) |
+| Version review | [1487](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/review-1487.jpg) | [320 viewport](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/review-320.jpg), [employee version view](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/detail-320.jpg) |
+| Sanitized audit | [1487](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/audit-1487.jpg) | [320](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/audit-320.jpg) |
 
-[Dark assistant](assistant-final-dark-390.jpg), [initial comparison](comparison-initial.jpg), [final comparison](comparison-final.jpg), [layout observations](layout-checks.json), [sampled contrast](contrast-results.json).
+[Dark assistant](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/assistant-final-dark-390.jpg), [initial comparison](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/comparison-initial.jpg), [final comparison](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/comparison-final.jpg), [layout observations](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/layout-checks.json), [sampled contrast](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/contrast-results.json).
 
 The final source/reference comparison uses 1487×1058 pixels on both sides; matching Maya/date/scope/20-day policy evidence. Local workspace intentionally lacks the hosted-only shared-demo notice; the production check must inspect it separately. Generated typography was bounded to 32px page headings and up to34px answer text for the requested professional refinement; body is native15–16px, source20px desktop/16px narrow. No pixel-identity claim.
 
 Viewport images of long review/audit/history screens require scrolling and do not prove every control appears above the fold. CSS viewport labels may exclude scrollbar in capture dimensions. One stale/reflowed native full-page upload capture was replaced after checking settled DOM bounds with a viewport capture. Native screenshot privacy masks may cover email/password controls; no passwords or session cookies are stored here. Empty-state final mobile images follow a hot update that remounted the route; earlier answer images show real supported evidence. Subsequent supported-answer rechecks are captured separately where available.
 
-Current observations are bounded visual checks, not a WCAG certification, performance benchmark or proof of general semantic reasoning. See [root QA](../../../../design-qa.md) and [test scope](../../../implementation/TEST_RESULTS.md).
+Current observations are bounded visual checks, not a WCAG certification, performance benchmark or proof of general semantic reasoning. See [root QA](../../design-qa.md) and [test scope](../../../implementation/TEST_RESULTS.md).
 
 ## Verified public release — 2026-10-09T23:24:44+05:30
 
-[Live application](https://cortex-ai-three-kappa.vercel.app) · [actual hosted1487](hosted-assistant-1487.jpg) · [actual hosted390](hosted-assistant-390.jpg) · [matching-dimension reference/hosted comparison](comparison-hosted.jpg). Correct implementation commit6c68994 is READY/Live on Vercel/Render. Normal demo autofill/login, exact authorized source, full demo disclosure and mobile evidence layout checked in the released UI. [HTTP smoke](../hosted-smoke.json) and [repeat measurements](../performance-http-final.json) are separately scoped.
+[Live application](https://cortex-ai-three-kappa.vercel.app) · [actual hosted1487](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/hosted-assistant-1487.jpg) · [actual hosted390](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/hosted-assistant-390.jpg) · [matching-dimension reference/hosted comparison](../../../archive/design-history/redesign.zip#docs/design/redesign/implemented/comparison-hosted.jpg). Correct implementation commit6c68994 is READY/Live on Vercel/Render. Normal demo autofill/login, exact authorized source, full demo disclosure and mobile evidence layout checked in the released UI. [HTTP smoke](../../../archive/design-history/redesign.zip#docs/design/redesign/hosted-smoke.json) and [repeat measurements](../../../archive/design-history/redesign.zip#docs/design/redesign/performance-http-final.json) are separately scoped.

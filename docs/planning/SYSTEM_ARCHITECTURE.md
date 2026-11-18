@@ -4,7 +4,7 @@
 
 ![Complete architecture](../diagrams/01-system-architecture.svg)
 
-The browser asks one FastAPI application. That application owns identity, evidence eligibility and final authorization; optional AI adapters have no database credentials or permission-changing tools. Blue = application, teal = permitted evidence, amber = review/decision, grey = storage. See [diagram index](../DIAGRAMS.md) for editable sources and explanations.
+The browser asks one FastAPI application. That application owns identity, evidence eligibility and final authorization; optional AI adapters have no database credentials or permission-changing tools. Blue = application, teal = permitted evidence, amber = review/decision, grey = storage. See [diagram index](../implementation/tracking/DIAGRAMS.md) for editable sources and explanations.
 
 ## Modules and connections
 
@@ -46,4 +46,4 @@ Development browser → Vite loopback proxy → FastAPI loopback. Demo browser �
 
 ## Research justification and limits
 
-[Phase 1 architecture notes](../ARCHITECTURE_NOTES.md) remain historical observations. We adopt authorized retrieval from [Amazon Q's documented flow](https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/how-it-works.html), separate citation support from presence following [ALCE](https://arxiv.org/abs/2305.14627), and explicit validity rather than newest-upload preference in light of [TimelyRAG](https://arxiv.org/abs/2609.11572). We do not claim access to proprietary internal implementations or validated Cortex results.
+[Phase 1 architecture notes](research/ARCHITECTURE_NOTES.md) remain historical observations. We adopt authorized retrieval from [Amazon Q's documented flow](https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/how-it-works.html), separate citation support from presence following [ALCE](https://arxiv.org/abs/2305.14627), and explicit validity rather than newest-upload preference in light of [TimelyRAG](https://arxiv.org/abs/2609.11572). We do not claim access to proprietary internal implementations or validated Cortex results.

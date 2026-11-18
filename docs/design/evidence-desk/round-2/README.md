@@ -13,17 +13,17 @@
 | 5 | Cobalt Queryroom | Saturated blue question workspace, continuous white answer/source reader. |
 | 6 | Amber Archive | Warm dark reading spread, connected amber-highlighted source and restrained lower composer. |
 
-![Cortex Fieldbook](cortex-fieldbook.png)
+[Cortex Fieldbook — archived image](../../../archive/design-history/evidence-desk-round-2.zip#docs/design/evidence-desk/round-2/cortex-fieldbook.png)
 
-![Carbon Evidence](carbon-evidence.png)
+[Carbon Evidence — archived image](../../../archive/design-history/evidence-desk-round-2.zip#docs/design/evidence-desk/round-2/carbon-evidence.png)
 
-![Margin Intelligence](margin-intelligence.png)
+[Margin Intelligence — archived image](../../../archive/design-history/evidence-desk-round-2.zip#docs/design/evidence-desk/round-2/margin-intelligence.png)
 
-![Redline Dossier](redline-dossier.png)
+[Redline Dossier — archived image](../../../archive/design-history/evidence-desk-round-2.zip#docs/design/evidence-desk/round-2/redline-dossier.png)
 
-![Cobalt Queryroom](cobalt-queryroom.png)
+[Cobalt Queryroom — archived image](../../../archive/design-history/evidence-desk-round-2.zip#docs/design/evidence-desk/round-2/cobalt-queryroom.png)
 
-![Amber Archive](amber-archive.png)
+[Amber Archive — archived image](../../../archive/design-history/evidence-desk-round-2.zip#docs/design/evidence-desk/round-2/amber-archive.png)
 
 These are generated artwork, not running app screenshots or responsive/accessibility proof. Each pairs desktop and a focused mobile source reader. Requested canvas 1536×1024; generated dimensions and font rendering are approximate. Current-date anchor 2026-10-10. The attached existing browser screenshots ground the workflow and exact policy facts; they were captured on 2026-10-09 and do not constitute a fresh audit of today's app.
 

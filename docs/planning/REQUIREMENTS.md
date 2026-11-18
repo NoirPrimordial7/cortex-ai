@@ -39,4 +39,4 @@ Budget assumption: one developer and roughly 8–12 focused hours after approval
 
 ## Research traceability
 
-The [approved research summary](../RESEARCH_SUMMARY.md), [gaps](../RESEARCH_GAPS.md) and [architecture observations](../ARCHITECTURE_NOTES.md) justify this bounded integration. Permission-aware products already exist; temporal validity and conflict handling overlap [TimelyRAG](https://arxiv.org/abs/2609.11572) and [Re³](https://aclanthology.org/2026.acl-long.1180/). Our contribution is measurable engineering and evaluation, not novelty of the individual features.
+The [approved research summary](research/RESEARCH_SUMMARY.md), [gaps](research/RESEARCH_GAPS.md) and [architecture observations](research/ARCHITECTURE_NOTES.md) justify this bounded integration. Permission-aware products already exist; temporal validity and conflict handling overlap [TimelyRAG](https://arxiv.org/abs/2609.11572) and [Re³](https://aclanthology.org/2026.acl-long.1180/). Our contribution is measurable engineering and evaluation, not novelty of the individual features.

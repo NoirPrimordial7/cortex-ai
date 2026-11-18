@@ -38,7 +38,7 @@ Current access supersedes the earlier Behance fetch limitation. Awwwards navigat
 2. **Policy Ledger.** Light graphite navigation, ivory document-first layout, amber validity accents and wide policy table. Focus: governance/version review; less assistant-centric.
 3. **Signal Console.** Navy workspace, cyan controls and compact investigation layout. Focus: analyst inspection; darker visual weight and more contrast testing needed.
 
-See [visual direction board](previews/visual-directions.png) and [moodboard](previews/moodboard.png). These are original conceptual boards with cited inspiration labels, not copied screenshots. Proposed selection is a design recommendation pending owner review; no implementation is authorized.
+See [visual direction board](../archive/design-history/previews.zip#docs/design/previews/visual-directions.png) and [moodboard](../archive/design-history/previews.zip#docs/design/previews/moodboard.png). These are original conceptual boards with cited inspiration labels, not copied screenshots. Proposed selection is a design recommendation pending owner review; no implementation is authorized.
 
 ## Patterns selected and rejected
 

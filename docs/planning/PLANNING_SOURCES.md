@@ -1,6 +1,6 @@
 # Phase2 decision evidence
 
-**Assessment date2026-10-09; scoped primary-source review, not new product benchmarking.** Phase1's [76-source register](../RESEARCH_SOURCES.md) remains unchanged. This page records only additional engineering/design checks. Link reachability is not proof of implementation quality.
+**Assessment date2026-10-09; scoped primary-source review, not new product benchmarking.** Phase1's [76-source register](research/RESEARCH_SOURCES.md) remains unchanged. This page records only additional engineering/design checks. Link reachability is not proof of implementation quality.
 
 | Source checked | Supported planning use | Evidence confidence / boundary |
 |---|---|---|

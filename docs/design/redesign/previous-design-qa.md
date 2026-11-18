@@ -2,7 +2,7 @@
 
 Checked 2026-10-09, Asia/Calcutta. **Passed for this bounded local visual checkpoint**, with no remaining identified P0/P1/P2 visual blocker in the inspected priority views. This is not a full WCAG or usability certification.
 
-The approved original Phase2 assistant, dashboard and library artwork was viewed side by side with genuine1440px browser captures in the same comparison images. Temporary comparison sheets were analysis aids under ignored `outputs/`; they are not screenshots. Editable concepts and actual screenshots remain separately labelled in the [gallery](docs/design/README.md).
+The approved original Phase2 assistant, dashboard and library artwork was viewed side by side with genuine1440px browser captures in the same comparison images. Temporary comparison sheets were analysis aids under ignored `outputs/`; they are not screenshots. Editable concepts and actual screenshots remain separately labelled in the [gallery](../README.md).
 
 | Finding | Priority | Correction and recheck |
 |---|---|---|

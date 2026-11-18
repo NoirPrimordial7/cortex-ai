@@ -2,7 +2,7 @@
 
 10 October 2026. PR #8 remains a draft on `codex/premium-ask-refinement`. The owner's latest review (00:12:32 UTC, baseline `316988c067dfc5976cbfb8c8553af57b0c2f4df9`) approves extension of the visual direction, while reserving merge and deployment for complete release review. Production main remains `a3c3a314e4fe5f93813c85591108195acf197c21`.
 
-Open the [actual screenshot gallery](gallery.html), the [required before/after comparisons](SCREENSHOTS.md), or the [original dimensions and hashes](captures.json). Local browser review: http://127.0.0.1:8007/rollout/gallery.html. The live local application is http://127.0.0.1:5173.
+Open the [actual screenshot gallery](../../../archive/design-history/premium-refinement-rollout.zip#docs/design/premium-refinement/rollout/gallery.html), the [required before/after comparisons](SCREENSHOTS.md), or the [original dimensions and hashes](../../../archive/design-history/premium-refinement-rollout.zip#docs/design/premium-refinement/rollout/captures.json). Local browser review: http://127.0.0.1:8007/rollout/gallery.html. The live local application is http://127.0.0.1:5173.
 
 ## Design decisions
 

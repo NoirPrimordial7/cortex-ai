@@ -1,0 +1,63 @@
+# Project roadmap — future stages DRAFT / PENDING REVIEW
+
+**2026-10-29 update:** Overhaul delivery starts with [automated CI checks](../CI.md), prepared locally with remote activation unverified. The next separately reviewed increment is clause lineage; an independently adjudicated held-out evaluation set must precede optional default-off semantic retrieval and grounded generation. Bounded orchestration follows their evaluations. Security/concurrency, governance and accessibility changes retain their own gates. See the [complete workstream disposition](../OVERHAUL_REVIEW.md); earlier roadmap entries below are historical planning.
+
+Updated2026-10-09. Phase1/2 and Evidence Studio are approved. Phase3 local code now implements the bounded offline core and main application screens. This status supersedes earlier “not started” notes without deleting historical planning.
+
+| Phase/milestone | Actual status | Next gate |
+|---|---|---|
+| Phase1 | Owner-approved research;13 families,15 papers, source register preserved | Research updates stay evidence-qualified |
+| Phase2 | Owner-approved architecture, contracts, visual direction, backlog and fixtures | ADRs record actual deviations |
+| Phase3/A | Local sessions/ACLs, private TXT/PDF/DOCX/review, finite offline retrieval/validity/authority/conflicts, citations/history, responsive UI and governance implemented | [Actual test evidence](../TEST_RESULTS.md); reproduce demonstration on target machine and review college rubric |
+| B | Draft: independently labelled held-out corpus, richer clauses/lineage, rejection explanations, stronger security/retention | Freeze benchmark and extension contracts before claiming improved accuracy |
+| C | Conditional: optional local semantic/NLI/generation, connectors, measured orchestration, scalable deployment | Hardware/benefit/security experiments; no paid dependency assumed |
+
+Next sequence: reproduce local demonstration → define held-out labels and baselines → expand reviewed clause/lineage contracts → add denial auditing/parser isolation/retention → assess optional local semantic models. Keep current auth/date/citation gates during every increment. See [implementation status](../IMPLEMENTATION_STATUS.md), [run instructions](../RUN_LOCAL.md), [backlog](../../planning/IMPLEMENTATION_BACKLOG.md) and [ADR0005](../../decisions/0005-local-execution-boundary.md).
+
+The October10 deadline is a demonstration milestone, not proof of40% completion. The institution's rubric, team capacity and target hardware remain unresolved. Future dates/scopes remain draft; no expensive cloud/model choice is locked.
+
+## Historical Phase1 draft scopes — preserved research context
+
+
+Assessment: 2026-10-09. **Provisional phases only. No stack or implementation architecture is locked.** Work must stop after Phase 1 until explicit owner approval for Phase 2. Time estimates below are assumptions, not commitments; deadline, team and hardware are unknown.
+
+## Three candidate scopes
+
+| Dimension | Minimum viable demonstration | Strong final-year project — recommended conditionally | Advanced research version |
+|---|---|---|---|
+| Goal | Show why authorized, applicable evidence matters | Defensible integration and ablation study | Generalize reliability to messy evolving corpora |
+| Core features | Curated document ACLs, explicit validity, approved-source priority, cited evidence, simple conflict/abstention rules | MVP plus clause lineage, scoped contradiction classifier/rules, trace explanations, revocation/cache tests and calibrated abstention | Automatic validity/authority extraction, partial amendments across sources, richer ABAC and optional adaptive retrieval |
+| Complexity | Low/medium | Medium/high, bounded to synthetic policy domains | Very high |
+| Provisional effort | 2–4 weeks after planning | 8–12 weeks after planning, assuming sustained student effort | Additional 4–6+ months; research uncertainty may dominate |
+| Dependencies | Curated corpus/ACL labels, local lexical or vector retrieval; optional local generation | Frozen retrieval baselines, chosen local models/parser, policy fixtures, annotation/adjudication protocol | More authentic versioned corpora, extraction labels, computation and deeper evaluation expertise |
+| Technical risk | Simplistic rules and unrepresentative data | Candidate recall, NLI domain shift, small-model quality, latency and test leakage | Ambiguous legal/policy semantics, multilingual extraction, drift and scaling |
+| Security risk | Incorrect metadata or coarse document scopes | ACL omission, stale caches/history, mixed-access chunks and trace disclosure | Connector fidelity, derived artifacts, tool privileges and distributed revocation |
+| Necessary data | Proposed 30–50 synthetic docs and 80–120 labeled queries with dated policies and role fixtures | Proposed 100–200 docs/clauses and 300–500 human-reviewed queries; real public versioned subset where licenses permit | Multiple organizations/domains and authentic clause histories, safely licensed/consented; scale determined by pilots |
+| Evaluation | Correct selection, citations, basic access tests and a simple retrieval baseline | Baselines and stage ablations; temporal/authority accuracy, conflict F1, citation precision/coverage, risk–coverage, leakage tests and p50/p95 latency | Cross-domain transfer, extraction error decomposition, long histories, adversarial robustness, bounded-agent benefit and resource scaling |
+| Deliverables | Small reproducible demo, fixture corpus, test report and limitations | Annotated benchmark, reproducible runs/configs, evaluated prototype, threat model, ablation report, dissertation and demo | Extended datasets/models, cross-domain experiments and publishable-quality negative/positive results if supported |
+
+Suggested corpus/query counts are planning hypotheses, not existing datasets or statistically justified sample sizes. Phase 2 must pilot annotation effort and choose adequate strata/sample size. Use public benchmarks as reference tasks, not as evidence that enterprise permission handling is evaluated.
+
+## Recommendation
+
+Choose the **Strong Final-Year Project** if time/hardware permit. Bound the initial domain to HR/travel/SOP policies with curated approval, validity and ACL metadata. Establish simple fixed retrieval/eligibility stages, then evaluate one conflict/support improvement at a time. This has stronger academic depth than a chat-only demo and fewer unvalidated dependencies than automatic enterprise-wide ingestion and autonomous agents.
+
+Its central question is: **Does explicit authorized, valid and authority-aware evidence selection improve policy answer reliability and selective coverage over matched basic RAG/recency baselines?** Demonstrate secure controlled behavior and report limitations; do not claim production readiness or new temporal-RAG theory.
+
+Fallback to MVP if fewer than roughly four development weeks remain or local generation is infeasible. Prioritize evidence-selection evaluation even if generation must use a constrained extractive/template baseline. Leave automatic extraction, real-source connectors and complex agent autonomy for the advanced scope.
+
+## Provisional development phases
+
+| Phase | Proposed purpose | Exit/review gate |
+|---|---|---|
+| 1 — current | Research and competitive/literature analysis; repository and tracking | Primary sources, qualified comparisons and project-owner review; no experiments claimed |
+| 2 — pending authorization | Full planning: requirements, dataset/threat model, acceptance metrics, resource pilot and alternatives | Owner approves scope, architecture candidates, licenses, budget and experiment protocol |
+| 3 — provisional | Dataset/metadata fixtures and reproducible retrieval baselines | Frozen splits; identity/ACL and validity contracts; retrieval candidate coverage measured |
+| 4 — provisional | Bounded evidence workflow and permitted cited answering | Eligibility/citation/abstention behavior tested, no unauthorized context in controlled cases |
+| 5 — provisional | Conflict/authority refinements and optional bounded retrieval planning | Ablations justify each added component; remove ineffective complexity |
+| 6 — provisional | Adversarial/revocation evaluation and academic write-up | Reproducible runs, confidence intervals, error analysis and honest security limits |
+| 7 — optional | Advanced generalization research | New approval and feasibility/data review; not committed initial scope |
+
+## Planning inputs still needed
+
+Deadline and weekly effort; team size; RAM/GPU/CPU; dataset permissions and language/jurisdiction; academic novelty criteria; local-only requirements; acceptable response latency; whether any future paid access is acceptable. No expenditure is authorized by this roadmap.

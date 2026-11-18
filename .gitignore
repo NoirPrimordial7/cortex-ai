@@ -58,6 +58,7 @@ qdrant_storage/
 *.log
 *.tmp
 *.zip
+!docs/archive/design-history/*.zip
 # Editor and operating-system files
 .idea/
 .vscode/

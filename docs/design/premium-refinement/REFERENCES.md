@@ -20,10 +20,10 @@ The official OpenAI curated skill catalog and current Anthropic/Vercel repositor
 
 The four already-reviewed, project-scoped skills fit this application:
 
-- [frontend-design](../../../.agents/skills/frontend-design/SKILL.md): subject-specific type/layout plan, restraint, screenshot critique.
-- [web-design-guidelines](../../../.agents/skills/web-design-guidelines/SKILL.md): freshly fetched [current review rules](https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md), applied to Ask semantics, focus, input size, content handling and responsive evidence inspection.
-- [vercel-react-best-practices](../../../.agents/skills/vercel-react-best-practices/SKILL.md): separate relevant request lifetimes and measure actual bundle/runtime behavior. The source request must not prolong question-processing UI.
-- [vercel-composition-patterns](../../../.agents/skills/vercel-composition-patterns/SKILL.md): lift the unfinished draft into a session-scoped provider rather than synchronizing it through effects or global browser storage.
+- [frontend-design](../evidence-desk/SKILL_INSTALLATION.md): subject-specific type/layout plan, restraint, screenshot critique.
+- [web-design-guidelines](../evidence-desk/SKILL_INSTALLATION.md): freshly fetched [current review rules](https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md), applied to Ask semantics, focus, input size, content handling and responsive evidence inspection.
+- [vercel-react-best-practices](../evidence-desk/SKILL_INSTALLATION.md): separate relevant request lifetimes and measure actual bundle/runtime behavior. The source request must not prolong question-processing UI.
+- [vercel-composition-patterns](../evidence-desk/SKILL_INSTALLATION.md): lift the unfinished draft into a session-scoped provider rather than synchronizing it through effects or global browser storage.
 
 The [OpenAI Playwright skill](https://github.com/openai/skills/tree/main/skills/.curated/playwright) was also reviewed. Its CLI-first wrapper duplicates the repository's established Playwright test workflow and is not installed. Figma, website-cloning and motion-generation skills do not improve this scoped pilot. Installing every design-related skill would add conflicting workflows; no unreviewed remote installer was executed. The existing four remain the implementation toolkit, with fresh guideline research and the pinned test runner. Official Playwright Firefox and WebKit binaries were installed for cross-engine verification.
 

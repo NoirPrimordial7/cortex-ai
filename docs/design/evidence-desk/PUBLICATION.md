@@ -4,7 +4,7 @@
 
 Implementation commit [422ed5769bb644edb99c000428131dfd8b8ad320](https://github.com/NoirPrimordial7/cortex-ai/commit/422ed5769bb644edb99c000428131dfd8b8ad320) pushed to the existing design/skill-toolkit-mobile-first branch. Local HEAD and remote branch matched immediately after push; worktree clean. Updated [PR #2](https://github.com/NoirPrimordial7/cortex-ai/pull/2) title/description around Ask citations, inspector and mobile source UX. GitHub reports the PR ready for review, not draft; its existing state is retained.
 
-47 intended paths include assistant implementation, scoped shell/CSS, pinned test tooling, licensed fonts, tests, selection/QA notes and actual screenshots. Staged whitespace and targeted credential-pattern scan pass; ignored skill, runtime, outputs and local-data directories excluded. Frontend13, browser13 and backend38 checks pass; build/Ruff/audit pass. [QA](../../../design-qa.md) records exact local scope and limitations.
+47 intended paths include assistant implementation, scoped shell/CSS, pinned test tooling, licensed fonts, tests, selection/QA notes and actual screenshots. Staged whitespace and targeted credential-pattern scan pass; ignored skill, runtime, outputs and local-data directories excluded. Frontend13, browser13 and backend38 checks pass; build/Ruff/audit pass. [QA](../design-qa.md) records exact local scope and limitations.
 
 No main merge, live deployment, hosting configuration, visibility, permission or collaborator change. This publication-record commit follows the implementation hash above. Earlier checkpoint records below are historical.
 
