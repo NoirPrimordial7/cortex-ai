@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="360" height="225" viewBox="0 0 360 225" role="img"><title>Decision flow distinguishes temporal replacement and active highest-rank disagreement</title>
 <rect x="108" y="9" width="144" height="33" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
-<text x="180.0" y="23.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Comparable reviewed claims</text>
-<text x="180.0" y="34.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Same date, scope and key</text>
+<text x="180.0" y="23.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Reviewed claims</text>
+<text x="180.0" y="34.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Requested date and scope</text>
 <rect x="108" y="61" width="144" height="33" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
-<text x="180.0" y="75.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Apply effective dates</text>
-<text x="180.0" y="86.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Select strongest tier</text>
+<text x="180.0" y="75.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Filter date and scope</text>
+<text x="180.0" y="86.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Check kind, key and rank</text>
 <polyline points="180,42 180,61" fill="none" stroke="#262626" stroke-width=".7"/>
 <polyline points="182.08435401214606,56.45517125162557 180,61 177.91564598785394,56.45517125162557" fill="none" stroke="#262626" stroke-width=".7"/>
 <rect x="7" y="117" width="100" height="39" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
@@ -12,7 +12,7 @@
 <text x="57.0" y="145.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Answer after checks</text>
 <rect x="130" y="117" width="100" height="39" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
 <text x="180.0" y="134.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Competing values</text>
-<text x="180.0" y="145.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Check case fingerprint</text>
+<text x="180.0" y="145.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Check bound and case</text>
 <rect x="253" y="117" width="100" height="39" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
 <text x="303.0" y="134.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">No governing evidence</text>
 <text x="303.0" y="145.0" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Abstain</text>
@@ -27,9 +27,9 @@
 <text x="209" y="108" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.7" font-weight="400">Different</text>
 <rect x="73" y="179" width="100" height="36" rx="4" fill="rgb(224,224,224)" stroke="#404040" stroke-width=".65"/>
 <text x="123.0" y="194.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">No current choice</text>
-<text x="123.0" y="205.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Abstain with evidence</text>
+<text x="123.0" y="205.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Abstain after checks</text>
 <rect x="191" y="179" width="143" height="36" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
-<text x="262.5" y="194.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Current verified choice</text>
+<text x="262.5" y="194.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Verified exact choice</text>
 <text x="262.5" y="205.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Cite selected primary</text>
 <polyline points="157,156 157,167 123,167 123,179" fill="none" stroke="#262626" stroke-width=".7"/>
 <polyline points="125.08435401214605,174.4551712516256 123,179 120.91564598785395,174.4551712516256" fill="none" stroke="#262626" stroke-width=".7"/>

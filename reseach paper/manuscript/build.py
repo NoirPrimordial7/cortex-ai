@@ -55,7 +55,50 @@ def word_reference():
     return ref
 
 
-def word_layout(entry, data):
+def goa_styles(data):
+    doc = etree.fromstring(data)
+    body_styles = {
+        "Normal",
+        "p1a",
+        "BodyText",
+        "FirstParagraph",
+        "abstract",
+        "keywords",
+        "Compact",
+        "TableContents",
+        "heading1",
+        "heading2",
+        "heading3",
+        "referencelist",
+        "referenceitem",
+    }
+    for style in doc.findall(f"{W}style"):
+        if style.get(f"{W}styleId") not in body_styles:
+            continue
+        rpr = style.find(f"{W}rPr")
+        if rpr is None:
+            rpr = etree.SubElement(style, f"{W}rPr")
+        for tag in ("sz", "szCs"):
+            attribute = rpr.find(f"{W}{tag}")
+            if attribute is None:
+                attribute = etree.SubElement(rpr, f"{W}{tag}")
+            attribute.set(f"{W}val", "24")
+        if style.get(f"{W}styleId") == "referenceitem":
+            ppr = style.find(f"{W}pPr")
+            alignment = ppr.find(f"{W}jc")
+            if alignment is None:
+                alignment = etree.SubElement(ppr, f"{W}jc")
+            alignment.set(f"{W}val", "left")
+            spacing = ppr.find(f"{W}spacing")
+            spacing.set(f"{W}after", "100")
+            spacing.set(f"{W}line", "260")
+            spacing.set(f"{W}lineRule", "auto")
+    return etree.tostring(doc)
+
+
+def word_layout(entry, data, *, goa=False):
+    if goa and entry == "word/styles.xml":
+        return goa_styles(data)
     if entry != "word/document.xml":
         return data
     doc = etree.fromstring(data)
@@ -142,12 +185,24 @@ def word_layout(entry, data):
             table_number += 1
             insert_label(p, f"Table {table_number}. ")
         if old == "Bibliography":
-            strip_generated_number(p)
+            if goa:
+                properties = p.find(f"{W}pPr")
+                numbering = etree.SubElement(properties, f"{W}numPr")
+                etree.SubElement(numbering, f"{W}numId").set(f"{W}val", "0")
+            else:
+                strip_generated_number(p)
         if old in {"Heading1", "heading 1"} and text == "References":
             style_for(p, "referencelist")
 
     # Avoid instructions in empty imported sample header/footer links.
     for child in body.findall(f"{W}sectPr"):
+        if goa:
+            size = child.find(f"{W}pgSz")
+            size.set(f"{W}w", "11906")
+            size.set(f"{W}h", "16838")
+            margins = child.find(f"{W}pgMar")
+            for side in ("top", "right", "bottom", "left"):
+                margins.set(f"{W}{side}", "1440")
         for tag in ("headerReference", "footerReference"):
             for ref in child.findall(f"{W}{tag}"):
                 child.remove(ref)
@@ -205,29 +260,54 @@ def main():
         f"**Abstract.** {meta['abstract'].strip()}\n\n"
         f"**Keywords.** {meta['keywords']}\n\n"
     )
-    word_input = build / "word.md"
-    word_input.write_text(
-        front + body + "\n\n# References {.unnumbered}\n", encoding="utf-8"
-    )
-    raw_word = build / "springer-unmapped.docx"
-    run(
-        args.pandoc,
-        word_input,
-        "--from=markdown+implicit_figures",
-        "--to=docx",
-        "--resource-path",
-        HERE,
-        "--reference-doc",
-        word_reference(),
-        "--bibliography",
-        bibliography,
-        "--csl",
-        VENDOR / "springer-lncs.csl",
-        "--citeproc",
-        "-o",
-        raw_word,
-    )
-    transform_package(raw_word, EXPORT / "Cortex-SMARTCOM-editable.docx", word_layout)
+    reference = word_reference()
+    for prefix, style, filename in [
+        ("springer", "springer-lncs.csl", "Cortex-SMARTCOM-editable.docx"),
+        ("goa", "apa.csl", "Cortex-SMARTCOM-Goa-Guidelines.docx"),
+    ]:
+        word_input = build / f"{prefix}.md"
+        word_body = body.replace("width=89%", "width=100%") if prefix == "goa" else body
+        word_input.write_text(
+            front + word_body + "\n\n# References {.unnumbered}\n", encoding="utf-8"
+        )
+        raw_word = build / f"{prefix}-unmapped.docx"
+        run(
+            args.pandoc,
+            word_input,
+            "--from=markdown+implicit_figures",
+            "--to=docx",
+            "--resource-path",
+            HERE,
+            "--reference-doc",
+            reference,
+            "--bibliography",
+            bibliography,
+            "--csl",
+            VENDOR / style,
+            "--citeproc",
+            "-o",
+            raw_word,
+        )
+        transform_package(
+            raw_word,
+            EXPORT / filename,
+            lambda entry, data, goa=prefix == "goa": word_layout(entry, data, goa=goa),
+        )
+
+    archive = EXPORT / "Cortex-SMARTCOM-LaTeX-source.zip"
+    with ZipFile(archive, "w", ZIP_DEFLATED) as bundle:
+        for file in (
+            HERE / "cortex-springer.tex",
+            HERE / "llncs.cls",
+            HERE / "splncs04.bst",
+            bibliography,
+            *sorted((ROOT / "figures/rendered").glob("fig*.pdf")),
+        ):
+            bundle.write(file, file.relative_to(ROOT).as_posix())
+        bundle.writestr(
+            "README.txt",
+            "Compile from manuscript/ with LaTeX, BibTeX, then LaTeX twice.\n",
+        )
 
 
 if __name__ == "__main__":

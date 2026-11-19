@@ -1,0 +1,17 @@
+# Publication format consistency
+
+The synchronized [Markdown](manuscript/paper.md) and [BibTeX](bibliography/references.bib) are authoritative. The final source retains all four authors, five keywords, 20 sources, six figures, the comparison table and the verified quantitative results.
+
+| Output | Page count | Layout and validation |
+|---|---:|---|
+| [Goa guidance PDF](exports/Cortex-SMARTCOM-Goa-Guidelines.pdf) and [editable Word](exports/Cortex-SMARTCOM-Goa-Guidelines.docx) | 13 | A4, one column, 12-point prose and numbered headings. APA citation formatting supplies author–year citations and 20 alphabetized, unnumbered references. This applies the public SmartCom manuscript guidance. |
+| [Springer PDF](exports/cortex-springer.pdf) and [LaTeX archive](exports/Cortex-SMARTCOM-LaTeX-source.zip) | 13 | LLNCS template, 10-point body by class, numbered citations. Review proof until the organizer confirms the template for LNNS. |
+| [Springer editable Word](exports/Cortex-SMARTCOM-editable.docx) and [Word proof](exports/Cortex-SMARTCOM-Word-proof.pdf) | 13 | Publisher Word styles and numbered references. The 18 native Word math objects include the query tuple, display predicate, character span and digest expression. These were checked in OOXML and in the Word render. |
+| [IEEE backup](exports/cortex-ieee.pdf) | 6 | Two-column IEEEtran. T1 is selected before loading the class and keyword separators are commas. |
+| [General academic backup](exports/cortex-academic.pdf) | 13 | Single-column article with numbered citations. |
+
+The attached Goa DOCX used text formulas. The tracked publisher Word source and its earlier Word proof already contained the key mathematical expressions. The final Goa Word source also uses native editable math. Figure numbering, table values, author names and quantitative claims were checked across the [five PDF renders](quality/structural-checks.json). Figures are supplied as SVG/PDF vectors and as high-resolution PNG, with alternative text in the Word image objects.
+
+Reviewed all 58 rendered pages and enlarged the equation and figure regions for inspection. No TeX overfull-box, missing-character or undefined-citation warnings were recorded in the final builds. The last bibliography pages of the Goa and general backups are sparse, and IEEE figure labels are smaller in two columns.
+
+The current organizer guidance says at least 3,500 words or 10 pages, up to 250 abstract words, 4–6 keywords and up to 50 references. It describes 12-point single-column text and surname–year references. It also requests author information on the title page and describes blind technical review. It mentions accepted-paper vector handoff formats. Final anonymization, exact LNNS template precedence, vector deliverables, the page-count convention, maximum length and the submission window still need organizer confirmation. The author email placeholder remains. [SmartCom author guidance](https://www.smartcomconference.com/author-guidelines-for-paper-submission) · [Springer proceedings guidance](https://www.springernature.com/gp/authors/publish-a-book/step-by-step-conference-proceedings)

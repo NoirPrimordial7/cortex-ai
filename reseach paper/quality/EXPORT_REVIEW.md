@@ -1,4 +1,6 @@
-# Export and editorial review
+# Initial export and editorial review
+
+This is the initial export baseline. The follow-up [format consistency check](../FORMAT_CONSISTENCY_CHECK.md) contains current counts and render results.
 
 The manuscript uses one editable Markdown source and 20 shared BibTeX references. It has a 189-word abstract and approximately 3,790 words in the body source including headings, captions and table text. The author block names all four authors and uses the project report's affiliation. Correspondence remains an author-review placeholder.
 

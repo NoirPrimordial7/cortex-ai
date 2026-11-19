@@ -1,9 +1,11 @@
 {
-  "manuscript/paper.md": "eb5bafafc2a6781c2ffa859f7974ce1c817d87c5ee5d88b3ea9c2c448ae5f6b5",
+  "manuscript/paper.md": "7ed59e07ac8b879f09e5ea0bffc3c75d6b0dc3db45a742410e5e2dd68c125800",
   "bibliography/references.bib": "0f08f72482308a74594320f0b61aaca7cd26f3c397dbd73ca1957bbf0aaeed6a",
-  "exports/cortex-springer.pdf": "8731181a2d489af604e3d189ed2a8d1a308b709509b5f692f41a8c3c464e29c9",
-  "exports/Cortex-SMARTCOM-editable.docx": "9d34b04d4fcc856aaf938df387afedd9c5760c3e2baa4b8ed2183497d51bf868",
-  "exports/Cortex-SMARTCOM-Word-proof.pdf": "dfed36d3a0c8067e20120a6c04d8213194f751c1b76348299434643ea18a7034",
-  "exports/cortex-ieee.pdf": "d21de3d9f45322805056cc60bbd0047febfafe89ae8f669ffac629764a3be86a",
-  "exports/cortex-academic.pdf": "34e115e97912a93c0a1d933441af2a34b458d1fa3366afa2c775c7705cbaf1c4"
+  "exports/cortex-academic.pdf": "5f206a0ed652c5c36ced1df19bd6fbc58b0de2c9beb71c952b0a60c22b75c8d0",
+  "exports/cortex-ieee.pdf": "e91c5d1bf30bca3d32affdc734b614abf0b95c35193db032ab135a85727a18e2",
+  "exports/Cortex-SMARTCOM-Goa-Guidelines.pdf": "d14e41886f6f110984febfc3a31103c200b7d7f312a3c976ea21617a09c1b8eb",
+  "exports/Cortex-SMARTCOM-Word-proof.pdf": "2bb6bf07cab9832f3d0784b2aad7c9783f55f9ffe738ede983a1b854fb7c9858",
+  "exports/cortex-springer.pdf": "003589caab0aee1d25f998dc496eb4b5967c9e9af96ed0bf06ee0a3800197bb9",
+  "exports/Cortex-SMARTCOM-editable.docx": "beed103fb4a6f5adbe5a64b3c624e02def804853cc10300a7d7a7c65089ca9af",
+  "exports/Cortex-SMARTCOM-Goa-Guidelines.docx": "c345908f9729ccb92d238d43cfa1c8f1be5bb99cb8a709a9db5aafc629019991"
 }

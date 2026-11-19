@@ -121,9 +121,9 @@ for x, y, txt in [
     (7, 10, "1. Session and action|Require query.execute"),
     (130, 10, "2. Eligibility predicate|READ, approved, valid"),
     (253, 10, "3. FTS5 ID gate|Scoped match exists"),
-    (253, 73, "4. Expand peers|Expected key and unit"),
+    (253, 73, "4. Expand peers|Filter predicate and unit"),
     (130, 73, "5. Compare authority|Strongest tier"),
-    (7, 73, "6. Test disagreement|Optional Auditor choice"),
+    (7, 73, "6. Compare values|Exact Auditor decision"),
     (7, 137, "7. Verify support|Revision, span, hash"),
     (130, 137, "8. Emit and store|Answer or abstention"),
     (253, 137, "9. Inspect later|Reapply READ and hash"),
@@ -181,11 +181,11 @@ f = Figure(
     225,
     "Decision flow distinguishes temporal replacement and active highest-rank disagreement",
 )
-f.box(108, 9, 144, 33, "Comparable reviewed claims|Same date, scope and key")
-f.box(108, 61, 144, 33, "Apply effective dates|Select strongest tier")
+f.box(108, 9, 144, 33, "Reviewed claims|Requested date and scope")
+f.box(108, 61, 144, 33, "Filter date and scope|Check kind, key and rank")
 f.arrow((180, 42), (180, 61))
 f.box(7, 117, 100, 39, "One value|Answer after checks")
-f.box(130, 117, 100, 39, "Competing values|Check case fingerprint")
+f.box(130, 117, 100, 39, "Competing values|Check bound and case")
 f.box(253, 117, 100, 39, "No governing evidence|Abstain")
 f.arrow((180, 94), (180, 117))
 f.arrow((108, 77), (57, 77), (57, 117))
@@ -193,8 +193,8 @@ f.arrow((252, 77), (303, 77), (303, 117))
 f.text(67, 69, "Single value", 7.7)
 f.text(290, 69, "Missing", 7.7)
 f.text(209, 108, "Different", 7.7)
-f.box(73, 179, 100, 36, "No current choice|Abstain with evidence", 0.88)
-f.box(191, 179, 143, 36, "Current verified choice|Cite selected primary")
+f.box(73, 179, 100, 36, "No current choice|Abstain after checks", 0.88)
+f.box(191, 179, 143, 36, "Verified exact choice|Cite selected primary")
 f.arrow((157, 156), (157, 167), (123, 167), (123, 179))
 f.arrow((205, 156), (205, 167), (264, 167), (264, 179))
 f.save()

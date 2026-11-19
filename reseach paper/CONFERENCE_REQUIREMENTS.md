@@ -1,5 +1,7 @@
 # SMARTCOM 2027 requirements audit
 
+The [follow-up format comparison](FORMAT_CONSISTENCY_CHECK.md) records the organizer's 12-point one-column and author–year requirements alongside the separate official LLNCS review proof.
+
 Checked 20 November 2026 (India). The reviewed materials identify the conference as the 11th SMARTCOM, 27–30 January 2027, Goa.
 
 | Item | Verified position |
