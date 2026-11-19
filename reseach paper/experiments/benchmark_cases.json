@@ -1,0 +1,35 @@
+{
+  "design": "New fictional corpus, labeled by the manuscript assistant before the first execution. The team must independently adjudicate labels before any generalization claim.",
+  "policies": [
+    ["LV-A","leave","india_full_time","hr_policy",17,"2025-04-01","2026-04-01","2025-02-03",true,true],
+    ["LV-B","leave","india_full_time","hr_policy",23,"2026-04-01","2027-04-01","2026-01-20",true,true],
+    ["LV-C","leave","india_full_time","hr_policy",27,"2027-04-01",null,"2026-10-01",true,true],
+    ["LV-D","leave","india_full_time","informal_note",31,"2026-04-01",null,"2026-12-20",true,true],
+    ["LV-E","leave","india_contractor","hr_policy",9,"2026-04-01",null,"2026-03-20",true,true],
+    ["LV-F","leave","india_full_time","hr_policy",41,"2026-04-01",null,"2027-01-20",false,false],
+    ["RW-A","remote_work","india_full_time","operations_policy",1,"2026-05-01","2026-08-01","2026-04-15",true,true],
+    ["RW-B","remote_work","india_full_time","operations_policy",3,"2026-08-01",null,"2026-07-20",true,true],
+    ["RW-C","remote_work","india_full_time","operations_policy",4,"2026-09-01","2027-02-01","2026-08-23",true,true],
+    ["NT-A","notice","india_full_time","hr_policy",38,"2026-03-01",null,"2026-02-10",true,true],
+    ["NT-B","notice","india_full_time","hr_policy",38,"2026-06-01",null,"2026-05-12",true,true],
+    ["BN-A","bonus","india_full_time","hr_policy",83000,"2026-01-01",null,"2025-12-01",true,false]
+  ],
+  "queries": [
+    ["Q01","leave","2025-06-17","india_full_time",["LV-A"],["LV-A"],17,null],
+    ["Q02","leave","2026-03-31","india_full_time",["LV-A"],["LV-A"],17,null],
+    ["Q03","leave","2026-04-01","india_full_time",["LV-B","LV-D"],["LV-B"],23,null],
+    ["Q04","leave","2026-11-20","india_full_time",["LV-B","LV-D"],["LV-B"],23,null],
+    ["Q05","leave","2027-04-01","india_full_time",["LV-C","LV-D"],["LV-C"],27,null],
+    ["Q06","leave","2026-12-22","india_contractor",["LV-E"],["LV-E"],9,null],
+    ["Q07","leave","2024-12-31","india_full_time",[],[],null,"NO_ELIGIBLE_EVIDENCE"],
+    ["Q08","remote_work","2026-05-01","india_full_time",["RW-A"],["RW-A"],1,null],
+    ["Q09","remote_work","2026-08-01","india_full_time",["RW-B"],["RW-B"],3,null],
+    ["Q10","remote_work","2026-09-01","india_full_time",["RW-B","RW-C"],["RW-B","RW-C"],null,"UNRESOLVED_CONFLICT"],
+    ["Q11","remote_work","2027-01-31","india_full_time",["RW-B","RW-C"],["RW-B","RW-C"],null,"UNRESOLVED_CONFLICT"],
+    ["Q12","remote_work","2027-02-01","india_full_time",["RW-B"],["RW-B"],3,null],
+    ["Q13","notice","2026-04-20","india_full_time",["NT-A"],["NT-A"],38,null],
+    ["Q14","notice","2026-11-20","india_full_time",["NT-A","NT-B"],["NT-A","NT-B"],38,null],
+    ["Q15","bonus","2026-11-20","india_full_time",[],[],null,"NO_ELIGIBLE_EVIDENCE"],
+    ["Q16","remote_work","2026-11-20","india_contractor",[],[],null,"NO_ELIGIBLE_EVIDENCE"]
+  ]
+}
