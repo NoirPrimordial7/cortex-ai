@@ -362,17 +362,6 @@ extracted-text digest and offsets. The optional ranking does not change
 the strict peer set. Personal leave records use a separate authorization
 path outside the evaluation.
 
-\section{Experimental Setup}\label{experimental-setup}
-
-Figure 6 describes the two evaluation strata. The existing evaluator
-seeds the development database and executes the repository's 12 cases.
-Labels include status, selected clause IDs and eligible peer IDs.
-Instrumentation observes admitted evidence in reasoning, selected
-evidence in the answerer and a restricted marker in the response. The
-evaluator opens the citation endpoint and recomputes the text hash. The
-case count is distinct from frontend unit regressions, backend
-regressions and actual browser flows.
-
 \begin{figure}
 \centering
 \includegraphics[width=0.89\linewidth,height=\textheight,keepaspectratio,alt={Evaluation
@@ -383,6 +372,33 @@ visible fictional policies.}]{../figures/rendered/fig6.pdf}
 benchmark exercise the pinned service, and offline comparator rules
 operate on the same visible fictional policies.}\label{fig:evaluation}
 \end{figure}
+
+Figure 7 shows two outputs from the fictional demonstration workspace.
+The leave answer links to an exact policy passage, while the conflict
+view identifies the two competing remote-work policies for the requested
+date and scope.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.72\linewidth,height=\textheight,keepaspectratio,alt={Fictional
+Cortex AI demonstration. (a) Supported annual-leave answer and its cited
+passage. (b) Unresolved remote-work conflict listing two competing
+sources.}]{../figures/rendered/fig7.pdf}
+\caption{Fictional Cortex AI demonstration. (a) Supported annual-leave
+answer and its cited passage. (b) Unresolved remote-work conflict
+listing two competing sources.}\label{fig:demo}
+\end{figure*}
+
+\section{Experimental Setup}\label{experimental-setup}
+
+Figure 6 describes the two evaluation strata. The existing evaluator
+seeds the development database and executes the repository's 12 cases.
+Labels include status, selected clause IDs and eligible peer IDs.
+Instrumentation observes admitted evidence in reasoning, selected
+evidence in the answerer and a restricted marker in the response. The
+evaluator opens the citation endpoint and recomputes the text hash. The
+case count is distinct from frontend unit regressions, backend
+regressions and actual browser flows.
 
 The second fixture uses 12 short fictional policies and 16 questions
 varying by date and scope. Before running the service, we specified the

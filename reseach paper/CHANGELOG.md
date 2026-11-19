@@ -1,5 +1,11 @@
 # Research changelog
 
+## Application screenshot figure
+
+- Added two cropped fictional demonstration views to the Implementation section as Figure 7.
+- Kept the evaluation diagram at Figure 6 by placing it immediately before the new figure.
+- Preserved seven original screenshots in local evidence and rebuilt the publication formats.
+
 ## Paperpal Word repair and local proofreading
 
 - Rebuilt the damaged Word copy from the manuscript and retained its native equations.

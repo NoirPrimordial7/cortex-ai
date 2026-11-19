@@ -46,7 +46,7 @@ def main():
                     if not page.rect.contains(pymupdf.Rect(word[:4])):
                         out_of_page.append([number, word[4]])
             contents = "\n".join(text_entries)
-            found = re.findall(r"\b(?:Fig(?:ure)?\.?)\s+([1-6])[.:]\s", contents)
+            found = re.findall(r"\b(?:Fig(?:ure)?\.?)\s+([1-7])[.:]\s", contents)
             summary["pdfs"][path.name] = {
                 "pages": len(doc),
                 "authors_present": all(n in contents for n in AUTHOR_NAMES),
@@ -60,7 +60,7 @@ def main():
             }
         contact_sheet(page_entries, RENDERS / f"{path.stem}-overview.png")
     images = [
-        (ROOT / f"figures/rendered/fig{i}.png", f"Figure {i}") for i in range(1, 7)
+        (ROOT / f"figures/rendered/fig{i}.png", f"Figure {i}") for i in range(1, 8)
     ]
     contact_sheet(images, RENDERS / "figures-overview.png", width=370, height=265)
     for path in (ROOT / "exports").glob("*.docx"):

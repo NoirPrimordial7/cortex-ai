@@ -1,0 +1,27 @@
+{
+  "cortex-academic.pdf": {
+    "pages": 14,
+    "figure7_page": 9,
+    "image_width_mm": 127.2
+  },
+  "cortex-ieee.pdf": {
+    "pages": 7,
+    "figure7_page": 5,
+    "image_width_mm": 127.4
+  },
+  "Cortex-SMARTCOM-Goa-Guidelines.pdf": {
+    "pages": 14,
+    "figure7_page": 8,
+    "image_width_mm": 121.7
+  },
+  "Cortex-SMARTCOM-Word-proof.pdf": {
+    "pages": 14,
+    "figure7_page": 9,
+    "image_width_mm": 121.7
+  },
+  "cortex-springer.pdf": {
+    "pages": 14,
+    "figure7_page": 9,
+    "image_width_mm": 119.0
+  }
+}

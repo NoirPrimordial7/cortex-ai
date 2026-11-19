@@ -1,0 +1,72 @@
+[
+  {
+    "name": "WhatsApp Image 2026-11-19 at 10.11.40 PM.jpeg",
+    "view": "Demo sign-in",
+    "pixels": [
+      1600,
+      811
+    ],
+    "sha256": "788154845be5dcfd042616addbd226cbb87357c6d167b49f5a9fb8998eae46ab",
+    "panel": null
+  },
+  {
+    "name": "WhatsApp Image 2026-11-19 at 10.11.41 PM (1).jpeg",
+    "view": "Question entry and suggestions",
+    "pixels": [
+      1600,
+      726
+    ],
+    "sha256": "cb0406b20ef5a1ec3ce796a0f4a626dec40829f00de2e065a5f8570f01b1292f",
+    "panel": null
+  },
+  {
+    "name": "WhatsApp Image 2026-11-19 at 10.11.41 PM.jpeg",
+    "view": "Employee dashboard",
+    "pixels": [
+      1600,
+      722
+    ],
+    "sha256": "e1f115a502e74ae9c43bcb77c8b0cc7f32cf32d0f4973c04fcd459d8e4301201",
+    "panel": null
+  },
+  {
+    "name": "WhatsApp Image 2026-11-19 at 10.11.42 PM (1).jpeg",
+    "view": "Workspace people and action roles",
+    "pixels": [
+      1600,
+      726
+    ],
+    "sha256": "c3a29f224cc18dca03fa56e365c263dbb56f6fd74aa09e8f39fbd885d6fbff6c",
+    "panel": null
+  },
+  {
+    "name": "WhatsApp Image 2026-11-19 at 10.11.42 PM (2).jpeg",
+    "view": "Conflict group",
+    "pixels": [
+      1600,
+      723
+    ],
+    "sha256": "296dcc6d473f8a67486b49a97c65a5a5728ce028b1ecb74b26a56ac8da4a046e",
+    "panel": "b"
+  },
+  {
+    "name": "WhatsApp Image 2026-11-19 at 10.11.42 PM.jpeg",
+    "view": "Supported answer and source evidence",
+    "pixels": [
+      1600,
+      819
+    ],
+    "sha256": "7082823a251b5f83700dd01bf579c5711ab197751a05a7789724b794c1cc977e",
+    "panel": "a"
+  },
+  {
+    "name": "WhatsApp Image 2026-11-19 at 10.11.43 PM.jpeg",
+    "view": "Document library",
+    "pixels": [
+      1600,
+      750
+    ],
+    "sha256": "6e6c3b90af6e76bcdc2d8713016160f0c6b256c964d1028b71ecdaa6c5d2c440",
+    "panel": null
+  }
+]

@@ -94,11 +94,15 @@ We evaluated GitHub main commit [dbbd2f2](https://github.com/NoirPrimordial7/cor
 
 The related-passage path uses BM25 over admitted lexical candidates and optionally adds cosine-ranked vectors from the pinned local MiniLM model. Reciprocal rank fusion combines the rankings using an offset of 60. This path can return passages when the service declines to give a strict policy answer. It checks each exposed passage against its extracted-text digest and offsets. The optional ranking does not change the strict peer set. Personal leave records use a separate authorization path outside the evaluation.
 
+![Evaluation workflow. The development fixture and new fictional benchmark exercise the pinned service, and offline comparator rules operate on the same visible fictional policies.](../figures/rendered/fig6.png){#fig:evaluation width=89%}
+
+Figure 7 shows two outputs from the fictional demonstration workspace. The leave answer links to an exact policy passage, while the conflict view identifies the two competing remote-work policies for the requested date and scope.
+
+![Fictional Cortex AI demonstration. (a) Supported annual-leave answer and its cited passage. (b) Unresolved remote-work conflict listing two competing sources.](../figures/rendered/fig7.png){#fig:demo width=100%}
+
 # Experimental Setup
 
 Figure 6 describes the two evaluation strata. The existing evaluator seeds the development database and executes the repository's 12 cases. Labels include status, selected clause IDs and eligible peer IDs. Instrumentation observes admitted evidence in reasoning, selected evidence in the answerer and a restricted marker in the response. The evaluator opens the citation endpoint and recomputes the text hash. The case count is distinct from frontend unit regressions, backend regressions and actual browser flows.
-
-![Evaluation workflow. The development fixture and new fictional benchmark exercise the pinned service, and offline comparator rules operate on the same visible fictional policies.](../figures/rendered/fig6.png){#fig:evaluation width=89%}
 
 The second fixture uses 12 short fictional policies and 16 questions varying by date and scope. Before running the service, we specified the expected answer or abstention, the eligible peer set, and the selected citation set. A script then created an isolated database, removed Employee access to the earlier seed documents, and introduced the new policies through the application's ingestion, review, and distribution endpoints. One policy remained pending, and another was approved but not readable by the Employee. The labels and validity windows are included with the reproducibility artifacts. Historical revisions, an exact end-date transition, and simultaneous policies that agree on their values serve as negative controls. Although two questions target a conflict, both refer to the same underlying pair of policies.
 

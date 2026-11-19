@@ -2,6 +2,12 @@ local function stringify(blocks)
   return pandoc.write(pandoc.Pandoc(blocks), "latex"):gsub("%s+$", "")
 end
 
+local review_format
+
+function Meta(meta)
+  review_format = pandoc.utils.stringify(meta["review-format"] or "")
+end
+
 function Image(image)
   if FORMAT:match("latex") then
     image.src = image.src:gsub("%.png$", ".pdf")
@@ -39,3 +45,30 @@ function Table(tbl)
     table.concat(rows, "\n"), "\\bottomrule\\end{tabular}", "\\end{table}"
   }, "\n"))
 end
+
+local function demo_figure(fig)
+  if not FORMAT:match("latex") or fig.identifier ~= "fig:demo" then
+    return nil
+  end
+  local wide = review_format == "ieee"
+  if wide or review_format == "academic" then
+    fig = fig:walk({Image = function(img)
+      img.attributes.width = wide and "72%" or "79%"
+      return img
+    end})
+  end
+  local latex = stringify({fig})
+  if wide then
+    latex = latex:gsub("\\begin{figure}", "\\begin{figure*}[!t]", 1)
+    latex = latex:gsub("\\end{figure}", "\\end{figure*}", 1)
+  else
+    latex = latex:gsub("\\begin{figure}", "\\begin{figure}[!htbp]", 1)
+    latex = latex .. "\n\\FloatBarrier"
+  end
+  return pandoc.RawBlock("latex", latex)
+end
+
+return {
+  {Meta = Meta, Image = Image, Table = Table},
+  {Figure = demo_figure}
+}

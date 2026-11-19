@@ -1,39 +1,39 @@
 {
   "cortex-academic.pdf": {
-    "pages": 13,
+    "pages": 14,
     "key_formula_tokens_verified": true,
-    "figures": 6
+    "figures": 7
   },
   "cortex-ieee.pdf": {
-    "pages": 6,
+    "pages": 7,
     "key_formula_tokens_verified": true,
-    "figures": 6
+    "figures": 7
   },
   "Cortex-SMARTCOM-Goa-Guidelines.pdf": {
-    "pages": 13,
+    "pages": 14,
     "key_formula_tokens_verified": true,
-    "figures": 6,
+    "figures": 7,
     "dominant_font_size_pt": 12.0
   },
   "Cortex-SMARTCOM-Word-proof.pdf": {
-    "pages": 13,
+    "pages": 14,
     "key_formula_tokens_verified": true,
-    "figures": 6,
+    "figures": 7,
     "dominant_font_size_pt": 10.0
   },
   "cortex-springer.pdf": {
-    "pages": 13,
+    "pages": 14,
     "key_formula_tokens_verified": true,
-    "figures": 6
+    "figures": 7
   },
   "Cortex-SMARTCOM-editable.docx": {
     "native_omml_objects": 18,
-    "figures_with_alt_text": 6,
+    "figures_with_alt_text": 7,
     "references": 20
   },
   "Cortex-SMARTCOM-Goa-Guidelines.docx": {
     "native_omml_objects": 18,
-    "figures_with_alt_text": 6,
+    "figures_with_alt_text": 7,
     "references": 20
   }
 }

@@ -6,7 +6,7 @@ This folder contains the author-review manuscript, editable source, figures, and
 |---|---|
 | manuscript | Authoritative paper.md, generated LaTeX, layout templates and build script |
 | bibliography | Shared BibTeX reference database |
-| figures/source and figures/rendered | Editable figure generator, SVG, PDF and 350 dpi PNG exports |
+| figures/source and figures/rendered | Editable diagram and screenshot composition scripts with publication exports |
 | experiments | Fictional policy labels, benchmark program, test and evaluation results |
 | evidence | Artifact intake and source-to-claim register |
 | literature | Notes on interpreting the literature and comparator work |
@@ -24,5 +24,7 @@ The [Paperpal repair report](DOCUMENT_REPAIR_REPORT.md), [local writing audit](A
 2. Install Python dependencies PyYAML, lxml, reportlab, PyMuPDF and Pillow in an isolated environment. Install Pandoc 3.14 and Tectonic 0.17 or a corresponding TeX distribution. The build script expects the official package filenames in this folder.
 3. Run `python figures/source/draw_figures.py`, then `python manuscript/build.py --pandoc PATH --tectonic PATH` from this research folder. The script runs in manuscript/ and writes exports/ without reading the attachments. A TeX distribution can alternatively compile the three generated .tex files from manuscript/ with the normal LaTeX and BibTeX passes.
 4. On Windows with Word, run `quality/render_word.ps1` with -Document and -Pdf arguments to render both Word sources to their matching PDFs. The export check in quality/verify_editorial.py verifies Word math, references and shared content. Run `python quality/verify_exports.py` to render individual PDF pages and check the delivered files.
+
+The tracked Figure 7 assets are ready to use in a clean checkout. To reproduce them from the local originals in `inputs/application-screenshots/`, run `python figures/source/compose_screenshots.py` from this research folder. See [application screenshot evidence](evidence/APPLICATION_SCREENSHOTS.md) for the source manifest and crop decisions.
 
 The inputs folder includes third-party material for private reference. Review the project author's permissions and the publication rules before public distribution of the research materials or manuscript.

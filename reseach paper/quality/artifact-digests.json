@@ -1,11 +1,11 @@
 {
-  "manuscript/paper.md": "7dbd56802ff1fb452e13d1ff81d9ecfa1db3b8117be239cb89a9ebd58d5ebcc9",
+  "manuscript/paper.md": "ab7753baac208cca879f09aef59a293c4ca4460960ce46cc12fbc2bb10343c1d",
   "bibliography/references.bib": "0f08f72482308a74594320f0b61aaca7cd26f3c397dbd73ca1957bbf0aaeed6a",
-  "exports/cortex-academic.pdf": "62435a2b96ebff1bb33e42ccb7bb0d05324db125cd1d20bcd01b217f9f1c6e2d",
-  "exports/cortex-ieee.pdf": "b973dfec6d2495e2a3db2a36bee4a0274e8cd7423044758321c85eab65754cae",
-  "exports/Cortex-SMARTCOM-Goa-Guidelines.pdf": "8ba98e3dc50695bc441f231b54833d804c677fc962546aa93ca0d8957e07dc90",
-  "exports/Cortex-SMARTCOM-Word-proof.pdf": "d81979f3bc40f77407654e5cbe95d2ed5e31a6b67f5ab96a2ec7f50f92fc8fcb",
-  "exports/cortex-springer.pdf": "6fba05b22a48111dbb1a7b885ddfb681474a9c30be9783e13f9d132eade5ed16",
-  "exports/Cortex-SMARTCOM-editable.docx": "1544609ed715ee9bf3a2dff409cc201d33d100e67718b39a2182ca1bdf2fd4ae",
-  "exports/Cortex-SMARTCOM-Goa-Guidelines.docx": "15608edb2050421cf19ba7a081d3ece180c6ad5abf70b1555a812eb9c4e97663"
+  "exports/cortex-academic.pdf": "ff7e89f8e1b63ec8eb7859a0ee64cf3ddf742a33296dca7b4227aa760b906795",
+  "exports/cortex-ieee.pdf": "2df1f8f89697f2ee88a174ccc3acda6c383fe3b8f567ec1ba84ff11ebc3f531c",
+  "exports/Cortex-SMARTCOM-Goa-Guidelines.pdf": "ff5d881e0f549acc4177379aa0e2fc0ecdd24eae6d2c299c57bbb739dea0bb6b",
+  "exports/Cortex-SMARTCOM-Word-proof.pdf": "913d7e30418536fe7f6b259471a692721b6866870fc3d7dfb1d362340b82b5e7",
+  "exports/cortex-springer.pdf": "21091d8064fc85f55663a672878fc520c005d4f38aa1d038669a5c716f7f5f29",
+  "exports/Cortex-SMARTCOM-editable.docx": "aa85e1407d49e1327ecb5704570c351c1c16a8901fef237756b62af5ff05925d",
+  "exports/Cortex-SMARTCOM-Goa-Guidelines.docx": "b216351924e8e6fb79b489e85a46d079cda6ddfe2eebefb762e9919843d89b05"
 }

@@ -36,7 +36,7 @@ VALUES = (
     "SHA256",
     "UTF8",
 )
-CAPTION = r"\b(?:Fig(?:ure)?\.?)\s+([1-6])[.:]\s"
+CAPTION = r"\b(?:Fig(?:ure)?\.?)\s+([1-7])[.:]\s"
 
 
 def inspect_pdf(path):
@@ -47,12 +47,13 @@ def inspect_pdf(path):
         assert all(a in text for a in AUTHORS), path
         assert all(a in compact for a in VALUES), path
         assert re.search(r"(?im)^\s*references\s*$", text), path
-        assert set(re.findall(CAPTION, text)) == set("123456"), path
+        assert set(re.findall(CAPTION, text)) == set("1234567"), path
+        assert re.search(r"(?:Fig\.|Figure)\s+7[.:]\s+Fictional Cortex AI", text), path
         if "Goa" not in path.name:
             bib = re.split(r"(?im)^\s*references\s*$", text)[-1]
             labels = re.findall(r"(?m)^\s*(?:\[(\d+)\]|(\d+)\.)\s", bib)
             assert set(range(1, 21)) <= {int(a or b) for a, b in labels}, path
-        result = {"pages": len(doc), "key_formula_tokens_verified": True, "figures": 6}
+        result = {"pages": len(doc), "key_formula_tokens_verified": True, "figures": 7}
         if path.name.startswith("Cortex-"):
             fonts = Counter()
             for page in doc:
@@ -88,7 +89,7 @@ def inspect_docx(path):
             if style is not None and style.get(W + "val") == "referenceitem":
                 entries.append(paragraph)
         assert len(formulae) == 18 and len(entries) == 20, path
-        assert len(descriptions) == 6 and all(descriptions), path
+        assert len(descriptions) == 7 and all(descriptions), path
         assert any("SHA256" in m for m in formulae), path
         if "Goa" in path.name:
             surnames = []
@@ -102,7 +103,7 @@ def inspect_docx(path):
             assert surnames == sorted(surnames), path
         return {
             "native_omml_objects": len(formulae),
-            "figures_with_alt_text": 6,
+            "figures_with_alt_text": 7,
             "references": 20,
         }
 

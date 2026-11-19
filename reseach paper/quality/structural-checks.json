@@ -1,7 +1,7 @@
 {
   "pdfs": {
     "cortex-academic.pdf": {
-      "pages": 13,
+      "pages": 14,
       "authors_present": true,
       "figure_caption_numbers": [
         "1",
@@ -9,7 +9,8 @@
         "3",
         "4",
         "5",
-        "6"
+        "6",
+        "7"
       ],
       "keywords_present": true,
       "references_present": true,
@@ -22,16 +23,17 @@
         185,
         379,
         378,
-        408,
-        517,
-        501,
-        400,
-        467,
-        67
+        115,
+        34,
+        569,
+        510,
+        481,
+        420,
+        300
       ]
     },
     "cortex-ieee.pdf": {
-      "pages": 6,
+      "pages": 7,
       "authors_present": true,
       "figure_caption_numbers": [
         "1",
@@ -39,7 +41,8 @@
         "3",
         "4",
         "5",
-        "6"
+        "6",
+        "7"
       ],
       "keywords_present": true,
       "references_present": true,
@@ -48,13 +51,14 @@
         729,
         845,
         802,
-        847,
+        836,
+        221,
         841,
-        965
+        824
       ]
     },
     "Cortex-SMARTCOM-Goa-Guidelines.pdf": {
-      "pages": 13,
+      "pages": 14,
       "authors_present": true,
       "figure_caption_numbers": [
         "1",
@@ -62,7 +66,8 @@
         "3",
         "4",
         "5",
-        "6"
+        "6",
+        "7"
       ],
       "keywords_present": true,
       "references_present": true,
@@ -74,17 +79,18 @@
         398,
         226,
         375,
-        437,
-        531,
-        547,
-        314,
-        249,
-        263,
-        62
+        179,
+        199,
+        557,
+        541,
+        381,
+        233,
+        246,
+        129
       ]
     },
     "Cortex-SMARTCOM-Word-proof.pdf": {
-      "pages": 13,
+      "pages": 14,
       "authors_present": true,
       "figure_caption_numbers": [
         "1",
@@ -92,7 +98,8 @@
         "3",
         "4",
         "5",
-        "6"
+        "6",
+        "7"
       ],
       "keywords_present": true,
       "references_present": true,
@@ -105,16 +112,17 @@
         228,
         162,
         313,
-        290,
-        402,
-        427,
-        435,
-        412,
-        518
+        274,
+        62,
+        505,
+        447,
+        429,
+        407,
+        420
       ]
     },
     "cortex-springer.pdf": {
-      "pages": 13,
+      "pages": 14,
       "authors_present": true,
       "figure_caption_numbers": [
         "1",
@@ -122,7 +130,8 @@
         "3",
         "4",
         "5",
-        "6"
+        "6",
+        "7"
       ],
       "keywords_present": true,
       "references_present": true,
@@ -135,24 +144,25 @@
         387,
         163,
         374,
-        502,
-        369,
-        434,
-        432,
-        444,
-        431
+        324,
+        41,
+        522,
+        421,
+        454,
+        429,
+        496
       ]
     }
   },
   "Cortex-SMARTCOM-editable.docx": {
     "zip_check": null,
-    "images": 6,
+    "images": 7,
     "editable_equations": 18,
     "contains_vba": false
   },
   "Cortex-SMARTCOM-Goa-Guidelines.docx": {
     "zip_check": null,
-    "images": 6,
+    "images": 7,
     "editable_equations": 18,
     "contains_vba": false
   }

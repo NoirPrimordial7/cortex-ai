@@ -242,6 +242,8 @@ def main():
             "--ascii",
             "--bibliography",
             bibliography,
+            "--metadata",
+            f"review-format={template}",
             "--lua-filter",
             HERE / "layout.lua",
             "--template",
