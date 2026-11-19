@@ -1,5 +1,11 @@
 # Research changelog
 
+## Paperpal Word repair and local proofreading
+
+- Rebuilt the damaged Word copy from the manuscript and retained its native equations.
+- Ran Vale and Proselint across the manuscript and screened text against 14 local sources.
+- Regenerated the review formats without changing the equations, benchmark evidence, references or figures.
+
 ## PR #10 full editorial and scientific review
 
 - Incorporated the submitted editorial pass and corrected evidence admission, conflict and source-integrity descriptions.

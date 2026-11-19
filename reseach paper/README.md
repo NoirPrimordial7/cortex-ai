@@ -16,6 +16,8 @@ This folder contains the author-review manuscript, editable source, figures, and
 
 Read [CONFERENCE_REQUIREMENTS.md](CONFERENCE_REQUIREMENTS.md), [RESULTS_VERIFICATION.md](RESULTS_VERIFICATION.md), and [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md) before using the exports. The word-processing version uses the downloadable publisher template's styles without running its macros. The companion formats share the same Markdown and bibliography, while each applies its own citation order and page layout.
 
+The [Paperpal repair report](DOCUMENT_REPAIR_REPORT.md), [local writing audit](ACADEMIC_WRITING_QUALITY.md), and [final format verification](FINAL_FORMAT_VERIFICATION.md) document the latest review pass.
+
 ## Rebuild
 
 1. Obtain the Springer Nature proceedings packages from the link in CONFERENCE_REQUIREMENTS.md, extract them into templates/springer-latex and templates/springer-word, and obtain the IEEEtran class and bibliography style from CTAN. Save the CSL Springer lecture-notes style as templates/springer-lncs.csl and [APA style](https://github.com/citation-style-language/styles/blob/master/apa.csl) as templates/apa.csl.

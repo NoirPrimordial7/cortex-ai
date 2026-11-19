@@ -1,0 +1,7 @@
+# Originality review
+
+The user reported Paperpal similarity of **0%**, an AI-writing indicator of **66%**, and 4,589 of 7,000 words of plagiarism allowance used. Those indicators and usage figures were not reproduced or independently verified. Detector results did not govern the edits.
+
+The [local comparison script](quality/compare_local_sources.py) checks distinct normalized windows of eight consecutive words. It ran against **14 documents** comprising the five supplied reference extracts and nine available public copies of cited primary research papers. The public copies were Lewis et al. on retrieval-augmented generation, Büttcher and Clarke on full-text access control, Karpukhin et al. on dense passage retrieval, Dhingra et al. on time-aware models, Ouyang et al. on outdated information, Cao et al. on recency retrieval, Gross et al. on inter-context conflicts, Gao et al. on citations and Nam et al. on temporal retrieval. The [reference audit](REFERENCE_AUDIT.md) identifies the primary records.
+
+The scan returned two overlapping windows from the same recurring four-topic list in the Cortex project report. That list names the implemented scope. It is not an unattributed explanatory passage. There were no eight-word hits in the other 13 compared documents. The check covers extracted text and verbatim overlap. Paraphrasing, extraction gaps, inaccessible literature and proprietary similarity databases remain outside its coverage. The authors should review any institutional similarity report and adjudicate results by passage.

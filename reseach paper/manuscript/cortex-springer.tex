@@ -21,22 +21,23 @@ Computing, MIT Art, Design and Technology University, Pune,
 India\\{[}Corresponding author and email to be confirmed{]}}
 \maketitle
 \begin{abstract}
-An enterprise policy answer must use evidence the requester can read and
-that applies on the requested date. Cortex AI evaluates reviewed numeric
-claims under tenant-scoped document grants and effective-date
-constraints. A lexical hit triggers expansion of authorized peers,
-allowing the decision rule to detect incompatible values at the highest
-authority tier. The strict path verifies cited text before returning a
-value, and an unresolved conflict causes abstention unless a verified
-Auditor choice applies to the same evidence. The development fixture
-reproduced 12 of 12 expected outcomes, 15 of 15 labeled eligible
-policy-question pairs, and 10 of 10 exact citation span and hash checks.
-On a second fictional corpus, the full service matched the labeled
-outcomes and source sets for all 16 questions. A publication-recency
-comparator matched 5 questions and each valid-time comparator matched
-14. Both valid-time comparators committed to an answer on two questions
-about one unresolved policy dispute. The results describe designed cases
-and the monitored application stages.
+An enterprise policy answer must use evidence that the requester can
+read and that applies on the requested date. Cortex AI evaluates
+reviewed numeric claims under tenant-scoped document grants and
+effective-date constraints. A lexical hit triggers expansion of
+authorized peers, allowing the decision rule to detect incompatible
+values at the highest authority tier. The strict path verifies cited
+text before returning a value, and an unresolved conflict causes
+abstention unless a verified Auditor choice applies to the same
+evidence. The development fixture reproduced 12 of 12 expected outcomes,
+15 of 15 labeled eligible policy-question pairs, and 10 of 10 exact
+citation span and hash checks. On a second fictional corpus, the full
+service matched the labeled outcomes and source sets for all 16
+questions. A publication-recency comparator matched 5 questions, and
+each valid-time comparator matched 14. Both valid-time comparators
+committed to an answer on two questions about one unresolved policy
+dispute. The results describe designed cases and the monitored
+application stages.
 \keywords{enterprise policy retrieval, access control, valid time,
 conflict abstention, evidence provenance}
 \end{abstract}
@@ -51,7 +52,7 @@ one of them would conceal the uncertainty. The employee's access rights
 matter as well, because a policy administrator may see records that the
 employee is not permitted to read.
 
-Knowledge-management research documents organizational barriers to
+Knowledge management research documents organizational barriers to
 finding and using internal knowledge \citep{alavi}. Retrieval-augmented
 generation shows how retrieved documents can ground open-domain answers
 \citep{lewis}. Policy answering adds a decision about which sources are
@@ -101,7 +102,7 @@ tasks \citep{thakur}. Dense Passage Retrieval shows how learned
 representations retrieve passages that need not share surface terms with
 the question \citep{karpukhin}. Reciprocal rank fusion combines ranked
 lists without requiring scores on a common scale \citep{cormack}. These
-works motivate testing lexical and semantic passage recall
+studies motivate testing lexical and semantic passage recall
 independently. They do not prescribe whether a current policy may
 override another policy or authorize text retrieval for a given reader.
 
@@ -109,7 +110,7 @@ override another policy or authorize text retrieval for a given reader.
 support}\label{valid-time-contradiction-and-support}
 
 Time-aware models condition answers on changing facts \citep{dhingra}.
-HoH examines coexistence of stale and current information in
+HoH examines the coexistence of stale and current information in
 retrieval-augmented answering \citep{ouyang}. Re3 uses relevance and
 recency with conflict-aware temporal filtering \citep{cao}. TimelyRAG
 reranks passages by clause-level validity in evolving documents
@@ -167,13 +168,13 @@ optional local encoder, and how do warm request times differ?
 Model}\label{system-architecture-and-trust-model}
 
 Figure 1 shows the principal data flows. The browser sends requests to a
-FastAPI service. The service derives identity from an opaque session and
-checks tenant-local actions before processing protected endpoints. The
-authorization predicate for a document requires a same-tenant,
-unarchived record and a current direct user or role READ grant. Role
-membership determines allowed actions, and administrating a document
-workflow does not by itself authorize reading any document in the
-tenant.
+FastAPI service. The service derives the user's identity from an opaque
+session and checks tenant-local actions before processing protected
+endpoints. The authorization predicate for a document requires a
+same-tenant, unarchived record and a current direct user or role READ
+grant. Role membership determines allowed actions, and administering a
+document workflow does not by itself authorize reading any document in
+the tenant.
 
 \begin{figure}
 \centering
@@ -224,7 +225,7 @@ denoting the missing end value, the SQL eligibility predicate is
 
 The FTS5 query returns at most 20 eligible clause IDs for a match
 expression built from up to 32 distinct query tokens and fixed topic
-synonyms. A single hit opens the peer lookup independently of its rank.
+synonyms. Any eligible hit triggers peer lookup regardless of its rank.
 The service abstains if that lookup returns more than 100 rows, then
 filters the remaining peers by the expected predicate and unit. It
 orders them by the number of distinct query tokens found as substrings
@@ -317,8 +318,8 @@ These checks locate the reviewed span and detect text changes. They do
 not independently establish entailment. The saved-answer path verifies
 ownership, expiry, current READ on dependencies, policy and knowledge
 revisions, and extracted-text digests. A revision change can invalidate
-a saved result even when its cited text is unchanged. Figure 5 relates
-the records used for these checks.
+a saved result even when its cited text is unchanged. Figure 5 shows how
+the records used for these checks are linked.
 
 \begin{figure}
 \centering
