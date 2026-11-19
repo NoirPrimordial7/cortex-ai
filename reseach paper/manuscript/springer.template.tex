@@ -1,0 +1,26 @@
+% Layout based on Springer Nature's official proceedings samplepaper.tex.
+\documentclass[runningheads]{llncs}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext}
+\usepackage[varvw]{newtxmath}
+\usepackage{graphicx,booktabs,array,url}
+\usepackage{hyperref}
+\let\citep\cite
+\let\citet\cite
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\emergencystretch=1.5em
+\begin{document}
+\title{$title$}
+\titlerunning{Permission-Gated Temporal Retrieval for Enterprise Policy}
+\author{$for(author)$$author$$sep$ \and $endfor$}
+\authorrunning{A. Gholap et al.}
+\institute{$institute$\\$correspondence$}
+\maketitle
+\begin{abstract}
+$abstract$
+\keywords{$keywords$}
+\end{abstract}
+$body$
+\bibliographystyle{splncs04}
+\bibliography{../bibliography/references}
+\end{document}

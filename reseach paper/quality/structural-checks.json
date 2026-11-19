@@ -1,0 +1,123 @@
+{
+  "pdfs": {
+    "cortex-academic.pdf": {
+      "pages": 12,
+      "authors_present": true,
+      "figure_caption_numbers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "keywords_present": true,
+      "references_present": true,
+      "words_outside_page": [],
+      "text_words_by_page": [
+        413,
+        512,
+        529,
+        365,
+        185,
+        373,
+        391,
+        431,
+        532,
+        487,
+        394,
+        460
+      ]
+    },
+    "cortex-ieee.pdf": {
+      "pages": 6,
+      "authors_present": true,
+      "figure_caption_numbers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "keywords_present": true,
+      "references_present": true,
+      "words_outside_page": [],
+      "text_words_by_page": [
+        737,
+        833,
+        807,
+        817,
+        851,
+        961
+      ]
+    },
+    "Cortex-SMARTCOM-Word-proof.pdf": {
+      "pages": 14,
+      "authors_present": true,
+      "figure_caption_numbers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "keywords_present": true,
+      "references_present": true,
+      "words_outside_page": [],
+      "text_words_by_page": [
+        394,
+        421,
+        460,
+        288,
+        205,
+        162,
+        261,
+        311,
+        348,
+        457,
+        435,
+        371,
+        541,
+        78
+      ]
+    },
+    "cortex-springer.pdf": {
+      "pages": 13,
+      "authors_present": true,
+      "figure_caption_numbers": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "keywords_present": true,
+      "references_present": true,
+      "words_outside_page": [],
+      "text_words_by_page": [
+        383,
+        440,
+        482,
+        321,
+        387,
+        409,
+        154,
+        472,
+        376,
+        438,
+        438,
+        434,
+        431
+      ]
+    }
+  },
+  "Cortex-SMARTCOM-editable.docx": {
+    "zip_check": null,
+    "images": 6,
+    "editable_equations": 17,
+    "contains_vba": false
+  }
+}

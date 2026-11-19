@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200" viewBox="0 0 360 200" role="img"><title>Tenant-scoped relationships among access grants, policy source records and query evidence</title>
+<rect x="7" y="13" width="100" height="36" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
+<text x="57.0" y="28.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Users / roles</text>
+<text x="57.0" y="39.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Membership</text>
+<rect x="130" y="13" width="100" height="36" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
+<text x="180.0" y="28.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Document READ grants</text>
+<text x="180.0" y="39.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">User or role subject</text>
+<rect x="253" y="13" width="100" height="36" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
+<text x="303.0" y="28.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Documents</text>
+<text x="303.0" y="39.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Tenant-owned</text>
+<rect x="253" y="72" width="100" height="36" rx="4" fill="rgb(224,224,224)" stroke="#404040" stroke-width=".65"/>
+<text x="303.0" y="87.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Versions</text>
+<text x="303.0" y="98.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Metadata and seal</text>
+<rect x="130" y="72" width="100" height="36" rx="4" fill="rgb(224,224,224)" stroke="#404040" stroke-width=".65"/>
+<text x="180.0" y="87.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Clauses</text>
+<text x="180.0" y="98.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Offsets and valid time</text>
+<rect x="7" y="72" width="100" height="36" rx="4" fill="rgb(224,224,224)" stroke="#404040" stroke-width=".65"/>
+<text x="57.0" y="87.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Reviewed claims</text>
+<text x="57.0" y="98.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Predicate, unit, value</text>
+<rect x="7" y="135" width="100" height="36" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
+<text x="57.0" y="150.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Conflict evidence</text>
+<text x="57.0" y="161.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Clause and claim</text>
+<rect x="130" y="135" width="100" height="36" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
+<text x="180.0" y="150.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Citations</text>
+<text x="180.0" y="161.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Clause and source hash</text>
+<rect x="253" y="135" width="100" height="36" rx="4" fill="rgb(245,245,245)" stroke="#404040" stroke-width=".65"/>
+<text x="303.0" y="150.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="700">Saved queries</text>
+<text x="303.0" y="161.5" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.6" font-weight="400">Owner and revisions</text>
+<polyline points="107,31 130,31" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="125.45517125162557,28.915645987853946 130,31 125.45517125162557,33.08435401214605" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="230,31 253,31" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="248.4551712516256,28.915645987853946 253,31 248.4551712516256,33.08435401214605" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="303,49 303,72" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="305.08435401214604,67.45517125162557 303,72 300.91564598785396,67.45517125162557" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="253,90 230,90" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="234.5448287483744,92.08435401214605 230,90 234.5448287483744,87.91564598785395" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="130,90 107,90" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="111.54482874837443,92.08435401214605 107,90 111.54482874837443,87.91564598785395" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="57,108 57,135" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="59.08435401214605,130.4551712516256 57,135 54.91564598785395,130.4551712516256" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="180,108 180,135" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="182.08435401214606,130.4551712516256 180,135 177.91564598785394,130.4551712516256" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="253,153 230,153" fill="none" stroke="#262626" stroke-width=".7"/>
+<polyline points="234.5448287483744,155.08435401214606 230,153 234.5448287483744,150.91564598785394" fill="none" stroke="#262626" stroke-width=".7"/>
+<text x="180" y="190" fill="#141414" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.1" font-weight="400">Arrows show evidence or access links. Tenant joins are enforced in the API.</text>
+</svg>

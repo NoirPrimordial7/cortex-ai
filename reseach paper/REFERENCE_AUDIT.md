@@ -8,7 +8,7 @@ The BibTeX entries use primary publisher, conference, author preprint or standar
 | sandhu | ACM Workshop on Role-Based Access Control, 2000 | 10.1145/344287.344301 | [Primary record](https://doi.org/10.1145/344287.344301) |
 | buettcher | USENIX Conference on File and Storage Technologies (FAST), 2005 | No venue DOI included | [Primary record](https://www.usenix.org/conference/fast-05/security-model-full-text-file-system-search-multi-user-environments) |
 | lewis | Advances in Neural Information Processing Systems, 2020 | No venue DOI included | [Primary record](https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html) |
-| robertson | Foundations and Trends in Information Retrieval, 2009 | 10.1561/1500000019 | [Primary record](https://www.nowpublishers.com/article/Details/INR-019) |
+| robertson | Foundations and Trends in Information Retrieval, 2009 | 10.1561/1500000019 | [Primary record](https://www.nowpublishers.com/article/DownloadEBook/INR-019) |
 | karpukhin | Proceedings of EMNLP, 2020 | 10.18653/v1/2020.emnlp-main.550 | [Primary record](https://aclanthology.org/2020.emnlp-main.550/) |
 | cormack | Proceedings of SIGIR, 2009 | 10.1145/1571941.1572114 | [DOI](https://doi.org/10.1145/1571941.1572114), [author copy](https://cormack.uwaterloo.ca/cormack/cormacksigir09-rrf.pdf) |
 | thakur | NeurIPS Datasets and Benchmarks Track, 2021 | No venue DOI included | [Primary record](https://arxiv.org/abs/2104.08663) |
