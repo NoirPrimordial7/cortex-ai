@@ -1,8 +1,4 @@
-import type {
-  LeaveBalance,
-  LeaveEntryInput,
-  ReportingRelationship,
-} from "./types";
+import type { LeaveBalance, LeaveEntryInput } from "./types";
 
 let csrf = "";
 export function setCsrf(value: string) {
@@ -61,14 +57,4 @@ export function createLeaveEntry(entry: LeaveEntryInput) {
     method: "POST",
     body: JSON.stringify(entry),
   });
-}
-
-export function setEmployeeManager(userId: string, managerUserId: string) {
-  return api<ReportingRelationship>(
-    `/admin/users/${encodeURIComponent(userId)}/manager`,
-    {
-      method: "PUT",
-      body: JSON.stringify({ manager_user_id: managerUserId }),
-    },
-  );
 }

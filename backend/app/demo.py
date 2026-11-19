@@ -4,11 +4,11 @@ import json
 from .security import one
 
 PROFILES = {
-    "maya": ("Maya · Employee", "NORTHSTAR", "maya@example.test", "maya"),
-    "ravi": ("Ravi · Reviewer & admin", "NORTHSTAR", "ravi@example.test", "ravi"),
-    "isha": ("Isha · Auditor", "NORTHSTAR", "isha@example.test", "isha"),
-    "noor": ("Noor · Disabled account", "NORTHSTAR", "noor@example.test", "noor"),
-    "orbit": ("Orbit · Other tenant", "ORBIT", "orbit@example.test", "orbit-user"),
+    "maya": ("Arya · Employee", "NORTHSTAR", "arya@example.test", "maya"),
+    "ravi": ("Aditya · Admin", "NORTHSTAR", "aditya@example.test", "ravi"),
+    "isha": ("Ashwin · Auditor", "NORTHSTAR", "ashwin@example.test", "isha"),
+    "noor": ("Disabled account", "NORTHSTAR", "arya.disabled@example.test", "noor"),
+    "orbit": ("Yashraj · Other tenant", "ORBIT", "yashraj@example.test", "orbit-user"),
 }
 
 TEAM_NAMES = {
@@ -54,7 +54,8 @@ def accounts(conn, settings):
         entry = credentials.get(key, {})
         if not isinstance(entry, dict):
             continue
-        if entry.get("workspace") != workspace or entry.get("email") != email:
+        legacy_email = {"maya":"maya","ravi":"ravi","isha":"isha","noor":"noor","orbit":"orbit"}[key] + "@example.test"
+        if entry.get("workspace") != workspace or entry.get("email") not in {email, legacy_email}:
             continue
         password = entry.get("password")
         if not isinstance(password, str) or not 1 <= len(password) <= 200:

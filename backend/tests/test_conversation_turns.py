@@ -27,16 +27,16 @@ def test_conversation_ids_cannot_cross_tenants_or_users(system):
         assert result["citations"] == []
 
 
-def test_ledger_follow_up_is_reauthorized_after_relationship_change(system):
+def test_ledger_follow_up_is_reauthorized_after_employee_deactivation(system):
     manager = client_for(system, "ravi")
     thread = str(uuid4())
     first = ask(manager, "Leave balance for Arya", conversation_id=thread)
     assert first["source"] == "leave_ledger"
     follow = ask(manager, "How many days were left?", as_of="2026-08-30", conversation_id=thread)
     assert follow["follow_up"] and follow["balances"][0]["balance_days"] == 20
-    changed = manager.put(
-        "/api/v1/admin/users/maya/manager", json={"manager_user_id": "isha"}
-    )
+    revision = manager.get("/api/v1/admin/users").json()["policy_revision"]
+    changed = manager.patch("/api/v1/admin/users/maya", json={
+        "active": False, "role_ids": ["employee"], "expected_policy_revision": revision})
     assert changed.status_code == 200
     denied = ask(manager, "How many days were left?", conversation_id=thread)
     assert denied["status"] == "abstained" and "balances" not in denied

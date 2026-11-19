@@ -62,6 +62,12 @@ export function SourceDialog({
     document.body.style.overflow = "hidden";
     panel?.querySelector<HTMLButtonElement>("button")?.focus();
     const key = (e: KeyboardEvent) => {
+      // Only the top dialog owns keyboard handling when a review opens confirmation.
+      if (
+        panel &&
+        [...document.querySelectorAll("dialog[open]")].at(-1) !== panel
+      )
+        return;
       if (e.key === "Escape") {
         e.preventDefault();
         close.current();
@@ -135,13 +141,29 @@ export function State({
   return <>{children}</>;
 }
 export function Badge({ state }: { state: string }) {
-  const warning = ["Conflict", "Pending review", "Future effective"].includes(
-    state,
-  );
+  const warning = [
+    "Conflict",
+    "Pending review",
+    "Future effective",
+    "pending",
+    "submitted",
+    "cancellation pending",
+  ].includes(state);
   const neutral =
-    !["Approved · valid", "Evidence answer", "Active"].includes(state) &&
-    !warning;
-  const failed = ["Failed extraction", "Rejected"].includes(state);
+    ![
+      "Approved · valid",
+      "Evidence answer",
+      "Active",
+      "approved",
+      "resolved",
+      "Verified",
+    ].includes(state) && !warning;
+  const failed = [
+    "Failed extraction",
+    "Rejected",
+    "rejected",
+    "Integrity Mismatch",
+  ].includes(state);
   return (
     <span
       className={
@@ -195,9 +217,11 @@ export function versionState(v: {
   valid_from: string | null;
   valid_to: string | null;
   extraction_state?: string;
+  workflow_status?: string;
 }) {
   const date = localPolicyDate();
   if (v.extraction_state === "failed") return "Failed extraction";
+  if (v.workflow_status === "rejected") return "Rejected";
   if (v.approval_state === "rejected") return "Rejected";
   if (v.approval_state !== "approved") return "Pending review";
   if (v.valid_from && v.valid_from > date) return "Future effective";

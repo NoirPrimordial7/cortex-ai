@@ -141,7 +141,7 @@ export default function Library() {
                   >
                     <FileTextIcon size={25} />
                     <div>
-                      <span className="record-category">{d.category}</span>
+                      <span className="record-category">{d.heading_name || d.category}</span>
                       <h2>{d.title}</h2>
                       <p>
                         {d.version_count}{" "}

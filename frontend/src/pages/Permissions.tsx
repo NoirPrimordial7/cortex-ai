@@ -1,3 +1,4 @@
+import { useWorkflowActions, WorkflowPanel } from "../WorkflowActions";
 import { readableName } from "../labels";
 import { ResponsiveTable } from "../FormPrimitives";
 import { useEffect, useState, type FormEvent } from "react";
@@ -64,6 +65,7 @@ export default function Permissions() {
   const directory = useResource<Directory>("/admin/users"),
     documents = useResource<{ items: DocumentItem[] }>("/documents");
   const readOnly = Boolean(user?.read_only_demo);
+  const createActions = useWorkflowActions(directory.reload);
   useEffect(() => {
     setAcl(null);
     setSubjects([]);
@@ -188,6 +190,66 @@ export default function Permissions() {
         title="Permissions & people"
         description="Action roles control what people can do. Document grants control the evidence they can read."
       />
+      {createActions.feedback}
+      {!readOnly && (
+        <WorkflowPanel title="Create account">
+          <form
+            className="workflow-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              createActions.prepare(
+                "/admin/users",
+                Object.fromEntries(new FormData(e.currentTarget)),
+                "Create account",
+                "The new account receives one role. Policy access must be granted separately.",
+              );
+            }}
+          >
+            <fieldset disabled={createActions.busy}>
+              <div className="form-grid">
+                <label>
+                  Full name
+                  <input
+                    name="display_name"
+                    minLength={2}
+                    maxLength={100}
+                    required
+                  />
+                </label>
+                <label>
+                  Email
+                  <input name="email" type="email" required />
+                </label>
+                <label>
+                  Initial password
+                  <input
+                    name="password"
+                    type="password"
+                    minLength={12}
+                    maxLength={128}
+                    autoComplete="new-password"
+                    required
+                  />
+                </label>
+                <label>
+                  Account role
+                  <select name="role_id" required defaultValue="">
+                    <option value="" disabled>
+                      Choose role
+                    </option>
+                    {directory.data?.roles.map((r) => (
+                      <option key={r.id} value={r.id}>
+                        {readableName(r.name)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+              <button className="button primary">Review new account</button>
+            </fieldset>
+          </form>
+        </WorkflowPanel>
+      )}
       {readOnly && (
         <p className="read-only-note">
           View-only shared demo. People, roles and document grants cannot be
@@ -447,9 +509,10 @@ export default function Permissions() {
               {directory.data?.roles.map((r) => (
                 <label className="check-label" key={r.id}>
                   <input
-                    type="checkbox"
+                    type="radio"
+                    name="account-role"
                     checked={roles.includes(r.id)}
-                    onChange={() => setRoles(toggle(roles, r.id))}
+                    onChange={() => setRoles([r.id])}
                   />
                   {readableName(r.name)}
                 </label>

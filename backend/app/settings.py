@@ -19,6 +19,11 @@ class Settings:
     demo_accounts_enabled: bool = False
     shared_demo_read_only: bool = False
     embedding_model_dir: Path | None = None
+    signing_key_file: Path | None = None
+
+    @property
+    def signing_key_path(self):
+        return self.signing_key_file or self.data_dir / "integrity-signing-key.pem"
 
     @property
     def db_path(self):
@@ -43,4 +48,6 @@ class Settings:
             or (data_dir / "demo-autofill.enabled").is_file(),
             shared_demo_read_only=os.environ.get("CORTEX_SHARED_DEMO_READ_ONLY") == "1",
             embedding_model_dir=Path(model_dir).resolve() if model_dir else None,
+            signing_key_file=Path(os.environ["CORTEX_SIGNING_KEY_FILE"]).resolve()
+            if os.environ.get("CORTEX_SIGNING_KEY_FILE") else None,
         )

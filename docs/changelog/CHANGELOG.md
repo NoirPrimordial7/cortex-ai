@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-19 — Employee governance enhancement
+
+- Consolidated active roles to Employee, Auditor and Admin with safe identity/READ migration and updated fictional emails. Added independent policy submission/review/rejection, reusable headings and approval-gated distribution.
+- Added leave requests, exact-once ledger deductions and approved cancellation reversals, configuration/allocation UI and employee-only personal balances.
+- Added policy re-audit tickets, bounded evidence attachments, complete decision/rollback history and persistent in-app notifications.
+- Added immutable Ed25519 provenance and actual original/extracted hash verification, with explicit plaintext-at-rest and historical backfill limitations.
+- Preserved the existing evidence core, one-process transaction gate and accepted design. [Implementation, endpoints, schema, tests and remaining limits](../implementation/GOVERNANCE_TEST_REPORT.md); [ADRs 0014–0016](../decisions/README.md). Local feature branch only, no deployment.
+
 ## 2026-11-18 — Repository structure cleanup
 
 - Moved nine research reports and five source-register/stub files into planning/research, three tracking documents into implementation/tracking, and design-qa.md into design. [Every source and destination](../implementation/CLEANUP_CHANGES.json) is recorded.

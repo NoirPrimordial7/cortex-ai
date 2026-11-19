@@ -62,7 +62,21 @@ class Context:
 READ = """d.tenant_id=:tenant AND d.archived_at IS NULL AND EXISTS (
  SELECT 1 FROM document_acl a WHERE a.tenant_id=d.tenant_id AND a.document_id=d.id
  AND a.action='READ' AND (a.user_id=:user OR a.role_id IN
- (SELECT role_id FROM user_roles WHERE tenant_id=:tenant AND user_id=:user)))"""
+ (SELECT role_id FROM user_roles WHERE tenant_id=:tenant AND user_id=:user)))
+ AND (NOT EXISTS (SELECT 1 FROM user_roles ur JOIN roles r
+ ON r.tenant_id=ur.tenant_id AND r.id=ur.role_id
+ WHERE ur.tenant_id=:tenant AND ur.user_id=:user AND r.name='employee')
+ OR EXISTS (SELECT 1 FROM document_versions ev JOIN metadata_revisions em
+ ON em.tenant_id=ev.tenant_id AND em.id=ev.current_metadata_revision_id
+ WHERE ev.tenant_id=d.tenant_id AND ev.document_id=d.id
+ AND em.approval_state='approved' AND ev.extraction_state='indexed'))"""
+
+EMPLOYEE_VERSION = """(NOT EXISTS (SELECT 1 FROM user_roles ur JOIN roles r
+ ON r.tenant_id=ur.tenant_id AND r.id=ur.role_id
+ WHERE ur.tenant_id=:tenant AND ur.user_id=:user AND r.name='employee')
+ OR EXISTS (SELECT 1 FROM metadata_revisions em WHERE em.tenant_id=v.tenant_id
+ AND em.id=v.current_metadata_revision_id AND em.approval_state='approved'
+ AND v.extraction_state='indexed'))"""
 
 
 def readable(ctx, document_id):
@@ -86,7 +100,7 @@ def version(ctx, version_id):
         ctx.db,
         f"""SELECT v.*, d.title, d.category FROM document_versions v
       JOIN documents d ON d.id=v.document_id AND d.tenant_id=v.tenant_id
-      WHERE v.id=:id AND {READ}""",
+      WHERE v.id=:id AND {READ} AND {EMPLOYEE_VERSION}""",
         **ctx.parameters(),
         id=version_id,
     )

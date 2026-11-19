@@ -19,7 +19,7 @@ type DashboardData = {
 export default function Dashboard() {
   const { user } = useSession();
   const { data, error, loading } = useResource<DashboardData>("/dashboard");
-  const leave = useResource<LeaveBalance>(leavePaths.ownBalance(""));
+
   const canAsk = user?.actions.includes("query.execute");
   const recent =
     data?.recent
@@ -80,19 +80,36 @@ export default function Dashboard() {
           )}
         </aside>
       </section>
-      <section className="panel leave-panel" aria-labelledby="my-leave">
-        <h2 id="my-leave">My leave</h2>
-        <State error={leave.error} loading={leave.loading}>
-          {leave.data && (
-            <>
-              <p className="section-note">
-                Balance as of{" "}
-                <time dateTime={leave.data.as_of}>{leave.data.as_of}</time>
-              </p>
-              <LeaveBalances balances={leave.data.balances} />
-            </>
+      {user?.actions.includes("leave.apply") && <MyLeave />}
+      <section className="panel workflow-panel">
+        <h2>Your work</h2>
+        <div className="action-row">
+          <Link className="button" to="/leave">
+            Leave Management
+          </Link>
+          {user?.actions.includes("document.upload") && (
+            <Link className="button" to="/upload">
+              Create policy
+            </Link>
           )}
-        </State>
+          {user?.actions.includes("document.review") && (
+            <Link className="button" to="/policy-reviews">
+              Review policies
+            </Link>
+          )}
+          {user?.actions.some((a) =>
+            ["ticket.create", "ticket.review"].includes(a),
+          ) && (
+            <Link className="button" to="/tickets">
+              Policy re-audit tickets
+            </Link>
+          )}
+          {user?.actions.includes("user.manage") && (
+            <Link className="button" to="/permissions">
+              People &amp; access
+            </Link>
+          )}
+        </div>
       </section>
       <State error={error} loading={loading}>
         {data && (
@@ -196,5 +213,25 @@ export default function Dashboard() {
         )}
       </State>
     </>
+  );
+}
+
+function MyLeave() {
+  const leave = useResource<LeaveBalance>(leavePaths.ownBalance(""));
+  return (
+    <section className="panel leave-panel" aria-labelledby="my-leave">
+      <h2 id="my-leave">My leave</h2>
+      <State error={leave.error} loading={leave.loading}>
+        {leave.data && (
+          <>
+            <p className="section-note">
+              Balance as of{" "}
+              <time dateTime={leave.data.as_of}>{leave.data.as_of}</time>
+            </p>
+            <LeaveBalances balances={leave.data.balances} />
+          </>
+        )}
+      </State>
+    </section>
   );
 }

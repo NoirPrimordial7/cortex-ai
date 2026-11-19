@@ -14,7 +14,7 @@ const profiles = [
     key: "maya",
     label: "Maya · Employee",
     workspace: "NORTHSTAR",
-    email: "maya@example.test",
+    email: "arya@example.test",
     password: "fictional-test-only",
     active: true,
   },
@@ -22,7 +22,7 @@ const profiles = [
     key: "orbit",
     label: "Orbit · Other tenant",
     workspace: "ORBIT",
-    email: "orbit@example.test",
+    email: "yashraj@example.test",
     password: "other-test-only",
     active: true,
   },
@@ -64,7 +64,7 @@ test("picker fills all credentials and tenant, without bypassing normal sign-in"
   await userEvent.click(
     await screen.findByRole("button", { name: "Maya · Employee" }),
   );
-  expect(screen.getByLabelText("Email")).toHaveValue("maya@example.test");
+  expect(screen.getByLabelText("Email")).toHaveValue("arya@example.test");
   expect(screen.getByLabelText("Password")).toHaveValue("fictional-test-only");
   await userEvent.click(
     screen.getByRole("button", { name: "Orbit · Other tenant" }),
@@ -80,7 +80,7 @@ test("picker fills all credentials and tenant, without bypassing normal sign-in"
     signal: expect.any(AbortSignal),
     body: JSON.stringify({
       workspace: "ORBIT",
-      email: "orbit@example.test",
+      email: "yashraj@example.test",
       password: "other-test-only",
     }),
   });

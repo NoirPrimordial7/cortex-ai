@@ -9,6 +9,7 @@ from fastapi import HTTPException
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 from . import db as models
 from .embeddings import store_embedding
+from . import policy_workflow, integrity
 from .security import audit, document, execute, now, one, rows, uid, version
 
 
@@ -39,9 +40,12 @@ class Review(BaseModel):
     claim: Claim | None = None
     access_scope: str = Field(pattern="^uniform$")
     reason: str = Field(min_length=3, max_length=500)
+    heading_id: str | None = Field(default=None, max_length=100)
 
     @model_validator(mode="after")
     def consistency(self):
+        if len(self.reason.strip()) < 3:
+            raise ValueError("Provide a meaningful review reason")
         if self.open_ended != (self.valid_to is None):
             raise ValueError("Specify a finite end date or an explicitly open-ended interval")
         if self.valid_to and self.valid_to <= self.valid_from:
@@ -158,6 +162,10 @@ def ingest(
         )
     )
     audit(ctx, "document.upload", "failed" if failed else "success", did)
+    policy_workflow.create_draft(ctx, vid)
+    v = one(ctx.db, "SELECT * FROM document_versions WHERE tenant_id=:tenant AND id=:id",
+        **ctx.parameters(), id=vid)
+    integrity.seal(ctx.db, settings, v, ctx.user["id"], Path(filename.replace("\\", "/")).name)
     return {
         "document_id": did,
         "version_id": vid,
@@ -169,6 +177,7 @@ def ingest(
 def review(ctx, vid, body: Review, *, clause_id=None, encoder=None):
     ctx.require("document.review")
     v = version(ctx, vid)
+    workflow = policy_workflow.check_review(ctx, v, body)
     if v["extraction_state"] == "failed":
         raise HTTPException(409, "Extraction must succeed before review")
     if body.expected_metadata_revision != v["metadata_revision"]:
@@ -328,6 +337,7 @@ def review(ctx, vid, body: Review, *, clause_id=None, encoder=None):
         tenant=ctx.tenant,
     )
     audit(ctx, "document.review", target=v["document_id"])
+    policy_workflow.complete_review(ctx, workflow, body)
     return {
         "version_id": vid,
         "metadata_revision": revision,
@@ -337,14 +347,19 @@ def review(ctx, vid, body: Review, *, clause_id=None, encoder=None):
 
 
 def library(ctx, q=""):
-    from .security import READ
+    from .security import READ, EMPLOYEE_VERSION
 
     return rows(
         ctx.db,
         f"""SELECT d.id,d.title,d.category,COUNT(v.id) version_count,
+      (SELECT h.name FROM policy_workflows w JOIN document_versions hv
+       ON hv.tenant_id=w.tenant_id AND hv.id=w.version_id
+       JOIN policy_headings h ON h.tenant_id=w.tenant_id AND h.id=w.heading_id
+       WHERE hv.tenant_id=d.tenant_id AND hv.document_id=d.id AND w.status='approved'
+       ORDER BY hv.ingested_at DESC,hv.id DESC LIMIT 1) AS heading_name,
       MAX(v.ingested_at) latest_ingested_at FROM documents d
       LEFT JOIN document_versions v ON v.document_id=d.id AND v.tenant_id=d.tenant_id
-      WHERE {READ} AND lower(d.title) LIKE :q GROUP BY d.id ORDER BY d.title LIMIT 50""",
+      WHERE {READ} AND {EMPLOYEE_VERSION} AND lower(d.title) LIKE :q GROUP BY d.id ORDER BY d.title LIMIT 50""",
         **ctx.parameters(),
         q="%" + q.lower() + "%",
     )

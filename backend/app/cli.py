@@ -13,14 +13,10 @@ from .embeddings import MODEL, load_encoder, store_embedding
 from .security import Context, execute, now, one, rows, uid
 from .settings import ROOT, Settings
 from .demo import TEAM_NAMES
-
-ACTIONS = {
-    "employee": ["query.execute"],
-    "manager": ["query.execute", "leave.view_reports"],
-    "knowledge_manager": ["query.execute", "document.upload", "document.review"],
-    "admin": ["user.manage", "acl.manage", "authority.manage", "leave.manage"],
-    "auditor": ["audit.read"],
-}
+from .demo import PROFILES
+from .rbac import ACTIONS
+from . import policy_workflow
+from . import integrity
 
 
 def migrate(engine):
@@ -50,7 +46,7 @@ def seed(engine, settings):
         hasher = PasswordHasher()
         for key, tid, role_names, active in [
             ("maya", "NORTHSTAR", ["employee"], True),
-            ("ravi", "NORTHSTAR", ["employee", "knowledge_manager", "admin"], True),
+            ("ravi", "NORTHSTAR", ["admin"], True),
             ("isha", "NORTHSTAR", ["auditor"], True),
             ("noor", "NORTHSTAR", ["employee"], False),
             ("orbit", "ORBIT", ["employee"], True),
@@ -61,7 +57,7 @@ def seed(engine, settings):
                 models.users.insert().values(
                     id=userid,
                     tenant_id=tid,
-                    email_normalized=f"{key}@example.test",
+                    email_normalized=PROFILES[key][2],
                     display_name=TEAM_NAMES[key],
                     password_hash=hasher.hash(password),
                     active=active,
@@ -70,7 +66,7 @@ def seed(engine, settings):
             )
             credentials[key] = {
                 "workspace": tid,
-                "email": f"{key}@example.test",
+                "email": PROFILES[key][2],
                 "password": password,
             }
         existing_actions = set(conn.execute(models.permissions.select()).scalars())
@@ -88,7 +84,7 @@ def seed(engine, settings):
                     )
         for who, names in [
             ("maya", ["employee"]),
-            ("ravi", ["employee", "knowledge_manager", "admin", "manager"]),
+            ("ravi", ["admin"]),
             ("isha", ["auditor"]),
             ("noor", ["employee"]),
         ]:
@@ -105,7 +101,14 @@ def seed(engine, settings):
         )
         reviewer = one(conn, "SELECT * FROM users WHERE id='ravi'")
         ctx = Context(
-            conn, reviewer, [], set(a for values in ACTIONS.values() for a in values), uid()
+            conn, reviewer, [{"id": "admin", "name": "admin"}], set(ACTIONS["admin"]), uid()
+        )
+        audit_user = one(conn, "SELECT * FROM users WHERE id='isha'")
+        review_ctx = Context(
+            conn, audit_user, [{"id": "auditor", "name": "auditor"}], set(ACTIONS["auditor"]), uid()
+        )
+        heading = policy_workflow.create_heading(
+            review_ctx, policy_workflow.HeadingInput(name="Fictional policies")
         )
         leave = fixture["leave"]
         for leave_type in leave["types"]:
@@ -183,14 +186,19 @@ def seed(engine, settings):
                 access_scope="uniform",
                 reason="Fictional reviewed fixture",
             )
-            review(ctx, d["version_id"], body, clause_id=d["clause_id"], encoder=encoder)
+            if d["approval_state"] in ("approved", "rejected"):
+                policy_workflow.submit(
+                    ctx, d["version_id"], policy_workflow.Revision(expected_revision=0)
+                )
+                body.heading_id = heading["id"]
+                review(review_ctx, d["version_id"], body, clause_id=d["clause_id"], encoder=encoder)
             execute(
                 conn,
                 "DELETE FROM document_acl WHERE tenant_id=:tenant AND document_id=:did",
                 tenant="NORTHSTAR",
                 did=d["document_id"],
             )
-            for g in d["read_grants"]:
+            for g in [*d["read_grants"], {"role_id": "auditor"}]:
                 conn.execute(
                     models.document_acl.insert().values(
                         id=uid(),
@@ -238,13 +246,44 @@ def reindex_embeddings(engine, encoder):
         for clause in approved:
             source = clause["extracted_text"]
             if (
-                source[clause["start_char"]:clause["end_char"]] != clause["text"]
+                source[clause["start_char"] : clause["end_char"]] != clause["text"]
                 or hashlib.sha256(source.encode()).hexdigest() != clause["extracted_sha256"]
             ):
                 continue
             store_embedding(db, clause["tenant_id"], clause["id"], encoder, clause["text"])
             count += 1
     return count
+
+
+def synchronize_demo_credentials(engine, settings):
+    target = settings.data_dir / "credentials.json"
+    if not target.is_file():
+        return
+    try:
+        credentials = json.loads(target.read_text(encoding="utf8"))
+    except (ValueError, OSError):
+        return
+    if not isinstance(credentials, dict):
+        return
+    changed = False
+    with engine.connect() as db:
+        for key, (_, tenant, email, user_id) in PROFILES.items():
+            entry = credentials.get(key)
+            if not isinstance(entry, dict) or entry.get("workspace") != tenant:
+                continue
+            if one(
+                db,
+                "SELECT id FROM users WHERE tenant_id=:t AND id=:id AND email_normalized=:e",
+                t=tenant,
+                id=user_id,
+                e=email,
+            ):
+                changed |= entry.get("email") != email
+                entry["email"] = email
+    if changed:
+        temporary = target.with_suffix(".json.tmp")
+        temporary.write_text(json.dumps(credentials, indent=2), encoding="utf8")
+        temporary.replace(target)
 
 
 def main():
@@ -254,6 +293,9 @@ def main():
     settings = Settings.from_env()
     engine = models.engine_for(settings.db_path)
     migrate(engine)
+    with engine.begin() as conn:
+        integrity.backfill(conn, settings)
+    synchronize_demo_credentials(engine, settings)
     if args.command == "seed-demo":
         credentials = seed(engine, settings)
         target = settings.data_dir / "credentials.json"

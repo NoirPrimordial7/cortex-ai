@@ -28,7 +28,9 @@ const History = lazy(() => import("./pages/History"));
 const Conflicts = lazy(() => import("./pages/Conflicts"));
 const Audit = lazy(() => import("./pages/Audit"));
 const Permissions = lazy(() => import("./pages/Permissions"));
-const Team = lazy(() => import("./pages/Team"));
+const LeaveManagement = lazy(() => import("./pages/LeaveManagement"));
+const PolicyReviews = lazy(() => import("./pages/PolicyReviews"));
+const PolicyTickets = lazy(() => import("./pages/PolicyTickets"));
 const navigation = [
   { to: "/", label: "Overview", name: "Overview" },
   {
@@ -38,6 +40,18 @@ const navigation = [
     action: "query.execute",
   },
   { to: "/documents", label: "Library", name: "Document library" },
+  {
+    to: "/policy-reviews",
+    label: "Policy reviews",
+    name: "Policy reviews",
+    action: "document.review",
+  },
+  {
+    to: "/tickets",
+    label: "Re-audit tickets",
+    name: "Policy re-audit tickets",
+    actions: ["ticket.create", "ticket.review"],
+  },
   {
     to: "/conflicts",
     label: "Conflicts",
@@ -51,10 +65,9 @@ const navigation = [
     action: "query.execute",
   },
   {
-    to: "/team",
-    label: "Team",
-    name: "Team leave",
-    action: "leave.view_reports",
+    to: "/leave",
+    label: "Leave",
+    name: "Leave Management",
   },
   {
     to: "/permissions",
@@ -111,7 +124,9 @@ export default function App() {
       </div>
     );
   const allowed = navigation.filter(
-    (n) => !n.action || user.actions.includes(n.action),
+    (n) =>
+      (!n.action || user.actions.includes(n.action)) &&
+      (!n.actions || n.actions.some((a) => user.actions.includes(a))),
   );
   const links = allowed.map((n) => (
     <NavLink
@@ -253,13 +268,30 @@ export default function App() {
                   element={gate("user.manage", <Permissions />)}
                 />
                 <Route path="/audit" element={gate("audit.read", <Audit />)} />
+                <Route path="/leave" element={<LeaveManagement />} />
+                <Route
+                  path="/policy-reviews"
+                  element={gate("document.review", <PolicyReviews />)}
+                />
+                <Route
+                  path="/tickets"
+                  element={
+                    user.actions.some((a) =>
+                      ["ticket.create", "ticket.review"].includes(a),
+                    ) ? (
+                      <PolicyTickets />
+                    ) : (
+                      <Navigate to="/" replace />
+                    )
+                  }
+                />
                 <Route
                   path="/team"
-                  element={gate("leave.view_reports", <Team />)}
+                  element={<Navigate to="/leave" replace />}
                 />
                 <Route
                   path="/team/:userId"
-                  element={gate("leave.view_reports", <Team />)}
+                  element={<Navigate to="/leave" replace />}
                 />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>

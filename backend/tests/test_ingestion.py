@@ -89,7 +89,10 @@ def test_actual_upload_private_review_and_citation(system, kind):
     assert ask(reviewer, "What is my notice period?")["status"] == "abstained"
     source = reviewer.get(f"/api/v1/versions/{vid}/content").json()
     assert POLICY in source["text"]
-    checked = reviewer.post(f"/api/v1/versions/{vid}/review", json=review_body(source))
+    auditor = client_for(system, "isha")
+    assert reviewer.post(f"/api/v1/versions/{vid}/submit", json={"expected_revision": 0}).status_code == 200
+    heading = auditor.post("/api/v1/policy-headings", json={"name": "Notice policies"}).json()
+    checked = auditor.post(f"/api/v1/versions/{vid}/review", json={**review_body(source), "heading_id": heading["id"]})
     assert checked.status_code == 200, checked.text
     assert checked.json()["state"] == "indexed"
     q = ask(reviewer, "What is my notice period?")
@@ -117,7 +120,7 @@ def test_actual_upload_private_review_and_citation(system, kind):
         and detail["sha256"] == hashlib.sha256(raw).hexdigest()
     )
     assert (
-        reviewer.post(f"/api/v1/versions/{vid}/review", json=review_body(source)).status_code == 409
+        auditor.post(f"/api/v1/versions/{vid}/review", json=review_body(source)).status_code == 404
     )
 
 

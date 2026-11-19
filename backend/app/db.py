@@ -9,6 +9,7 @@ from sqlalchemy import (
     ForeignKeyConstraint,
     Index,
     Integer,
+    LargeBinary,
     MetaData,
     String,
     Table,
@@ -384,6 +385,119 @@ conversation_turns = model(
     UniqueConstraint("tenant_id", "query_id"),
     CheckConstraint("kind IN ('policy_fact','policy_search','employee_leave','unknown')"),
     Index("ix_conversation_turn_owner", "tenant_id", "user_id", "conversation_id", "created_at"),
+)
+
+
+policy_headings = model(
+    "policy_headings",
+    [col("name"), col("normalized_name"), col("created_by", nullable=True), col("created_at")],
+    same("users", "created_by"),
+    UniqueConstraint("tenant_id", "normalized_name"),
+)
+policy_workflows = model(
+    "policy_workflows",
+    [
+        col("version_id"), col("status"), col("submitted_by", nullable=True),
+        col("submitted_at", nullable=True), col("heading_id", nullable=True),
+        col("reviewer_id", nullable=True), col("review_comment", nullable=True),
+        col("reviewed_at", nullable=True), col("revision", Integer, default=0),
+    ],
+    same("document_versions", "version_id"),
+    same("users", "submitted_by"), same("users", "reviewer_id"),
+    same("policy_headings", "heading_id"),
+    UniqueConstraint("tenant_id", "version_id"),
+    CheckConstraint("status IN ('draft','submitted','approved','rejected')"),
+)
+policy_workflow_events = model(
+    "policy_workflow_events",
+    [
+        col("workflow_id"), col("actor_id", nullable=True), col("status"),
+        col("heading_id", nullable=True), col("comment"), col("created_at"),
+    ],
+    same("policy_workflows", "workflow_id"), same("users", "actor_id"),
+    same("policy_headings", "heading_id"),
+)
+leave_requests = model(
+    "leave_requests",
+    [
+        col("user_id"), col("leave_type_id"), col("start_date"), col("end_date"),
+        col("days", Integer), col("reason"), col("status"),
+        col("reviewer_id", nullable=True), col("review_comment", nullable=True),
+        col("created_at"), col("updated_at"), col("revision", Integer, default=0),
+    ],
+    same("users", "user_id"), same("users", "reviewer_id"), same("leave_types", "leave_type_id"),
+    CheckConstraint("days > 0 AND end_date >= start_date"),
+    CheckConstraint("status IN ('pending','approved','rejected','withdrawn','cancellation_pending','cancelled')"),
+)
+leave_request_events = model(
+    "leave_request_events",
+    [col("request_id"), col("actor_id"), col("status"), col("comment"), col("created_at")],
+    same("leave_requests", "request_id"), same("users", "actor_id"),
+)
+leave_request_transactions = model(
+    "leave_request_transactions",
+    [col("request_id"), col("ledger_entry_id"), col("operation")],
+    same("leave_requests", "request_id"), same("leave_ledger_entries", "ledger_entry_id"),
+    UniqueConstraint("tenant_id", "request_id", "operation"),
+    UniqueConstraint("tenant_id", "ledger_entry_id"),
+    CheckConstraint("operation IN ('deduction','restoration')"),
+)
+policy_tickets = model(
+    "policy_tickets",
+    [
+        col("user_id"), col("description"), col("status"),
+        col("selected_document_id", nullable=True), col("resolution", nullable=True),
+        col("created_at"), col("updated_at"), col("revision", Integer, default=0),
+    ],
+    same("users", "user_id"), same("documents", "selected_document_id"),
+    CheckConstraint("status IN ('pending','resolved')"),
+)
+ticket_policies = model(
+    "ticket_policies", [col("ticket_id"), col("document_id")],
+    same("policy_tickets", "ticket_id"), same("documents", "document_id"),
+    UniqueConstraint("tenant_id", "ticket_id", "document_id"),
+)
+ticket_decisions = model(
+    "ticket_decisions",
+    [
+        col("ticket_id"), col("actor_id"), col("operation"), col("document_id", nullable=True),
+        col("reason"), col("created_at"),
+    ],
+    same("policy_tickets", "ticket_id"), same("users", "actor_id"),
+    same("documents", "document_id"),
+    CheckConstraint("operation IN ('submitted','resolved','rollback')"),
+)
+ticket_attachments = model(
+    "ticket_attachments",
+    [
+        col("ticket_id"), col("uploaded_by"), col("filename"), col("content", LargeBinary),
+        col("sha256"), col("created_at"),
+    ],
+    same("policy_tickets", "ticket_id"), same("users", "uploaded_by"),
+)
+notifications = model(
+    "notifications",
+    [
+        col("user_id"), col("ticket_id"), col("message"), col("created_at"),
+        col("read_at", nullable=True),
+    ],
+    same("users", "user_id"), same("policy_tickets", "ticket_id"),
+)
+policy_integrity = model(
+    "policy_integrity",
+    [
+        col("version_id"), col("uploaded_by", nullable=True), col("original_filename"),
+        col("manifest_json"), col("signature"), col("public_key"), col("key_id"),
+        col("created_at"), col("origin"),
+    ],
+    same("document_versions", "version_id"), same("users", "uploaded_by"),
+    UniqueConstraint("tenant_id", "version_id"),
+)
+integrity_verifications = model(
+    "integrity_verifications",
+    [col("version_id"), col("actor_id"), col("status"), col("verified_at")],
+    same("document_versions", "version_id"), same("users", "actor_id"),
+    CheckConstraint("status IN ('Verified','Integrity Mismatch','Unable to Verify')"),
 )
 
 

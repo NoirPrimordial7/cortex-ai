@@ -2,7 +2,7 @@
 
 Conflict-aware, permission-safe enterprise knowledge intelligence for a final-year BTech Computer Science project.
 
-**2026-11-12 leave ledger:** Dashboard shows personal leave balances, and Team shows balances for current direct reports. The dated ledger shares the SQLite database with the policy system and has its own access rules. [API contracts](backend/README.md#implemented-api-summary) · [ADR 0008](docs/decisions/0008-leave-ledger-and-direct-reports.md).
+**2026-11-19 governance enhancement:** Employee, Auditor and Admin roles; independent policy approval and reusable headings; employee leave applications with audited deductions/cancellations; policy re-audit tickets and rollback notifications; Ed25519 Policy Integrity & Provenance. [Detailed implementation and test report](docs/implementation/GOVERNANCE_TEST_REPORT.md) · [run locally](docs/implementation/RUN_LOCAL.md). This feature branch has not been published to the shared demo.
 
 **2026-10-29 overhaul increment:** Prepared [CI for backend lint/tests, frontend tests/build and npm audit](docs/implementation/CI.md). [Source review and remaining work](docs/implementation/OVERHAUL_REVIEW.md) reconcile the overhaul brief with the existing code. Runtime behavior remains deterministic offline evidence mode.
 
@@ -22,7 +22,7 @@ Fictional profile buttons fill workspace, email and password before normal sign-
 
 [PowerShell startup and fictional sign-in instructions](docs/implementation/RUN_LOCAL.md) · [actual module status and limits](docs/implementation/IMPLEMENTATION_STATUS.md) · [test results](docs/implementation/TEST_RESULTS.md) · [backend API contracts](backend/README.md).
 
-Use workspace `NORTHSTAR` and employee `maya@example.test`; generated passwords exist only in ignored `local-data/credentials.json`. Reviewer/admin and auditor accounts demonstrate separate actions and document access. Do not publish that file or use real company data.
+Use workspace `NORTHSTAR` and employee `arya@example.test`; generated passwords exist only in ignored `local-data/credentials.json`. Admin `aditya@example.test` and Auditor `ashwin@example.test` demonstrate independent actions and explicit document access. Do not publish that file or use real company data.
 
 ## Genuine running UI
 
@@ -52,7 +52,9 @@ Backend and UI cover login/session, permitted knowledge dashboard, assistant/cit
 
 One backend application worker serializes protected requests and access changes with an exclusive process gate and one transaction. This is a conservative local deadline trade-off; synchronous parsing may hold the gate for30 seconds. [ADR0005](docs/decisions/0005-local-execution-boundary.md) explains changes from the approved design. [Earlier diagrams](docs/implementation/tracking/DIAGRAMS.md) remain planning references, not proof that optional AI is implemented.
 
-## Verified progress and remaining work
+## Earlier release verification and remaining work
+
+The following table is the earlier public-release checkpoint. Current local enhancement results are in the [governance report](docs/implementation/GOVERNANCE_TEST_REPORT.md).
 
 | Check | Result / scope |
 |---|---|
@@ -62,7 +64,7 @@ One backend application worker serializes protected requests and access changes 
 | Public release |62 API assertions, six unique browser scenarios,155 production captures across six widths/both themes,19 exact served asset hashes; [evidence](docs/design/pr8-production-release/README.md) |
 | Quality |Ruff/pip consistency pass; npm audit zero findings at this checkpoint; sampled contrast and reflow checked |
 
-No arbitrary40% completion or general accuracy claim is made. Future priorities are a held-out adjudicated corpus, richer clauses/lineage and permitted rejection explanations, parser isolation/denial audit/retention, and measured optional local semantic enhancements. Chunk ACLs, general amendments/exceptions, NLI, vector retrieval, LLM generation, agents, user creation and multiworker/durable production deployment remain unimplemented.
+No arbitrary40% completion or general accuracy claim is made. Future priorities are a held-out adjudicated corpus, richer clauses/lineage and permitted rejection explanations, parser isolation/denial audit/retention, and measured optional local semantic enhancements. Chunk ACLs, general amendments/exceptions, NLI, vector retrieval, LLM generation, agents, multiworker/durable production deployment remain unimplemented. User creation and governance workflows are covered in the November enhancement report above.
 
 ## Preserved research and approved planning
 

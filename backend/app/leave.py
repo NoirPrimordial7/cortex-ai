@@ -1,4 +1,4 @@
-"""Personal balances and current reporting access, independent of policy evidence."""
+"""Employee balances and centralized leave access, independent of policy evidence."""
 
 from datetime import date, datetime
 from typing import Literal
@@ -25,10 +25,6 @@ class ManagerUpdate(BaseModel):
     manager_user_id: str = Field(min_length=1, max_length=100)
 
 
-CURRENT_REPORT = """r.tenant_id=:tenant AND r.manager_user_id=:user
-    AND r.valid_from<=:today AND (r.valid_to IS NULL OR :today<r.valid_to)"""
-
-
 def today(ctx):
     tenant = one(
         ctx.db, "SELECT policy_timezone FROM tenants WHERE id=:tenant", **ctx.parameters()
@@ -39,7 +35,9 @@ def today(ctx):
 def employee(ctx, user_id):
     person = one(
         ctx.db,
-        "SELECT id,display_name FROM users WHERE tenant_id=:tenant AND id=:id AND active=1",
+        """SELECT u.id,u.display_name FROM users u WHERE u.tenant_id=:tenant AND u.id=:id AND u.active=1
+        AND EXISTS(SELECT 1 FROM user_roles ur JOIN roles r ON r.tenant_id=ur.tenant_id AND r.id=ur.role_id
+          WHERE ur.tenant_id=u.tenant_id AND ur.user_id=u.id AND r.name='employee')""",
         **ctx.parameters(),
         id=user_id,
     )
@@ -75,6 +73,7 @@ def record(ctx, action, user_id):
 
 
 def own_balance(ctx, as_of):
+    ctx.require("leave.apply")
     user_id = ctx.user["id"]
     result = balance(ctx, user_id, as_of or today(ctx))
     record(ctx, "leave.balance.read", user_id)
@@ -83,21 +82,9 @@ def own_balance(ctx, as_of):
 
 def employee_balance(ctx, user_id, as_of):
     current_date = today(ctx)
-    if "leave.view_reports" in ctx.actions:
-        ctx.require("leave.view_reports")
-        if not one(
-            ctx.db,
-            f"""SELECT r.id FROM reporting_relationships r WHERE {CURRENT_REPORT}
-            AND r.employee_user_id=:id""",
-            **ctx.parameters(),
-            today=current_date.isoformat(),
-            id=user_id,
-        ):
-            raise HTTPException(404, "Resource unavailable")
-    elif "leave.manage" in ctx.actions:
-        ctx.require("leave.manage")
-    else:
+    if "leave.read_all" not in ctx.actions:
         raise HTTPException(404, "Resource unavailable")
+    ctx.require("leave.read_all")
     person = employee(ctx, user_id)
     result = balance(ctx, user_id, as_of or current_date)
     record(ctx, "leave.employee_balance.read", user_id)
@@ -105,13 +92,14 @@ def employee_balance(ctx, user_id, as_of):
 
 
 def current_reports(ctx):
-    ctx.require("leave.view_reports")
+    ctx.require("leave.read_all")
     current_date = today(ctx)
     return current_date, rows(
         ctx.db,
-        f"""SELECT u.id,u.display_name FROM reporting_relationships r
-        JOIN users u ON u.tenant_id=r.tenant_id AND u.id=r.employee_user_id
-        WHERE {CURRENT_REPORT} AND u.active=1 ORDER BY u.display_name,u.id""",
+        """SELECT u.id,u.display_name FROM users u WHERE u.tenant_id=:tenant AND u.active=1
+        AND EXISTS(SELECT 1 FROM user_roles ur JOIN roles r ON r.tenant_id=ur.tenant_id AND r.id=ur.role_id
+          WHERE ur.tenant_id=u.tenant_id AND ur.user_id=u.id AND r.name='employee')
+        ORDER BY u.display_name,u.id""",
         **ctx.parameters(),
         today=current_date.isoformat(),
     )
@@ -139,6 +127,10 @@ def append_entry(ctx, body):
         raise HTTPException(404, "Resource unavailable")
     if body.days == 0:
         raise HTTPException(422, "Ledger entries must change the balance")
+    if body.entry_type in ("grant", "accrual", "carry_forward") and body.days < 0:
+        raise HTTPException(422, "Allocations must be positive")
+    if body.entry_type == "usage" and body.days > 0:
+        raise HTTPException(422, "Usage must deduct days")
     entry_id = uid()
     execute(
         ctx.db,
@@ -156,38 +148,4 @@ def append_entry(ctx, body):
 
 def set_manager(ctx, user_id, body):
     ctx.require("user.manage")
-    employee(ctx, user_id)
-    employee(ctx, body.manager_user_id)
-    if user_id == body.manager_user_id:
-        raise HTTPException(422, "An employee cannot manage their own account")
-    params = dict(**ctx.parameters(), employee=user_id, today=today(ctx).isoformat())
-    remaining = rows(
-        ctx.db,
-        """SELECT id,manager_user_id,valid_from FROM reporting_relationships
-        WHERE tenant_id=:tenant AND employee_user_id=:employee
-        AND (valid_to IS NULL OR :today<valid_to)""",
-        **params,
-    )
-    if len(remaining) > 1 or (remaining and remaining[0]["valid_from"] > params["today"]):
-        raise HTTPException(409, "Reporting intervals overlap this assignment")
-    current = remaining[0] if remaining else None
-    if not current or current["manager_user_id"] != body.manager_user_id:
-        if current:
-            execute(
-                ctx.db,
-                """UPDATE reporting_relationships SET valid_to=:today,open_ended=0
-                WHERE tenant_id=:tenant AND id=:id""",
-                **params,
-                id=current["id"],
-            )
-        current = {"id": uid(), "manager_user_id": body.manager_user_id, "valid_from": params["today"]}
-        execute(
-            ctx.db,
-            """INSERT INTO reporting_relationships
-            (id,tenant_id,employee_user_id,manager_user_id,valid_from,valid_to,open_ended)
-            VALUES (:id,:tenant,:employee,:manager_user_id,:valid_from,NULL,1)""",
-            **params,
-            **current,
-        )
-    record(ctx, "leave.manager.set", user_id)
-    return {**current, "employee_user_id": user_id, "valid_to": None, "open_ended": True}
+    raise HTTPException(410, "Reporting assignments are historical; use centralized Leave Management")

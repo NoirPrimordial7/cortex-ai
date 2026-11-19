@@ -7,20 +7,32 @@ from datetime import date, datetime, timedelta, timezone
 from typing import Annotated
 from argon2 import PasswordHasher
 from argon2.exceptions import VerificationError
-from fastapi import Depends, FastAPI, File, Form, HTTPException, Query, Request, Response, UploadFile
+from fastapi import (
+    Depends,
+    FastAPI,
+    File,
+    Form,
+    HTTPException,
+    Query,
+    Request,
+    Response,
+    UploadFile,
+)
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 from sqlalchemy.exc import IntegrityError
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from . import db as models
-from . import leave
+from . import leave, policy_workflow, leave_applications, tickets, integrity
+from .rbac import ACTIONS
 from .db import engine_for
 from .documents import Review, ingest, library, review
 from .embeddings import load_encoder
 from .pipeline import Question, answer, saved, suggestions
 from .security import (
     Context,
+    EMPLOYEE_VERSION,
     audit,
     csrf_for,
     digest,
@@ -63,8 +75,31 @@ class ACLUpdate(BaseModel):
 class UserUpdate(BaseModel):
     model_config = ConfigDict(extra="forbid")
     active: bool
-    role_ids: list[str] = Field(max_length=10)
+    role_ids: list[str] = Field(min_length=1, max_length=1)
     expected_policy_revision: int
+
+
+class UserCreate(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    display_name: str = Field(min_length=2, max_length=100)
+    email: str = Field(min_length=3, max_length=200, pattern=r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+    password: str = Field(min_length=12, max_length=200)
+    role_id: str = Field(min_length=1, max_length=100)
+
+    @field_validator("display_name")
+    @classmethod
+    def meaningful_name(cls, value):
+        value = value.strip()
+        if len(value) < 2:
+            raise ValueError("Provide a name of at least two characters")
+        return value
+
+
+class LeaveTypeCreate(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+    code: str = Field(pattern=r"^[a-z][a-z0-9_]{1,29}$")
+    name: str = Field(min_length=2, max_length=100)
+    annual_entitlement_days: int = Field(strict=True, ge=0, le=366)
 
 
 def create_app(settings=None):
@@ -169,7 +204,9 @@ def create_app(settings=None):
 
     async def bounded_upload_form(request: Request):
         allowed = (
-            {"file", "version_label"}
+            {"file"}
+            if request.url.path.endswith("/attachments")
+            else {"file", "version_label"}
             if request.url.path.endswith("/versions")
             else {"file", "title", "category"}
         )
@@ -233,8 +270,13 @@ def create_app(settings=None):
                 at=now(),
                 id=session["id"],
             )
+            active_actions = {a for r in role for a in ACTIONS.get(r["name"], [])}
             ctx = Context(
-                conn, user, role, {a["permission_key"] for a in actions}, request.state.request_id
+                conn,
+                user,
+                role,
+                {a["permission_key"] for a in actions} & active_actions,
+                request.state.request_id,
             )
             request.state.csrf = csrf_for(raw)
             request.state.session_id = session["id"]
@@ -246,7 +288,8 @@ def create_app(settings=None):
         return {
             "id": ctx.user["id"],
             "display_name": demo_display_name(ctx.user)
-            if settings.demo_accounts_enabled else ctx.user["display_name"],
+            if settings.demo_accounts_enabled
+            else ctx.user["display_name"],
             "workspace": ctx.tenant,
             "roles": ctx.roles,
             "actions": sorted(ctx.actions),
@@ -256,7 +299,8 @@ def create_app(settings=None):
     @app.get("/api/v1/health")
     def health():
         return {
-            "status": "ok", "mode": "offline_evidence",
+            "status": "ok",
+            "mode": "offline_evidence",
             "semantic_search": app.state.encoder is not None,
         }
 
@@ -355,14 +399,20 @@ def create_app(settings=None):
         d = document(ctx, did)
         versions = rows(
             ctx.db,
-            """SELECT v.id,v.version_label,v.sha256,v.ingested_at,v.published_at,
+            f"""SELECT v.id,v.version_label,v.sha256,v.ingested_at,v.published_at,
             v.extraction_state,v.metadata_revision,m.approval_state,m.valid_from,m.valid_to,m.population,
-            m.source_kind,m.topic FROM document_versions v LEFT JOIN metadata_revisions m
+            m.source_kind,m.topic,w.status AS workflow_status,w.revision AS workflow_revision,
+            h.name AS heading_name,h.id AS heading_id,w.review_comment
+            FROM document_versions v LEFT JOIN metadata_revisions m
             ON m.id=v.current_metadata_revision_id AND m.tenant_id=v.tenant_id
-            WHERE v.tenant_id=:tenant AND v.document_id=:did ORDER BY v.ingested_at DESC,v.version_label DESC""",
-            tenant=ctx.tenant,
+            LEFT JOIN policy_workflows w ON w.tenant_id=v.tenant_id AND w.version_id=v.id
+            LEFT JOIN policy_headings h ON h.tenant_id=w.tenant_id AND h.id=w.heading_id
+            WHERE v.tenant_id=:tenant AND v.document_id=:did AND {EMPLOYEE_VERSION}
+            ORDER BY v.ingested_at DESC,v.version_label DESC""",
+            **ctx.parameters(),
             did=did,
         )
+        audit(ctx, "document.detail.read", target=did)
         return {"document": d, "versions": versions}
 
     @app.post("/api/v1/documents", status_code=202, dependencies=[Depends(bounded_upload_form)])
@@ -387,6 +437,7 @@ def create_app(settings=None):
         file: Annotated[UploadFile, File()],
         version_label: Annotated[str, Form()],
     ):
+        ctx.require("document.upload")
         d = document(ctx, did)
         if not version_label.strip() or len(version_label) > 80:
             raise HTTPException(422, "Invalid version label")
@@ -451,6 +502,21 @@ def create_app(settings=None):
 
     @app.post("/api/v1/versions/{vid}/review")
     def review_version(vid: str, body: Review, ctx: Ctx):
+        ctx.require("document.review")
+        result = integrity.verify(ctx, settings, vid)
+        if result["status"] != "Verified":
+            # Keep the verification/audit observation while withholding publication.
+            # Raising here would roll that observation back with the request transaction.
+            return JSONResponse(
+                {
+                    "error": {
+                        "code": "409",
+                        "message": "Verify the original document before review",
+                        "request_id": ctx.request_id,
+                    }
+                },
+                status_code=409,
+            )
         return review(ctx, vid, body, encoder=app.state.encoder)
 
     @app.post("/api/v1/queries")
@@ -462,8 +528,9 @@ def create_app(settings=None):
         ctx: Ctx,
         q: Annotated[str, Query(max_length=160)] = "",
         as_of: date | None = None,
-        population: Annotated[str, Query(pattern="^(india_full_time|india_contractor)$")] =
-        "india_full_time",
+        population: Annotated[
+            str, Query(pattern="^(india_full_time|india_contractor)$")
+        ] = "india_full_time",
     ):
         question = Question(query="suggestions", as_of=as_of, population=population)
         return {"items": suggestions(ctx, q, question)}
@@ -535,6 +602,27 @@ def create_app(settings=None):
     def create_leave_entry(body: leave.LedgerEntry, ctx: Ctx):
         return leave.append_entry(ctx, body)
 
+    @app.get("/api/v1/leave/ledger")
+    def leave_ledger(ctx: Ctx, user_id: str | None = None):
+        target = user_id or ctx.user["id"]
+        if target == ctx.user["id"]:
+            ctx.require("leave.apply")
+        else:
+            ctx.require("leave.read_all")
+        leave.employee(ctx, target)
+        audit(ctx, "leave.ledger.read", target=target, target_type="user")
+        return {
+            "items": rows(
+                ctx.db,
+                """SELECT e.id,e.entry_type,e.days,e.effective_date,e.reference,
+            e.created_at,t.name AS leave_type_name FROM leave_ledger_entries e JOIN leave_types t
+            ON t.tenant_id=e.tenant_id AND t.id=e.leave_type_id
+            WHERE e.tenant_id=:tenant AND e.user_id=:id ORDER BY e.created_at,e.id""",
+                **ctx.parameters(),
+                id=target,
+            )
+        }
+
     @app.put("/api/v1/admin/users/{user_id}/manager")
     def change_manager(user_id: str, body: leave.ManagerUpdate, ctx: Ctx):
         return leave.set_manager(ctx, user_id, body)
@@ -542,6 +630,7 @@ def create_app(settings=None):
     @app.get("/api/v1/admin/users")
     def users(ctx: Ctx):
         ctx.require("user.manage")
+        audit(ctx, "user.directory.read")
         people = rows(
             ctx.db,
             "SELECT id,tenant_id,display_name,email_normalized,active FROM users WHERE tenant_id=:tenant ORDER BY display_name",
@@ -634,6 +723,7 @@ def create_app(settings=None):
     def replace_acl(did: str, body: ACLUpdate, ctx: Ctx):
         ctx.require("acl.manage")
         document(ctx, did)
+        policy_workflow.require_distributable(ctx, did)
         if body.expected_policy_revision != revisions(ctx)["policy_revision"]:
             raise HTTPException(409, "Permissions changed; reload")
         own_roles = {r["id"] for r in ctx.roles}
@@ -686,6 +776,191 @@ def create_app(settings=None):
                 tenant=ctx.tenant,
             )
         }
+
+    @app.post("/api/v1/admin/users", status_code=201)
+    def create_user(body: UserCreate, ctx: Ctx):
+        ctx.require("user.manage")
+        role = one(
+            ctx.db,
+            "SELECT id,name FROM roles WHERE tenant_id=:tenant AND id=:id",
+            **ctx.parameters(),
+            id=body.role_id,
+        )
+        if not role or role["name"] not in ACTIONS:
+            raise HTTPException(422, "Choose a supported role")
+        ident = uid()
+        ctx.db.execute(
+            models.users.insert().values(
+                id=ident,
+                tenant_id=ctx.tenant,
+                display_name=body.display_name.strip(),
+                email_normalized=body.email.strip().lower(),
+                password_hash=hasher.hash(body.password),
+                active=True,
+                created_at=now(),
+            )
+        )
+        ctx.db.execute(
+            models.user_roles.insert().values(
+                id=uid(), tenant_id=ctx.tenant, user_id=ident, role_id=role["id"]
+            )
+        )
+        audit(ctx, "user.create", target=ident, target_type="user")
+        return {"id": ident, "display_name": body.display_name.strip(), "role": role["name"]}
+
+    @app.get("/api/v1/policy-headings")
+    def headings(ctx: Ctx):
+        return policy_workflow.heading_list(ctx)
+
+    @app.post("/api/v1/policy-headings", status_code=201)
+    def add_heading(body: policy_workflow.HeadingInput, ctx: Ctx):
+        return policy_workflow.create_heading(ctx, body)
+
+    @app.get("/api/v1/policy-reviews")
+    def review_queue(ctx: Ctx):
+        return policy_workflow.queue(ctx)
+
+    @app.post("/api/v1/versions/{vid}/reject")
+    def reject_policy(vid: str, body: policy_workflow.Rejection, ctx: Ctx):
+        return policy_workflow.reject(ctx, vid, body)
+
+    @app.post("/api/v1/versions/{vid}/submit")
+    def submit_policy(vid: str, body: policy_workflow.Revision, ctx: Ctx):
+        return policy_workflow.submit(ctx, vid, body)
+
+    @app.get("/api/v1/versions/{vid}/workflow")
+    def policy_status(vid: str, ctx: Ctx):
+        version(ctx, vid)
+        result = policy_workflow.workflow(ctx, vid)
+        result["history"] = rows(
+            ctx.db,
+            """SELECT e.status,e.comment,e.created_at,u.display_name AS actor FROM policy_workflow_events e
+            LEFT JOIN users u ON u.tenant_id=e.tenant_id AND u.id=e.actor_id
+            WHERE e.tenant_id=:tenant AND e.workflow_id=:id ORDER BY e.created_at,e.id""",
+            **ctx.parameters(),
+            id=result["id"],
+        )
+        audit(ctx, "policy.workflow.read", target=vid, target_type="version")
+        return result
+
+    @app.get("/api/v1/versions/{vid}/integrity")
+    def verify_policy(vid: str, ctx: Ctx):
+        return integrity.verify(ctx, settings, vid)
+
+    @app.get("/api/v1/leave/types")
+    def leave_types(ctx: Ctx):
+        if not ({"leave.apply", "leave.read_all"} & ctx.actions):
+            raise HTTPException(403, "Operation not permitted")
+        return {
+            "items": rows(
+                ctx.db,
+                "SELECT id,code,name,annual_entitlement_days,active FROM leave_types WHERE tenant_id=:tenant ORDER BY name",
+                **ctx.parameters(),
+            )
+        }
+
+    @app.post("/api/v1/leave/types", status_code=201)
+    def create_leave_type(body: LeaveTypeCreate, ctx: Ctx):
+        ctx.require("leave.manage")
+        ident = uid()
+        ctx.db.execute(
+            models.leave_types.insert().values(
+                id=ident, tenant_id=ctx.tenant, active=True, **body.model_dump()
+            )
+        )
+        audit(ctx, "leave.type.create", target=ident, target_type="leave_type")
+        return {"id": ident, **body.model_dump()}
+
+    @app.get("/api/v1/leave/requests")
+    def leave_requests(ctx: Ctx):
+        return leave_applications.listing(ctx)
+
+    @app.get("/api/v1/leave/requests/{ident}")
+    def leave_request(ident: str, ctx: Ctx):
+        return leave_applications.detail(ctx, ident)
+
+    @app.post("/api/v1/leave/requests", status_code=201)
+    def apply_leave(body: leave_applications.Application, ctx: Ctx):
+        return leave_applications.apply(ctx, body)
+
+    @app.post("/api/v1/leave/requests/{ident}/withdraw")
+    def withdraw_leave(ident: str, body: leave_applications.Change, ctx: Ctx):
+        return leave_applications.withdraw(ctx, ident, body)
+
+    @app.post("/api/v1/leave/requests/{ident}/decision")
+    def decide_leave(ident: str, body: leave_applications.Decision, ctx: Ctx):
+        return leave_applications.decide(ctx, ident, body)
+
+    @app.get("/api/v1/policy-tickets")
+    def ticket_list(ctx: Ctx):
+        return tickets.listing(ctx)
+
+    @app.post("/api/v1/policy-tickets", status_code=201)
+    def create_ticket(body: tickets.TicketInput, ctx: Ctx):
+        return tickets.create(ctx, body)
+
+    @app.get("/api/v1/policy-tickets/{ident}")
+    def ticket_detail(ident: str, ctx: Ctx):
+        return tickets.detail(ctx, ident)
+
+    @app.post("/api/v1/policy-tickets/{ident}/resolve")
+    def resolve_ticket(ident: str, body: tickets.Resolution, ctx: Ctx):
+        return tickets.resolve(ctx, ident, body)
+
+    @app.post("/api/v1/policy-tickets/{ident}/rollback")
+    def rollback_ticket(ident: str, body: tickets.Rollback, ctx: Ctx):
+        return tickets.rollback(ctx, ident, body)
+
+    @app.post(
+        "/api/v1/policy-tickets/{ident}/attachments",
+        status_code=201,
+        dependencies=[Depends(bounded_upload_form)],
+    )
+    def attach_ticket(ident: str, file: Annotated[UploadFile, File()], ctx: Ctx):
+        return tickets.attach(ctx, ident, file.filename or "", file.file.read(2 * 1024 * 1024 + 1))
+
+    @app.get("/api/v1/policy-tickets/{ident}/attachments/{aid}")
+    def ticket_attachment(ident: str, aid: str, ctx: Ctx):
+        tickets.ticket(ctx, ident)
+        record = one(
+            ctx.db,
+            "SELECT content FROM ticket_attachments WHERE tenant_id=:tenant AND ticket_id=:t AND id=:id",
+            **ctx.parameters(),
+            t=ident,
+            id=aid,
+        )
+        if not record:
+            raise HTTPException(404, "Resource unavailable")
+        audit(ctx, "ticket.attachment.read", target=ident, target_type="ticket")
+        return Response(
+            record["content"],
+            media_type="application/octet-stream",
+            headers={"Content-Disposition": 'attachment; filename="ticket-evidence"'},
+        )
+
+    @app.get("/api/v1/notifications")
+    def notifications(ctx: Ctx):
+        return {
+            "items": rows(
+                ctx.db,
+                "SELECT id,ticket_id,message,created_at,read_at FROM notifications WHERE tenant_id=:tenant AND user_id=:user ORDER BY created_at DESC",
+                **ctx.parameters(),
+            )
+        }
+
+    @app.post("/api/v1/notifications/{ident}/read")
+    def mark_notification(ident: str, ctx: Ctx):
+        result = execute(
+            ctx.db,
+            "UPDATE notifications SET read_at=COALESCE(read_at,:at) WHERE tenant_id=:tenant AND user_id=:user AND id=:id",
+            **ctx.parameters(),
+            id=ident,
+            at=now(),
+        )
+        if not result.rowcount:
+            raise HTTPException(404, "Resource unavailable")
+        audit(ctx, "notification.read", target=ident, target_type="notification")
+        return {"status": "read"}
 
     build = ROOT / "frontend" / "dist"
 

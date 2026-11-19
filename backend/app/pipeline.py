@@ -224,7 +224,7 @@ def suggestions(ctx, partial, question):
     }
     for item in titles:
         options.setdefault(item["title"], (1, None))
-    if "leave.view_reports" in ctx.actions:
+    if "leave.read_all" in ctx.actions:
         _, people = leave.current_reports(ctx)
         for person in people:
             name = person["display_name"]
@@ -358,6 +358,8 @@ def personal_leave(ctx, question, as_of, target=None):
             else ctx.user["id"] if SELF.search(question.query) else None
         )
     if target is None or target is AMBIGUOUS:
+        return None
+    if target == ctx.user["id"] and "leave.apply" not in ctx.actions:
         return None
     try:
         result = (

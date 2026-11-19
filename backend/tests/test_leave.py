@@ -35,7 +35,7 @@ def test_own_balance_is_available_without_query_permission(system, leave_date):
     assert employee_balance(maya, "ravi").status_code == 404
     assert employee_balance(maya, "missing").status_code == 404
     assert maya.get("/api/v1/leave/team").status_code == 403
-    assert balance_days(client_for(system, "isha").get("/api/v1/leave/balance")) == 0
+    assert client_for(system, "isha").get("/api/v1/leave/balance").status_code == 403
 
 
 def test_current_report_access_is_scoped_even_with_admin_role(system, leave_date):
@@ -50,8 +50,8 @@ def test_current_report_access_is_scoped_even_with_admin_role(system, leave_date
     app, _ = system
     with app.state.engine.begin() as db:
         execute(db, "DELETE FROM user_roles WHERE user_id='ravi' AND role_id='manager'")
-    assert ravi.get("/api/v1/leave/team").status_code == 403
-    assert balance_days(employee_balance(ravi, "isha")) == 0
+    assert ravi.get("/api/v1/leave/team").status_code == 200
+    assert employee_balance(ravi, "isha").status_code == 404
     assert employee_balance(ravi, "orbit-user").status_code == 404
 
 
@@ -101,33 +101,17 @@ def test_append_is_audited_isolated_and_excluded_from_evidence(system, leave_dat
                 execute(db, sql, id=created.json()["entry_id"])
 
 
-def test_relationship_switch_is_half_open_and_access_uses_today(system, leave_date, monkeypatch):
-    ravi = client_for(system, "ravi")
-    isha = client_for(system, "isha")
+def test_historical_relationships_are_preserved_and_retired_endpoint_is_explicit(system, leave_date):
+    admin, auditor = client_for(system, "ravi"), client_for(system, "isha")
     app, _ = system
-    with app.state.engine.begin() as db:
-        execute(
-            db,
-            """INSERT INTO user_roles (id,tenant_id,user_id,role_id)
-            VALUES ('isha-manager','NORTHSTAR','isha','manager')""",
-        )
+    with app.state.engine.connect() as db:
+        before = rows(db, "SELECT * FROM reporting_relationships")
     endpoint = "/api/v1/admin/users/maya/manager"
-    assert employee_balance(isha, "maya").status_code == 404
-    assert isha.put(endpoint, json={"manager_user_id": "isha"}).status_code == 403
-    assert ravi.put(endpoint, json={"manager_user_id": "orbit-user"}).status_code == 404
-    assert ravi.put(endpoint, json={"manager_user_id": "maya"}).status_code == 422
-    changed = ravi.put(endpoint, json={"manager_user_id": "isha"})
-    assert changed.status_code == 200
-    assert changed.json()["valid_from"] == "2026-11-12"
-    assert ravi.put(endpoint, json={"manager_user_id": "isha"}).json() == changed.json()
-    assert employee_balance(ravi, "maya", as_of="2026-11-11").status_code == 404
-    assert ravi.get("/api/v1/leave/team").json()["items"] == []
-    assert balance_days(employee_balance(isha, "maya", as_of="2026-11-11")) == 17
-
-    monkeypatch.setattr(leave, "today", lambda ctx: date(2026, 11, 11))
-    assert employee_balance(isha, "maya", as_of="2026-11-12").status_code == 404
-    assert balance_days(employee_balance(ravi, "maya")) == 17
-    assert ravi.put(endpoint, json={"manager_user_id": "isha"}).status_code == 409
+    assert auditor.put(endpoint, json={"manager_user_id": "isha"}).status_code == 403
+    assert admin.put(endpoint, json={"manager_user_id": "isha"}).status_code == 410
+    assert balance_days(employee_balance(auditor, "maya")) == 17
+    with app.state.engine.connect() as db:
+        assert rows(db, "SELECT * FROM reporting_relationships") == before
 
 
 def test_default_date_uses_tenant_timezone_across_utc_midnight(system, monkeypatch):
@@ -158,10 +142,9 @@ def test_migration_adds_permissions_without_seeding_an_existing_database(tmp_pat
             """SELECT r.name,p.permission_key FROM roles r JOIN role_permissions p
               ON p.tenant_id=r.tenant_id AND p.role_id=r.id WHERE r.tenant_id='EXISTING'""",
         )
+        from app.rbac import ACTIONS
         assert {(r["name"], r["permission_key"]) for r in grants} == {
-            ("admin", "leave.manage"),
-            ("manager", "query.execute"),
-            ("manager", "leave.view_reports"),
+            (role, action) for role, actions in ACTIONS.items() for action in actions
         }
         assert rows(db, "SELECT id FROM leave_types") == []
         assert rows(db, "SELECT id FROM reporting_relationships") == []

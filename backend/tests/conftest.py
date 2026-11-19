@@ -25,6 +25,7 @@ def system(tmp_path, seeded):
     settings = Settings(tmp_path)
     shutil.copy2(base.db_path, settings.db_path)
     shutil.copytree(base.data_dir / "uploads", settings.data_dir / "uploads")
+    shutil.copy2(base.signing_key_path, settings.signing_key_path)
     app = create_app(settings)
     yield app, credentials
     app.state.engine.dispose()

@@ -1,0 +1,298 @@
+{
+  "date": "2026-11-19",
+  "branch": "codex/employee-governance",
+  "files": [
+    {
+      "status": "modified",
+      "path": "README.md"
+    },
+    {
+      "status": "modified",
+      "path": "backend/README.md"
+    },
+    {
+      "status": "modified",
+      "path": "backend/app/cli.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/app/db.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/app/demo.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/app/documents.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/app/hosted.py"
+    },
+    {
+      "status": "added",
+      "path": "backend/app/integrity.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/app/leave.py"
+    },
+    {
+      "status": "added",
+      "path": "backend/app/leave_applications.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/app/main.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/app/pipeline.py"
+    },
+    {
+      "status": "added",
+      "path": "backend/app/policy_workflow.py"
+    },
+    {
+      "status": "added",
+      "path": "backend/app/rbac.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/app/security.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/app/settings.py"
+    },
+    {
+      "status": "added",
+      "path": "backend/app/tickets.py"
+    },
+    {
+      "status": "added",
+      "path": "backend/migrations/versions/0005_governance_roles.py"
+    },
+    {
+      "status": "added",
+      "path": "backend/migrations/versions/0006_leave_applications.py"
+    },
+    {
+      "status": "added",
+      "path": "backend/migrations/versions/0007_policy_tickets.py"
+    },
+    {
+      "status": "added",
+      "path": "backend/migrations/versions/0008_policy_integrity.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/pyproject.toml"
+    },
+    {
+      "status": "modified",
+      "path": "backend/requirements.lock"
+    },
+    {
+      "status": "modified",
+      "path": "backend/tests/conftest.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/tests/test_conversation_turns.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/tests/test_embeddings.py"
+    },
+    {
+      "status": "added",
+      "path": "backend/tests/test_governance.py"
+    },
+    {
+      "status": "added",
+      "path": "backend/tests/test_governance_migration.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/tests/test_ingestion.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/tests/test_leave.py"
+    },
+    {
+      "status": "modified",
+      "path": "backend/tests/test_security.py"
+    },
+    {
+      "status": "modified",
+      "path": "docs/changelog/CHANGELOG.md"
+    },
+    {
+      "status": "added",
+      "path": "docs/decisions/0014-three-role-governance.md"
+    },
+    {
+      "status": "added",
+      "path": "docs/decisions/0015-leave-and-ticket-history.md"
+    },
+    {
+      "status": "added",
+      "path": "docs/decisions/0016-signed-policy-provenance.md"
+    },
+    {
+      "status": "modified",
+      "path": "docs/decisions/README.md"
+    },
+    {
+      "status": "added",
+      "path": "docs/design/governance-enhancement/README.md"
+    },
+    {
+      "status": "added",
+      "path": "docs/design/governance-enhancement/admin-people-light-320.png"
+    },
+    {
+      "status": "added",
+      "path": "docs/design/governance-enhancement/auditor-leave-light-320.png"
+    },
+    {
+      "status": "added",
+      "path": "docs/design/governance-enhancement/auditor-tickets-dark-390.png"
+    },
+    {
+      "status": "added",
+      "path": "docs/design/governance-enhancement/employee-leave-dark-390.png"
+    },
+    {
+      "status": "added",
+      "path": "docs/design/governance-enhancement/policy-provenance-desktop.png"
+    },
+    {
+      "status": "added",
+      "path": "docs/design/governance-enhancement/ticket-rollback-desktop.png"
+    },
+    {
+      "status": "added",
+      "path": "docs/implementation/GOVERNANCE_CHANGES.json"
+    },
+    {
+      "status": "added",
+      "path": "docs/implementation/GOVERNANCE_TEST_REPORT.md"
+    },
+    {
+      "status": "modified",
+      "path": "docs/implementation/IMPLEMENTATION_STATUS.md"
+    },
+    {
+      "status": "modified",
+      "path": "docs/implementation/RUN_LOCAL.md"
+    },
+    {
+      "status": "modified",
+      "path": "docs/implementation/TEST_RESULTS.md"
+    },
+    {
+      "status": "modified",
+      "path": "docs/implementation/fixture-results.json"
+    },
+    {
+      "status": "modified",
+      "path": "docs/logs/DEVELOPMENT_LOG.md"
+    },
+    {
+      "status": "modified",
+      "path": "docs/planning/demo/fixture-spec.json"
+    },
+    {
+      "status": "added",
+      "path": "frontend/e2e/governance-local.spec.ts"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/e2e/governance.spec.ts"
+    },
+    {
+      "status": "added",
+      "path": "frontend/playwright.governance.config.ts"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/App.tsx"
+    },
+    {
+      "status": "added",
+      "path": "frontend/src/PolicyProvenance.tsx"
+    },
+    {
+      "status": "added",
+      "path": "frontend/src/WorkflowActions.tsx"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/api.ts"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/components.tsx"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/pages/Dashboard.tsx"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/pages/DocumentDetail.tsx"
+    },
+    {
+      "status": "added",
+      "path": "frontend/src/pages/LeaveManagement.test.tsx"
+    },
+    {
+      "status": "added",
+      "path": "frontend/src/pages/LeaveManagement.tsx"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/pages/Library.tsx"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/pages/Login.test.tsx"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/pages/Permissions.test.tsx"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/pages/Permissions.tsx"
+    },
+    {
+      "status": "added",
+      "path": "frontend/src/pages/PolicyReviews.tsx"
+    },
+    {
+      "status": "added",
+      "path": "frontend/src/pages/PolicyTickets.tsx"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/pages/Team.test.tsx"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/pages/Team.tsx"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/styles.css"
+    },
+    {
+      "status": "modified",
+      "path": "frontend/src/types.ts"
+    }
+  ]
+}

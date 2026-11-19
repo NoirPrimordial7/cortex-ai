@@ -14,14 +14,14 @@ const directory = {
     {
       id: "maya",
       display_name: "Maya Shah",
-      email_normalized: "maya@example.test",
+      email_normalized: "arya@example.test",
       active: true,
       role_ids: ["employee"],
     },
     {
       id: "ravi",
       display_name: "Ravi Mehta",
-      email_normalized: "ravi@example.test",
+      email_normalized: "aditya@example.test",
       active: true,
       role_ids: ["admin"],
     },

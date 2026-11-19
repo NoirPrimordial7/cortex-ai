@@ -2,7 +2,7 @@ import { test, expect, type Page } from "@playwright/test";
 const person = {
   id: "maya",
   display_name: "Maya Shah",
-  email_normalized: "maya@example.test",
+  email_normalized: "arya@example.test",
   active: true,
   role_ids: ["employee"],
 };

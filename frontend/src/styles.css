@@ -3658,7 +3658,8 @@ strong {
   border-radius: 4px;
 }
 
-.fb-ledger, .fb-related {
+.fb-ledger,
+.fb-related {
   margin-block: 16px;
   padding: 16px;
   border: 1px solid var(--line);
@@ -3693,4 +3694,70 @@ strong {
   background: var(--tint);
   color: inherit;
   font-weight: 700;
+}
+
+/* Governance forms reuse the evidence desk controls and responsive rhythm. */
+.workflow-panel {
+  margin-block: 24px;
+  min-width: 0;
+}
+.workflow-form {
+  margin-block: 16px;
+}
+.workflow-form fieldset {
+  min-width: 0;
+  display: grid;
+  gap: 16px;
+  border: 0;
+  padding: 0;
+}
+.workflow-form label {
+  display: grid;
+  gap: 6px;
+}
+.workflow-form .check-label {
+  display: flex;
+  align-items: center;
+}
+.workflow-panel .collection-row {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.workflow-panel .collection-row > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.workflow-panel textarea {
+  width: 100%;
+  min-height: 96px;
+}
+.provenance-list {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(0, 2fr);
+  gap: 8px 16px;
+}
+.provenance-list dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.provenance-list code,
+.hash-value {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.success-message {
+  color: var(--ink);
+  padding: 12px;
+  background: var(--tint);
+  border-left: 3px solid var(--control-line);
+}
+@media (max-width: 480px) {
+  .provenance-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .provenance-list dt {
+    font-weight: 600;
+    margin-top: 8px;
+  }
 }

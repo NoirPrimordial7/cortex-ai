@@ -17,6 +17,8 @@ import {
   versionState,
   SourceDialog,
 } from "../components";
+import { PolicyProvenance } from "../PolicyProvenance";
+import { useWorkflowActions } from "../WorkflowActions";
 import { FilePicker } from "../FilePicker";
 import { useSession } from "../session";
 import type { Content, Detail, Version } from "../types";
@@ -38,6 +40,11 @@ function ReviewForm({
     [open, setOpen] = useState(Boolean(v.valid_from && !v.valid_to)),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
+  const headings = useResource<{ items: { id: string; name: string }[] }>(
+    "/policy-headings",
+  );
+  const decision = useWorkflowActions(done);
+  const headingActions = useWorkflowActions(headings.reload, false);
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (user?.read_only_demo) return;
@@ -52,11 +59,12 @@ function ReviewForm({
     setError("");
     const end = segment.end - (content.text[segment.end - 1] === "\n" ? 1 : 0);
     try {
-      await api(`/versions/${v.id}/review`, {
-        method: "POST",
-        body: JSON.stringify({
+      decision.prepare(
+        `/versions/${v.id}/review`,
+        {
           expected_metadata_revision: v.metadata_revision,
           approval_state: "approved",
+          heading_id: values.heading_id || null,
           valid_from: values.valid_from,
           valid_to: open ? null : values.valid_to,
           open_ended: open,
@@ -79,10 +87,10 @@ function ReviewForm({
               },
           access_scope: "uniform",
           reason: values.reason,
-        }),
-      });
-      window.dispatchEvent(new Event("cortex:evidence-changed"));
-      done();
+        },
+        "Record policy decision",
+        "The Auditor decision and explanation will be preserved. Only approved versions can be distributed by Admin.",
+      );
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -90,147 +98,198 @@ function ReviewForm({
     }
   }
   return (
-    <form className="review-form" onSubmit={(e) => void submit(e)}>
-      <fieldset
-        disabled={busy || user?.read_only_demo}
-        className="review-fields"
+    <>
+      {decision.feedback}
+      {headingActions.feedback}
+      <State error={headings.error} loading={headings.loading} />
+      <form
+        className="workflow-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          headingActions.prepare(
+            "/policy-headings",
+            { name: new FormData(e.currentTarget).get("name") },
+            "Create policy heading",
+            "Matching existing headings will be reused.",
+          );
+        }}
       >
-        <h3>Review and approve this version</h3>
-        <p className="description">
-          Confirm uniform document access and select a source passage. Approval
-          metadata comes from your review, not the uploaded text.
-        </p>
         <label>
-          Evidence passage
-          <select
-            value={segment.start}
-            onChange={(e) =>
-              setSegment(
-                content.segments.find(
-                  (s) => s.start === Number(e.target.value),
-                )!,
-              )
-            }
-          >
-            {content.segments.map((s) => (
-              <option key={s.start} value={s.start}>
-                {s.locator} · {content.text.slice(s.start, s.end).slice(0, 65)}
-              </option>
-            ))}
-          </select>
+          New policy heading
+          <input
+            name="name"
+            minLength={2}
+            maxLength={100}
+            required
+            disabled={user?.read_only_demo}
+          />
         </label>
-        <blockquote>
-          {content.text.slice(segment.start, segment.end)}
-        </blockquote>
-        <div className="form-grid">
+        <button className="button" disabled={user?.read_only_demo}>
+          Create heading
+        </button>
+      </form>
+      <form className="review-form" onSubmit={(e) => void submit(e)}>
+        <fieldset
+          disabled={busy || user?.read_only_demo}
+          className="review-fields"
+        >
+          <h3>Review this submitted version</h3>
           <label>
-            Policy topic
-            <select value={topic} onChange={(e) => setTopic(e.target.value)}>
-              <option value="leave">Leave</option>
-              <option value="remote_work">Remote work</option>
-              <option value="notice">Notice period</option>
-              <option value="bonus">Executive bonus</option>
-            </select>
-          </label>
-          <label>
-            Source kind
+            Policy heading
             <select
-              name="source_kind"
-              defaultValue={v.source_kind || "hr_policy"}
+              aria-label="Policy heading"
+              name="heading_id"
+              defaultValue={v.heading_id || ""}
             >
-              <option value="hr_policy">HR policy</option>
-              <option value="operations_policy">Operations policy</option>
-              <option value="informal_note">Informal note</option>
+              <option value="">Choose heading (required for approval)</option>
+              {headings.data?.items.map((h) => (
+                <option key={h.id} value={h.id}>
+                  {h.name}
+                </option>
+              ))}
             </select>
           </label>
-          <label className="check-label">
-            <input
-              type="checkbox"
-              checked={searchOnly}
-              onChange={(e) => setSearchOnly(e.target.checked)}
-            />
-            Publish this passage for search only
+          <p className="description">
+            Confirm uniform document access and select a source passage.
+            Approval metadata comes from your review, not the uploaded text.
+          </p>
+          <label>
+            Evidence passage
+            <select
+              value={segment.start}
+              onChange={(e) =>
+                setSegment(
+                  content.segments.find(
+                    (s) => s.start === Number(e.target.value),
+                  )!,
+                )
+              }
+            >
+              {content.segments.map((s) => (
+                <option key={s.start} value={s.start}>
+                  {s.locator} ·{" "}
+                  {content.text.slice(s.start, s.end).slice(0, 65)}
+                </option>
+              ))}
+            </select>
           </label>
-          {!searchOnly && (
+          <blockquote>
+            {content.text.slice(segment.start, segment.end)}
+          </blockquote>
+          <div className="form-grid">
             <label>
-              Reviewed numeric value
+              Policy topic
+              <select
+                aria-label="Policy topic"
+                value={topic}
+                onChange={(e) => setTopic(e.target.value)}
+              >
+                <option value="leave">Leave</option>
+                <option value="remote_work">Remote work</option>
+                <option value="notice">Notice period</option>
+                <option value="bonus">Executive bonus</option>
+              </select>
+            </label>
+            <label>
+              Source kind
+              <select
+                name="source_kind"
+                defaultValue={v.source_kind || "hr_policy"}
+              >
+                <option value="hr_policy">HR policy</option>
+                <option value="operations_policy">Operations policy</option>
+                <option value="informal_note">Informal note</option>
+              </select>
+            </label>
+            <label className="check-label">
               <input
-                name="value"
-                type="number"
-                min="0"
-                max="1000000"
+                type="checkbox"
+                checked={searchOnly}
+                onChange={(e) => setSearchOnly(e.target.checked)}
+              />
+              Publish this passage for search only
+            </label>
+            {!searchOnly && (
+              <label>
+                Reviewed numeric value
+                <input
+                  name="value"
+                  type="number"
+                  min="0"
+                  max="1000000"
+                  required
+                />
+              </label>
+            )}
+            <label>
+              Population
+              <select
+                name="population"
+                defaultValue={v.population || "india_full_time"}
+              >
+                <option value="india_full_time">India · full-time</option>
+                <option value="india_contractor">India · contractor</option>
+              </select>
+            </label>
+            <label>
+              Published on
+              <input
+                name="published_at"
+                type="date"
+                defaultValue={v.published_at || ""}
                 required
               />
             </label>
-          )}
+            <label>
+              Effective from
+              <input
+                name="valid_from"
+                type="date"
+                defaultValue={v.valid_from || ""}
+                required
+              />
+            </label>
+            <label>
+              Effective until (exclusive)
+              <input
+                name="valid_to"
+                type="date"
+                defaultValue={v.valid_to || ""}
+                disabled={open}
+                required={!open}
+              />
+            </label>
+            <label className="check-label">
+              <input
+                type="checkbox"
+                checked={open}
+                onChange={(e) => setOpen(e.target.checked)}
+              />
+              Explicitly open-ended
+            </label>
+          </div>
           <label>
-            Population
-            <select
-              name="population"
-              defaultValue={v.population || "india_full_time"}
-            >
-              <option value="india_full_time">India · full-time</option>
-              <option value="india_contractor">India · contractor</option>
-            </select>
-          </label>
-          <label>
-            Published on
-            <input
-              name="published_at"
-              type="date"
-              defaultValue={v.published_at || ""}
-              required
-            />
-          </label>
-          <label>
-            Effective from
-            <input
-              name="valid_from"
-              type="date"
-              defaultValue={v.valid_from || ""}
-              required
-            />
-          </label>
-          <label>
-            Effective until (exclusive)
-            <input
-              name="valid_to"
-              type="date"
-              defaultValue={v.valid_to || ""}
-              disabled={open}
-              required={!open}
-            />
+            Review reason
+            <textarea name="reason" minLength={3} maxLength={500} required />
           </label>
           <label className="check-label">
-            <input
-              type="checkbox"
-              checked={open}
-              onChange={(e) => setOpen(e.target.checked)}
-            />
-            Explicitly open-ended
+            <input type="checkbox" required />I verified that all sections share
+            the document's access permissions.
           </label>
-        </div>
-        <label>
-          Review reason
-          <textarea name="reason" minLength={3} maxLength={500} required />
-        </label>
-        <label className="check-label">
-          <input type="checkbox" required />I verified that all sections share
-          the document's access permissions.
-        </label>
-      </fieldset>
-      {error && (
-        <p role="alert" className="form-error">
-          {error}
-        </p>
-      )}
-      <button
-        className="button primary"
-        disabled={busy || user?.read_only_demo}
-      >
-        {busy ? "Publishing…" : "Approve and publish"}
-      </button>
-    </form>
+        </fieldset>
+        {error && (
+          <p role="alert" className="form-error">
+            {error}
+          </p>
+        )}
+        <button
+          className="button primary"
+          disabled={busy || user?.read_only_demo}
+        >
+          {busy ? "Preparing…" : "Review policy decision"}
+        </button>
+      </form>
+    </>
   );
 }
 export default function DocumentDetail() {
@@ -430,17 +489,17 @@ export default function DocumentDetail() {
                     </div>
                     <p className="reading-label">Immutable source text</p>
                     <pre className="source-text">{content.text}</pre>
-                    <details className="hash-details">
-                      <summary>Source integrity</summary>
-                      <p>
-                        Published {selected.published_at || "not reviewed"} ·
-                        uploaded {selected.ingested_at.slice(0, 10)} · metadata
-                        revision {selected.metadata_revision}
-                      </p>
-                      <p>SHA-256 of extracted text</p>
-                      <code>{content.source_hash}</code>
-                    </details>
+                    <PolicyProvenance
+                      key={selected.id}
+                      versionId={selected.id}
+                    />
+                    <PolicyWorkflow
+                      version={selected}
+                      documentId={id!}
+                      done={resource.reload}
+                    />
                     {user?.actions.includes("document.review") &&
+                      selected.workflow_status === "submitted" &&
                       content.segments.length > 0 && (
                         <>
                           <button
@@ -489,5 +548,113 @@ export default function DocumentDetail() {
         )}
       </State>
     </>
+  );
+}
+
+function PolicyWorkflow({
+  version: v,
+  documentId,
+  done,
+}: {
+  version: Version;
+  documentId: string;
+  done: () => void;
+}) {
+  const { user } = useSession();
+  const actions = useWorkflowActions(done);
+  const history = useResource<{
+    history: {
+      status: string;
+      comment: string;
+      created_at: string;
+      actor: string | null;
+    }[];
+  }>(`/versions/${v.id}/workflow`);
+  return (
+    <section className="workflow-panel">
+      <h3>Policy approval</h3>
+      {actions.feedback}
+      <Badge state={v.workflow_status} />
+      <p>Heading: {v.heading_name || "Awaiting classification"}</p>
+      {v.review_comment && <p>Auditor comment: {v.review_comment}</p>}
+      {user?.actions.includes("document.review") &&
+        v.workflow_status === "submitted" && (
+          <details>
+            <summary>Reject this version</summary>
+            <form
+              className="workflow-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                actions.prepare(
+                  `/versions/${v.id}/reject`,
+                  {
+                    expected_revision: v.workflow_revision,
+                    reason: new FormData(e.currentTarget).get("reason"),
+                  },
+                  "Reject policy version",
+                  "The version returns to Admin with your explanation. No employee access or approved evidence is created.",
+                );
+              }}
+            >
+              <fieldset disabled={actions.readOnly || actions.busy}>
+                <label>
+                  Rejection reason
+                  <textarea
+                    name="reason"
+                    minLength={3}
+                    maxLength={500}
+                    required
+                  />
+                </label>
+                <button className="button">Review rejection</button>
+              </fieldset>
+            </form>
+          </details>
+        )}
+      {user?.actions.includes("policy.submit") &&
+        ["draft", "rejected"].includes(v.workflow_status) && (
+          <button
+            className="button primary"
+            disabled={actions.readOnly}
+            onClick={() =>
+              actions.prepare(
+                `/versions/${v.id}/submit`,
+                { expected_revision: v.workflow_revision },
+                "Submit policy for review",
+                "Auditors receive source access for independent review. Employees cannot see this unapproved version.",
+              )
+            }
+          >
+            Submit to Auditor
+          </button>
+        )}
+      {v.workflow_status === "rejected" &&
+        user?.actions.includes("document.upload") && (
+          <p>
+            Upload a corrected immutable version using Add a version, or
+            resubmit this version with the same source text.
+          </p>
+        )}
+      {v.workflow_status === "approved" &&
+        user?.actions.includes("acl.manage") && (
+          <Link className="button" to={`/permissions?document=${documentId}`}>
+            Distribute approved policy
+          </Link>
+        )}
+      <details>
+        <summary>Approval history</summary>
+        <State error={history.error} loading={history.loading}>
+          <ol>
+            {history.data?.history.map((h, i) => (
+              <li key={i}>
+                <strong>{h.status}</strong> ·{" "}
+                {h.actor || "Historical actor unknown"} · {h.created_at}
+                <p>{h.comment}</p>
+              </li>
+            ))}
+          </ol>
+        </State>
+      </details>
+    </section>
   );
 }

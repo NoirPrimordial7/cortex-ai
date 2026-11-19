@@ -61,9 +61,6 @@
           "role_id": "employee"
         },
         {
-          "role_id": "manager"
-        },
-        {
           "user_id": "ravi"
         }
       ],
@@ -96,9 +93,6 @@
           "role_id": "employee"
         },
         {
-          "role_id": "manager"
-        },
-        {
           "user_id": "ravi"
         }
       ],
@@ -129,9 +123,6 @@
       "read_grants": [
         {
           "role_id": "employee"
-        },
-        {
-          "role_id": "manager"
         },
         {
           "user_id": "ravi"
@@ -590,8 +581,6 @@
     {
       "id": "ravi",
       "roles": [
-        "employee",
-        "knowledge_manager",
         "admin"
       ]
     },

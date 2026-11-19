@@ -36,3 +36,11 @@ Preserve previous accepted records when a decision changes; add a superseding AD
 - [0011 Rule-based query intent](0011-rule-based-query-intent.md)
 - [0012 Deterministic employee resolution](0012-deterministic-employee-resolution.md)
 - [0013 One-turn conversation context](0013-one-turn-conversation-context.md)
+
+## Employee governance enhancement — 2026-11-19
+
+- [0014 Three roles and independent policy approval](0014-three-role-governance.md)
+- [0015 Transactional leave applications and re-audit decisions](0015-leave-and-ticket-history.md)
+- [0016 Ed25519 policy integrity and provenance](0016-signed-policy-provenance.md)
+
+ADR 0014 supersedes the active Manager access described in ADR 0008. Historical records remain intact.

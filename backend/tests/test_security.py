@@ -80,7 +80,7 @@ def test_action_permissions_and_mass_assignment(system):
     )
     assert (
         client_for(system, "isha").post("/api/v1/queries", json={"query": "leave"}).status_code
-        == 403
+        == 200
     )
 
 

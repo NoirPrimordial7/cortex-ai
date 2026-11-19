@@ -6,7 +6,8 @@ import tempfile
 from pathlib import Path
 from urllib.parse import urlsplit
 import uvicorn
-from .cli import migrate, seed
+from .cli import migrate, seed, synchronize_demo_credentials
+from . import integrity
 from .db import engine_for
 from .security import one
 from .settings import Settings
@@ -39,12 +40,14 @@ def prepare():
     engine = engine_for(settings.db_path)
     migrate(engine)
     with engine.begin() as conn:
+        integrity.backfill(conn, settings)
         empty = one(conn, "SELECT id FROM tenants LIMIT 1") is None
     credentials_path = settings.data_dir / "credentials.json"
     if empty:
         credentials_path.write_text(json.dumps(seed(engine, settings)), encoding="utf-8")
     elif not credentials_path.is_file():
         raise RuntimeError("Demo credential file missing; refusing to overwrite existing database")
+    synchronize_demo_credentials(engine, settings)
     engine.dispose()
     return settings
 

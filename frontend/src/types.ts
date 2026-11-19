@@ -48,6 +48,7 @@ export type RelatedPassage = {
 };
 export type Source = Citation & { text: string; query_id: string };
 export type DocumentItem = {
+  heading_name?: string | null;
   id: string;
   title: string;
   category: string;
@@ -68,6 +69,11 @@ export type Version = {
   population: string | null;
   source_kind: string | null;
   topic: string | null;
+  workflow_status: "draft" | "submitted" | "approved" | "rejected";
+  workflow_revision: number;
+  heading_id: string | null;
+  heading_name: string | null;
+  review_comment: string | null;
 };
 export type Detail = { document: DocumentItem; versions: Version[] };
 export type Content = {
@@ -105,11 +111,60 @@ export type LeaveEntryInput = {
   reference?: string | null;
 };
 
-export type ReportingRelationship = {
+export type LeaveRequest = {
   id: string;
-  employee_user_id: string;
-  manager_user_id: string;
-  valid_from: string;
-  valid_to: string | null;
-  open_ended: boolean;
+  user_id: string;
+  display_name: string;
+  leave_type_name: string;
+  start_date: string;
+  end_date: string;
+  days: number;
+  reason: string;
+  status:
+    | "pending"
+    | "approved"
+    | "rejected"
+    | "withdrawn"
+    | "cancellation_pending"
+    | "cancelled";
+  revision: number;
+  review_comment: string | null;
+  history?: {
+    status: string;
+    comment: string;
+    created_at: string;
+    actor: string;
+  }[];
+};
+export type PolicyTicket = {
+  display_name?: string;
+  id: string;
+  description: string;
+  status: "pending" | "resolved";
+  revision: number;
+  resolution?: string | null;
+  selected_document_id?: string | null;
+  policies?: { document_id: string; title: string; available: boolean }[];
+  history?: {
+    operation: string;
+    reason: string;
+    created_at: string;
+    actor?: string;
+  }[];
+  attachments?: { id: string; filename: string; sha256: string }[];
+};
+export type PolicyIntegrity = {
+  uploader_name?: string | null;
+  status: "Verified" | "Integrity Mismatch" | "Unable to Verify";
+  original_filename: string | null;
+  uploaded_by: string | null;
+  uploaded_at: string;
+  version_label: string;
+  sha256: string;
+  extracted_sha256: string;
+  algorithm: string;
+  key_id: string | null;
+  last_verified_at: string;
+  encryption: string;
+  origin: string | null;
 };

@@ -1,4 +1,6 @@
-# Current production verification
+# Verification checkpoints
+
+**2026-11-19 local governance enhancement:** 97 backend tests, 39 frontend tests and 13 real-browser scenarios pass. All three roles were checked at five widths in both themes, with 103 captures. See the [complete module/API/schema/configuration report](GOVERNANCE_TEST_REPORT.md). The public release was not redeployed; historical production records below remain unchanged.
 
 **2026-10-29 local overhaul CI increment:** 39 backend tests (one existing
 Starlette/httpx warning), 28 frontend tests, Ruff, pip consistency, TypeScript/Vite
