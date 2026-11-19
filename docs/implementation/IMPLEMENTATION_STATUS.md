@@ -1,5 +1,8 @@
 # Implementation checkpoints
 
+**2026-11-20 correction:** Re-audit now starts from the actual Ask Cortex conflict, with no Employee form/section. Auditor receives both exact sources and can select/undo a primary. [Current behavior, migration and tests](CONFLICT_REAUDIT_TEST_REPORT.md). Earlier checkpoints below retain their original scope.
+
+
 ## 2026-11-19 governance enhancement
 
 All six enhancement phases are integrated locally: three exclusive roles, independent policy reviews and headings, transactional leave applications/cancellation, conflict tickets/rollback, signed policy provenance and role-specific screens. See the [detailed implementation/test report](GOVERNANCE_TEST_REPORT.md) and [startup guide](RUN_LOCAL.md). Earlier checkpoint sections below retain their original dates and limitations. Manager access and missing user-creation statements in those historical sections are superseded. No public deployment was performed.

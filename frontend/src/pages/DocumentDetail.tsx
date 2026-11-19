@@ -1,6 +1,6 @@
 import { populationName } from "../labels";
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import {
   ArrowLeftIcon,
   DownloadSimpleIcon,
@@ -294,6 +294,8 @@ function ReviewForm({
 }
 export default function DocumentDetail() {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const requestedVersion = searchParams.get("version");
   const { user } = useSession();
   const resource = useResource<Detail>("/documents/" + id);
   const epoch = useRef(0);
@@ -318,7 +320,7 @@ export default function DocumentDetail() {
       epoch.current++;
       window.removeEventListener("cortex:evidence-changed", clear);
     };
-  }, [id]);
+  }, [id, requestedVersion]);
   async function inspect(v: Version) {
     const current = ++epoch.current;
     setBusy(true);
@@ -361,11 +363,13 @@ export default function DocumentDetail() {
     )
       return;
     const version =
+      resource.data.versions.find((v) => v.id === requestedVersion) ||
       resource.data.versions.find(
         (v) => versionState(v) === "Approved · valid",
-      ) || resource.data.versions[0];
+      ) ||
+      resource.data.versions[0];
     if (version) void inspect(version);
-  }, [resource.data, id, resource.loading]);
+  }, [resource.data, id, resource.loading, selected, requestedVersion]);
   return (
     <>
       <Link className="back-link" to="/documents">

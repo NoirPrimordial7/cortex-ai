@@ -50,7 +50,7 @@ const navigation = [
     to: "/tickets",
     label: "Re-audit tickets",
     name: "Policy re-audit tickets",
-    actions: ["ticket.create", "ticket.review"],
+    action: "ticket.review",
   },
   {
     to: "/conflicts",
@@ -124,9 +124,7 @@ export default function App() {
       </div>
     );
   const allowed = navigation.filter(
-    (n) =>
-      (!n.action || user.actions.includes(n.action)) &&
-      (!n.actions || n.actions.some((a) => user.actions.includes(a))),
+    (n) => !n.action || user.actions.includes(n.action),
   );
   const links = allowed.map((n) => (
     <NavLink
@@ -275,15 +273,11 @@ export default function App() {
                 />
                 <Route
                   path="/tickets"
-                  element={
-                    user.actions.some((a) =>
-                      ["ticket.create", "ticket.review"].includes(a),
-                    ) ? (
-                      <PolicyTickets />
-                    ) : (
-                      <Navigate to="/" replace />
-                    )
-                  }
+                  element={gate(
+                    "ticket.review",
+                    <PolicyTickets />,
+                    "/assistant",
+                  )}
                 />
                 <Route
                   path="/team"

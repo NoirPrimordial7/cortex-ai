@@ -10,11 +10,17 @@ from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 from fastapi import HTTPException
 from pydantic import UUID4, BaseModel, ConfigDict, Field
-from . import db as models, leave
+from . import db as models, leave, conflict_reaudit
 from .conversations import FOLLOW_UP, previous_turn, remember
 from .embeddings import MODEL, cosine_rank, fuse_rankings
 from .query_routing import (
-    AMBIGUOUS, SELF, TOPICS, classify_query, employee_mention, intent, resolve_employee_mention,
+    AMBIGUOUS,
+    SELF,
+    TOPICS,
+    classify_query,
+    employee_mention,
+    intent,
+    resolve_employee_mention,
 )
 from .security import READ, audit, now, one, readable, revisions, rows, uid, version
 
@@ -56,14 +62,20 @@ PASSAGE_JOIN = """FROM clauses c
  JOIN documents d ON d.id=v.document_id AND d.tenant_id=v.tenant_id
  JOIN metadata_revisions m ON m.id=v.current_metadata_revision_id AND m.tenant_id=v.tenant_id
  JOIN authority_rules a ON a.id=c.authority_rule_id AND a.tenant_id=c.tenant_id"""
-JOIN = PASSAGE_JOIN + """ JOIN policy_claims p ON p.clause_id=c.id AND p.tenant_id=c.tenant_id
+JOIN = (
+    PASSAGE_JOIN
+    + """ JOIN policy_claims p ON p.clause_id=c.id AND p.tenant_id=c.tenant_id
  AND p.metadata_revision=v.metadata_revision"""
+)
 ELIGIBLE = f"""{READ} AND v.extraction_state='indexed' AND m.approval_state='approved'
  AND c.metadata_reviewed=1 AND a.active=1 AND c.valid_from<=:asof
  AND (c.valid_to IS NULL OR :asof<c.valid_to) AND c.population=:population
  AND c.jurisdiction=:jurisdiction"""
-STRICT_ELIGIBLE = ELIGIBLE + """ AND c.topic=:topic AND p.condition_key=:condition
+STRICT_ELIGIBLE = (
+    ELIGIBLE
+    + """ AND c.topic=:topic AND p.condition_key=:condition
  AND p.subject=c.population AND p.modality='entitlement'"""
+)
 
 STOP_WORDS = set(
     "a an and apply are can does do everything find for have how i in is it list many me "
@@ -72,15 +84,20 @@ STOP_WORDS = set(
 
 
 def search_tokens(text):
-    return list(dict.fromkeys(
-        word for word in re.findall(r"[^\W_]+", text.lower())
-        if len(word) >= 2 and word not in STOP_WORDS
-    ))[:32]
+    return list(
+        dict.fromkeys(
+            word
+            for word in re.findall(r"[^\W_]+", text.lower())
+            if len(word) >= 2 and word not in STOP_WORDS
+        )
+    )[:32]
 
 
 def search_parameters(ctx, question, asof):
     return dict(
-        **ctx.parameters(), asof=asof, population=question.population,
+        **ctx.parameters(),
+        asof=asof,
+        population=question.population,
         jurisdiction=question.jurisdiction,
     )
 
@@ -101,8 +118,7 @@ def lexical_candidates(ctx, params, tokens):
 def bm25(candidates, tokens):
     # Compute term statistics only from eligible matches, never restricted FTS rows.
     documents = {
-        item["id"]: Counter(re.findall(r"[^\W_]+", item["text"].lower()))
-        for item in candidates
+        item["id"]: Counter(re.findall(r"[^\W_]+", item["text"].lower())) for item in candidates
     }
     if not documents:
         return []
@@ -115,26 +131,33 @@ def bm25(candidates, tokens):
     }
     scores = {
         ident: sum(
-            weight * terms[token] * 2.2
+            weight
+            * terms[token]
+            * 2.2
             / (terms[token] + 1.2 * (0.25 + 0.75 * lengths[ident] / average))
-            for token, weight in weights.items() if terms[token]
+            for token, weight in weights.items()
+            if terms[token]
         )
         for ident, terms in documents.items()
     }
-    return sorted((ident for ident, score in scores.items() if score > 0),
-                  key=lambda ident: (-scores[ident], ident))
+    return sorted(
+        (ident for ident, score in scores.items() if score > 0),
+        key=lambda ident: (-scores[ident], ident),
+    )
 
 
 def highlighted_excerpt(text, tokens):
-    pattern = re.compile(r"\b(?:" + "|".join(map(re.escape, tokens)) + r")\b", re.I) if tokens else None
+    pattern = (
+        re.compile(r"\b(?:" + "|".join(map(re.escape, tokens)) + r")\b", re.I) if tokens else None
+    )
     first = pattern.search(text) if pattern else None
     start = max(0, first.start() - 80) if first else 0
-    excerpt = text[start:start + 240]
+    excerpt = text[start : start + 240]
     pieces = [{"text": "…", "matched": False}] if start else []
     offset = 0
     for match in pattern.finditer(excerpt) if pattern else ():
         if offset < match.start():
-            pieces.append({"text": excerpt[offset:match.start()], "matched": False})
+            pieces.append({"text": excerpt[offset : match.start()], "matched": False})
         pieces.append({"text": match[0], "matched": True})
         offset = match.end()
     tail = excerpt[offset:] + ("…" if start + len(excerpt) < len(text) else "")
@@ -220,7 +243,8 @@ def suggestions(ctx, partial, question):
     )
     options = {
         phrase: (0 if phrase.casefold().startswith(q) else 2, None)
-        for phrase in SUGGESTED_QUESTIONS if q in phrase.casefold()
+        for phrase in SUGGESTED_QUESTIONS
+        if q in phrase.casefold()
     }
     for item in titles:
         options.setdefault(item["title"], (1, None))
@@ -354,8 +378,11 @@ def personal_leave(ctx, question, as_of, target=None):
     mention = employee_mention(question.query)
     if target is None:
         target = (
-            resolve_employee_mention(ctx, mention) if mention
-            else ctx.user["id"] if SELF.search(question.query) else None
+            resolve_employee_mention(ctx, mention)
+            if mention
+            else ctx.user["id"]
+            if SELF.search(question.query)
+            else None
         )
     if target is None or target is AMBIGUOUS:
         return None
@@ -363,7 +390,8 @@ def personal_leave(ctx, question, as_of, target=None):
         return None
     try:
         result = (
-            leave.own_balance(ctx, as_of) if target == ctx.user["id"]
+            leave.own_balance(ctx, as_of)
+            if target == ctx.user["id"]
             else leave.employee_balance(ctx, target, as_of)
         )
     except HTTPException as error:
@@ -373,7 +401,7 @@ def personal_leave(ctx, question, as_of, target=None):
     return {**result, "as_of": result["as_of"].isoformat()}
 
 
-def answer(ctx, question: Question, observe=None, *, encoder=None):
+def answer(ctx, question: Question, observe=None, *, encoder=None, settings=None):
     ctx.require("query.execute")
     captured = revisions(ctx)
     kind = classify_query(question.query)
@@ -381,7 +409,12 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
     search_text = question.query
     target = None
     follow_up = False
-    if question.conversation_id and kind != "employee_leave" and not topic and FOLLOW_UP.match(search_text):
+    if (
+        question.conversation_id
+        and kind != "employee_leave"
+        and not topic
+        and FOLLOW_UP.match(search_text)
+    ):
         previous = previous_turn(ctx, question.conversation_id)
         if previous and (previous["topic"] or previous["resolved_entity"]):
             kind, topic, target = previous["kind"], previous["topic"], previous["resolved_entity"]
@@ -393,7 +426,9 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
                     updates["population"] = "india_contractor"
                 elif re.search(r"\bfull[- ]time\b", search_text, re.I):
                     updates["population"] = "india_full_time"
-                elif re.search(r"\b(?:apply|applies) to (?!me\b|those\b|everyone\b)", search_text, re.I):
+                elif re.search(
+                    r"\b(?:apply|applies) to (?!me\b|those\b|everyone\b)", search_text, re.I
+                ):
                     updates["condition_key"] = "unreviewed_population"
                 retrieval_question = question.model_copy(update=updates)
             else:
@@ -425,6 +460,38 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
             status, reason, selected = decide(evidence, topic)
         except OverflowError:
             status, reason, selected = "abstained", "EVIDENCE_LIMIT", []
+    reaudit = None
+    if reason == "UNRESOLVED_CONFLICT" and verify(ctx, selected):
+        record = conflict_reaudit.matching(ctx, selected)
+        if record:
+            reaudit = conflict_reaudit.summary(record)
+            reaudit["subscribed"] = bool(
+                one(
+                    ctx.db,
+                    "SELECT id FROM ticket_subscribers WHERE tenant_id=:tenant AND ticket_id=:id AND user_id=:user",
+                    **ctx.parameters(),
+                    id=record["id"],
+                )
+            )
+            if not reaudit["subscribed"] and "ticket.review" not in ctx.actions:
+                # A shared policy choice must not disclose another employee's
+                # private ticket explanation to other readers or Admins.
+                reaudit["resolution"] = None
+            if record["status"] == "resolved":
+                # Full peer eligibility/hash validation precedes the human tie-break.
+                from .integrity import inspect_record
+
+                if settings and any(
+                    inspect_record(ctx.db, settings, version(ctx, e.version_id))[0] != "Verified"
+                    for e in selected
+                ):
+                    status, reason, selected = "abstained", "SUPPORT_FAILED", []
+                    reaudit = None
+                else:
+                    primary = [e for e in selected if e.clause_id == record["selected_clause_id"]]
+                    if len(primary) == 1:
+                        selected = primary
+                        status, reason = "answered", None
     if observe:
         observe("answerer", selected)
     if revisions(ctx) != captured:
@@ -474,12 +541,24 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
         sentence = "Equally authoritative policies disagree for this date and scope. I cannot choose between them."
     elif status == "clarification_required":
         sentence = "This condition needs a reviewed scope before I can answer."
+    if reaudit and reaudit["status"] == "resolved" and status == "answered":
+        sentence = "The Auditor-selected primary policy states: " + sentence.removeprefix(
+            "The approved "
+        )
     explanation = (
         "EQUAL_AUTHORITY_CONFLICT" if reason == "UNRESOLVED_CONFLICT" else "APPROVED_VALID_SOURCE"
     )
-    related = [] if reason == "CONTEXT_CHANGED" else search_relevant(
-        ctx, retrieval_question, asof, "leave" if personal else search_text,
-        {e.clause_id for e in selected}, encoder,
+    related = (
+        []
+        if reason == "CONTEXT_CHANGED"
+        else search_relevant(
+            ctx,
+            retrieval_question,
+            asof,
+            "leave" if personal else search_text,
+            {e.clause_id for e in selected},
+            encoder,
+        )
     )
     payload = {
         "query_id": qid,
@@ -487,7 +566,10 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
         "reason_code": reason,
         "mode": "evidence",
         "as_of": asof,
-        "scope": {"population": retrieval_question.population, "jurisdiction": question.jurisdiction},
+        "scope": {
+            "population": retrieval_question.population,
+            "jurisdiction": question.jurisdiction,
+        },
         "answer": sentence,
         "citations": cite,
         "related_results": related,
@@ -498,6 +580,12 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
         if cite
         else [],
     }
+    if reaudit:
+        payload["re_audit"] = reaudit
+        if reaudit["status"] == "resolved":
+            payload["explanation"] = [
+                {"code": "AUDITOR_PRIMARY_POLICY", "citation_ids": [c["id"] for c in cite]}
+            ]
     if follow_up:
         payload["follow_up"] = True
     ctx.db.execute(
@@ -511,9 +599,9 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
             status=status,
             reason_code=reason,
             answer_json=json.dumps(payload),
-            dependency_ids=json.dumps(sorted(
-                {e.document_id for e in selected} | {r["document_id"] for r in related}
-            )),
+            dependency_ids=json.dumps(
+                sorted({e.document_id for e in selected} | {r["document_id"] for r in related})
+            ),
             **captured,
             created_at=now(),
             expires_at=(datetime.now(timezone.utc) + timedelta(days=7)).isoformat(),
@@ -521,7 +609,11 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
     )
     if question.conversation_id:
         remember(
-            ctx, question.conversation_id, qid, kind, None if personal else topic,
+            ctx,
+            question.conversation_id,
+            qid,
+            kind,
+            None if personal else topic,
             ledger["user_id"] if ledger else None,
         )
     for c in cite:
@@ -562,7 +654,9 @@ def answer(ctx, question: Question, observe=None, *, encoder=None):
     audit(ctx, "query.execute", status)
     if ledger:
         return {
-            **payload, "source": "leave_ledger", "balances": ledger["balances"],
+            **payload,
+            "source": "leave_ledger",
+            "balances": ledger["balances"],
             "display_name": ledger.get("display_name"),
         }
     return payload

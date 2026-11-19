@@ -1,5 +1,7 @@
 # Cortex AI
 
+**2026-11-20 conflict re-audit correction:** Send the actual disagreement from Ask Cortex with one button. Employee has no ticket form/section; Auditor sees both exact versions, chooses a scoped primary and can undo/reopen the conflict. [Behavior, migration 0009 and verification](docs/implementation/CONFLICT_REAUDIT_TEST_REPORT.md).
+
 Conflict-aware, permission-safe enterprise knowledge intelligence for a final-year BTech Computer Science project.
 
 **2026-11-19 governance enhancement:** Employee, Auditor and Admin roles; independent policy approval and reusable headings; employee leave applications with audited deductions/cancellations; policy re-audit tickets and rollback notifications; Ed25519 Policy Integrity & Provenance. [Detailed implementation and test report](docs/implementation/GOVERNANCE_TEST_REPORT.md) · [run locally](docs/implementation/RUN_LOCAL.md). This feature branch has not been published to the shared demo.

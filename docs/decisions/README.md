@@ -44,3 +44,7 @@ Preserve previous accepted records when a decision changes; add a superseding AD
 - [0016 Ed25519 policy integrity and provenance](0016-signed-policy-provenance.md)
 
 ADR 0014 supersedes the active Manager access described in ADR 0008. Historical records remain intact.
+
+## Conflict-driven re-audit correction — 2026-11-20
+
+[0017 Actual-query re-audit and reversible primary choices](0017-conflict-driven-reaudit.md) supersedes the manual intake and annotation-only ticket behavior in ADR 0015; leave and historical records remain.

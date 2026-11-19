@@ -19,6 +19,7 @@ const render = (element: ReactNode) =>
       <AskDraftProvider>{element}</AskDraftProvider>
     </MemoryRouter>,
   );
+vi.mock("../session", () => ({ useSession: () => ({ user: { actions: ["ticket.create"], read_only_demo: false }, refresh: async () => {} }) }));
 vi.mock("../api", async () => {
   const actual = await vi.importActual<typeof import("../api")>("../api");
   return { ...actual, api: vi.fn() };

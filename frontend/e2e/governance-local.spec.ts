@@ -224,108 +224,7 @@ test("employee leave approval and approved cancellation restore the original bal
   }
 });
 
-test("conflict evidence, resolution and rollback notify the employee and preserve history", async ({
-  browser,
-}, info) => {
-  const employeeContext = await browser.newContext(),
-    auditorContext = await browser.newContext();
-  const employee = await employeeContext.newPage(),
-    auditor = await auditorContext.newPage();
-  try {
-    await signIn(employee, "maya");
-    await signIn(auditor, "isha");
-    await employee.goto("/tickets");
-    await employee
-      .getByRole("checkbox", { name: "Annual leave policy", exact: true })
-      .check();
-    const description =
-      "Browser ticket " +
-      Date.now() +
-      ": clarify the effective dates of this leave policy.";
-    await employee.getByLabel("Conflict or confusion").fill(description);
-    await employee
-      .getByRole("button", { name: "Review ticket submission", exact: true })
-      .click();
-    await confirm(employee);
-    await employee
-      .locator(".collection-row")
-      .filter({ hasText: description })
-      .getByRole("button", { name: "Open ticket", exact: true })
-      .click();
-    await employee.getByLabel("Evidence file").setInputFiles({
-      name: "evidence.txt",
-      mimeType: "text/plain",
-      buffer: Buffer.from("Browser evidence for re-audit."),
-    });
-    await employee
-      .getByRole("button", { name: "Review attachment", exact: true })
-      .click();
-    await confirm(employee);
-    await auditor.goto("/tickets");
-    await auditor
-      .locator(".collection-row")
-      .filter({ hasText: description })
-      .getByRole("button", { name: "Open ticket", exact: true })
-      .click();
-    await expect(
-      auditor.getByRole("link", { name: "evidence.txt", exact: true }),
-    ).toBeVisible();
-    await auditor
-      .getByLabel("Resolution policy")
-      .selectOption({ label: "Annual leave policy" });
-    await auditor
-      .getByLabel("Decision explanation")
-      .fill("The 2026 policy governs the requested period and employee scope.");
-    await auditor
-      .getByRole("button", { name: "Review resolution", exact: true })
-      .click();
-    await confirm(auditor);
-    await employee.reload();
-    await employee
-      .locator(".collection-row")
-      .filter({ hasText: description })
-      .getByRole("button", { name: "Open ticket", exact: true })
-      .click();
-    await expect(
-      employee.getByText("Auditor resolution", { exact: true }),
-    ).toBeVisible();
-    await auditor
-      .getByLabel("Rollback reason")
-      .fill("Reopen to check the historical date stated in the ticket.");
-    await auditor
-      .getByRole("button", { name: "Review rollback", exact: true })
-      .click();
-    await confirm(auditor);
-    await employee.reload();
-    await expect(
-      employee
-        .getByText(
-          "The Auditor rolled back your ticket resolution. It is pending review again.",
-          { exact: true },
-        )
-        .first(),
-    ).toBeVisible();
-    await employee
-      .locator(".collection-row")
-      .filter({ hasText: description })
-      .getByRole("button", { name: "Open ticket", exact: true })
-      .click();
-    await expect(employee.getByText("rollback", { exact: true })).toBeVisible();
-    await expect(
-      employee.getByText(
-        "The 2026 policy governs the requested period and employee scope.",
-        { exact: true },
-      ),
-    ).toBeVisible();
-    await employee.screenshot({
-      path: info.outputPath("ticket-rollback-history.png"),
-      fullPage: true,
-    });
-  } finally {
-    await employeeContext.close();
-    await auditorContext.close();
-  }
-});
+// Conflict submission/resolution/undo is now covered by conflict-reaudit-local.spec.ts.
 
 for (const width of [320, 390, 768, 1280, 1440]) {
   test(`new modules reflow and retain keyboard access at ${width}px in both themes`, async ({
@@ -399,7 +298,7 @@ for (const width of [320, 390, 768, 1280, 1440]) {
       await signIn(page, who);
       const paths =
         who === "maya"
-          ? ["/leave", "/tickets", "/documents/HR-LEAVE"]
+          ? ["/leave", "/conflicts", "/documents/HR-LEAVE"]
           : ["/leave", "/permissions", "/upload"];
       for (const theme of ["light", "dark"]) {
         for (const path of paths) {

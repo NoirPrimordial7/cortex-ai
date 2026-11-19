@@ -24,6 +24,14 @@ export type Citation = {
   reviewed_value: number;
 };
 export type Answer = {
+  re_audit?: {
+    id: string;
+    status: "pending" | "resolved";
+    resolution: string | null;
+    revision: number;
+    selected_clause_id: string | null;
+    subscribed: boolean;
+  };
   source?: "leave_ledger";
   balances?: LeaveBalanceItem[];
   display_name?: string | null;
@@ -137,6 +145,28 @@ export type LeaveRequest = {
   }[];
 };
 export type PolicyTicket = {
+  from_cortex?: boolean;
+  conflict_context?: {
+    topic: string;
+    population: string;
+    jurisdiction: string;
+    as_of: string;
+    selected_clause_id: string | null;
+  } | null;
+  conflict_sources?: {
+    clause_id: string;
+    document_id?: string;
+    version_id?: string;
+    version_label?: string;
+    title: string;
+    text?: string;
+    locator?: string;
+    valid_from?: string;
+    valid_to?: string | null;
+    available: boolean;
+    verified?: boolean;
+    source_hash?: string;
+  }[];
   display_name?: string;
   id: string;
   description: string;

@@ -1,5 +1,8 @@
 # Verification checkpoints
 
+**2026-11-20 correction:** Re-audit now starts from the actual Ask Cortex conflict, with no Employee form/section. Auditor receives both exact sources and can select/undo a primary. [Current behavior, migration and tests](CONFLICT_REAUDIT_TEST_REPORT.md). Earlier checkpoints below retain their original scope.
+
+
 **2026-11-19 local governance enhancement:** 97 backend tests, 39 frontend tests and 13 real-browser scenarios pass. All three roles were checked at five widths in both themes, with 103 captures. See the [complete module/API/schema/configuration report](GOVERNANCE_TEST_REPORT.md). The public release was not redeployed; historical production records below remain unchanged.
 
 **2026-10-29 local overhaul CI increment:** 39 backend tests (one existing

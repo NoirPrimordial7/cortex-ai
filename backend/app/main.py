@@ -521,7 +521,7 @@ def create_app(settings=None):
 
     @app.post("/api/v1/queries")
     def query(body: Question, ctx: Ctx):
-        return answer(ctx, body, app.state.observe, encoder=app.state.encoder)
+        return answer(ctx, body, app.state.observe, encoder=app.state.encoder, settings=settings)
 
     @app.get("/api/v1/queries/suggestions")
     def query_suggestions(
@@ -901,15 +901,15 @@ def create_app(settings=None):
 
     @app.get("/api/v1/policy-tickets/{ident}")
     def ticket_detail(ident: str, ctx: Ctx):
-        return tickets.detail(ctx, ident)
+        return tickets.detail(ctx, ident, settings)
 
     @app.post("/api/v1/policy-tickets/{ident}/resolve")
     def resolve_ticket(ident: str, body: tickets.Resolution, ctx: Ctx):
-        return tickets.resolve(ctx, ident, body)
+        return tickets.resolve(ctx, ident, body, settings)
 
     @app.post("/api/v1/policy-tickets/{ident}/rollback")
     def rollback_ticket(ident: str, body: tickets.Rollback, ctx: Ctx):
-        return tickets.rollback(ctx, ident, body)
+        return tickets.rollback(ctx, ident, body, settings)
 
     @app.post(
         "/api/v1/policy-tickets/{ident}/attachments",

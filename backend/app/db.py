@@ -501,6 +501,29 @@ integrity_verifications = model(
 )
 
 
+ticket_conflict_contexts = model(
+    "ticket_conflict_contexts",
+    [col("ticket_id"), col("query_id"), col("fingerprint"), col("topic"),
+     col("population"), col("jurisdiction"), col("as_of"),
+     col("selected_clause_id", nullable=True)],
+    same("policy_tickets", "ticket_id"), same("queries", "query_id"),
+    same("clauses", "selected_clause_id"),
+    UniqueConstraint("tenant_id", "ticket_id"), UniqueConstraint("tenant_id", "fingerprint"),
+)
+ticket_conflict_sources = model(
+    "ticket_conflict_sources",
+    [col("ticket_id"), col("clause_id"), col("source_hash")],
+    same("policy_tickets", "ticket_id"), same("clauses", "clause_id"),
+    UniqueConstraint("tenant_id", "ticket_id", "clause_id"),
+)
+ticket_subscribers = model(
+    "ticket_subscribers",
+    [col("ticket_id"), col("user_id"), col("query_id"), col("created_at")],
+    same("policy_tickets", "ticket_id"), same("users", "user_id"), same("queries", "query_id"),
+    UniqueConstraint("tenant_id", "ticket_id", "user_id"),
+)
+
+
 def engine_for(path: Path):
     path.parent.mkdir(parents=True, exist_ok=True)
     engine = create_engine(

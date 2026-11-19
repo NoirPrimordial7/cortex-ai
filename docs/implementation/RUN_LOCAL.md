@@ -1,6 +1,6 @@
 # Run Cortex AI locally
 
-Updated 2026-11-19 for the Employee/Auditor/Admin governance enhancement. Python 3.12 and Node compatible with Vite 7 (20.19+ or 22.12+) are required. No paid API or cloud account is required. Use one application worker.
+Updated 2026-11-20 for the Employee/Auditor/Admin governance enhancement. Python 3.12 and Node compatible with Vite 7 (20.19+ or 22.12+) are required. No paid API or cloud account is required. Use one application worker.
 
 ## Existing checkout — update and run
 
@@ -21,7 +21,7 @@ $env:CORTEX_DEMO_ACCOUNTS='1'
 
 Open [Cortex AI](http://127.0.0.1:8000). The backend serves the production frontend build. Keep that PowerShell running; Ctrl+C stops it. If port 8000 is occupied, stop the previous Cortex process in its terminal or select another port and include that exact origin in `CORTEX_ORIGINS`.
 
-Migration upgrades through 0008, preserves identities/history, consolidates roles without promoting discontinued roles and updates known fictional emails. It also signs historical sources whose original/extracted hashes still match, labelling the origin as a historical backfill. A missing source stays unverifiable. The existing credential file's fictional emails are synchronized without changing passwords.
+Migration upgrades through 0009, preserves identities/history, consolidates roles without promoting discontinued roles and updates known fictional emails. It also signs historical sources whose original/extracted hashes still match, labelling the origin as a historical backfill. A missing source stays unverifiable. The existing credential file's fictional emails are synchronized without changing passwords.
 
 `CORTEX_DEMO_ACCOUNTS=1` explicitly enables fictional autofill. For a normal workspace without fictional credentials, omit it. An existing ignored `local-data/demo-autofill.enabled` marker also enables the picker.
 
@@ -61,7 +61,7 @@ The internal fixture keys and user IDs remain unchanged to preserve references. 
 5. Employee: Open **Leave**, select type/dates/reason and confirm. Pending requests do not deduct days.
 6. Auditor: Review the application in **Leave**, comment and approve/reject. Approval deducts once. Employee can withdraw pending leave or request cancellation of approved leave; Auditor-approved cancellation restores once.
 7. Admin: Monitor employee balances/requests, view transaction history and allocate/configure leave. Admin and Auditor have no personal leave cards or application forms.
-8. Employee: Raise a **Re-audit ticket** for assigned policies. Open the pending ticket to attach evidence. Auditor chooses a relevant policy and explains the decision; rollback requires a reason and preserves prior decisions. Employee sees notifications in the same module.
+8. Employee: Ask Cortex about conflicting policies, then click **Send conflict for re-audit** beneath the actual comparison. There is no Employee ticket form or ticket navigation. Auditor opens **Re-audit tickets**, compares both exact versions and selects a primary. The next matching Cortex answer uses it. **Undo / Reopen conflict** restores abstention and permits another choice, preserving history. [Current correction and tests](CONFLICT_REAUDIT_TEST_REPORT.md).
 9. Ask Cortex: Check annual leave on `2026-10-09` (20 policy entitlement days), on `2025-06-01` (18), remote work disagreement, and absent/restricted evidence. Employee personal balance (17 in a fresh fixture) comes from the separate dated ledger.
 
 ## Live frontend development

@@ -1,23 +1,20 @@
 """Policy re-audit tickets with append-only decisions and explicit source access."""
 
-import hashlib
-from pathlib import Path
 from fastapi import HTTPException
 from pydantic import BaseModel, ConfigDict, Field
-from .security import Context, audit, document, execute, now, one, readable, rows, uid
-from .policy_workflow import require_distributable
+from .security import audit, execute, now, one, readable, rows, uid
+from . import conflict_reaudit
 
 
 class TicketInput(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
-    document_ids: list[str] = Field(min_length=1, max_length=5)
-    description: str = Field(min_length=10, max_length=4000)
+    query_id: str = Field(min_length=1, max_length=100)
 
 
 class Resolution(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
     expected_revision: int = Field(ge=0)
-    document_id: str = Field(min_length=1, max_length=100)
+    clause_id: str = Field(min_length=1, max_length=100)
     reason: str = Field(min_length=5, max_length=4000)
 
 
@@ -28,6 +25,7 @@ class Rollback(BaseModel):
 
 
 def ticket(ctx, ident):
+    ctx.require("ticket.review")
     record = one(
         ctx.db,
         """SELECT t.*,u.display_name FROM policy_tickets t JOIN users u
@@ -58,11 +56,11 @@ def decision_event(ctx, ident, operation, reason, did=None):
 
 
 def listing(ctx):
-    if "ticket.review" not in ctx.actions:
-        ctx.require("ticket.create")
+    ctx.require("ticket.review")
     records = rows(
         ctx.db,
-        """SELECT t.id,t.description,t.status,t.created_at,t.updated_at,t.revision,u.display_name
+        """SELECT t.id,t.description,t.status,t.created_at,t.updated_at,t.revision,u.display_name,
+        EXISTS(SELECT 1 FROM ticket_conflict_contexts c WHERE c.tenant_id=t.tenant_id AND c.ticket_id=t.id) AS from_cortex
         FROM policy_tickets t JOIN users u ON u.tenant_id=t.tenant_id AND u.id=t.user_id
         WHERE t.tenant_id=:tenant AND (:all=1 OR t.user_id=:user)
         ORDER BY t.created_at DESC,t.id""",
@@ -73,7 +71,7 @@ def listing(ctx):
     return {"items": records}
 
 
-def detail(ctx, ident):
+def detail(ctx, ident, settings):
     record = ticket(ctx, ident)
     policies = rows(
         ctx.db,
@@ -110,38 +108,14 @@ def detail(ctx, ident):
         **ctx.parameters(),
         id=ident,
     )
+    record["conflict_context"] = conflict_reaudit.context(ctx, ident)
+    record["conflict_sources"] = conflict_reaudit.sources(ctx, ident, settings)
     audit(ctx, "ticket.read", target=ident, target_type="ticket")
     return record
 
 
 def create(ctx, body):
-    ctx.require("ticket.create")
-    ids = list(dict.fromkeys(body.document_ids))
-    for did in ids:
-        document(ctx, did)
-        require_distributable(ctx, did)
-    ident, at = uid(), now()
-    execute(
-        ctx.db,
-        """INSERT INTO policy_tickets
-        (id,tenant_id,user_id,description,status,created_at,updated_at,revision)
-        VALUES (:id,:tenant,:user,:description,'pending',:at,:at,0)""",
-        **ctx.parameters(),
-        id=ident,
-        description=body.description.strip(),
-        at=at,
-    )
-    for did in ids:
-        execute(
-            ctx.db,
-            "INSERT INTO ticket_policies(id,tenant_id,ticket_id,document_id) VALUES (:id,:tenant,:t,:d)",
-            **ctx.parameters(),
-            id=uid(),
-            t=ident,
-            d=did,
-        )
-    decision_event(ctx, ident, "submitted", body.description)
-    return detail(ctx, ident)
+    return conflict_reaudit.create(ctx, body.query_id)
 
 
 def notify(ctx, record, message):
@@ -158,100 +132,25 @@ def notify(ctx, record, message):
     )
 
 
-def resolve(ctx, ident, body):
+def resolve(ctx, ident, body, settings):
     ctx.require("ticket.review")
     record = ticket(ctx, ident)
-    if record["status"] != "pending" or record["revision"] != body.expected_revision:
-        raise HTTPException(409, "Ticket state changed; reload")
-    if not one(
-        ctx.db,
-        """SELECT id FROM ticket_policies
-        WHERE tenant_id=:tenant AND ticket_id=:id AND document_id=:d""",
-        **ctx.parameters(),
-        id=ident,
-        d=body.document_id,
-    ):
-        raise HTTPException(422, "Select one of this ticket's policies")
-    document(ctx, body.document_id)
-    require_distributable(ctx, body.document_id)
-    employee = one(
-        ctx.db,
-        "SELECT * FROM users WHERE tenant_id=:tenant AND id=:id AND active=1",
-        **ctx.parameters(),
-        id=record["user_id"],
-    )
-    if not employee or not readable(
-        Context(ctx.db, employee, [], set(), ctx.request_id), body.document_id
-    ):
-        raise HTTPException(409, "Selected policy must remain accessible to the employee")
-    execute(
-        ctx.db,
-        """UPDATE policy_tickets SET status='resolved',selected_document_id=:d,
-        resolution=:reason,updated_at=:at,revision=revision+1 WHERE tenant_id=:tenant AND id=:id""",
-        **ctx.parameters(),
-        id=ident,
-        d=body.document_id,
-        reason=body.reason.strip(),
-        at=now(),
-    )
-    decision_event(ctx, ident, "resolved", body.reason, body.document_id)
-    notify(ctx, record, "Your policy conflict ticket has been resolved.")
-    return detail(ctx, ident)
+    conflict_reaudit.resolve(ctx, record, body, settings)
+    return detail(ctx, ident, settings)
 
 
-def rollback(ctx, ident, body):
+def rollback(ctx, ident, body, settings):
     ctx.require("ticket.review")
     record = ticket(ctx, ident)
-    if record["status"] != "resolved" or record["revision"] != body.expected_revision:
-        raise HTTPException(409, "Ticket state changed; reload")
-    execute(
-        ctx.db,
-        """UPDATE policy_tickets SET status='pending',selected_document_id=NULL,
-        resolution=NULL,updated_at=:at,revision=revision+1 WHERE tenant_id=:tenant AND id=:id""",
-        **ctx.parameters(),
-        id=ident,
-        at=now(),
-    )
-    decision_event(ctx, ident, "rollback", body.reason, record["selected_document_id"])
-    notify(
-        ctx, record, "The Auditor rolled back your ticket resolution. It is pending review again."
-    )
-    return detail(ctx, ident)
+    if not conflict_reaudit.context(ctx, ident):
+        raise HTTPException(409, "Historical manual tickets are read-only")
+    conflict_reaudit.rollback(ctx, record, body)
+    return detail(ctx, ident, settings)
 
 
 def attach(ctx, ident, filename, payload):
     ctx.require("ticket.create")
-    record = ticket(ctx, ident)
-    if record["user_id"] != ctx.user["id"]:
-        raise HTTPException(404, "Resource unavailable")
-    if record["status"] != "pending":
-        raise HTTPException(409, "Evidence can be attached while the ticket is pending")
-    name = Path(filename.replace("\\", "/")).name[:180]
-    if Path(name).suffix.lower() not in {".txt", ".pdf", ".docx"}:
-        raise HTTPException(415, "Attach TXT, PDF or DOCX")
-    if not payload or len(payload) > 2 * 1024 * 1024:
-        raise HTTPException(413, "Attachments must contain at most 2 MiB")
-    count = one(
-        ctx.db,
-        "SELECT COUNT(*) AS n FROM ticket_attachments WHERE tenant_id=:tenant AND ticket_id=:id",
-        **ctx.parameters(),
-        id=ident,
-    )["n"]
-    if count >= 5:
-        raise HTTPException(409, "A ticket can have at most five attachments")
-    aid, digest = uid(), hashlib.sha256(payload).hexdigest()
-    execute(
-        ctx.db,
-        """INSERT INTO ticket_attachments
-        (id,tenant_id,ticket_id,uploaded_by,filename,content,sha256,created_at)
-        VALUES (:id,:tenant,:t,:user,:name,:content,:hash,:at)""",
-        **ctx.parameters(),
-        id=aid,
-        t=ident,
-        name=name,
-        content=payload,
-        hash=digest,
-        at=now(),
+    raise HTTPException(
+        410,
+        "Re-audit now uses the actual Ask Cortex conflict; employee forms and attachments are retired",
     )
-    audit(ctx, "ticket.attachment.create", target=ident, target_type="ticket")
-    return {"id": aid, "filename": name, "sha256": digest}

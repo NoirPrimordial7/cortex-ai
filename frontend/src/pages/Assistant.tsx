@@ -18,6 +18,7 @@ import {
   IconContext,
 } from "@phosphor-icons/react";
 import { api, ApiError } from "../api";
+import { ConflictReaudit } from "../ConflictReaudit";
 import { useAskDraft } from "../AskDraft";
 import type { Answer, Citation, Source } from "../types";
 import { SourceInspector } from "../SourceInspector";
@@ -94,6 +95,7 @@ export default function Assistant() {
     useAskDraft();
   const suggestions = useQuerySuggestions(query, date, population);
   const [askedQuery, setAskedQuery] = useState("");
+  const lastRequest = useRef<Record<string, string> | null>(null);
   const [answer, setAnswer] = useState<Answer | null>(null),
     [source, setSource] = useState<Source | null>(null),
     [selected, setSelected] = useState<Citation | null>(null);
@@ -238,15 +240,19 @@ export default function Assistant() {
     setQuery("");
     try {
       conversation.current ??= globalThis.crypto?.randomUUID?.();
+      const request = {
+        query: prompt,
+        as_of: date,
+        population,
+        jurisdiction: "IN",
+        ...(conversation.current
+          ? { conversation_id: conversation.current }
+          : {}),
+      };
+      lastRequest.current = request;
       const result = await api<Answer>("/queries", {
         method: "POST",
-        body: JSON.stringify({
-          query: prompt,
-          as_of: date,
-          population,
-          jurisdiction: "IN",
-          conversation_id: conversation.current,
-        }),
+        body: JSON.stringify(request),
       });
       if (epoch.current !== stamp) return;
       setAnswer(result);
@@ -268,7 +274,28 @@ export default function Assistant() {
       if (epoch.current === stamp) setBusy(false);
     }
   }
+  async function reloadAfterSubmission(request: Record<string, string> | null) {
+    if (!request || lastRequest.current !== request) return;
+    clear();
+    const stamp = epoch.current;
+    setBusy(true);
+    try {
+      const result = await api<Answer>("/queries", {
+        method: "POST",
+        body: JSON.stringify(request),
+      });
+      if (epoch.current !== stamp) return;
+      setAnswer(result);
+      if (result.reason_code === "UNRESOLVED_CONFLICT") void compare(result);
+      else if (result.citations[0]) void inspect(result.citations[0], result);
+    } catch (e) {
+      if (epoch.current === stamp) setError((e as Error).message);
+    } finally {
+      if (epoch.current === stamp) setBusy(false);
+    }
+  }
   const conflict = answer?.reason_code === "UNRESOLVED_CONFLICT";
+  const activeRequest = lastRequest.current;
   const ledger = answer?.source === "leave_ledger";
   const inspectorContent = (
     <SourceInspector
@@ -569,8 +596,30 @@ export default function Assistant() {
                           ))}
                         </div>
                       )}
-                      <p className="fb-comparison-note">
-                        Ask a policy owner to resolve this disagreement.
+                      <ConflictReaudit
+                        key={answer.query_id}
+                        answer={answer}
+                        disabled={
+                          comparisonBusy ||
+                          comparison.length !== answer.citations.length
+                        }
+                        onSubmitted={() => reloadAfterSubmission(activeRequest)}
+                      />
+                    </section>
+                  )}
+                  {answer.re_audit?.status === "resolved" && (
+                    <section
+                      className="conflict-reaudit"
+                      aria-label="Auditor primary policy decision"
+                    >
+                      <strong>Auditor-selected primary policy</strong>
+                      <p>
+                        {answer.re_audit.resolution ||
+                          "An Auditor selected the cited policy for this exact conflict."}
+                      </p>
+                      <p className="section-note">
+                        This choice applies to the same conflicting versions and
+                        scope. Undo by the Auditor restores the conflict.
                       </p>
                     </section>
                   )}

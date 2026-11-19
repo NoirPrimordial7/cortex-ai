@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-20 — Conflict-driven re-audit correction
+
+- Removed the Employee manual ticket UI and replaced it with a query-bound Ask Cortex conflict button. Added explicit Auditor review grants and exact-version choices.
+- Auditor primary selection now changes only matching authorized conflict answers. Undo restores abstention, invalidates derived answers and reopens the same case with complete history.
+- Added migration 0009, legacy history retention, private review-note protections, no-form frontend tests and end-to-end source/undo verification. [Full report](../implementation/CONFLICT_REAUDIT_TEST_REPORT.md), [ADR 0017](../decisions/0017-conflict-driven-reaudit.md).
+
 ## 2026-11-19 — Employee governance enhancement
 
 - Consolidated active roles to Employee, Auditor and Admin with safe identity/READ migration and updated fictional emails. Added independent policy submission/review/rejection, reusable headings and approval-gated distribution.

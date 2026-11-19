@@ -8,7 +8,7 @@ from sqlalchemy.exc import IntegrityError
 from app import leave
 from app.main import create_app
 from app.security import execute, one
-from conftest import ORIGIN, client_for
+from conftest import ORIGIN, ask, client_for
 from test_ingestion import payload_for, review_body
 
 
@@ -222,59 +222,38 @@ def test_leave_withdraw_reject_insufficient_invalid_private(system, leave_clock)
         )
 
 
-def test_ticket_resolution_rollback_attachments_notifications_persist(system):
+def test_conflict_request_history_and_notifications_persist(system):
     employee, auditor, admin, orbit = (
         client_for(system, u) for u in ("maya", "isha", "ravi", "orbit")
     )
-    r = employee.post(
-        "/api/v1/policy-tickets",
-        json={
-            "document_ids": ["HR-LEAVE", "HR-SICK"],
-            "description": "These policy entitlements appear to contradict each other.",
-        },
-    )
+    q = ask(employee, "How many remote days per week?")
+    r = employee.post("/api/v1/policy-tickets", json={"query_id": q["query_id"]})
     assert r.status_code == 201, r.text
-    t = r.json()
-    path = "/api/v1/policy-tickets/" + t["id"]
-    assert orbit.get(path).status_code == 404 and admin.get(path).status_code == 404
-    raw = b"Evidence for independent review"
-    a = employee.post(path + "/attachments", files={"file": ("evidence.txt", raw)})
-    assert a.status_code == 201, a.text
-    aid = employee.get(path).json()["attachments"][0]["id"]
-    assert auditor.get(path + "/attachments/" + aid).content == raw
-    assert orbit.get(path + "/attachments/" + aid).status_code == 404
+    path = "/api/v1/policy-tickets/" + r.json()["id"]
+    for user in (employee, admin, orbit):
+        assert user.get(path).status_code == 403
     body = {
         "expected_revision": 0,
-        "document_id": "HR-LEAVE",
-        "reason": "Use the policy applicable to the employee scope.",
+        "clause_id": q["citations"][0]["clause_id"],
+        "reason": "Use this policy for the exact reviewed conflict.",
     }
-    assert admin.post(path + "/resolve", json=body).status_code == 403
-    assert employee.post(path + "/resolve", json=body).status_code == 403
-    resolved = auditor.post(path + "/resolve", json=body)
-    assert resolved.status_code == 200, resolved.text
-    assert employee.get(path).json()["selected_document_id"] == "HR-LEAVE"
-    assert auditor.post(path + "/resolve", json=body).status_code == 409
+    assert auditor.post(path + "/resolve", json=body).status_code == 200
     assert (
         auditor.post(
             path + "/rollback",
-            json={
-                "expected_revision": 1,
-                "reason": "Need to examine the competing effective dates.",
-            },
+            json={"expected_revision": 1, "reason": "Review the competing source again."},
         ).status_code
         == 200
     )
-    detail = employee.get(path).json()
-    assert detail["status"] == "pending" and detail["selected_document_id"] is None
-    assert [e["operation"] for e in detail["history"]] == ["submitted", "resolved", "rollback"]
+    history = auditor.get(path).json()["history"]
+    assert [h["operation"] for h in history] == ["submitted", "resolved", "rollback"]
     notices = employee.get("/api/v1/notifications").json()["items"]
     assert len(notices) == 2
     assert employee.post(f"/api/v1/notifications/{notices[0]['id']}/read").status_code == 200
-    # New application instance and fresh login read the same records after restart.
     restarted = create_app(system[0].state.settings)
     try:
-        c = client_for((restarted, system[1]))
-        assert c.get(path).json()["history"] == detail["history"]
+        c = client_for((restarted, system[1]), "isha")
+        assert c.get(path).json()["history"] == history
     finally:
         restarted.state.engine.dispose()
 
@@ -354,7 +333,7 @@ def test_role_matrix_and_tenant_isolation(system, who):
         "/policy-reviews": who == "isha",
         "/leave/balance": who == "maya",
         "/leave/team": who != "maya",
-        "/policy-tickets": who != "ravi",
+        "/policy-tickets": who == "isha",
     }
     for path, allowed in expected.items():
         assert c.get("/api/v1" + path).status_code == (200 if allowed else 403), path
@@ -470,47 +449,32 @@ def test_concurrent_approval_and_same_tenant_employee_privacy(system, leave_cloc
     assert days(employee) == before - 3
 
 
-def test_ticket_invalid_policy_selection_and_evidence_limits(system):
+def test_manual_ticket_inputs_retired_and_unrelated_primary_rejected(system):
     employee, auditor = client_for(system), client_for(system, "isha")
-    path = "/api/v1/policy-tickets"
     assert (
         employee.post(
-            path,
-            json={
-                "document_ids": ["EXEC-BONUS"],
-                "description": "Cannot reference an inaccessible policy.",
-            },
+            "/api/v1/policy-tickets",
+            json={"document_ids": ["EXEC-BONUS"], "description": "Retired manual form"},
         ).status_code
-        == 404
+        == 422
     )
-    t = employee.post(
-        path,
-        json={
-            "document_ids": ["HR-LEAVE"],
-            "description": "Please explain the applicable effective date.",
-        },
-    ).json()
-    path += "/" + t["id"]
+    q = ask(employee, "How many remote days per week?")
+    t = employee.post("/api/v1/policy-tickets", json={"query_id": q["query_id"]}).json()
+    path = "/api/v1/policy-tickets/" + t["id"]
     assert (
         auditor.post(
             path + "/resolve",
             json={
                 "expected_revision": 0,
-                "document_id": "HR-SICK",
-                "reason": "Unrelated policy must not be selected.",
+                "clause_id": "L26-C1",
+                "reason": "Unrelated policy cannot be selected.",
             },
         ).status_code
         == 422
     )
     assert (
         employee.post(
-            path + "/attachments", files={"file": ("evidence.exe", b"not allowed")}
+            path + "/attachments", files={"file": ("evidence.txt", b"Retired form")}
         ).status_code
-        == 415
-    )
-    assert (
-        employee.post(
-            path + "/attachments", files={"file": ("oversize.txt", b"x" * (2 * 1024 * 1024 + 1))}
-        ).status_code
-        == 413
+        == 410
     )

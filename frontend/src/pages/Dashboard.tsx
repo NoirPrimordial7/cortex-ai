@@ -97,9 +97,7 @@ export default function Dashboard() {
               Review policies
             </Link>
           )}
-          {user?.actions.some((a) =>
-            ["ticket.create", "ticket.review"].includes(a),
-          ) && (
+          {user?.actions.includes("ticket.review") && (
             <Link className="button" to="/tickets">
               Policy re-audit tickets
             </Link>

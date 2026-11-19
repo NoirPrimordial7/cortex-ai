@@ -1,5 +1,8 @@
 # Cortex backend — implemented local evidence core
 
+**2026-11-20 correction:** Re-audit now starts from the actual Ask Cortex conflict, with no Employee form/section. Auditor receives both exact sources and can select/undo a primary. [Current behavior, migration and tests](../docs/implementation/CONFLICT_REAUDIT_TEST_REPORT.md). Earlier checkpoints below retain their original scope.
+
+
 Python 3.12, FastAPI, SQLite/FTS5, SQLAlchemy Core and Alembic. This is an offline **reviewed-policy evidence answerer**, not a general-purpose LLM chatbot. It recognizes leave, remote work, notice and executive bonus questions using finite keywords and reviewer-labelled numeric claims. Mixed or unknown topics abstain. No model download, API key or paid provider is needed.
 
 Shared demonstration extension: [ADR0006](../docs/decisions/0006-disposable-shared-demo.md) and [hosting guide](../docs/implementation/SHARED_DEMO.md) add a disposable HTTPS Render deployment and explicit fictional picker. The local instructions below still apply. Hosted uploads/governance are read-only.

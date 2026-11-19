@@ -1,5 +1,7 @@
 # ADR 0015 — Transactional leave applications and re-audit decisions
 
+**2026-11-20:** Ticket intake and annotation-only resolution below are superseded by [ADR 0017](0017-conflict-driven-reaudit.md), following the owner's correction. The leave module and preserved historical records remain unchanged.
+
 Timestamp: 2026-11-19T23:00:00+05:30. Status: implemented locally. Module: leave and policy tickets. Commit: feature branch history.
 
 ## Choice and rationale

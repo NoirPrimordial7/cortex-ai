@@ -3701,6 +3701,34 @@ strong {
   margin-block: 24px;
   min-width: 0;
 }
+
+.conflict-reaudit {
+  margin-block: 20px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.reaudit-source-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-block: 16px;
+}
+.reaudit-source {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+.reaudit-source blockquote {
+  margin-inline: 0;
+}
+@media (max-width: 767px) {
+  .reaudit-source-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 .workflow-form {
   margin-block: 16px;
 }

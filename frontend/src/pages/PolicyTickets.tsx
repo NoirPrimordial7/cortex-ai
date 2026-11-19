@@ -1,31 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Badge, PageHeading, State, useResource } from "../components";
-import { useSession } from "../session";
 import { useWorkflowActions, WorkflowPanel } from "../WorkflowActions";
 import { RecordPager } from "../RecordPager";
-import type { DocumentItem, PolicyTicket } from "../types";
+import type { PolicyTicket } from "../types";
 
 export default function PolicyTickets() {
-  const { user } = useSession();
-  const employee = Boolean(user?.actions.includes("ticket.create"));
-  const tickets = useResource<{ items: PolicyTicket[] }>("/policy-tickets");
-  const policies = useResource<{ items: DocumentItem[] }>("/documents");
-  const notices = useResource<{
-    items: {
-      id: string;
-      ticket_id: string;
-      message: string;
-      read_at: string | null;
-    }[];
-  }>("/notifications");
+  const resource = useResource<{ items: PolicyTicket[] }>("/policy-tickets");
   const [selected, setSelected] = useState(""),
+    [filter, setFilter] = useState("pending"),
     [page, setPage] = useState(0);
-  const actions = useWorkflowActions(() => {
-    tickets.reload();
-    notices.reload();
-  });
-  const records = tickets.data?.items || [];
+  const records = (resource.data?.items || []).filter((t) =>
+    filter === "history"
+      ? !t.from_cortex
+      : Boolean(t.from_cortex) && t.status === filter,
+  );
   const current = Math.min(
     page,
     Math.max(0, Math.ceil(records.length / 10) - 1),
@@ -34,120 +23,48 @@ export default function PolicyTickets() {
     <>
       <PageHeading
         eyebrow="Governance"
-        title="Policy re-audit tickets"
-        description="Ask an Auditor to investigate conflicting policies. Ticket decisions preserve the policy evidence and its original approval history."
+        title="Conflict re-audits"
+        description="Review the exact policy versions sent from an Ask Cortex conflict. Select its primary policy, or undo a previous choice to restore the disagreement."
       />
-      {actions.feedback}
-      {employee && (
-        <WorkflowPanel title="Raise policy conflict">
-          <State error={policies.error} loading={policies.loading}>
-            {policies.data?.items.length ? (
-              <form
-                className="workflow-form"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const fields = new FormData(e.currentTarget);
-                  actions.prepare(
-                    "/policy-tickets",
-                    {
-                      document_ids: fields.getAll("document_ids"),
-                      description: fields.get("description"),
-                    },
-                    "Submit re-audit ticket",
-                    "Your selected policies and explanation will be sent to the Auditor.",
-                  );
-                }}
-              >
-                <fieldset disabled={actions.readOnly || actions.busy}>
-                  <legend>Select one to five assigned policies</legend>
-                  {policies.data.items.map((d) => (
-                    <label className="check-label" key={d.id}>
-                      <input type="checkbox" name="document_ids" value={d.id} />
-                      {d.title}
-                    </label>
-                  ))}
-                  <label>
-                    Conflict or confusion
-                    <textarea
-                      name="description"
-                      minLength={10}
-                      maxLength={4000}
-                      required
-                    />
-                  </label>
-                  <p className="section-note">
-                    After submission, open the pending ticket to attach
-                    supporting evidence.
-                  </p>
-                  <button className="button primary">
-                    Review ticket submission
-                  </button>
-                </fieldset>
-              </form>
-            ) : (
-              <p className="empty-note">
-                No assigned policies are available for a ticket.
-              </p>
-            )}
-          </State>
-        </WorkflowPanel>
-      )}
-      {employee && (
-        <WorkflowPanel title="Ticket notifications">
-          <State error={notices.error} loading={notices.loading}>
-            {notices.data?.items.length ? (
-              notices.data.items.map((n) => (
-                <div className="collection-row" key={n.id}>
-                  <div>
-                    <p>{n.message}</p>
-                    <button
-                      className="button"
-                      onClick={() => setSelected(n.ticket_id)}
-                    >
-                      Open ticket
-                    </button>
-                  </div>
-                  {!n.read_at && (
-                    <button
-                      className="button"
-                      disabled={actions.readOnly}
-                      onClick={() =>
-                        actions.prepare(
-                          `/notifications/${n.id}/read`,
-                          {},
-                          "Mark notification read",
-                          n.message,
-                        )
-                      }
-                    >
-                      Mark read
-                    </button>
-                  )}
-                </div>
-              ))
-            ) : (
-              <p className="empty-note">No notifications yet.</p>
-            )}
-          </State>
-        </WorkflowPanel>
-      )}
-      <WorkflowPanel title={employee ? "Your tickets" : "Employee tickets"}>
-        <State error={tickets.error} loading={tickets.loading}>
+      <WorkflowPanel title="Review queue">
+        <label>
+          Review status
+          <select
+            aria-label="Review status"
+            value={filter}
+            onChange={(e) => {
+              setFilter(e.target.value);
+              setPage(0);
+              setSelected("");
+            }}
+          >
+            <option value="pending">Pending conflicts</option>
+            <option value="resolved">Resolved conflicts</option>
+            <option value="history">Historical manual tickets</option>
+          </select>
+        </label>
+        <State error={resource.error} loading={resource.loading}>
           {records.length ? (
             records.slice(current * 10, (current + 1) * 10).map((t) => (
               <div className="collection-row" key={t.id}>
                 <div>
                   <Badge state={t.status} />
-                  <p className="section-note">{t.display_name}</p>
                   <p>{t.description}</p>
+                  <p className="section-note">Sent by {t.display_name}</p>
                 </div>
                 <button className="button" onClick={() => setSelected(t.id)}>
-                  Open ticket
+                  Open conflict
                 </button>
               </div>
             ))
           ) : (
-            <p className="empty-note">No tickets to show.</p>
+            <p className="empty-note">
+              No{" "}
+              {filter === "history"
+                ? "historical manual tickets"
+                : filter + " conflicts"}{" "}
+              to show.
+            </p>
           )}
           <RecordPager
             page={current}
@@ -158,29 +75,23 @@ export default function PolicyTickets() {
         </State>
       </WorkflowPanel>
       {selected && (
-        <TicketDetail
+        <ConflictDetail
           key={selected}
           id={selected}
-          employee={employee}
           onClose={() => setSelected("")}
-          onChange={() => {
-            tickets.reload();
-            notices.reload();
-          }}
+          onChange={resource.reload}
         />
       )}
     </>
   );
 }
 
-function TicketDetail({
+function ConflictDetail({
   id,
-  employee,
   onClose,
   onChange,
 }: {
   id: string;
-  employee: boolean;
   onClose: () => void;
   onChange: () => void;
 }) {
@@ -190,146 +101,193 @@ function TicketDetail({
     onChange();
   });
   const t = resource.data;
+  const sources = t?.conflict_sources || [];
+  const canResolve =
+    sources.length >= 2 && sources.every((s) => s.available && s.verified);
   return (
-    <WorkflowPanel title="Ticket details">
+    <WorkflowPanel title="Conflict details">
       <button className="button" onClick={onClose}>
-        Close ticket
+        Close conflict
       </button>
       {actions.feedback}
       <State error={resource.error} loading={resource.loading}>
         {t && (
           <>
             <Badge state={t.status} />
-            <p className="section-note">Employee: {t.display_name}</p>
+            <p className="section-note">Sent by {t.display_name}</p>
+            <h3>Original question</h3>
             <p>{t.description}</p>
-            <h3>Policies involved</h3>
-            <ul>
-              {t.policies?.map((p) => (
-                <li key={p.document_id}>
-                  {p.available ? (
-                    <Link to={"/documents/" + p.document_id}>{p.title}</Link>
-                  ) : (
-                    p.title
-                  )}
-                  {t.selected_document_id === p.document_id &&
-                    " · Selected resolution policy"}
-                </li>
-              ))}
-            </ul>
-            {t.resolution && (
-              <section>
-                <h3>Auditor resolution</h3>
-                <p>{t.resolution}</p>
-              </section>
-            )}
-            <h3>Supporting evidence</h3>
-            <ul>
-              {t.attachments?.map((a) => (
-                <li key={a.id}>
-                  <a href={`/api/v1/policy-tickets/${id}/attachments/${a.id}`}>
-                    {a.filename}
-                  </a>
-                  <p className="hash-value">SHA-256 {a.sha256}</p>
-                </li>
-              ))}
-            </ul>
-            {!t.attachments?.length && (
-              <p className="empty-note">No evidence attached.</p>
-            )}
-            {employee && t.status === "pending" && (
-              <form
-                className="workflow-form"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  actions.prepare(
-                    `/policy-tickets/${id}/attachments`,
-                    new FormData(e.currentTarget),
-                    "Attach supporting evidence",
-                    "The attachment is stored as ticket evidence and is never indexed as a policy.",
-                  );
-                }}
-              >
-                <fieldset disabled={actions.readOnly || actions.busy}>
-                  <label>
-                    Evidence file
-                    <input
-                      name="file"
-                      type="file"
-                      accept=".txt,.pdf,.docx"
-                      required
-                    />
-                  </label>
-                  <p className="section-note">
-                    TXT, PDF or DOCX, up to 2 MiB each, five files per ticket.
-                    Download files only from sources you trust.
-                  </p>
-                  <button className="button">Review attachment</button>
-                </fieldset>
-              </form>
-            )}
-            {!employee && (
-              <form
-                className="workflow-form"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const v = Object.fromEntries(new FormData(e.currentTarget));
-                  actions.prepare(
-                    `/policy-tickets/${id}/${t.status === "resolved" ? "rollback" : "resolve"}`,
-                    {
-                      expected_revision: t.revision,
-                      reason: v.reason,
-                      ...(t.status === "pending"
-                        ? { document_id: v.document_id }
-                        : {}),
-                    },
-                    t.status === "resolved"
-                      ? "Rollback resolution"
-                      : "Resolve policy conflict",
-                    "This decision is appended to the ticket history and the employee is notified.",
-                  );
-                }}
-              >
-                <fieldset disabled={actions.readOnly || actions.busy}>
-                  {t.status === "pending" && (
-                    <label>
-                      Resolution policy
-                      <select
-                        aria-label="Resolution policy"
-                        name="document_id"
-                        required
-                        defaultValue=""
-                      >
-                        <option value="" disabled>
-                          Choose relevant policy
-                        </option>
-                        {t.policies
-                          ?.filter((p) => p.available)
-                          .map((p) => (
-                            <option key={p.document_id} value={p.document_id}>
-                              {p.title}
+            {t.conflict_context ? (
+              <>
+                <p className="section-note">
+                  As of {t.conflict_context.as_of} ·{" "}
+                  {t.conflict_context.population.replaceAll("_", " ")} ·{" "}
+                  {t.conflict_context.jurisdiction}
+                </p>
+                <h3>Conflicting policy versions</h3>
+                <div className="reaudit-source-grid">
+                  {sources.map((s) => (
+                    <article className="reaudit-source" key={s.clause_id}>
+                      <h3>
+                        {s.title}
+                        {s.version_label && ` · ${s.version_label}`}
+                      </h3>
+                      {s.available && s.verified ? (
+                        <>
+                          <blockquote>{s.text}</blockquote>
+                          <p>
+                            Effective {s.valid_from} to{" "}
+                            {s.valid_to || "open-ended"} · {s.locator}
+                          </p>
+                          <Link
+                            to={`/documents/${s.document_id}?version=${s.version_id}`}
+                          >
+                            Open this exact source version
+                          </Link>
+                        </>
+                      ) : (
+                        <p role="alert">
+                          {s.available
+                            ? "Source integrity changed. This conflict cannot be resolved until its sources are verified."
+                            : "Source access was revoked. Restore the explicit review grant before choosing a primary policy."}
+                        </p>
+                      )}
+                      {t.conflict_context?.selected_clause_id ===
+                        s.clause_id && (
+                        <p>
+                          <strong>Current primary policy</strong>
+                        </p>
+                      )}
+                    </article>
+                  ))}
+                </div>
+                {t.resolution && (
+                  <section>
+                    <h3>Primary policy decision</h3>
+                    <p>{t.resolution}</p>
+                  </section>
+                )}
+                <form
+                  className="workflow-form"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const fields = new FormData(e.currentTarget);
+                    const undo = t.status === "resolved";
+                    actions.prepare(
+                      `/policy-tickets/${id}/${undo ? "rollback" : "resolve"}`,
+                      {
+                        expected_revision: t.revision,
+                        reason: fields.get("reason"),
+                        ...(!undo
+                          ? { clause_id: fields.get("clause_id") }
+                          : {}),
+                      },
+                      undo
+                        ? "Undo primary / Reopen conflict"
+                        : "Select primary policy",
+                      undo
+                        ? "This removes the current primary choice, restores Cortex's conflict abstention, invalidates answers based on that decision and reopens this review. The prior decision stays in history."
+                        : "Cortex will use this policy only for the same conflicting versions and scope. Original policies, dates and source authority stay unchanged.",
+                    );
+                  }}
+                >
+                  <fieldset
+                    disabled={
+                      actions.readOnly ||
+                      actions.busy ||
+                      (t.status === "pending" && !canResolve)
+                    }
+                  >
+                    {t.status === "pending" && (
+                      <label>
+                        Primary policy
+                        <select
+                          aria-label="Primary policy"
+                          name="clause_id"
+                          required
+                          defaultValue=""
+                        >
+                          <option value="" disabled>
+                            Choose one of the conflicting versions
+                          </option>
+                          {sources.map((s) => (
+                            <option
+                              key={s.clause_id}
+                              value={s.clause_id}
+                              disabled={!s.available || !s.verified}
+                            >
+                              {s.title}
+                              {s.version_label &&
+                                ` · ${s.version_label}`} ·{" "}
+                              {s.locator || "Source unavailable"}
                             </option>
                           ))}
-                      </select>
+                        </select>
+                      </label>
+                    )}
+                    <label>
+                      {t.status === "resolved"
+                        ? "Undo reason"
+                        : "Decision explanation"}
+                      <textarea
+                        name="reason"
+                        minLength={5}
+                        maxLength={4000}
+                        required
+                      />
                     </label>
-                  )}
-                  <label>
-                    {t.status === "resolved"
-                      ? "Rollback reason"
-                      : "Decision explanation"}
-                    <textarea
-                      name="reason"
-                      minLength={5}
-                      maxLength={4000}
-                      required
-                    />
-                  </label>
-                  <button className="button primary">
-                    {t.status === "resolved"
-                      ? "Review rollback"
-                      : "Review resolution"}
-                  </button>
-                </fieldset>
-              </form>
+                    <button className="button primary">
+                      {t.status === "resolved"
+                        ? "Undo / Reopen conflict"
+                        : "Review primary policy choice"}
+                    </button>
+                  </fieldset>
+                </form>
+                {t.status === "pending" && !canResolve && (
+                  <p className="form-error" role="alert">
+                    Both source versions must be available and verified before a
+                    primary policy can be chosen.
+                  </p>
+                )}
+              </>
+            ) : (
+              <>
+                <p className="section-note">
+                  Historical manual ticket. This record is retained for history;
+                  send a detected conflict from Ask Cortex to create an
+                  actionable review.
+                </p>
+                <h3>Historical policies</h3>
+                <ul>
+                  {t.policies?.map((p) => (
+                    <li key={p.document_id}>
+                      {p.available ? (
+                        <Link to={"/documents/" + p.document_id}>
+                          {p.title}
+                        </Link>
+                      ) : (
+                        p.title
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {Boolean(t.attachments?.length) && (
+              <>
+                <h3>Historical supporting evidence</h3>
+                <ul>
+                  {t.attachments?.map((a) => (
+                    <li key={a.id}>
+                      <a
+                        href={`/api/v1/policy-tickets/${id}/attachments/${a.id}`}
+                      >
+                        {a.filename}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
             )}
             <h3>Complete decision history</h3>
             <ol>
