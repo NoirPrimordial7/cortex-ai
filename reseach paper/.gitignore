@@ -22,3 +22,6 @@ __pycache__/
 /exports/*.blg
 /exports/*.log
 /exports/*-LaTeX-source.zip
+/exports/**/*.blg
+/exports/**/*.log
+/exports/**/*-LaTeX-source.zip

@@ -1,39 +1,50 @@
 {
   "cortex-academic.pdf": {
-    "pages": 14,
+    "pages": 13,
     "key_formula_tokens_verified": true,
-    "figures": 7
-  },
-  "cortex-ieee.pdf": {
-    "pages": 7,
-    "key_formula_tokens_verified": true,
-    "figures": 7
+    "figures": 6
   },
   "Cortex-SMARTCOM-Goa-Guidelines.pdf": {
     "pages": 14,
     "key_formula_tokens_verified": true,
-    "figures": 7,
+    "figures": 6,
     "dominant_font_size_pt": 12.0
+  },
+  "cortex-ieee.pdf": {
+    "pages": 8,
+    "key_formula_tokens_verified": true,
+    "figures": 6
+  },
+  "Cortex-IJSREM.pdf": {
+    "pages": 10,
+    "key_formula_tokens_verified": true,
+    "figures": 6,
+    "dominant_font_size_pt": 11.0
   },
   "Cortex-SMARTCOM-Word-proof.pdf": {
     "pages": 14,
     "key_formula_tokens_verified": true,
-    "figures": 7,
+    "figures": 6,
     "dominant_font_size_pt": 10.0
   },
   "cortex-springer.pdf": {
     "pages": 14,
     "key_formula_tokens_verified": true,
-    "figures": 7
-  },
-  "Cortex-SMARTCOM-editable.docx": {
-    "native_omml_objects": 18,
-    "figures_with_alt_text": 7,
-    "references": 20
+    "figures": 6
   },
   "Cortex-SMARTCOM-Goa-Guidelines.docx": {
     "native_omml_objects": 18,
-    "figures_with_alt_text": 7,
+    "figures_with_alt_text": 6,
+    "references": 20
+  },
+  "Cortex-IJSREM.docx": {
+    "native_omml_objects": 18,
+    "figures_with_alt_text": 6,
+    "references": 20
+  },
+  "Cortex-SMARTCOM-editable.docx": {
+    "native_omml_objects": 18,
+    "figures_with_alt_text": 6,
     "references": 20
   }
 }

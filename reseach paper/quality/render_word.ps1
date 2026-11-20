@@ -8,6 +8,6 @@ $word.AutomationSecurity = 3
 try {
     $doc = $word.Documents.Open($source, $false, $true)
     try {
-        $doc.ExportAsFixedFormat($destination, 17)
+        $doc.ExportAsFixedFormat($destination, 17, $false, 0, 0, 1, 1, 0, $true)
     } finally { $doc.Close(0) }
 } finally { $word.Quit() }

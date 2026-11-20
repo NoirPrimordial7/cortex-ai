@@ -34,7 +34,7 @@ def readable_words(s):
 
 def main():
     summary = {"pdfs": {}}
-    for path in sorted((ROOT / "exports").glob("*.pdf")):
+    for path in sorted((ROOT / "exports").glob("*/*.pdf")):
         page_entries, text_entries, out_of_page = [], [], []
         with pymupdf.open(path) as doc:
             for number, page in enumerate(doc, 1):
@@ -60,10 +60,10 @@ def main():
             }
         contact_sheet(page_entries, RENDERS / f"{path.stem}-overview.png")
     images = [
-        (ROOT / f"figures/rendered/fig{i}.png", f"Figure {i}") for i in range(1, 8)
+        (ROOT / f"figures/rendered/fig{i}.png", f"Figure {i}") for i in range(1, 7)
     ]
     contact_sheet(images, RENDERS / "figures-overview.png", width=370, height=265)
-    for path in (ROOT / "exports").glob("*.docx"):
+    for path in (ROOT / "exports").glob("*/*.docx"):
         with ZipFile(path) as package:
             xml = package.read("word/document.xml").decode()
             summary[path.name] = {

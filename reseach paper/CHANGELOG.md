@@ -1,5 +1,11 @@
 # Research changelog
 
+## Publication production
+
+- Added the approved correspondence, redrew the six technical figures and moved the application captures to supplementary evidence.
+- Added the IJSREM manuscript and synchronized the five editions from one source. Documented layout decisions, local writing checks and rollback copies.
+- Clarified the existing fixture and verification procedure from the benchmark harness.
+
 ## Application screenshot figure
 
 - Added two cropped fictional demonstration views to the Implementation section as Figure 7.

@@ -8,6 +8,7 @@ from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import yaml
+from ijsrem import journal_document, journal_manuscript, journal_styles
 from lxml import etree
 
 HERE = Path(__file__).resolve().parent
@@ -111,6 +112,7 @@ def word_layout(entry, data, *, goa=False):
         "Heading3": "heading3",
         "heading 1": "heading1",
         "heading 2": "heading2",
+        "heading 3": "heading3",
         "FirstParagraph": "p1a",
         "BodyText": "Normal",
         "ImageCaption": "figurecaption",
@@ -144,6 +146,8 @@ def word_layout(entry, data, *, goa=False):
         pstyle = p.find(f"{W}pPr/{W}pStyle")
         old = pstyle.get(f"{W}val") if pstyle is not None else ""
         text = "".join(node.text or "" for node in p.iter(f"{W}t"))
+        if old in styles:
+            style_for(p, styles[old])
         # Pandoc does not use publisher-specific front-matter style names.
         for prefix, name in [
             ("AFFILIATIONMARK ", "address"),
@@ -163,8 +167,6 @@ def word_layout(entry, data, *, goa=False):
                         if not remaining:
                             break
                 break
-        if old in styles:
-            style_for(p, styles[old])
         if p.find(f".//{WP}inline") is not None:
             style_for(p, "image")
             properties = p.find(f"{W}pPr")
@@ -230,6 +232,8 @@ def main():
     build = HERE / "_build"
     build.mkdir(exist_ok=True)
     bibliography = ROOT / "bibliography/references.bib"
+    for directory in ("goa", "springer", "ieee", "ijsrem", "academic"):
+        (EXPORT / directory).mkdir(parents=True, exist_ok=True)
     for template in ("springer", "ieee", "academic"):
         target = HERE / f"cortex-{template}.tex"
         run(
@@ -252,7 +256,9 @@ def main():
             target,
         )
         if args.tectonic:
-            run(args.tectonic, "--keep-logs", "--outdir", EXPORT, target.name)
+            run(
+                args.tectonic, "--keep-logs", "--outdir", EXPORT / template, target.name
+            )
 
     front = (
         f"---\ntitle: {yaml.safe_dump(meta['title'], default_flow_style=True, width=1000).splitlines()[0]}\n"
@@ -266,9 +272,12 @@ def main():
     for prefix, style, filename in [
         ("springer", "springer-lncs.csl", "Cortex-SMARTCOM-editable.docx"),
         ("goa", "apa.csl", "Cortex-SMARTCOM-Goa-Guidelines.docx"),
+        ("ijsrem", "ieee.csl", "Cortex-IJSREM.docx"),
     ]:
         word_input = build / f"{prefix}.md"
-        word_body = body.replace("width=89%", "width=100%") if prefix == "goa" else body
+        word_body = journal_manuscript(body) if prefix == "ijsrem" else body
+        if prefix == "goa":
+            word_body = body.replace("width=89%", "width=100%")
         word_input.write_text(
             front + word_body + "\n\n# References {.unnumbered}\n", encoding="utf-8"
         )
@@ -290,26 +299,39 @@ def main():
             "-o",
             raw_word,
         )
-        transform_package(
-            raw_word,
-            EXPORT / filename,
-            lambda entry, data, goa=prefix == "goa": word_layout(entry, data, goa=goa),
-        )
 
-    archive = EXPORT / "Cortex-SMARTCOM-LaTeX-source.zip"
-    with ZipFile(archive, "w", ZIP_DEFLATED) as bundle:
-        for file in (
-            HERE / "cortex-springer.tex",
-            HERE / "llncs.cls",
-            HERE / "splncs04.bst",
-            bibliography,
-            *sorted((ROOT / "figures/rendered").glob("fig*.pdf")),
-        ):
-            bundle.write(file, file.relative_to(ROOT).as_posix())
-        bundle.writestr(
-            "README.txt",
-            "Compile from manuscript/ with LaTeX, BibTeX, then LaTeX twice.\n",
+        def format_word(entry, data, prefix=prefix):
+            mapped = word_layout(entry, data, goa=prefix == "goa")
+            if prefix == "ijsrem":
+                if entry == "word/styles.xml":
+                    return journal_styles(mapped)
+                if entry == "word/document.xml":
+                    return journal_document(mapped)
+            return mapped
+
+        transform_package(raw_word, EXPORT / prefix / filename, format_word)
+
+    for prefix, class_name, style in [
+        ("springer", "llncs", "splncs04"),
+        ("ieee", "IEEEtran", "IEEEtran"),
+        ("academic", None, None),
+    ]:
+        archive = EXPORT / prefix / f"cortex-{prefix}-LaTeX-source.zip"
+        vendor_files = (
+            [HERE / f"{class_name}.cls", HERE / f"{style}.bst"] if class_name else []
         )
+        with ZipFile(archive, "w", ZIP_DEFLATED) as bundle:
+            for file in (
+                HERE / f"cortex-{prefix}.tex",
+                *vendor_files,
+                bibliography,
+                *(ROOT / f"figures/rendered/fig{i}.pdf" for i in range(1, 7)),
+            ):
+                bundle.write(file, file.relative_to(ROOT).as_posix())
+            bundle.writestr(
+                "README.txt",
+                "Compile from manuscript/ with LaTeX, BibTeX, then LaTeX twice.\n",
+            )
 
 
 if __name__ == "__main__":

@@ -6,4 +6,4 @@ The repaired manuscript was generated from the [authoritative Markdown](manuscri
 
 Selected wording edits were preserved after review. The source retained its exact mathematical markup and its formal Auditor role name. The supplied attachment remains outside version control.
 
-[Corrected editable Goa DOCX](exports/Cortex-SMARTCOM-Goa-Guidelines.docx) · [Goa proof PDF](exports/Cortex-SMARTCOM-Goa-Guidelines.pdf)
+[Corrected editable Goa DOCX](https://github.com/NoirPrimordial7/cortex-ai/blob/e87797f/reseach%20paper/exports/Cortex-SMARTCOM-Goa-Guidelines.docx) · [Goa proof PDF](https://github.com/NoirPrimordial7/cortex-ai/blob/e87797f/reseach%20paper/exports/Cortex-SMARTCOM-Goa-Guidelines.pdf)

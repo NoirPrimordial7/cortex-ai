@@ -1,5 +1,7 @@
 # Final review proofs
 
+This is the historical Figure 7 review. See [the production export verification](FINAL_EXPORT_VERIFICATION.md) for current layouts and files.
+
 All deliverables use the [authoritative manuscript](manuscript/paper.md) and [20-entry bibliography](bibliography/references.bib).
 
 ## Figure 7 update
@@ -10,11 +12,11 @@ The Goa and Springer proofs each contain 14 PDF pages including references. The 
 
 | Format | Deliverable | Current pages | Before Figure 7 |
 |---|---|---:|---:|
-| Goa public-guidance layout | [PDF](exports/Cortex-SMARTCOM-Goa-Guidelines.pdf) and [editable Word](exports/Cortex-SMARTCOM-Goa-Guidelines.docx) | 14 | 13 |
-| Springer proceedings review | [PDF](exports/cortex-springer.pdf) | 14 | 13 |
-| Springer editable | [Word](exports/Cortex-SMARTCOM-editable.docx) and [Word proof PDF](exports/Cortex-SMARTCOM-Word-proof.pdf) | 14 | 13 |
-| IEEE backup | [PDF](exports/cortex-ieee.pdf) | 7 | 6 |
-| General academic backup | [PDF](exports/cortex-academic.pdf) | 14 | 13 |
+| Goa public-guidance layout | [PDF](https://github.com/NoirPrimordial7/cortex-ai/blob/1376a0e/reseach%20paper/exports/Cortex-SMARTCOM-Goa-Guidelines.pdf) and [editable Word](https://github.com/NoirPrimordial7/cortex-ai/blob/1376a0e/reseach%20paper/exports/Cortex-SMARTCOM-Goa-Guidelines.docx) | 14 | 13 |
+| Springer proceedings review | [PDF](https://github.com/NoirPrimordial7/cortex-ai/blob/1376a0e/reseach%20paper/exports/cortex-springer.pdf) | 14 | 13 |
+| Springer editable | [Word](https://github.com/NoirPrimordial7/cortex-ai/blob/1376a0e/reseach%20paper/exports/Cortex-SMARTCOM-editable.docx) and [Word proof PDF](https://github.com/NoirPrimordial7/cortex-ai/blob/1376a0e/reseach%20paper/exports/Cortex-SMARTCOM-Word-proof.pdf) | 14 | 13 |
+| IEEE backup | [PDF](https://github.com/NoirPrimordial7/cortex-ai/blob/1376a0e/reseach%20paper/exports/cortex-ieee.pdf) | 7 | 6 |
+| General academic backup | [PDF](https://github.com/NoirPrimordial7/cortex-ai/blob/1376a0e/reseach%20paper/exports/cortex-academic.pdf) | 14 | 13 |
 
 The preceding editorial pass reviewed all 58 rendered pages. The updated builds pass the [structural checks](quality/structural-checks.json) and [content checks](quality/editorial-export-checks.json) for the shared author block, editable equations, caption count, mathematical tokens, bibliography and reported results. There were no final TeX missing-character, undefined-citation, oversize-float or overfull warnings. The last bibliography pages in some formats are sparse, and IEEE diagram labels are smaller in two columns.
 

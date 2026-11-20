@@ -10,6 +10,10 @@
 \let\citet\cite
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \emergencystretch=1.5em
+\hypersetup{pdftitle={Cortex AI: Permission-Gated Temporal Retrieval and
+Authority-Aware Conflict Abstention for Enterprise Policy
+Knowledge},pdfauthor={Aditya Gholap; Arya Dhumal; Ashwin Gudur; Yashraj
+Bansal}}
 \begin{document}
 \title{Cortex AI: Permission-Gated Temporal Retrieval and
 Authority-Aware Conflict Abstention for Enterprise Policy Knowledge}
@@ -19,7 +23,8 @@ Bansal}
 \authorrunning{A. Gholap et al.}
 \institute{Department of Computer Science and Engineering, MIT School of
 Computing, MIT Art, Design and Technology University, Pune,
-India\\{[}Corresponding author and email to be confirmed{]}}
+India\\Corresponding author: Aditya Gholap
+(adityagholap19.06@gmail.com)}
 \maketitle
 \begin{abstract}
 An enterprise policy answer must use evidence that the requester can
@@ -367,34 +372,6 @@ extracted-text digest and offsets. The optional ranking does not change
 the strict peer set. Personal leave records use a separate authorization
 path outside the evaluation.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.89\linewidth,height=\textheight,keepaspectratio,alt={Evaluation
-workflow. The development fixture and new fictional benchmark exercise
-the pinned service, and offline comparator rules operate on the same
-visible fictional policies.}]{../figures/rendered/fig6.pdf}
-\caption{Evaluation workflow. The development fixture and new fictional
-benchmark exercise the pinned service, and offline comparator rules
-operate on the same visible fictional policies.}\label{fig:evaluation}
-\end{figure}
-
-Figure 7 shows two outputs from the fictional demonstration workspace.
-The leave answer links to an exact policy passage, while the conflict
-view identifies the two competing remote-work policies for the requested
-date and scope.
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio,alt={Fictional
-Cortex AI demonstration. (a) Supported annual-leave answer and its cited
-passage. (b) Unresolved remote-work conflict listing two competing
-sources.}]{../figures/rendered/fig7.pdf}
-\caption{Fictional Cortex AI demonstration. (a) Supported annual-leave
-answer and its cited passage. (b) Unresolved remote-work conflict
-listing two competing sources.}\label{fig:demo}
-\end{figure}
-\FloatBarrier
-
 \section{Experimental Setup}\label{experimental-setup}
 
 Figure 6 describes the two evaluation strata. The existing evaluator
@@ -405,6 +382,17 @@ evidence in the answerer and a restricted marker in the response. The
 evaluator opens the citation endpoint and recomputes the text hash. The
 case count is distinct from frontend unit regressions, backend
 regressions and actual browser flows.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.89\linewidth,height=\textheight,keepaspectratio,alt={Evaluation
+workflow. The development fixture and new fictional benchmark exercise
+the pinned service, and offline comparator rules operate on the same
+visible fictional policies.}]{../figures/rendered/fig6.pdf}
+\caption{Evaluation workflow. The development fixture and new fictional
+benchmark exercise the pinned service, and offline comparator rules
+operate on the same visible fictional policies.}\label{fig:evaluation}
+\end{figure}
 
 The second fixture uses 12 short fictional policies and 16 questions
 varying by date and scope. Before running the service, we specified the
@@ -444,6 +432,31 @@ SQLite 3.49.1, FastAPI 0.143.0 and SQLAlchemy 2.0.54. The new fixture's
 full-route timing uses one annual-leave prompt, five preliminary
 requests and 50 measured calls with the optional related-passage model
 configured.
+
+For replication, the second fixture assigns named identifiers to its
+fictional policies before ingestion. Each question record specifies a
+topic, requested date and population, expected peer identifiers,
+expected cited source identifiers, expected value and reason. The
+harness maps the service's document identifiers back to those fixture
+identifiers. This lets a reader audit eligibility by policy and question
+even when a fresh run assigns different database identifiers. The result
+record retains the expected and actual peer and source sets. A matching
+answer value alone would miss a candidate-set error, such as failing to
+retrieve an eligible policy whose value agrees with the selected one.
+
+The disclosure check uses a distinctive text marker in each of the two
+excluded policy records. The harness searches both the serialized
+response and the quotes observed by the application hooks. It also
+requests the two version contents directly as the Employee. These checks
+cover different interfaces. A denied document read tests the content
+route, while the observed quotes test whether the answer path admitted
+marked text before responding. The citation check exercises a separate
+round trip. Using the original requester, the harness opens each
+returned citation, extracts the substring at the reported offsets and
+compares it with the quoted span. It then hashes the fetched text and
+compares that digest with the response metadata. Thus the evaluation can
+record evidence-admission, source-access and citation failures
+independently of the final answer label.
 
 \section{Results}\label{results}
 
@@ -597,10 +610,12 @@ disclosure}\label{reproducibility-and-disclosure}
 
 The reviewed inputs are fictional. The manuscript package includes
 corpus labels, baseline code, a pinned implementation identifier, run
-outputs and figure sources. Reproduction uses fictional records and
-local test keys. Codex assisted with source verification, benchmark and
-diagram code, drafting and editing. The final disclosure wording and
-authorship details remain subject to author approval.
+outputs and figure sources. The machine-readable results retain the
+reason code and selected sources for each question, including questions
+that produce no answer. Reproduction uses fictional records and local
+test keys. Codex assisted with source verification, benchmark and
+diagram code, drafting and editing. The final disclosure wording remains
+subject to author approval.
 \bibliographystyle{splncs04}
 \bibliography{../bibliography/references}
 \end{document}

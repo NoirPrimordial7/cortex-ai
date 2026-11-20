@@ -1,0 +1,69 @@
+{
+  "consecutive_words": 8,
+  "document_count": 12,
+  "sources": [
+    {
+      "source": "BuettcherClarke2005.pdf",
+      "matches": 0,
+      "matched_windows": []
+    },
+    {
+      "source": "Cao2026-Re3.pdf",
+      "matches": 0,
+      "matched_windows": []
+    },
+    {
+      "source": "Dhingra2022-TimeAware.pdf",
+      "matches": 0,
+      "matched_windows": []
+    },
+    {
+      "source": "Gao2023-ALCE.pdf",
+      "matches": 0,
+      "matched_windows": []
+    },
+    {
+      "source": "Gross2026-Ragability.pdf",
+      "matches": 0,
+      "matched_windows": []
+    },
+    {
+      "source": "Karpukhin2020-DPR.pdf",
+      "matches": 0,
+      "matched_windows": []
+    },
+    {
+      "source": "Lewis2020-RAG.pdf",
+      "matches": 0,
+      "matched_windows": []
+    },
+    {
+      "source": "Nam2026-TimelyRAG.pdf",
+      "matches": 0,
+      "matched_windows": []
+    },
+    {
+      "source": "Ouyang2025-HoH.pdf",
+      "matches": 0,
+      "matched_windows": []
+    },
+    {
+      "source": "Cortex_AI_Project_Report.pdf",
+      "matches": 2,
+      "matched_windows": [
+        "annual leave remote work notice period and executive",
+        "leave remote work notice period and executive bonus"
+      ]
+    },
+    {
+      "source": "Deepfake Forensics Tool Resarch Paper Published IJSREM.pdf",
+      "matches": 0,
+      "matched_windows": []
+    },
+    {
+      "source": "Veritas.pdf",
+      "matches": 0,
+      "matched_windows": []
+    }
+  ]
+}

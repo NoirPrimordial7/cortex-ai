@@ -46,29 +46,34 @@ function Table(tbl)
   }, "\n"))
 end
 
-local function demo_figure(fig)
-  if not FORMAT:match("latex") or fig.identifier ~= "fig:demo" then
+local function print_figure(fig)
+  if not FORMAT:match("latex") or review_format ~= "ieee" then
     return nil
   end
-  local wide = review_format == "ieee"
-  if wide or review_format == "academic" then
-    fig = fig:walk({Image = function(img)
-      img.attributes.width = wide and "72%" or "79%"
-      return img
-    end})
-  end
+  fig = fig:walk({Image = function(img)
+    img.attributes.width = "67%"
+    return img
+  end})
   local latex = stringify({fig})
-  if wide then
-    latex = latex:gsub("\\begin{figure}", "\\begin{figure*}[!t]", 1)
-    latex = latex:gsub("\\end{figure}", "\\end{figure*}", 1)
-  else
-    latex = latex:gsub("\\begin{figure}", "\\begin{figure}[!htbp]", 1)
-    latex = latex .. "\n\\FloatBarrier"
-  end
+  latex = latex:gsub("\\begin{figure}", "\\begin{figure*}[!t]", 1)
+  latex = latex:gsub("\\end{figure}", "\\end{figure*}", 1)
   return pandoc.RawBlock("latex", latex)
+end
+
+local function table_reference(inlines)
+  if review_format ~= "ieee" then
+    return nil
+  end
+  for i = 3, #inlines do
+    if inlines[i - 2].text == "Table" and inlines[i - 1].tag == "Space"
+       and inlines[i].text == "1" then
+      inlines[i].text = "I"
+    end
+  end
+  return inlines
 end
 
 return {
   {Meta = Meta, Image = Image, Table = Table},
-  {Figure = demo_figure}
+  {Figure = print_figure, Inlines = table_reference}
 }

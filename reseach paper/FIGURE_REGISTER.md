@@ -1,6 +1,6 @@
 # Figure register
 
-Figures 1–6 reproduce from `figures/source/draw_figures.py` as vector PDF and SVG, with 350 dpi PNG exports. Figure 7 uses genuine application crops with vector labels in its PDF and a print-resolution PNG for Word. Captions and accessible image text are in the authoritative manuscript.
+Figures 1–6 reproduce from `figures/source/draw_figures.py` as vector PDF and SVG, with 350 dpi PNG exports. Captions and accessible image text are in the authoritative manuscript. The application screenshot composite is supplementary. [Design and print rules](FIGURE_DESIGN_SYSTEM.md)
 
 | Figure | Subject | Technical evidence |
 |---|---|---|
@@ -10,4 +10,4 @@ Figures 1–6 reproduce from `figures/source/draw_figures.py` as vector PDF and 
 | 4 | Time replacement, rank filtering, abstention and exact human choice | pipeline.py and conflict_reaudit.py |
 | 5 | Evidence-specific storage relationships | backend/app/db.py, integrity.py and migration 0009 |
 | 6 | Development fixture and independent-in-content fictional benchmark with controlled comparators | backend/evaluate.py and experiments/run_benchmark.py |
-| 7 | Fictional application outputs with an exact source passage and a two-source conflict listing | [Local screenshot evidence and provenance](evidence/APPLICATION_SCREENSHOTS.md) |
+| Supplementary | Fictional application outputs with an exact source passage and a two-source conflict listing | [Local screenshot evidence and provenance](evidence/APPLICATION_SCREENSHOTS.md) |

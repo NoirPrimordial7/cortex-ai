@@ -5,11 +5,11 @@
 \let\citet\cite
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \emergencystretch=1.5em
+\hypersetup{pdftitle={$title$},pdfauthor={$for(author)$$author$$sep$; $endfor$}}
 \begin{document}
 \title{$title$}
 \author{\IEEEauthorblockN{$for(author)$$author$$sep$, $endfor$}
-\IEEEauthorblockA{Department of Computer Science and Engineering, MIT School of Computing\\
-MIT Art, Design and Technology University, Pune, India\\$correspondence$}}
+\IEEEauthorblockA{\parbox{.85\textwidth}{\centering $institute$\\$correspondence$}}}
 \maketitle
 \begin{abstract}
 $abstract$
