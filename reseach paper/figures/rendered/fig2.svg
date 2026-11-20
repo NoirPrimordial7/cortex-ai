@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="218" viewBox="0 0 360 218" role="img"><title>Ordered strict policy admission, FTS identifier gate, peer expansion and verification</title>
+<rect x="7" y="8" width="100" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="57.0" y="26.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">1. Authenticate</text>
+<text x="57.0" y="37.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Authorize query</text>
+<rect x="130" y="8" width="100" height="42" rx="3" fill="#def1ea" stroke="#516775" stroke-width=".8"/>
+<text x="180.0" y="26.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">2. Admit evidence</text>
+<text x="180.0" y="37.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">READ, approval, scope</text>
+<rect x="253" y="8" width="100" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="303.0" y="26.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">3. Filter valid time</text>
+<text x="303.0" y="37.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Apply effective window</text>
+<rect x="253" y="75" width="100" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="303.0" y="93.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">4. FTS5 ID gate</text>
+<text x="303.0" y="104.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Eligible hit required</text>
+<rect x="130" y="75" width="100" height="42" rx="3" fill="#def1ea" stroke="#516775" stroke-width=".8"/>
+<text x="180.0" y="93.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">5. Expand peers</text>
+<text x="180.0" y="104.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Predicate and unit</text>
+<rect x="7" y="75" width="100" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="57.0" y="93.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">6. Compare rank</text>
+<text x="57.0" y="104.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Use strongest tier</text>
+<rect x="7" y="142" width="100" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="57.0" y="160.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">7. Compare values</text>
+<text x="57.0" y="171.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Check Auditor choice</text>
+<rect x="130" y="142" width="100" height="42" rx="3" fill="#def1ea" stroke="#516775" stroke-width=".8"/>
+<text x="180.0" y="160.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">8. Verify citations</text>
+<text x="180.0" y="171.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Revision, span, hash</text>
+<rect x="253" y="142" width="100" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="303.0" y="160.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">9. Emit status</text>
+<text x="303.0" y="171.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Answer or abstention</text>
+<polyline points="107,29 130,29" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="125.45517125162557,26.915645987853946 130,29 125.45517125162557,31.084354012146054" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="230,29 253,29" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="248.4551712516256,26.915645987853946 253,29 248.4551712516256,31.084354012146054" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="303,50 303,75" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="305.08435401214604,70.45517125162557 303,75 300.91564598785396,70.45517125162557" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="253,96 230,96" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="234.5448287483744,98.08435401214605 230,96 234.5448287483744,93.91564598785395" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="130,96 107,96" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="111.54482874837443,98.08435401214605 107,96 111.54482874837443,93.91564598785395" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="57,117 57,142" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="59.08435401214605,137.4551712516256 57,142 54.91564598785395,137.4551712516256" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="107,163 130,163" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="125.45517125162557,160.91564598785394 130,163 125.45517125162557,165.08435401214606" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="230,163 253,163" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="248.4551712516256,160.91564598785394 253,163 248.4551712516256,165.08435401214606" fill="none" stroke="#17655d" stroke-width=".95"/>
+<text x="180" y="204" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">A failed gate returns a bounded status. Citation reopening reapplies READ.</text>
+</svg>

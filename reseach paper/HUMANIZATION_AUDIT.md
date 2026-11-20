@@ -1,0 +1,21 @@
+# Scientific and editorial quality audit
+
+**20 November 2026 · draft PR #10 · implementation dbbd2f2**
+
+Read both [repository reviews](https://github.com/NoirPrimordial7/cortex-ai/pull/10), the supplied 13-page Goa PDF, the editable editorial Word file, the format audit, and the three supplied images. The Goa DOCX contained six figures, one table and editable text formulas. Its prose informed 21 paragraphs in the single authoritative [paper.md](manuscript/paper.md). The complete pass changed 33 body blocks plus the abstract and keyword punctuation. Word layouts and TeX were generated after the scientific and language pass. Inputs stay local in the ignored research directory.
+
+| Area | Evidence checked and outcome |
+|---|---|
+| Abstract and contribution | Verified against both result files. The abstract now describes the strict path, the one underlying dispute, and the application stages observed. No new performance or security outcome was added. |
+| Related work | Reviewed every in-text use against the [20-entry reference audit](REFERENCE_AUDIT.md) and [literature comparison](LITERATURE_MATRIX.md). The original citation-key sequence and complete bibliography are preserved. The cited works motivate policy search, relevance, temporal ranking, contradiction, provenance and selective prediction. They do not supply the reported Cortex outcomes. |
+| Inputs, roles and threat model | `backend/app/security.py` and `main.py` support current tenant/READ checks and role actions. The question tuple describes a routed request and uses a derived topic. Historical as-of dates do not restore historical access grants. |
+| Eligibility and retrieval | `backend/app/pipeline.py`, ELIGIBLE, STRICT_ELIGIBLE and retrieve, confirm the reviewed/current claim join, half-open SQL interval, ID existence gate, predicate/unit filter, 20-ID match result limit, 32 distinct query tokens, 100-row peer bound and substring ordering. The displayed formula is unchanged and its surrounding definitions now state what is included. |
+| Authority and Auditor resolution | decide, answer and `conflict_reaudit.py` confirm the governing-kind presence check followed by maximum rank, the eight-span conflict bound, current exact-case matching and signed-record checks. This scope does not imply automatic resolution of arbitrary policy contradictions. |
+| Citation and integrity | verify and saved in `pipeline.py` support offsets, UTF-8 SHA-256 stored in hex, digit boundaries, ownership and current dependency checks. `integrity.py` confirms local Ed25519 sealing. Standard span verification is distinct from signature verification and neither replaces human interpretation. |
+| Benchmarks and interpretation | Cross-checked scenario arrays, counts, raw timings and software verification against the committed [results](RESULTS_VERIFICATION.md). The authored table and its four rows are unchanged. Replayed the 16-query benchmark with the pinned CPU model. Case-level decisions, values, reasons, selected source sets, peer and citation counts, marker checks and the four passage-result sets matched. The order of three unrelated passages differed on the notice prompt, once per mode. Existing warm timings were retained as the original measurements. |
+| Discussion and limits | Clarified that RQ1 holds approval and scope fixed, RQ2 tests designed cases, RQ3 measures observable paths and RQ4 checks span identity. RQ5 reports four exploratory prompts. The new labels await independent human adjudication. |
+| Figures and legal originality | All six reviewed at manuscript scale. Figure 2 now names the post-expansion predicate/unit filter. Figure 4 now shows the kind/key/rank checks, citation bound and verification boundary. Figures 1, 3, 5 and 6 were preserved. Eight-word screening and remaining checks are documented separately. |
+
+Code for verification is pinned to the PR base. Application runtime code was untouched. The prior 107 backend, 44 frontend and six browser pass records were checked against the existing run evidence. This pass reran the fictional benchmark rather than the full regression suites.
+
+See the [author decisions and originality checklist](ORIGINALITY_REVIEW_CHECKLIST.md) and [format comparison](FORMAT_CONSISTENCY_CHECK.md).

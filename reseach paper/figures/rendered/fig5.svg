@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="216" viewBox="0 0 360 216" role="img"><title>Tenant access, versioned evidence, and saved query relationships</title>
+<rect x="5" y="8" width="103" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="56.5" y="26.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Users and roles</text>
+<text x="56.5" y="37.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Tenant membership</text>
+<rect x="128" y="8" width="103" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="179.5" y="26.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Document grants</text>
+<text x="179.5" y="37.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">READ subject</text>
+<rect x="252" y="8" width="103" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="303.5" y="26.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Documents</text>
+<text x="303.5" y="37.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Tenant-owned</text>
+<rect x="252" y="71" width="103" height="42" rx="3" fill="#def1ea" stroke="#516775" stroke-width=".8"/>
+<text x="303.5" y="89.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Versions</text>
+<text x="303.5" y="100.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Source hash and seal</text>
+<rect x="128" y="71" width="103" height="42" rx="3" fill="#def1ea" stroke="#516775" stroke-width=".8"/>
+<text x="179.5" y="89.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Clauses</text>
+<text x="179.5" y="100.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Offsets and valid time</text>
+<rect x="5" y="71" width="103" height="42" rx="3" fill="#def1ea" stroke="#516775" stroke-width=".8"/>
+<text x="56.5" y="89.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Reviewed claims</text>
+<text x="56.5" y="100.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Key, unit, value</text>
+<rect x="5" y="137" width="103" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="56.5" y="155.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Conflict evidence</text>
+<text x="56.5" y="166.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Claim and clause</text>
+<rect x="128" y="137" width="103" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="179.5" y="155.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Citations</text>
+<text x="179.5" y="166.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Clause and digest</text>
+<rect x="252" y="137" width="103" height="42" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="303.5" y="155.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Saved queries</text>
+<text x="303.5" y="166.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Owner and revisions</text>
+<polyline points="108,29 128,29" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="231,29 252,29" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="303,50 303,71" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="252,92 231,92" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="128,92 108,92" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="56,113 56,137" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="180,113 180,137" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="252,158 231,158" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="304,179 304,194 56,194 56,179" fill="none" stroke="#516775" stroke-width=".95"/>
+<text x="180" y="209" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Edges show stored records or linked evidence, without asserting SQL cardinality.</text>
+</svg>

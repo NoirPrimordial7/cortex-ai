@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="172" viewBox="0 0 360 172" role="img"><title>Three fictional policy validity intervals, with publication marks and a query date</title>
+<text x="180" y="12" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700">Fictional annual leave policy</text>
+<polyline points="26,143 340,143" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="335.4551712516256,140.91564598785394 340,143 335.4551712516256,145.08435401214606" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="56,139 56,147" fill="none" stroke="#516775" stroke-width=".95"/>
+<text x="56" y="158" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Apr 2025</text>
+<polyline points="170,139 170,147" fill="none" stroke="#516775" stroke-width=".95"/>
+<text x="170" y="158" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Apr 2026</text>
+<polyline points="284,139 284,147" fill="none" stroke="#516775" stroke-width=".95"/>
+<text x="284" y="158" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Apr 2027</text>
+<rect x="56" y="52" width="114" height="9" rx="1" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="113.0" y="49" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700">Expired / 17 days</text>
+<polyline points="38,55 56,55" fill="none" stroke="#516775" stroke-width=".95" stroke-dasharray="3 2"/>
+<text x="47.0" y="74" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="400">03 Feb 2025</text>
+<rect x="170" y="84" width="114" height="9" rx="1" fill="#def1ea" stroke="#17655d" stroke-width=".8"/>
+<text x="227.0" y="81" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700">Effective / 23 days</text>
+<polyline points="147,87 170,87" fill="none" stroke="#516775" stroke-width=".95" stroke-dasharray="3 2"/>
+<text x="158.5" y="106" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="400">20 Jan 2026</text>
+<rect x="284" y="116" width="51" height="9" rx="1" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="309.5" y="113" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700">Future / 27 days</text>
+<polyline points="227,119 284,119" fill="none" stroke="#516775" stroke-width=".95" stroke-dasharray="3 2"/>
+<text x="255.5" y="138" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="400">01 Oct 2026</text>
+<polyline points="243,30 243,69" fill="none" stroke="#17655d" stroke-width=".95" stroke-dasharray="3 2"/>
+<polyline points="245.08435401214606,64.45517125162557 243,69 240.91564598785394,64.45517125162557" fill="none" stroke="#17655d" stroke-width=".95" stroke-dasharray="3 2"/>
+<polyline points="335,120.5 349,120.5" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="344.4551712516256,118.41564598785395 349,120.5 344.4551712516256,122.58435401214605" fill="none" stroke="#516775" stroke-width=".95"/>
+<text x="243" y="25" fill="#17655d" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700">Query: 20 Nov 2026</text>
+<text x="180" y="170" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" font-weight="400">Dashed lead-in: issue date. Bounded effective intervals exclude the end date.</text>
+</svg>

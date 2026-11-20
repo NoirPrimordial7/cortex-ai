@@ -1,0 +1,25 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx,amsmath,amssymb,booktabs,array,url,hyperref}
+\providecommand{\doi}[1]{\href{https://doi.org/\detokenize{#1}}{\url{https://doi.org/#1}}}
+\usepackage{placeins}
+\let\citep\cite
+\let\citet\cite
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\title{$title$}
+\author{$for(author)$$author$$sep$ \and $endfor$}
+\date{}
+\emergencystretch=1.5em
+\hypersetup{pdftitle={$title$},pdfauthor={$for(author)$$author$$sep$; $endfor$}}
+\begin{document}
+\maketitle
+\begin{center}\small $institute$\\$correspondence$\end{center}
+\begin{abstract}
+$abstract$
+\end{abstract}
+\noindent\textbf{Keywords.} $keywords$
+$body$
+\bibliographystyle{splncs04}
+\bibliography{../bibliography/references}
+\end{document}

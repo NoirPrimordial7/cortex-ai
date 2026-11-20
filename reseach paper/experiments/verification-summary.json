@@ -1,0 +1,33 @@
+{
+  "commit": "dbbd2f293f312f3055db6beffc045e3e5b7ee62a",
+  "backend": {
+    "passed": 107,
+    "warning": "Starlette TestClient httpx deprecation",
+    "duration_seconds": 32.77,
+    "cpu_encoder_test": "executed"
+  },
+  "frontend": {
+    "passed": 44,
+    "files": 14,
+    "build_passed": true,
+    "node": "24.16.0",
+    "npm": "11.13.0"
+  },
+  "browser": {
+    "passed": 6,
+    "duration_seconds": 43.9,
+    "chrome": "157.0.8103.79",
+    "viewport_widths_px": [
+      320,
+      390,
+      768,
+      1280,
+      1440
+    ]
+  },
+  "ruff_passed": true,
+  "encoder_artifact_sha256": {
+    "model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+    "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037"
+  }
+}

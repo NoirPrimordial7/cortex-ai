@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="195" viewBox="0 0 360 195" role="img"><title>Development fixture and second fictional corpus with comparator and service evaluation</title>
+<rect x="6" y="8" width="103" height="40" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="57.5" y="25.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Development fixture</text>
+<text x="57.5" y="36.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Pinned scenarios</text>
+<rect x="129" y="8" width="225" height="40" rx="3" fill="#def1ea" stroke="#516775" stroke-width=".8"/>
+<text x="241.5" y="25.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Second fictional policy corpus</text>
+<text x="241.5" y="36.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Predefined query, expected status and evidence labels</text>
+<rect x="6" y="73" width="103" height="40" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="57.5" y="90.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">HTTP and hooks</text>
+<text x="57.5" y="101.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Peers and citations</text>
+<rect x="129" y="73" width="103" height="40" rx="3" fill="#def1ea" stroke="#516775" stroke-width=".8"/>
+<text x="180.5" y="90.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Full Cortex service</text>
+<text x="180.5" y="101.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Fresh SQLite corpus</text>
+<rect x="251" y="73" width="103" height="40" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="302.5" y="90.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Offline comparators</text>
+<text x="302.5" y="101.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Rules A, B and C</text>
+<polyline points="57,48 57,73" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="59.08435401214605,68.45517125162557 57,73 54.91564598785395,68.45517125162557" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="180,48 180,73" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="182.08435401214606,68.45517125162557 180,73 177.91564598785394,68.45517125162557" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="303,48 303,73" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="305.08435401214604,68.45517125162557 303,73 300.91564598785396,68.45517125162557" fill="none" stroke="#516775" stroke-width=".95"/>
+<rect x="65" y="143" width="230" height="45" rx="3" fill="#def1ea" stroke="#516775" stroke-width=".8"/>
+<text x="180.0" y="157.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Score and inspect outcomes</text>
+<text x="180.0" y="168.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Status, eligible peers, citations and disagreements</text>
+<text x="180.0" y="179.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Report passage timing separately</text>
+<polyline points="57,113 57,130 106,130 106,143" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="108.08435401214605,138.4551712516256 106,143 103.91564598785395,138.4551712516256" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="180,113 180,143" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="182.08435401214606,138.4551712516256 180,143 177.91564598785394,138.4551712516256" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="303,113 303,130 254,130 254,143" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="256.08435401214604,138.4551712516256 254,143 251.91564598785394,138.4551712516256" fill="none" stroke="#516775" stroke-width=".95"/>
+</svg>

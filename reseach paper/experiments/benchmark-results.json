@@ -1,0 +1,606 @@
+{
+  "fixture_sha256": "4ad31bfc88c5ce844ac2148c562a06e0335bd6d05a87d7fe2f9f334a3d039ddc",
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "sqlite": "3.49.1",
+    "fastapi": "0.143.0",
+    "sqlalchemy": "2.0.54",
+    "transport": "single-worker in-process TestClient"
+  },
+  "variants": {
+    "A": 5,
+    "B": 14,
+    "C": 14
+  },
+  "full_correct": 16,
+  "authorized_peers_recovered": 19,
+  "authorized_peers_expected": 19,
+  "unexpected_peers": 0,
+  "exact_span_hash_checks": 16,
+  "canary_violations": 0,
+  "strict_timing_ms": {
+    "n": 50,
+    "median": 28.72135,
+    "p95_nearest_rank": 51.339,
+    "samples": [
+      52.9456,
+      51.847,
+      42.1988,
+      48.0756,
+      48.5927,
+      33.0837,
+      25.6997,
+      31.0873,
+      43.3471,
+      47.5272,
+      42.7871,
+      29.7874,
+      25.7378,
+      31.3893,
+      25.8506,
+      26.6053,
+      51.339,
+      49.7613,
+      31.563,
+      35.4007,
+      27.6251,
+      25.7153,
+      38.49,
+      30.0614,
+      26.5222,
+      26.9897,
+      30.1576,
+      28.583,
+      26.0718,
+      28.8597,
+      32.0708,
+      45.2687,
+      27.038,
+      28.4742,
+      25.8992,
+      26.6888,
+      33.6919,
+      26.626,
+      27.8249,
+      27.0116,
+      26.2528,
+      26.2103,
+      29.0766,
+      26.3071,
+      26.2867,
+      26.5262,
+      28.2184,
+      27.0139,
+      27.2899,
+      41.0989
+    ]
+  },
+  "optional_related_passage_semantic": {
+    "lexical": {
+      "queries": [
+        {
+          "prompt": "What is the vacation entitlement?",
+          "reference_policy": "LV-B",
+          "related": []
+        },
+        {
+          "prompt": "How often can staff telecommute?",
+          "reference_policy": "RW-B",
+          "related": []
+        },
+        {
+          "prompt": "How long before leaving the company?",
+          "reference_policy": "NT-A",
+          "related": []
+        },
+        {
+          "prompt": "How many days of notice are required?",
+          "reference_policy": "NT-A",
+          "related": [
+            "LV-B",
+            "RW-B",
+            "LV-D"
+          ]
+        }
+      ],
+      "milliseconds": [
+        9.5007,
+        9.3912,
+        10.4187,
+        9.9456,
+        10.1264,
+        9.5389,
+        9.7658,
+        10.8796,
+        11.5001,
+        10.3429,
+        11.4819,
+        11.1182,
+        11.0811,
+        11.3729,
+        11.8443,
+        11.1946,
+        11.692,
+        11.2995,
+        9.9219,
+        9.3117,
+        9.4461,
+        10.9475,
+        9.4285,
+        8.9815,
+        9.5722,
+        10.2434,
+        10.2448,
+        10.3157,
+        11.2991,
+        10.9176
+      ]
+    },
+    "hybrid": {
+      "queries": [
+        {
+          "prompt": "What is the vacation entitlement?",
+          "reference_policy": "LV-B",
+          "related": [
+            "LV-D"
+          ]
+        },
+        {
+          "prompt": "How often can staff telecommute?",
+          "reference_policy": "RW-B",
+          "related": [
+            "RW-B",
+            "LV-B",
+            "LV-D"
+          ]
+        },
+        {
+          "prompt": "How long before leaving the company?",
+          "reference_policy": "NT-A",
+          "related": [
+            "LV-B",
+            "LV-D"
+          ]
+        },
+        {
+          "prompt": "How many days of notice are required?",
+          "reference_policy": "NT-A",
+          "related": [
+            "LV-B",
+            "LV-D",
+            "RW-B"
+          ]
+        }
+      ],
+      "milliseconds": [
+        32.989,
+        26.4443,
+        29.4372,
+        32.6203,
+        28.4667,
+        32.8625,
+        26.3503,
+        24.9971,
+        25.7767,
+        27.004,
+        25.3775,
+        28.0063,
+        29.1855,
+        25.3216,
+        25.5654,
+        26.6766,
+        28.2586,
+        26.0306,
+        26.0388,
+        27.5202,
+        29.2762,
+        47.3192,
+        34.2209,
+        45.7327,
+        38.6825,
+        29.5303,
+        25.9373,
+        24.271,
+        25.7423,
+        31.6799
+      ]
+    }
+  },
+  "queries": [
+    {
+      "id": "Q01",
+      "value": 17,
+      "reason": null,
+      "status": "answered",
+      "gold_value": 17,
+      "gold_reason": null,
+      "peers": [
+        "LV-A"
+      ],
+      "gold_peers": [
+        "LV-A"
+      ],
+      "sources": [
+        "LV-A"
+      ],
+      "gold_sources": [
+        "LV-A"
+      ],
+      "baselines": {
+        "A": 31,
+        "B": 17,
+        "C": 17
+      }
+    },
+    {
+      "id": "Q02",
+      "value": 17,
+      "reason": null,
+      "status": "answered",
+      "gold_value": 17,
+      "gold_reason": null,
+      "peers": [
+        "LV-A"
+      ],
+      "gold_peers": [
+        "LV-A"
+      ],
+      "sources": [
+        "LV-A"
+      ],
+      "gold_sources": [
+        "LV-A"
+      ],
+      "baselines": {
+        "A": 31,
+        "B": 17,
+        "C": 17
+      }
+    },
+    {
+      "id": "Q03",
+      "value": 23,
+      "reason": null,
+      "status": "answered",
+      "gold_value": 23,
+      "gold_reason": null,
+      "peers": [
+        "LV-B",
+        "LV-D"
+      ],
+      "gold_peers": [
+        "LV-B",
+        "LV-D"
+      ],
+      "sources": [
+        "LV-B"
+      ],
+      "gold_sources": [
+        "LV-B"
+      ],
+      "baselines": {
+        "A": 31,
+        "B": 23,
+        "C": 23
+      }
+    },
+    {
+      "id": "Q04",
+      "value": 23,
+      "reason": null,
+      "status": "answered",
+      "gold_value": 23,
+      "gold_reason": null,
+      "peers": [
+        "LV-B",
+        "LV-D"
+      ],
+      "gold_peers": [
+        "LV-B",
+        "LV-D"
+      ],
+      "sources": [
+        "LV-B"
+      ],
+      "gold_sources": [
+        "LV-B"
+      ],
+      "baselines": {
+        "A": 31,
+        "B": 23,
+        "C": 23
+      }
+    },
+    {
+      "id": "Q05",
+      "value": 27,
+      "reason": null,
+      "status": "answered",
+      "gold_value": 27,
+      "gold_reason": null,
+      "peers": [
+        "LV-C",
+        "LV-D"
+      ],
+      "gold_peers": [
+        "LV-C",
+        "LV-D"
+      ],
+      "sources": [
+        "LV-C"
+      ],
+      "gold_sources": [
+        "LV-C"
+      ],
+      "baselines": {
+        "A": 31,
+        "B": 27,
+        "C": 27
+      }
+    },
+    {
+      "id": "Q06",
+      "value": 9,
+      "reason": null,
+      "status": "answered",
+      "gold_value": 9,
+      "gold_reason": null,
+      "peers": [
+        "LV-E"
+      ],
+      "gold_peers": [
+        "LV-E"
+      ],
+      "sources": [
+        "LV-E"
+      ],
+      "gold_sources": [
+        "LV-E"
+      ],
+      "baselines": {
+        "A": 9,
+        "B": 9,
+        "C": 9
+      }
+    },
+    {
+      "id": "Q07",
+      "value": null,
+      "reason": "NO_ELIGIBLE_EVIDENCE",
+      "status": "abstained",
+      "gold_value": null,
+      "gold_reason": "NO_ELIGIBLE_EVIDENCE",
+      "peers": [],
+      "gold_peers": [],
+      "sources": [],
+      "gold_sources": [],
+      "baselines": {
+        "A": 31,
+        "B": null,
+        "C": null
+      }
+    },
+    {
+      "id": "Q08",
+      "value": 1,
+      "reason": null,
+      "status": "answered",
+      "gold_value": 1,
+      "gold_reason": null,
+      "peers": [
+        "RW-A"
+      ],
+      "gold_peers": [
+        "RW-A"
+      ],
+      "sources": [
+        "RW-A"
+      ],
+      "gold_sources": [
+        "RW-A"
+      ],
+      "baselines": {
+        "A": 4,
+        "B": 1,
+        "C": 1
+      }
+    },
+    {
+      "id": "Q09",
+      "value": 3,
+      "reason": null,
+      "status": "answered",
+      "gold_value": 3,
+      "gold_reason": null,
+      "peers": [
+        "RW-B"
+      ],
+      "gold_peers": [
+        "RW-B"
+      ],
+      "sources": [
+        "RW-B"
+      ],
+      "gold_sources": [
+        "RW-B"
+      ],
+      "baselines": {
+        "A": 4,
+        "B": 3,
+        "C": 3
+      }
+    },
+    {
+      "id": "Q10",
+      "value": null,
+      "reason": "UNRESOLVED_CONFLICT",
+      "status": "abstained",
+      "gold_value": null,
+      "gold_reason": "UNRESOLVED_CONFLICT",
+      "peers": [
+        "RW-B",
+        "RW-C"
+      ],
+      "gold_peers": [
+        "RW-B",
+        "RW-C"
+      ],
+      "sources": [
+        "RW-B",
+        "RW-C"
+      ],
+      "gold_sources": [
+        "RW-B",
+        "RW-C"
+      ],
+      "baselines": {
+        "A": 4,
+        "B": 3,
+        "C": 3
+      }
+    },
+    {
+      "id": "Q11",
+      "value": null,
+      "reason": "UNRESOLVED_CONFLICT",
+      "status": "abstained",
+      "gold_value": null,
+      "gold_reason": "UNRESOLVED_CONFLICT",
+      "peers": [
+        "RW-B",
+        "RW-C"
+      ],
+      "gold_peers": [
+        "RW-B",
+        "RW-C"
+      ],
+      "sources": [
+        "RW-B",
+        "RW-C"
+      ],
+      "gold_sources": [
+        "RW-B",
+        "RW-C"
+      ],
+      "baselines": {
+        "A": 4,
+        "B": 3,
+        "C": 3
+      }
+    },
+    {
+      "id": "Q12",
+      "value": 3,
+      "reason": null,
+      "status": "answered",
+      "gold_value": 3,
+      "gold_reason": null,
+      "peers": [
+        "RW-B"
+      ],
+      "gold_peers": [
+        "RW-B"
+      ],
+      "sources": [
+        "RW-B"
+      ],
+      "gold_sources": [
+        "RW-B"
+      ],
+      "baselines": {
+        "A": 4,
+        "B": 3,
+        "C": 3
+      }
+    },
+    {
+      "id": "Q13",
+      "value": 38,
+      "reason": null,
+      "status": "answered",
+      "gold_value": 38,
+      "gold_reason": null,
+      "peers": [
+        "NT-A"
+      ],
+      "gold_peers": [
+        "NT-A"
+      ],
+      "sources": [
+        "NT-A"
+      ],
+      "gold_sources": [
+        "NT-A"
+      ],
+      "baselines": {
+        "A": 38,
+        "B": 38,
+        "C": 38
+      }
+    },
+    {
+      "id": "Q14",
+      "value": 38,
+      "reason": null,
+      "status": "answered",
+      "gold_value": 38,
+      "gold_reason": null,
+      "peers": [
+        "NT-A",
+        "NT-B"
+      ],
+      "gold_peers": [
+        "NT-A",
+        "NT-B"
+      ],
+      "sources": [
+        "NT-A",
+        "NT-B"
+      ],
+      "gold_sources": [
+        "NT-A",
+        "NT-B"
+      ],
+      "baselines": {
+        "A": 38,
+        "B": 38,
+        "C": 38
+      }
+    },
+    {
+      "id": "Q15",
+      "value": null,
+      "reason": "NO_ELIGIBLE_EVIDENCE",
+      "status": "abstained",
+      "gold_value": null,
+      "gold_reason": "NO_ELIGIBLE_EVIDENCE",
+      "peers": [],
+      "gold_peers": [],
+      "sources": [],
+      "gold_sources": [],
+      "baselines": {
+        "A": null,
+        "B": null,
+        "C": null
+      }
+    },
+    {
+      "id": "Q16",
+      "value": null,
+      "reason": "NO_ELIGIBLE_EVIDENCE",
+      "status": "abstained",
+      "gold_value": null,
+      "gold_reason": "NO_ELIGIBLE_EVIDENCE",
+      "peers": [],
+      "gold_peers": [],
+      "sources": [],
+      "gold_sources": [],
+      "baselines": {
+        "A": null,
+        "B": null,
+        "C": null
+      }
+    }
+  ]
+}

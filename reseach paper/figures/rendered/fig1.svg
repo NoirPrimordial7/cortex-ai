@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="232" viewBox="0 0 360 232" role="img"><title>Application trust boundary, policy intake, permitted retrieval and response</title>
+<rect x="4" y="46" width="352" height="181" rx="4" fill="#ffffff" stroke="#516775" stroke-width=".8"/>
+<text x="74" y="62" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="700">Server trust boundary</text>
+<rect x="115" y="4" width="130" height="30" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="180.0" y="16.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">React client</text>
+<text x="180.0" y="27.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Ask, review, inspect</text>
+<polyline points="180,34 180,68" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="182.08435401214606,63.45517125162557 180,68 177.91564598785394,63.45517125162557" fill="none" stroke="#17655d" stroke-width=".95"/>
+<rect x="115" y="68" width="130" height="32" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="180.0" y="81.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">FastAPI and session</text>
+<text x="180.0" y="92.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Authorize action</text>
+<rect x="12" y="118" width="101" height="34" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="62.5" y="132.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Private ingestion</text>
+<text x="62.5" y="143.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Extract and index</text>
+<rect x="129" y="118" width="101" height="34" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="179.5" y="132.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Reviewer approval</text>
+<text x="179.5" y="143.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Metadata and claim</text>
+<rect x="246" y="118" width="102" height="34" rx="3" fill="#def1ea" stroke="#516775" stroke-width=".8"/>
+<text x="297.0" y="132.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Document READ</text>
+<text x="297.0" y="143.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Tenant and grants</text>
+<polyline points="115,84 62,84 62,118" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="64.08435401214605,113.45517125162557 62,118 59.91564598785395,113.45517125162557" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="245,84 297,84 297,118" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="299.08435401214604,113.45517125162557 297,118 294.91564598785396,113.45517125162557" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="113,135 129,135" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="124.45517125162557,132.91564598785394 129,135 124.45517125162557,137.08435401214606" fill="none" stroke="#516775" stroke-width=".95"/>
+<rect x="12" y="179" width="101" height="38" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="62.5" y="195.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">SQLite and FTS5</text>
+<text x="62.5" y="206.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Policy data and index</text>
+<rect x="129" y="179" width="101" height="38" rx="3" fill="#edf3f7" stroke="#516775" stroke-width=".8"/>
+<text x="179.5" y="195.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">API response</text>
+<text x="179.5" y="206.5" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Status and evidence</text>
+<rect x="246" y="172" width="102" height="50" rx="3" fill="#def1ea" stroke="#516775" stroke-width=".8"/>
+<text x="297.0" y="189.0" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700">Evidence reasoning</text>
+<text x="297.0" y="200.0" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Retrieve valid peers</text>
+<text x="297.0" y="211.0" fill="#173047" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="400">Rank, verify, decide</text>
+<polyline points="179,152 179,165 63,165 63,179" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="65.08435401214605,174.4551712516256 63,179 60.91564598785395,174.4551712516256" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="297,152 297,172" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="299.08435401214604,167.4551712516256 297,172 294.91564598785396,167.4551712516256" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="113,213 123,213 123,224 240,224 240,213 246,213" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="241.4551712516256,210.91564598785394 246,213 241.4551712516256,215.08435401214606" fill="none" stroke="#516775" stroke-width=".95"/>
+<polyline points="246,192 230,192" fill="none" stroke="#17655d" stroke-width=".95"/>
+<polyline points="234.5448287483744,194.08435401214606 230,192 234.5448287483744,189.91564598785394" fill="none" stroke="#17655d" stroke-width=".95"/>
+</svg>
